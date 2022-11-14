@@ -10,7 +10,9 @@ set clipboard=unnamed
 syntax on
 
 inoremap <silent> jj <ESC>
+inoremap <silent> っj <ESC>
 
+" vim-plug
 call plug#begin()
 Plug 'ntk148v/vim-horizon'
 Plug 'preservim/nerdtree'
@@ -28,12 +30,11 @@ nnoremap <C-n> :NERDTree<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
-" if you don't set this option, this color might not correct
+" vim-horizon settings
 set termguicolors
-
 colorscheme horizon
-
 " lightline
 let g:lightline = {}
 let g:lightline.colorscheme = 'horizon'
+
 

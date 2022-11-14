@@ -80,7 +80,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git
   autojump
   web-search 
-  python
   zsh-syntax-highlighting
   macos
 )
@@ -128,10 +127,15 @@ export HSTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
 
+export PATH="usr/local/bin:$PATH"
 #GO
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
-
+#python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export PATH=$PATH:$/Users/isseiterada/Library/Python/3.9/bin
 # node17でエラーが出るのでオプション(codeコマンドを使う際に邪魔になるのでコメントアウト)
 #export NODE_OPTIONS=--openssl-legacy-provider
 
@@ -141,6 +145,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+export PATH="/opt/homebrew/opt/python@3.9/libexec/bin:$PATH"

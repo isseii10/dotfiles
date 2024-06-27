@@ -1,0 +1,6 @@
+reload "user.options"
+reload "user.plugins"
+reload "user.keymappings"
+reload "user.telescope"
+reload "user.whichkey"
+reload "user.lualine"

@@ -1,2 +1,2 @@
 # my dotfiles
-zsh, wezterm, Lunarvim 
+zsh, wezterm, lunarvim 

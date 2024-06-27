@@ -9,8 +9,8 @@ dotfiles_dir=$(pwd)
 
 # TODO: シンボリックリンク作成を統一
 # wezterm
-for file in wezterm/*; do
-echo $file
-ln -s ${dotfiles_dir}/${file} ${HOME}/.config/${file}
-done
-
+ln -s ${dotfiles_dir}/wezterm ${HOME}/.config/wezterm
+# lvim
+ln -s ${dotfiles_dir}/lvim ${HOME}/.config/lvim
+# starship
+ln -s ${dotfiles_dir}/starship.toml ${HOME}/.config/starship.toml

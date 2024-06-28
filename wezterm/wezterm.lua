@@ -14,8 +14,8 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 
 -- font
--- config.font = wezterm.font("")
-config.font_size = 12.5
+config.font = wezterm.font("HackGen35 Console NF", { weight = "Regular", stretch = "Normal", style = "Normal" })
+config.font_size = 13
 
 config.inactive_pane_hsb = {
   saturation = 0.9,

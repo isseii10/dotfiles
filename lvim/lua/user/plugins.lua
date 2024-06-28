@@ -1,6 +1,16 @@
 lvim.plugins = {
+  -- colorschemes
   { "shaunsingh/nord.nvim" },
   { "rmehri01/onenord.nvim" },
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require 'nordic'.load()
+    end
+  },
+  --
   {
     "karb94/neoscroll.nvim",
     config = function()

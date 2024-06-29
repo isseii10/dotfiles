@@ -14,7 +14,10 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 
 -- font
+-- wezterm ls-fonts --list-systemで出力できる
 config.font = wezterm.font("HackGen35 Console NF", { weight = "Regular", stretch = "Normal", style = "Normal" })
+-- config.font = wezterm.font("Cica", { weight = "Regular", stretch = "Normal", style = "Normal" })
+
 config.font_size = 13
 
 config.inactive_pane_hsb = {

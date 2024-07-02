@@ -72,5 +72,6 @@ lvim.plugins = {
         desc = "Quickfix List (Trouble)",
       },
     },
-  }
+  },
+  { "almo7aya/openingh.nvim" },
 }

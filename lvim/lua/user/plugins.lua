@@ -10,7 +10,6 @@ lvim.plugins = {
       require 'nordic'.load()
     end
   },
-  --
   {
     "karb94/neoscroll.nvim",
     config = function()

@@ -12,5 +12,7 @@ dotfiles_dir=$(pwd)
 ln -s ${dotfiles_dir}/wezterm ${HOME}/.config
 # lvim
 ln -s ${dotfiles_dir}/lvim ${HOME}/.config
+# nvim
+# ln -s ${dotfiles_dir}/nvim ${HOME}/.config
 # starship
 ln -s ${dotfiles_dir}/starship.toml ${HOME}/.config/starship.toml

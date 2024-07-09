@@ -42,13 +42,13 @@ lvim.plugins = {
     keys = {
       {
         "<leader>xx",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
       },
       {
         "<leader>xX",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Buffer Diagnostics (Trouble)",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
       },
       {
         "<leader>cs",
@@ -73,4 +73,36 @@ lvim.plugins = {
     },
   },
   { "almo7aya/openingh.nvim" },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      { "kevinhwang91/promise-async" },
+      {
+        "luukvbaal/statuscol.nvim",
+        config = function()
+          local builtin = require("statuscol.builtin")
+          require("statuscol").setup(
+            {
+              relculright = true,
+              segments = {
+                { text = { builtin.foldfunc },      click = "v:lua.ScFa" },
+                { text = { "%s" },                  click = "v:lua.ScSa" },
+                { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" }
+              }
+            }
+          )
+        end
+      }
+    },
+    config = function()
+      require("ufo").setup(
+        {
+          provider_selector = function(bufnr, filetype, buftype)
+            return { "treesitter", "indent" }
+          end
+        }
+      )
+    end,
+    event = "BufReadPost",
+  },
 }

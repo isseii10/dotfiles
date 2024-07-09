@@ -76,7 +76,7 @@ lvim.plugins = {
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
-      { "kevinhwang91/promise-async" },
+      "kevinhwang91/promise-async",
       {
         "luukvbaal/statuscol.nvim",
         config = function()
@@ -104,5 +104,12 @@ lvim.plugins = {
       )
     end,
     event = "BufReadPost",
+    init = function()
+      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+      vim.o.foldcolumn = '1'
+      vim.o.foldlevel = 99 -- デフォルトで全ての折りたたみを開く
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+    end,
   },
 }

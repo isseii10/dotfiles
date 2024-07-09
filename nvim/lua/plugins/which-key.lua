@@ -11,9 +11,10 @@ return {
         name = '+Find',
       },
       d = {
-        name = '+debug',
+        name = '+Debug',
       },
-      w = { '<cmd>w<CR>', 'Save file' },
+      w = { '<cmd>w<CR>', 'Save' },
+      q = { '<cmd>q<CR>', 'Quit' },
       c = { name = '[C]ode', _ = 'which_key_ignore' },
       h = { '<cmd>nohlsearch<CR>' },
     }, { mode = 'n', prefix = '<leader>' })

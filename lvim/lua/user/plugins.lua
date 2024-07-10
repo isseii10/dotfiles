@@ -33,7 +33,6 @@ lvim.plugins = {
     cmd = require("user.trouble").cmd,
     keys = require("user.trouble").keys,
   },
-  { "almo7aya/openingh.nvim" },
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
@@ -72,5 +71,14 @@ lvim.plugins = {
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
     end,
+  },
+  {
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
+    opts = {},
+    keys = {
+      { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+      { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+    },
   },
 }

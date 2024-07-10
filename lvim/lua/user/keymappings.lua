@@ -5,5 +5,5 @@ local v = lvim.keys.visual_mode
 local vb = lvim.keys.visual_block_mode
 local c = lvim.keys.command_mode
 
-n["<leader>-"] = "<CMD>split<CR>"
-n["<leader>\\"] = "<CMD>vsplit<CR>"
+n["<leader>-"] = ":split<CR>"
+n["<leader>\\"] = ":vsplit<CR>"

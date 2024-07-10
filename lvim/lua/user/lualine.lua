@@ -1,5 +1,4 @@
 -- statusline config
-
 local lualine = lvim.builtin.lualine
 
 lualine.style = "lvim"

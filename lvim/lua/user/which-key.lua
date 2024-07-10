@@ -1,5 +1,7 @@
+local which_key = lvim.builtin.which_key
+
 -- replace <leader>f
-lvim.builtin.which_key.mappings["f"] = {
+which_key.mappings["f"] = {
   name = "+Find",
   b = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Current buffer fuzzy-find" },
   f = {

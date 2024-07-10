@@ -15,12 +15,6 @@ lvim.plugins = {
       require("better_escape").setup()
     end,
   },
-  {
-    "okuuva/auto-save.nvim",
-    cmd = "ASToggle",          -- optional for lazy loading on command
-    event = { "InsertLeave" }, -- optional for lazy loading on trigger events
-    opts = {},
-  },
   { "olexsmir/gopher.nvim" },
   { "leoluz/nvim-dap-go" },
   {
@@ -77,7 +71,7 @@ lvim.plugins = {
     cmd = "GitLink",
     opts = {},
     keys = {
-      { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+      { "<leader>gy", "<cmd>GitLink<cr>",  mode = { "n", "v" }, desc = "Yank git link" },
       { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
     },
   },

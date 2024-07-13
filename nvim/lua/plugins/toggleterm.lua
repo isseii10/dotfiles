@@ -10,13 +10,18 @@ return {
       lazygit:toggle()
     end
 
-    vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-
     require('toggleterm').setup {
       active = true,
       on_config_done = nil,
-      -- size can be a number or function which is passed the current terminal
-      size = 20,
+      size = function(term)
+        if term.direction == 'float' then
+          return 20
+        elseif term.direction == "horizontal" then
+          return 15
+        elseif term.direction == "vertical" then
+          return vim.o.columns * 0.4
+        end
+      end,
       open_mapping = [[<c-\>]],
       hide_numbers = true, -- hide the number column in toggleterm buffers
       shade_filetypes = {},
@@ -25,7 +30,6 @@ return {
       start_in_insert = true,
       insert_mappings = true, -- whether or not the open mapping applies in insert mode
       persist_size = false,
-      -- direction = 'vertical' | 'horizontal' | 'window' | 'float',
       direction = "float",
       close_on_exit = true, -- close the terminal window when the process exits
       auto_scroll = true,   -- automatically scroll to the bottom on terminal output
@@ -49,16 +53,6 @@ return {
       winbar = {
         enabled = false,
       },
-      -- Add executables on the config.lua
-      -- { cmd, keymap, description, direction, size }
-      -- lvim.builtin.terminal.execs = {...} to overwrite
-      -- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"gdb", "tg", "GNU Debugger"}
-      -- TODO: pls add mappings in which key and refactor this
-      -- execs = {
-      --   { nil, "<M-1>", "Horizontal Terminal", "horizontal", 0.3 },
-      --   { nil, "<M-2>", "Vertical Terminal",   "vertical",   0.4 },
-      --   { nil, "<M-3>", "Float Terminal",      "float",      nil },
-      -- },
     }
   end
 }

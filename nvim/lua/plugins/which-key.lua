@@ -16,7 +16,7 @@ return {
       w = { '<cmd>w<CR>', 'Save' },
       q = { '<cmd>q<CR>', 'Quit' },
       c = { name = '[C]ode', _ = 'which_key_ignore' },
-      h = { '<cmd>nohlsearch<CR>' },
+      h = { '<cmd>nohlsearch<CR>', 'nohlsearch' },
     }, { mode = 'n', prefix = '<leader>' })
     -- visual mode
     require('which-key').register({}, { mode = 'v' })

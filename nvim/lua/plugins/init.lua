@@ -14,6 +14,9 @@ require('lazy').setup {
   require 'plugins.lint',
   require 'plugins.neo-tree',
   require 'plugins.which-key',
+  require 'plugins.lualine',
+  require 'plugins.barbar',
+  require 'plugins.toggleterm',
   {
     'goolord/alpha-nvim',
     config = function()

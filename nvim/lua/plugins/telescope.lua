@@ -80,18 +80,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help' })
     vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Find Keymaps' })
     vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Find current Word' })
-    vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-    vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-
-    -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-    vim.keymap.set('n', '<leader>f/', function()
-      builtin.live_grep {
-        grep_open_files = true,
-        prompt_title = 'Live Grep in Open Files',
-      }
-    end, { desc = 'Find [/] in Open Files' })
-
-    -- Shortcut for searching your Neovim configuration files
+    vim.keymap.set('n', '<leader>ft', builtin.builtin, { desc = 'Find Select Telescope' })
     vim.keymap.set('n', '<leader>fn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[N]eovim files' })

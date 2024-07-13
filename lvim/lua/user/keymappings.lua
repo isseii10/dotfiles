@@ -7,3 +7,4 @@ local c = lvim.keys.command_mode
 
 n["<leader>-"] = ":split<CR>"
 n["<leader>\\"] = ":vsplit<CR>"
+

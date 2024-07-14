@@ -31,11 +31,14 @@ local bubbles_theme = {
   },
 }
 
-
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+    'SmiteshP/nvim-navic',
+  },
   config = function()
+    local navic = require 'nvim-navic'
     require('lualine').setup {
       options = {
         globalstatus = true,
@@ -63,6 +66,19 @@ return {
         lualine_y = {},
         lualine_z = { 'location' },
       },
+      tabline = {},
+      winbar = {
+        lualine_c = {
+          {
+            function()
+              return vim.fn.expand '%:t' .. ': ' .. navic.get_location()
+            end,
+            cond = function()
+              return navic.is_available()
+            end,
+          },
+        },
+      },
     }
-  end
+  end,
 }

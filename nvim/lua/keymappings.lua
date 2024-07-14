@@ -18,7 +18,8 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
+vim.keymap.set('n', '<leader>-', ':split<CR>', { desc = 'split' })
+vim.keymap.set('n', '<leader>\\', ':vsplit<CR>', { desc = 'vsplit' })
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -63,7 +64,14 @@ map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
 map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 
 -- toggleterm
-map("n", "<leader>th", "<Cmd>ToggleTerm direction=horizontal<CR>", opts)
-map("n", "<leader>tv", "<Cmd>ToggleTerm direction=vertical<CR>", opts)
+map('n', '<leader>th', '<Cmd>ToggleTerm direction=horizontal<CR>', opts)
+map('n', '<leader>tv', '<Cmd>ToggleTerm direction=vertical<CR>', opts)
 -- toggleterm x lazygit
 vim.keymap.set('n', '<leader>gg', '<cmd>lua _lazygit_toggle()<CR>', { desc = 'lazygit' })
+
+-- nvim-ufo
+local ok, ufo = pcall(require, 'ufo')
+if ok then
+  vim.keymap.set('n', 'zR', ufo.openAllFolds)
+  vim.keymap.set('n', 'zM', ufo.closeAllFolds)
+end

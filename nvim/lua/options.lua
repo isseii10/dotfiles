@@ -3,6 +3,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.opt.termguicolors = true
+
 -- disable netrw
 vim.api.nvim_set_var('loaded_netrw', 1)
 vim.api.nvim_set_var('loaded_netrwPlugin', 1)
@@ -15,8 +17,8 @@ vim.g.have_nerd_font = true
 local options = {
   number = true,
   relativenumber = false,
-  mouse = 'a',        -- Enable mouse
-  showmode = false,   -- because show in the status line
+  mouse = 'a', -- Enable mouse
+  showmode = false, -- because show in the status line
   clipboard = 'unnamedplus',
   breakindent = true, --Enable break indent
   undofile = true,

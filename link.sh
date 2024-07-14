@@ -3,7 +3,7 @@
 
 # dotfiles dir
 
-dotfiles_dir=$(pwd)
+dotfiles_dir=${HOME}/dotfiles
 
 
 

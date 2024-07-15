@@ -40,19 +40,18 @@ function M.config()
 				suggestions = 20,
 			},
 			presets = {
-				operators = false,
+				operators = true,
 				motions = false,
-				text_objects = false,
+				text_objects = true,
 				windows = false,
 				nav = false,
 				z = false,
 				g = false,
 			},
 		},
-		window = {
+		win = {
 			border = "rounded",
-			position = "bottom",
-			padding = { 2, 2, 2, 2 },
+			padding = { 2, 2 },
 		},
 		show_help = false,
 		show_keys = false,
@@ -61,6 +60,11 @@ function M.config()
 			filetypes = { "TelescopePrompt" },
 		},
 	})
+  -- which_key.setup({
+  --   defaults = {
+  --     preset = "helix",
+  --   }
+  -- })
 end
 
 return M

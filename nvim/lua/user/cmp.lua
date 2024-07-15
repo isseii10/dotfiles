@@ -84,11 +84,11 @@ function M.config()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         elseif check_backspace() then
-          fallback()
-          -- require("neotab").tabout()
+          -- fallback()
+          require("neotab").tabout()
         else
-          fallback()
-          -- require("neotab").tabout()
+          -- fallback()
+          require("neotab").tabout()
         end
       end, {
         "i",
@@ -107,6 +107,7 @@ function M.config()
         "s",
       }),
     },
+    ---@diagnostic disable: missing-fields
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
@@ -143,6 +144,7 @@ function M.config()
       { name = "path" },
       { name = "calc" },
       { name = "emoji" },
+      { name = "treesitter" },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,

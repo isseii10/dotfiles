@@ -13,8 +13,9 @@ function M.config()
     "html",
     "tsserver",
     "pyright",
-    "bashls",
     "jsonls",
+    "yamlls",
+    "gopls",
   }
 
   require("mason").setup {

@@ -1,3 +1,4 @@
+-- TODO: 機能してない気がする
 local M = {
   "mawkler/modicator.nvim",
   event = "BufEnter",

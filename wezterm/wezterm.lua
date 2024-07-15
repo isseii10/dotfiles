@@ -9,7 +9,7 @@ end
 config.color_scheme = 'nord'
 
 -- window
-config.window_background_opacity = 0.94
+config.window_background_opacity = 0.97
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 

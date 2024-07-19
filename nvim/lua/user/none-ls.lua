@@ -1,7 +1,8 @@
 local M = {
   "nvimtools/none-ls.nvim",
   dependencies = {
-    "nvim-lua/plenary.nvim"
+    "nvimtools/none-ls-extras.nvim",
+    "nvim-lua/plenary.nvim",
   }
 }
 
@@ -15,7 +16,7 @@ function M.config()
     debug = false,
     sources = {
       formatting.stylua,
-      formatting.prettier,
+      formatting.prettierd,
       formatting.gofmt,
       -- formatting.prettier.with {
       --   extra_filetypes = { "toml" },
@@ -23,6 +24,10 @@ function M.config()
       -- },
       -- formatting.eslint,
       null_ls.builtins.completion.spell,
+      
+      -- Use require("none-ls.METHOD.TOOL") instead of null_ls.builtins.METHOD.TOOL to use these extras.
+      require("none-ls.diagnostics.eslint_d"),
+
     },
   }
 end

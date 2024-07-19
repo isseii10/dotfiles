@@ -4,6 +4,8 @@ local M = {
 }
 
 function M.config()
+  vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+
   local wk = require "which-key"
   wk.add {
     { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>",                       desc = "Find" },
@@ -16,7 +18,6 @@ function M.config()
     { "<leader>fl", "<cmd>Telescope resume<cr>",                                        desc = "Last Search" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                                      desc = "Recent File" },
   }
-
   local icons = require "user.icons"
   local actions = require "telescope.actions"
 

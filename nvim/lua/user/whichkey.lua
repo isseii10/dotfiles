@@ -4,11 +4,11 @@ local M = {
 
 function M.config()
 	local spec = {
-		{ "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
+		{ "<leader>q", "<cmd>q!<CR>", desc = "Quit" },
 		{ "<leader>w", "<cmd>w!<CR>", desc = "Save" },
-		{ "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
-		{ "<leader>;", "<cmd>tabnew | terminal<CR>", desc = "Term" },
-		{ "<leader>v", "<cmd>vsplit<CR>", desc = "Split" },
+		{ "<leader>h", "<cmd>nohlsearch<CR>", desc = "No hlsearch" },
+		{ "<leader>¥", "<cmd>vsplit<CR>", desc = "Split Vertical" },
+		{ "<leader>-", "<cmd>split<CR>", desc = "Split Horizontal" },
 		{ "<leader>b", group = "Buffers" },
 		{ "<leader>d", group = "Debug" },
 		{ "<leader>f", group = "Find" },
@@ -17,6 +17,7 @@ function M.config()
 		{ "<leader>p", group = "Plugins" },
 		{ "<leader>t", group = "Test" },
 		{ "<leader>T", group = "Treesitter" },
+		{ "<leader>x", group = "Trouble" },
 	}
 
 	local which_key = require("which-key")

@@ -78,6 +78,8 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   pattern = "*",
   callback = function()
+    vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg = '#ed6d35', bold = true, underline = true })
+    vim.api.nvim_set_hl(0, 'EyelinerSecondary', { fg = '#ffae8a', underline = true })
     local hl_groups = {
       "Normal",
       "SignColumn",

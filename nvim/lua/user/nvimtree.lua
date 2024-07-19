@@ -14,6 +14,14 @@ function M.config()
     hijack_netrw = true,
     disable_netrw = true,
     sync_root_with_cwd = true,
+    filters = {
+      dotfiles = false,
+      git_ignored = false,
+      custom = {
+        "^\\.git$",
+        "^node_modules",
+      },
+    },
     view = {
       width = 35,
       relativenumber = true,

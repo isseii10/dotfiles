@@ -9,6 +9,7 @@ function M.config()
     magic_window = true,
     auto_resize_height = false,
     preview = {
+      winblend = 0,
       auto_preview = false,
       show_title = true,
       delay_syntax = 50,

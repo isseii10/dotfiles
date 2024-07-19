@@ -7,7 +7,16 @@ local M = {
 function M.config()
   require("nvim-treesitter.configs").setup {
     modules = {},
-    ensure_installed = { "lua", "go", "markdown", "markdown_inline", "bash", "python"},
+    ensure_installed = {
+      "lua",
+      "go",
+      "markdown",
+      "markdown_inline",
+      "bash",
+      "tsx",
+      "typescript",
+      "python",
+    },
     sync_install = false,
     auto_install = false,
     ignore_install = {},

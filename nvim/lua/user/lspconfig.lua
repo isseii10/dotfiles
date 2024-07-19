@@ -10,13 +10,17 @@ local M = {
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
+  local function add_desc(opts, desc)
+    opts.desc = desc
+    return opts
+  end
   local keymap = vim.api.nvim_buf_set_keymap
-  keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", add_desc(opts, "go to declaration"))
+  keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", add_desc(opts, "go to definition"))
+  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", add_desc(opts, "hover"))
+  keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", add_desc(opts, "go to inplementation"))
+  keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", add_desc(opts, "go to references"))
+  keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", add_desc(opts, "open float diagnostic"))
 end
 
 M.on_attach = function(client, bufnr)

@@ -26,6 +26,10 @@ spec "user.project"
 spec "user.indent-brankline"
 spec "user.toggleterm"
 spec "user.bufferline"
+spec "user.go"
+spec "user.todo-comments"
+spec "user.trouble"
+
 
 -- spec "user.extras.copilot"
 spec "user.extras.neoscroll"
@@ -36,8 +40,5 @@ spec "user.extras.gitlinker"
 spec "user.extras.bqf"
 spec "user.extras.colorizer"
 spec "user.extras.fidget"
-
-
-spec "user.languages.go"
 
 require "user.lazy"

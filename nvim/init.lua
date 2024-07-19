@@ -29,6 +29,7 @@ spec "user.bufferline"
 spec "user.go"
 spec "user.todo-comments"
 spec "user.trouble"
+spec "user.dap"
 
 
 -- spec "user.extras.copilot"
@@ -40,5 +41,6 @@ spec "user.extras.gitlinker"
 spec "user.extras.bqf"
 spec "user.extras.colorizer"
 spec "user.extras.fidget"
+spec "user.extras.dressing"
 
 require "user.lazy"

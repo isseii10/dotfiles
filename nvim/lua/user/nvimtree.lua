@@ -5,7 +5,7 @@ local M = {
 function M.config()
   local wk = require "which-key"
   wk.add {
-    {"<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
+    { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
   }
 
   local icons = require "user.icons"
@@ -15,6 +15,7 @@ function M.config()
     disable_netrw = true,
     sync_root_with_cwd = true,
     view = {
+      width = 35,
       relativenumber = true,
     },
     renderer = {
@@ -24,7 +25,7 @@ function M.config()
       full_name = false,
       highlight_opened_files = "none",
       root_folder_label = ":t",
-      indent_width = 2,
+      indent_width = 1,
       indent_markers = {
         enable = false,
         inline_arrows = true,
@@ -70,7 +71,7 @@ function M.config()
     update_focused_file = {
       enable = true,
       debounce_delay = 15,
-      update_root = true,
+      update_root = false,
       ignore_list = {},
     },
 

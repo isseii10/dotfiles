@@ -48,7 +48,6 @@ function M.config()
       mappings = {
         n = {
           ["<Esc>"] = "Close",
-          ["<C-c>"] = "Close",
           ["<CR>"] = "Confirm",
         },
         i = {

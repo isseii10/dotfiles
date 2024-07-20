@@ -13,6 +13,10 @@ return {
     { key = 'j',          mods = 'LEADER',         action = act.ActivatePaneDirection("Down") },
     -- into 'resize_pane' mode
     { key = 'r',          mods = 'LEADER',         action = act.ActivateKeyTable { name = "resize_pane", one_shot = false } },
+    -- close tab/pain
+    { key = 'w',          mods = 'LEADER',         action = act.CloseCurrentTab { confirm = true } },
+    -- this doesn't seem to work
+    { key = 'w',          mods = 'CMD',            action = act.CloseCurrentPane { confirm = true } },
 
     { key = 'Tab',        mods = 'CTRL',           action = act.ActivateTabRelative(1) },
     { key = 'Tab',        mods = 'SHIFT|CTRL',     action = act.ActivateTabRelative(-1) },
@@ -126,8 +130,6 @@ return {
     { key = 'u',          mods = 'SHIFT|CTRL',     action = act.CharSelect { copy_on_select = true, copy_to = 'ClipboardAndPrimarySelection' } },
     { key = 'v',          mods = 'SHIFT|CTRL',     action = act.PasteFrom 'Clipboard' },
     { key = 'v',          mods = 'SUPER',          action = act.PasteFrom 'Clipboard' },
-    { key = 'w',          mods = 'SHIFT|CTRL',     action = act.CloseCurrentTab { confirm = true } },
-    { key = 'w',          mods = 'SUPER',          action = act.CloseCurrentTab { confirm = true } },
     { key = 'x',          mods = 'SHIFT|CTRL',     action = act.ActivateCopyMode },
     { key = 'z',          mods = 'SHIFT|CTRL',     action = act.TogglePaneZoomState },
     { key = '{',          mods = 'SUPER',          action = act.ActivateTabRelative(-1) },

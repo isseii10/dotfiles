@@ -4,5 +4,6 @@ if status_ok then
     { "<leader>c",  group = "Go" },
     { "<leader>ca", "<cmd>GoAddTest<cr>", desc = "add test" },
     { "<leader>cA", "<cmd>GoAddAllTest<cr>", desc = "add all tests" },
+    { "<leader>ct", "<cmd>GoModTidy<cr>", desc = "go mod tidy" },
   }
 end

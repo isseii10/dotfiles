@@ -3,6 +3,7 @@ local M = {
   dependencies = {
     "AndreM222/copilot-lualine",
   },
+  event = "VeryLazy",
 }
 
 local function get_attached_clients()

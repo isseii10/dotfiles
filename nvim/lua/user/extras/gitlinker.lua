@@ -1,7 +1,7 @@
 local M = {
   "linrongbin16/gitlinker.nvim",
   dependencies = { { "nvim-lua/plenary.nvim" } },
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
   cmd = "GitLink",
 }
 

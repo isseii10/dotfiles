@@ -24,7 +24,7 @@ function M.config()
     },
     view = {
       width = 35,
-      relativenumber = true,
+      preserve_window_proportions = true,
     },
     renderer = {
       add_trailing = false,

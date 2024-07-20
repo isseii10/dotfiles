@@ -15,6 +15,7 @@ local M = {
     "lawrence-laz/neotest-zig",
     "rcasia/neotest-bash",
   },
+  event = "VeryLazy",
 }
 
 function M.config()

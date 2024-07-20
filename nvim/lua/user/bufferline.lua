@@ -2,6 +2,7 @@ local M = {
   "akinsho/bufferline.nvim",
   version = "*",
   dependencies = { "nvim-tree/nvim-web-devicons", "echasnovski/mini.bufremove" },
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 M.config = function()

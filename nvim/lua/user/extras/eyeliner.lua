@@ -1,6 +1,6 @@
 local M = {
   "jinh0/eyeliner.nvim",
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg = '#ed6d35', bold = true, underline = true })

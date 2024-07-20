@@ -1,5 +1,6 @@
 local M = {
 	"folke/which-key.nvim",
+  event = "VeryLazy",
 }
 
 function M.config()
@@ -7,7 +8,7 @@ function M.config()
 		{ "<leader>q", "<cmd>q!<CR>", desc = "Quit" },
 		{ "<leader>w", "<cmd>w!<CR>", desc = "Save" },
 		{ "<leader>h", "<cmd>nohlsearch<CR>", desc = "No hlsearch" },
-		{ "<leader>¥", "<cmd>vsplit<CR>", desc = "Split Vertical" },
+		{ "<leader>\\", "<cmd>vsplit<CR>", desc = "Split Vertical" },
 		{ "<leader>-", "<cmd>split<CR>", desc = "Split Horizontal" },
 		{ "<leader>b", group = "Buffers" },
 		{ "<leader>d", group = "Debug" },

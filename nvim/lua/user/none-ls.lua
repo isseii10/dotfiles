@@ -3,7 +3,8 @@ local M = {
   dependencies = {
     "nvimtools/none-ls-extras.nvim",
     "nvim-lua/plenary.nvim",
-  }
+  },
+  event = "VeryLazy",
 }
 
 function M.config()

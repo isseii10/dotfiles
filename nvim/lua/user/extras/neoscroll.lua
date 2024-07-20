@@ -1,5 +1,6 @@
 local M = {
   "karb94/neoscroll.nvim",
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 function M.config()

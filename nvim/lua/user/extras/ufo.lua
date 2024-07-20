@@ -4,6 +4,7 @@ local M = {
     "kevinhwang91/promise-async",
     "luukvbaal/statuscol.nvim",
   },
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 function M.config()

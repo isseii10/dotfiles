@@ -28,6 +28,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+-- :qや:<c-f>でCmdWindowが開いたらすぐ閉じる
 vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
   callback = function()
     vim.cmd "quit"

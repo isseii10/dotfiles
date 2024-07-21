@@ -12,7 +12,7 @@ function M.config()
   local state = require "barbar.state"
   local render = require "barbar.ui.render"
   local harpoon = require "harpoon"
-  -- local icons = require "user.icons"
+  local icons = require "user.icons"
 
   barbar.setup {
     hide = {
@@ -22,6 +22,7 @@ function M.config()
       pinned = { filename = true, buffer_index = true },
       diagnostics = { { enabled = true } },
     },
+    -- doesn't work
     -- sidebar_filetypes = {
     --   -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
     --   NvimTree = true,

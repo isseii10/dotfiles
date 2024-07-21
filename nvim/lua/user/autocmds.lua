@@ -4,6 +4,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
+-- qで閉じられるようにする
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = {
     "netrw",

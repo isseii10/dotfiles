@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "Jaq",
     "qf",
     "git",
-    "help",
+   "help",
     "man",
     "lspinfo",
     "oil",
@@ -63,25 +63,25 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "CursorHold" }, {
-  callback = function()
-    local status_ok, luasnip = pcall(require, "luasnip")
-    if not status_ok then
-      return
-    end
-    if luasnip.expand_or_jumpable() then
-      -- ask maintainer for option to make this silent
-      -- luasnip.unlink_current()
-      vim.cmd [[silent! lua require("luasnip").unlink_current()]]
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
+--   callback = function()
+--     local status_ok, luasnip = pcall(require, "luasnip")
+--     if not status_ok then
+--       return
+--     end
+--     if luasnip.expand_or_jumpable() then
+--       -- ask maintainer for option to make this silent
+--       -- luasnip.unlink_current()
+--       vim.cmd [[silent! lua require("luasnip").unlink_current()]]
+--     end
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg = '#ed6d35', bold = true, underline = true })
-    vim.api.nvim_set_hl(0, 'EyelinerSecondary', { fg = '#ffae8a', underline = true })
+    vim.api.nvim_set_hl(0, "EyelinerPrimary", { fg = "#ed6d35", bold = true, underline = true })
+    vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#ffae8a", underline = true })
     local hl_groups = {
       "Normal",
       "SignColumn",

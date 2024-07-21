@@ -68,7 +68,8 @@ return {
     BoldLineLeft = "▎",
     BoldLineMiddle = "┃",
     BoldLineDashedMiddle = "┋",
-    BookMark = "",
+    BookMark = "",
+    BookMarkFill = "",
     BoxChecked = " ",
     Bug = " ",
     Stacks = "",
@@ -154,5 +155,6 @@ return {
     Smiley = " ",
     Package = " ",
     CircuitBoard = " ",
+    Heart = "♥",
   },
 }

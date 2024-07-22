@@ -13,11 +13,6 @@ function M.config()
   harpoon:setup()
   -- REQUIRED
 
-  -- basic telescope configuration
-  local conf = require("telescope.config").values
-  local themes = require "telescope.themes"
-  local actions = require "telescope.actions"
-
   local marks = require "user.telescope_extentions.harpoon"
 
   local wk = require "which-key"
@@ -37,7 +32,7 @@ function M.config()
       function()
         -- if marks were seemed to be bloken, use default
         -- harpoon.ui:toggle_quick_menu(harpoon:list())
-        marks(themes.get_dropdown { initial_mode = "normal" })
+        marks(require "telescope.themes".get_dropdown { initial_mode = "normal" })
       end,
       desc = "open window",
     },

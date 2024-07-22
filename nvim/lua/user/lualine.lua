@@ -85,15 +85,16 @@ function M.config()
           "filename",
           path = 1,
         },
-        "%=", -- make the indicator center
-        {
-          "harpoon2",
-          icon = require("user.icons").ui.BookMark,
-          indicators = { "a", "s", "q", "w" },
-          active_indicators = { "A", "S", "Q", "W" },
-          _separator = " ",
-          no_harpoon = "Harpoon not loaded",
-        },
+        -- TODO: 要らないかも
+        -- "%=", -- make the indicator center
+        -- {
+        --   "harpoon2",
+        --   icon = require("user.icons").ui.BookMark,
+        --   indicators = { "a", "s", "q", "w" },
+        --   active_indicators = { "A", "S", "Q", "W" },
+        --   _separator = " ",
+        --   no_harpoon = "Harpoon not loaded",
+        -- },
       },
       lualine_x = { "copilot", get_attached_clients, "filetype" },
       lualine_y = { "progress" },

@@ -22,7 +22,7 @@ function M.config()
       pinned = { filename = true, buffer_index = true },
       diagnostics = { { enabled = true } },
     },
-    -- doesn't work
+    -- FIXME: doesn't work
     -- sidebar_filetypes = {
     --   -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
     --   NvimTree = true,
@@ -88,6 +88,7 @@ function M.config()
     { noremap = true, silent = true, desc = "Previous buffer" }
   )
   vim.api.nvim_set_keymap("n", "]b", "<Cmd>BufferNext<CR>", { noremap = true, silent = true, desc = "Next buffer" })
+  vim.api.nvim_set_keymap("n", "<leader>bx", "<Cmd>BufferCloseAllButPinned<CR>", { noremap = true, silent = true, desc = "Buffers close except pinned" })
 end
 
 return M

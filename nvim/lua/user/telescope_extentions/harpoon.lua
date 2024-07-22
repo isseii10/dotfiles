@@ -283,7 +283,7 @@ harpoon_actions.move_mark_previous = function(prompt_bufnr)
 end
 
 local pickers = require "telescope.pickers"
-local marks = function(opts)
+local function marks(opts)
   opts = opts or {}
   pickers
       .new(opts, {

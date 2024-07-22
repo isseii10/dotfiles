@@ -9,7 +9,6 @@ local M = {
 
 function M.config()
   local harpoon = require "harpoon"
-  local ext = require "harpoon.extensions"
   -- REQUIRED
   harpoon:setup()
   -- REQUIRED
@@ -60,32 +59,18 @@ function M.config()
       desc = "open window",
     },
     {
-      "<leader>ha",
+      "[h",
       function()
-        harpoon:list():select(1)
+        harpoon:list():prev()
       end,
-      desc = "goto a",
+      desc = "prev",
     },
     {
-      "<leader>hs",
+      "]h",
       function()
-        harpoon:list():select(2)
+        harpoon:list():next()
       end,
-      desc = "goto s",
-    },
-    {
-      "<leader>hq",
-      function()
-        harpoon:list():select(3)
-      end,
-      desc = "goto q",
-    },
-    {
-      "<leader>hw",
-      function()
-        harpoon:list():select(4)
-      end,
-      desc = "goto w",
+      desc = "next",
     },
   }
 end

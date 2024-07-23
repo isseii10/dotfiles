@@ -5,6 +5,7 @@ local M = {
     "nvim-tree/nvim-web-devicons",
     "ThePrimeagen/harpoon",
   },
+  event = "BufEnter",
 }
 
 function M.config()
@@ -13,23 +14,6 @@ function M.config()
   local render = require "barbar.ui.render"
   local harpoon = require "harpoon"
   local icons = require "user.icons"
-
-  barbar.setup {
-    hide = {
-      inactive = true,
-    },
-    icons = {
-      pinned = { filename = true, buffer_index = true },
-      diagnostics = { { enabled = true } },
-    },
-    -- FIXME: doesn't work
-    -- sidebar_filetypes = {
-    --   -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
-    --   NvimTree = true,
-    --   -- Or, specify the event which the sidebar executes when leaving:
-    --   -- ["neo-tree"] = { event = "BufWipeout" },
-    -- },
-  }
 
   local function unpin_all()
     for _, buf in ipairs(state.buffers) do
@@ -80,7 +64,7 @@ function M.config()
     callback = refresh_all_harpoon_tabs,
   })
 
-  -- --  Move to previous/next
+  -- keymaps
   vim.api.nvim_set_keymap(
     "n",
     "[b",
@@ -88,7 +72,30 @@ function M.config()
     { noremap = true, silent = true, desc = "Previous buffer" }
   )
   vim.api.nvim_set_keymap("n", "]b", "<Cmd>BufferNext<CR>", { noremap = true, silent = true, desc = "Next buffer" })
-  vim.api.nvim_set_keymap("n", "<leader>bx", "<Cmd>BufferCloseAllButPinned<CR>", { noremap = true, silent = true, desc = "Buffers close except pinned" })
+  vim.api.nvim_set_keymap(
+    "n",
+    "<leader>bx",
+    "<Cmd>BufferCloseAllButPinned<CR>",
+    { noremap = true, silent = true, desc = "Buffers close except pinned" }
+  )
+
+  barbar.setup {
+    hide = {
+      inactive = true,
+    },
+    icons = {
+      pinned = { filename = true, buffer_index = false },
+      diagnostics = { { enabled = true } },
+    },
+
+    -- WARN: doesn't work if you use nvim-tree.
+    sidebar_filetypes = {
+      -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
+      NvimTree = { event = "BufWinLeave", text = "nvim-tree" },
+      -- Or, specify the event which the sidebar executes when leaving:
+      ["neo-tree"] = { event = "BufWipeout", text = "neo-tree", align = "center" },
+    },
+  }
 end
 
 return M

@@ -87,10 +87,11 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
       "SignColumn",
       "NormalNC",
       "TelescopeBorder",
-      "NvimTreeNormal",
-      "NvimTreeNormalNC",
+      "NeoTreeNormal",
+      "NeoTreeNormalNC",
       "EndOfBuffer",
       "MsgArea",
+      "Winbar",
     }
     for _, name in ipairs(hl_groups) do
       vim.cmd(string.format("highlight %s ctermbg=none guibg=none", name))

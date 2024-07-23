@@ -16,7 +16,7 @@ function M.config()
 
   barbar.setup {
     hide = {
-      inactive = false,
+      inactive = true,
     },
     icons = {
       pinned = { filename = true, buffer_index = true },

@@ -11,7 +11,6 @@ local M = {
 function M.config()
   local barbar = require "barbar"
   local state = require "barbar.state"
-  local layout = require "barbar.ui.layout"
   local harpoon = require "harpoon"
   local icons = require "user.icons"
 
@@ -75,8 +74,6 @@ function M.config()
         state.toggle_pin(buf)
       end
     end
-    local buf_data = layout.calculate(state)
-    state.restore_buffers(buf_data)
     state.update_callback()
   end
 

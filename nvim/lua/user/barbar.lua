@@ -11,7 +11,7 @@ local M = {
 function M.config()
   local barbar = require "barbar"
   local state = require "barbar.state"
-  local render = require "barbar.ui.render"
+  local layout = require "barbar.ui.layout"
   local harpoon = require "harpoon"
   local icons = require "user.icons"
 
@@ -25,12 +25,12 @@ function M.config()
     },
 
     -- WARN: doesn't work if you use nvim-tree.
-    sidebar_filetypes = {
-      -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
-      NvimTree = { event = "BufWinLeave", text = "nvim-tree" },
-      -- Or, specify the event which the sidebar executes when leaving:
-      ["neo-tree"] = { event = "BufWipeout", text = "neo-tree", align = "center" },
-    },
+    -- sidebar_filetypes = {
+    --   -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
+    --   NvimTree = { event = "BufWinLeave", text = "nvim-tree" },
+    --   -- Or, specify the event which the sidebar executes when leaving:
+    --   ["neo-tree"] = { event = "BufWipeout", text = "neo-tree", align = "center" },
+    -- },
   }
 
   local function unpin_all()
@@ -75,7 +75,9 @@ function M.config()
         state.toggle_pin(buf)
       end
     end
-    render.update()
+    local buf_data = layout.calculate(state)
+    state.restore_buffers(buf_data)
+    state.update_callback()
   end
 
   vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "BufLeave", "User" }, {

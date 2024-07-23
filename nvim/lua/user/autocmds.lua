@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "Jaq",
     "qf",
     "git",
-   "help",
+    "help",
     "man",
     "lspinfo",
     "oil",
@@ -87,12 +87,14 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
       "SignColumn",
       "NormalNC",
       "TelescopeBorder",
+      "NvimTreeNormal",
+      "NvimTreeNormalNC",
       "NeoTreeNormal",
       "NeoTreeNormalNC",
       "EndOfBuffer",
       "MsgArea",
       "Winbar",
-      "BufferOffset" -- barbar
+      "BufferOffset", -- barbar
     }
     for _, name in ipairs(hl_groups) do
       vim.cmd(string.format("highlight %s ctermbg=none guibg=none", name))

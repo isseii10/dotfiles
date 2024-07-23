@@ -15,6 +15,24 @@ function M.config()
   local harpoon = require "harpoon"
   local icons = require "user.icons"
 
+  barbar.setup {
+    hide = {
+      inactive = true,
+    },
+    icons = {
+      pinned = { filename = true, buffer_index = false },
+      diagnostics = { { enabled = true } },
+    },
+
+    -- WARN: doesn't work if you use nvim-tree.
+    sidebar_filetypes = {
+      -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
+      NvimTree = { event = "BufWinLeave", text = "nvim-tree" },
+      -- Or, specify the event which the sidebar executes when leaving:
+      ["neo-tree"] = { event = "BufWipeout", text = "neo-tree", align = "center" },
+    },
+  }
+
   local function unpin_all()
     for _, buf in ipairs(state.buffers) do
       local data = state.get_buffer_data(buf)
@@ -79,23 +97,6 @@ function M.config()
     { noremap = true, silent = true, desc = "Buffers close except pinned" }
   )
 
-  barbar.setup {
-    hide = {
-      inactive = true,
-    },
-    icons = {
-      pinned = { filename = true, buffer_index = false },
-      diagnostics = { { enabled = true } },
-    },
-
-    -- WARN: doesn't work if you use nvim-tree.
-    sidebar_filetypes = {
-      -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
-      NvimTree = { event = "BufWinLeave", text = "nvim-tree" },
-      -- Or, specify the event which the sidebar executes when leaving:
-      ["neo-tree"] = { event = "BufWipeout", text = "neo-tree", align = "center" },
-    },
-  }
 end
 
 return M

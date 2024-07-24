@@ -3,7 +3,7 @@ require "user.options"
 require "user.keymaps"
 require "user.autocmds"
 
-spec "user.colorscheme"
+spec "user.colorschemes.onenord"
 spec "user.devicons"
 spec "user.treesitter"
 spec "user.mason"
@@ -33,6 +33,7 @@ spec "user.dap"
 spec "user.harpoon"
 spec "user.barbar"
 -- spec "user.bufferline"
+spec "user.lsp-signature"
 
 
 -- spec "user.extras.copilot"

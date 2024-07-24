@@ -63,29 +63,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
--- vim.api.nvim_create_autocmd({ "CursorHold" }, {
---   callback = function()
---     local status_ok, luasnip = pcall(require, "luasnip")
---     if not status_ok then
---       return
---     end
---     if luasnip.expand_or_jumpable() then
---       -- ask maintainer for option to make this silent
---       -- luasnip.unlink_current()
---       vim.cmd [[silent! lua require("luasnip").unlink_current()]]
---     end
---   end,
--- })
-
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_hl(0, "EyelinerPrimary", { fg = "#ed6d35", bold = true, underline = true })
-    vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#ffae8a", underline = true })
     local hl_groups = {
       "Normal",
-      "SignColumn",
       "NormalNC",
+      "SignColumn",
       "TelescopeBorder",
       "NvimTreeNormal",
       "NvimTreeNormalNC",
@@ -93,8 +77,37 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
       "NeoTreeNormalNC",
       "EndOfBuffer",
       "MsgArea",
-      "Winbar",
-      -- "BufferOffset", -- barbar
+      "WinBar",
+      "WinBarNC",
+      -- navic HLGroup
+      "NavicIconsFile",
+      "NavicIconsModule",
+      "NavicIconsNamespace",
+      "NavicIconsPackage",
+      "NavicIconsClass",
+      "NavicIconsMethod",
+      "NavicIconsProperty",
+      "NavicIconsField",
+      "NavicIconsConstructor",
+      "NavicIconsEnum",
+      "NavicIconsInterface",
+      "NavicIconsFunction",
+      "NavicIconsVariable",
+      "NavicIconsConstant",
+      "NavicIconsString",
+      "NavicIconsNumber",
+      "NavicIconsBoolean",
+      "NavicIconsArray",
+      "NavicIconsObject",
+      "NavicIconsKey",
+      "NavicIconsNull",
+      "NavicIconsEnumMember",
+      "NavicIconsStruct",
+      "NavicIconsEvent",
+      "NavicIconsOperator",
+      "NavicIconsTypeParameter",
+      "NavicText",
+      "NavicSeparator",
     }
     for _, name in ipairs(hl_groups) do
       vim.cmd(string.format("highlight %s ctermbg=none guibg=none", name))

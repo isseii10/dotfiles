@@ -6,7 +6,10 @@ if wezterm.config_builder then
 end
 
 -- color scheme
-config.color_scheme = 'nord'
+-- config.color_scheme = 'nord'
+-- config.color_scheme = 'Nord (Gogh)'
+-- config.color_scheme = 'Nord (base16)'
+config.color_scheme = 'OneDark (Gogh)'
 
 -- window
 config.window_background_opacity = 0.97

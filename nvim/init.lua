@@ -34,6 +34,7 @@ spec "user.harpoon"
 spec "user.barbar"
 -- spec "user.bufferline"
 spec "user.lsp-signature"
+spec "user.alpha"
 
 
 -- spec "user.extras.copilot"
@@ -46,5 +47,6 @@ spec "user.extras.bqf"
 spec "user.extras.colorizer"
 spec "user.extras.fidget"
 spec "user.extras.dressing"
+spec "user.extras.noneckpain"
 
 require "user.lazy"

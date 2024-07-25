@@ -19,8 +19,13 @@ function M.config()
       inactive = true,
     },
     icons = {
-      pinned = { filename = true, buffer_index = false },
+      pinned = { filename = true, buffer_index = false, button = icons.ui.BookMark },
       diagnostics = { { enabled = true } },
+      gitsigns = {
+        added = { enabled = true, icon = icons.git.LineAdded },
+        changed = { enabled = true, icon = icons.git.LineModified },
+        deleted = { enabled = true, icon = icons.git.LineRemoved },
+      },
     },
 
     -- WARN: doesn't work if you use nvim-tree and harpoon extention below.
@@ -95,7 +100,6 @@ function M.config()
     "<Cmd>BufferCloseAllButPinned<CR>",
     { noremap = true, silent = true, desc = "Buffers close except pinned" }
   )
-
 end
 
 return M

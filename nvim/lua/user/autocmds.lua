@@ -67,19 +67,22 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   pattern = "*",
   callback = function()
     local hl_groups = {
+      -- nvim
       "Normal",
       "NormalNC",
+      "NormalFloat",
+      "FloatBorder",
       "SignColumn",
-      "TelescopeBorder",
-      "NvimTreeNormal",
-      "NvimTreeNormalNC",
-      "NeoTreeNormal",
-      "NeoTreeNormalNC",
       "EndOfBuffer",
       "MsgArea",
       "WinBar",
       "WinBarNC",
-      -- navic HLGroup
+      -- explorer
+      "NvimTreeNormal",
+      "NvimTreeNormalNC",
+      "NeoTreeNormal",
+      "NeoTreeNormalNC",
+      -- navic
       "NavicIconsFile",
       "NavicIconsModule",
       "NavicIconsNamespace",

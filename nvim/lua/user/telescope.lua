@@ -18,6 +18,7 @@ function M.config()
     { "<leader>fh", "<cmd>Telescope help_tags<cr>",                                     desc = "Help" },
     { "<leader>fl", "<cmd>Telescope resume<cr>",                                        desc = "Last Search" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                                      desc = "Recent File" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>",                                      desc = "Key Maps" },
   }
   local icons = require "user.icons"
   local actions = require "telescope.actions"

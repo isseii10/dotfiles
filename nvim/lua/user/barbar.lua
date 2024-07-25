@@ -23,7 +23,7 @@ function M.config()
       diagnostics = { { enabled = true } },
     },
 
-    -- WARN: doesn't work if you use nvim-tree.
+    -- WARN: doesn't work if you use nvim-tree and harpoon extention below.
     -- sidebar_filetypes = {
     --   -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
     --   NvimTree = { event = "BufWinLeave", text = "nvim-tree" },

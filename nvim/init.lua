@@ -33,7 +33,7 @@ spec "user.dap"
 spec "user.harpoon"
 spec "user.barbar"
 -- spec "user.bufferline"
--- spec "user.lsp-signature"
+spec "user.lsp-signature"
 
 
 -- spec "user.extras.copilot"

@@ -9,16 +9,16 @@ function M.config()
 
   local wk = require "which-key"
   wk.add {
-    { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>",                       desc = "Find buffers" },
-    { "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>",                     desc = "current buffer" },
-    { "<leader>fc", "<cmd>Telescope colorscheme<cr>",                                   desc = "Colorscheme" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>",                                    desc = "Find files" },
+    { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find buffers" },
+    { "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "current buffer" },
+    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
     { "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "Projects" },
-    { "<leader>fg", "<cmd>Telescope live_grep<cr>",                                     desc = "Live grep" },
-    { "<leader>fh", "<cmd>Telescope help_tags<cr>",                                     desc = "Help" },
-    { "<leader>fl", "<cmd>Telescope resume<cr>",                                        desc = "Last Search" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                                      desc = "Recent File" },
-    { "<leader>fk", "<cmd>Telescope keymaps<cr>",                                      desc = "Key Maps" },
+    { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
   }
   local icons = require "user.icons"
   local actions = require "telescope.actions"
@@ -51,12 +51,19 @@ function M.config()
 
           ["<C-j>"] = actions.move_selection_next,
           ["<C-k>"] = actions.move_selection_previous,
+
+          ["<C-s>"] = actions.select_horizontal,
+          ["<C-v>"] = actions.select_vertical,
         },
         n = {
           ["<esc>"] = actions.close,
+          ["q"] = actions.close,
+
           ["j"] = actions.move_selection_next,
           ["k"] = actions.move_selection_previous,
-          ["q"] = actions.close,
+
+          ["\\"] = actions.select_vertical,
+          ["-"] = actions.select_horizontal,
         },
       },
     },
@@ -123,10 +130,10 @@ function M.config()
     },
     extensions = {
       fzf = {
-        fuzzy = true,                   -- false will only do exact matching
+        fuzzy = true, -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true,    -- override the file sorter
-        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+        override_file_sorter = true, -- override the file sorter
+        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
     },
   }

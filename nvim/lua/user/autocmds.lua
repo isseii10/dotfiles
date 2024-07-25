@@ -79,7 +79,6 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
       "WinBar",
       "WinBarNC",
       "Pmenu",
-      "PmenuSel",
       -- explorer
       "NvimTreeNormal",
       "NvimTreeNormalNC",

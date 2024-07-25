@@ -23,7 +23,19 @@ function M.config()
       },
     },
     view = {
-      width = 35,
+      -- float = {
+      --   enable = false,
+      --   quit_on_focus_loss = true,
+      --   open_win_config = {
+      --     relative = "editor",
+      --     border = "rounded",
+      --     width = 50,
+      --     height = 60,
+      --     row = 5,
+      --     col = 5,
+      --   },
+      -- },
+      width = 40,
       preserve_window_proportions = true,
     },
     renderer = {

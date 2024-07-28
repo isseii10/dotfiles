@@ -20,7 +20,6 @@ function M.config()
   -- load extension
   harpoon:extend(harpoonEx.extend())
 
-
   local wk = require "which-key"
   wk.add {
     { "<leader>h", group = "Harpoon" },
@@ -45,8 +44,6 @@ function M.config()
             return true
           end,
         }
-        -- for barbar rendering
-        vim.cmd ":do User"
         return true
       end,
       desc = "Open harpoon window",

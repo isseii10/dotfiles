@@ -69,7 +69,12 @@ function M.config()
   local function refresh_all_harpoon_tabs()
     local list = harpoon:list()
     unpin_all()
-    for _, mark in ipairs(list.items) do
+    for i = 1, list:length() do
+      local mark = list.items[i]
+      if mark == nil then
+        -- print("Warning: nil item in list.items at index", i)
+        goto continue
+      end
       local buf = get_buffer_by_mark(mark)
       if buf == nil then
         vim.cmd("badd " .. mark.value)
@@ -78,6 +83,8 @@ function M.config()
       if buf ~= nil then
         state.toggle_pin(buf)
       end
+
+      ::continue::
     end
     state.update_callback()
   end

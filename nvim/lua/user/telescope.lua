@@ -1,6 +1,9 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  dependencies = { { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true } },
+  dependencies = {
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+    { "mike-jl/harpoonEx" },
+  },
   event = "VeryLazy",
 }
 
@@ -134,6 +137,32 @@ function M.config()
         override_generic_sorter = true, -- override the generic sorter
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+      },
+      harpoonEx = {
+        theme = "dropdown",
+        initial_mode = "normal",
+        mappings = {
+          i = {
+            ["<C-n>"] = actions.cycle_history_next,
+            ["<C-p>"] = actions.cycle_history_prev,
+
+            ["<C-j>"] = actions.move_selection_next,
+            ["<C-k>"] = actions.move_selection_previous,
+
+            ["<C-s>"] = actions.select_horizontal,
+            ["<C-v>"] = actions.select_vertical,
+          },
+          n = {
+            ["<esc>"] = actions.close,
+            ["q"] = actions.close,
+
+            ["j"] = actions.move_selection_next,
+            ["k"] = actions.move_selection_previous,
+
+            ["\\"] = actions.select_vertical,
+            ["-"] = actions.select_horizontal,
+          },
+        },
       },
     },
   }

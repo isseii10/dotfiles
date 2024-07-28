@@ -4,16 +4,22 @@ local M = {
   event = "VeryLazy",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
+    { "mike-jl/harpoonEx" },
+    { "nvim-telescope/telescope.nvim" },
   },
 }
 
 function M.config()
   local harpoon = require "harpoon"
+  local harpoonEx = require "harpoonEx"
+
   -- REQUIRED
   harpoon:setup()
   -- REQUIRED
 
-  local marks = require "user.telescope_extentions.harpoon"
+  -- load extension
+  harpoon:extend(harpoonEx.extend())
+
 
   local wk = require "which-key"
   wk.add {
@@ -30,11 +36,20 @@ function M.config()
     {
       "<leader>hh",
       function()
-        -- if marks were seemed to be bloken, use default
-        -- harpoon.ui:toggle_quick_menu(harpoon:list())
-        marks(require "telescope.themes".get_dropdown { initial_mode = "normal" })
+        require("telescope").extensions.harpoonEx.harpoonEx {
+          -- Optional: modify mappings, default mappings:
+          attach_mappings = function(_, map)
+            local actions = require("telescope").extensions.harpoonEx.actions
+            map({ "i", "n" }, "<C-d>", actions.delete_mark)
+            map({ "n" }, "dd", actions.delete_mark)
+            return true
+          end,
+        }
+        -- for barbar rendering
+        vim.cmd ":do User"
+        return true
       end,
-      desc = "open window",
+      desc = "Open harpoon window",
     },
     {
       "[h",

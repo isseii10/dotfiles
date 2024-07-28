@@ -35,7 +35,7 @@ spec "user.barbar"
 -- spec "user.bufferline"
 spec "user.lsp-signature"
 spec "user.alpha"
--- spec "user.autosession"
+spec "user.autosession"
 
 
 -- spec "user.extras.copilot"

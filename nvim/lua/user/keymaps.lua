@@ -5,8 +5,6 @@ keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-keymap("n", "<C-i>", "<C-i>", opts)
-
 -- Better escape
 keymap("i", "jj", "<ESC>", opts)
 
@@ -15,7 +13,6 @@ keymap("n", "<c-h>", "<C-w>h", opts)
 keymap("n", "<c-j>", "<C-w>j", opts)
 keymap("n", "<c-k>", "<C-w>k", opts)
 keymap("n", "<c-l>", "<C-w>l", opts)
-keymap("n", "<m-tab>", "<c-6>", opts)
 
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)

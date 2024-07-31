@@ -33,6 +33,8 @@ spec "user.harpoon"
 spec "user.barbar"
 spec "user.lsp-signature"
 spec "user.alpha"
+spec "user.nvim-surround"
+spec "user.flash"
 -- spec "user.autosession"
 
 

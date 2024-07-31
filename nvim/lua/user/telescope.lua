@@ -2,7 +2,7 @@ local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
-    { "mike-jl/harpoonEx" },
+    { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true} },
   },
   event = "VeryLazy",
 }

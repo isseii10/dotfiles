@@ -4,7 +4,7 @@ local M = {
   event = "VeryLazy",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    { "mike-jl/harpoonEx" },
+    { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true} },
     { "nvim-telescope/telescope.nvim" },
   },
 }

@@ -70,23 +70,23 @@ function M.config()
     local list = harpoon:list()
     unpin_all()
     for i = 1, list:length() do
-      local mark = list.items[i]
-      if mark == nil then
-        -- print("Warning: nil item in list.items at index", i)
-        goto continue
-      end
-      local buf = get_buffer_by_mark(mark)
-      if buf == nil then
-        vim.cmd("badd " .. mark.value)
-        buf = get_buffer_by_mark(mark)
-      end
-      if buf ~= nil then
-        state.toggle_pin(buf)
-      end
+    local mark = list.items[i]
+       if mark == nil or mark.value == "" then
+         -- print("Warning: nil item in list.items at index", i)
+         goto continue
+       end
+       local buf = get_buffer_by_mark(mark)
+       if buf == nil then
+         vim.cmd("badd " .. mark.value)
+         buf = get_buffer_by_mark(mark)
+       end
+       if buf ~= nil then
+         state.toggle_pin(buf)
+       end
 
-      ::continue::
-    end
-    state.update_callback()
+       ::continue::
+     end
+     state.update_callback()
   end
 
   vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "BufLeave", "User" }, {

@@ -5,6 +5,7 @@ keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
 -- Better escape
 keymap("i", "jj", "<ESC>", opts)
 
@@ -30,11 +31,12 @@ keymap("x", "p", [["_dP]])
 -- more good
 keymap({ "n", "o", "x" }, "<s-h>", "^", opts)
 keymap({ "n", "o", "x" }, "<s-l>", "g_", opts)
+-- keymap({"n"}, "<Tab>", "5j", opts)
+-- keymap({"n"}, "<S-Tab>", "5k", opts)
 
 -- tailwind bearable to work with
 keymap({ "n", "x" }, "j", "gj", opts)
 keymap({ "n", "x" }, "k", "gk", opts)
--- keymap("n", "<leader>w", ":lua vim.wo.wrap = not vim.wo.wrap<CR>", opts)
 
 
 vim.api.nvim_set_keymap('t', '<C-;>', '<C-\\><C-n>', opts)

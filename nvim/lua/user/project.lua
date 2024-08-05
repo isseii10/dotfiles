@@ -13,7 +13,7 @@ function M.config()
     ignore_lsp = {},
     exclude_dirs = {},
     show_hidden = false,
-    silent_chdir = true,
+    silent_chdir = false,
     scope_chdir = "global",
   }
 

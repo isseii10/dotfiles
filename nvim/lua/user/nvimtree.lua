@@ -15,6 +15,7 @@ function M.config()
     hijack_netrw = true,
     disable_netrw = true,
     sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     filters = {
       dotfiles = false,
       git_ignored = false,
@@ -92,7 +93,7 @@ function M.config()
     update_focused_file = {
       enable = true,
       debounce_delay = 15,
-      update_root = false,
+      update_root = true,
       ignore_list = {},
     },
 

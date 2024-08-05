@@ -34,10 +34,10 @@ function M.config()
     [[                                             ]],
   }
   dashboard.section.buttons.val = {
-    dashboard.button("SPC ff", icons.ui.FindFile .. " Find file", "<cmd>Telescope find_files<CR>"),
-    dashboard.button("SPC fr", icons.ui.History .. " Recently opend files", "<cmd>Telescope oldfiles<CR>"),
+    dashboard.button("f", icons.ui.FindFile .. " Find file", "<cmd>Telescope find_files<CR>"),
+    dashboard.button("r", icons.ui.History .. " Recently opend files", "<cmd>Telescope oldfiles<CR>"),
     dashboard.button(
-      "CTL p",
+      "p",
       icons.ui.Project .. " Recent projects",
       ":lua require('telescope').extensions.projects.projects()<CR>"
     ),

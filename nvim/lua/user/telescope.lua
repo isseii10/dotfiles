@@ -1,8 +1,8 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
-    { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true} },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make",                        lazy = true },
+    { "mike-jl/harpoonEx",                        opts = { reload_on_dir_change = true } },
   },
   event = "VeryLazy",
 }
@@ -12,16 +12,15 @@ function M.config()
 
   local wk = require "which-key"
   wk.add {
-    { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find buffers" },
-    { "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "current buffer" },
-    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-    { "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "Projects" },
-    { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
-    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
-    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+    { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>",                       desc = "Find buffers" },
+    { "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>",                     desc = "current buffer" },
+    { "<leader>fc", "<cmd>Telescope colorscheme<cr>",                                   desc = "Colorscheme" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>",                                    desc = "Find files" },
+    { "<leader>fg", "<cmd>Telescope live_grep<cr>",                                     desc = "Live grep" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>",                                     desc = "Help" },
+    { "<leader>fl", "<cmd>Telescope resume<cr>",                                        desc = "Last Search" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                                      desc = "Recent File" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>",                                       desc = "Key Maps" },
   }
   local icons = require "user.icons"
   local actions = require "telescope.actions"
@@ -133,10 +132,10 @@ function M.config()
     },
     extensions = {
       fzf = {
-        fuzzy = true, -- false will only do exact matching
+        fuzzy = true,                   -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        override_file_sorter = true,    -- override the file sorter
+        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
       harpoonEx = {
         theme = "dropdown",
@@ -163,6 +162,18 @@ function M.config()
             ["-"] = actions.select_horizontal,
           },
         },
+      },
+      project = {
+        hidden_files = false, -- default: false
+        theme = "dropdown",
+        order_by = "asc",
+        search_by = "title",
+        sync_with_nvim_tree = true, -- default false
+        -- default for on_project_selected = find project files
+        on_project_selected = function(prompt_bufnr)
+          -- Do anything you want in here. For example:
+
+        end,
       },
     },
   }

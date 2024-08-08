@@ -36,7 +36,7 @@ function M.config()
   end
 
   local Terminal = require("toggleterm.terminal").Terminal
-  local lazygit = Terminal:new { cmd = "lazygit", direction = "float", hidden = true }
+  local lazygit = Terminal:new { cmd = "lazygit", direction = "float", hidden = true, close_on_exit = true }
   
   function _lazygit_toggle()
     lazygit:toggle()

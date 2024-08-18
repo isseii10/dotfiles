@@ -73,6 +73,8 @@ function M.config()
     "jsonls",
     "yamlls",
     "gopls",
+    "bufls",
+    "pbls",
   }
 
   local default_diagnostic_config = {

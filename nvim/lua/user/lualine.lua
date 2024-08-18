@@ -2,15 +2,6 @@ local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "AndreM222/copilot-lualine",
-    {
-      "letieu/harpoon-lualine",
-      dependencies = {
-        {
-          "ThePrimeagen/harpoon",
-          branch = "harpoon2",
-        },
-      },
-    },
   },
   event = "VeryLazy",
 }
@@ -85,16 +76,6 @@ function M.config()
           "filename",
           path = 1,
         },
-        -- TODO: 要らないかも
-        -- "%=", -- make the indicator center
-        -- {
-        --   "harpoon2",
-        --   icon = require("user.icons").ui.BookMark,
-        --   indicators = { "a", "s", "q", "w" },
-        --   active_indicators = { "A", "S", "Q", "W" },
-        --   _separator = " ",
-        --   no_harpoon = "Harpoon not loaded",
-        -- },
       },
       lualine_x = { "copilot", get_attached_clients, "filetype" },
       lualine_y = { "progress" },

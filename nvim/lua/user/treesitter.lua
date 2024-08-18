@@ -19,6 +19,7 @@ function M.config()
       "tsx",
       "typescript",
       "python",
+      "proto",
     },
     sync_install = false,
     auto_install = false,

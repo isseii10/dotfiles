@@ -34,7 +34,7 @@ function M.config()
     [[                                             ]],
   }
   dashboard.section.buttons.val = {
-    dashboard.button("f", icons.ui.FindFile .. " Find file", "<cmd>Telescope find_files<CR>"),
+    dashboard.button("f", icons.ui.FindFile .. "  Find files", "<cmd>Telescope find_files<CR>"),
     dashboard.button("r", icons.ui.History .. " Recently opend files", "<cmd>Telescope oldfiles<CR>"),
     dashboard.button(
       "p",

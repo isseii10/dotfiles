@@ -38,7 +38,7 @@ spec "user.git-conflict"
 -- spec "user.autosession"
 
 
--- spec "user.extras.copilot" aaaaaa
+-- spec "user.extras.copilot" bbbbbb
 spec "user.extras.neoscroll"
 spec "user.extras.ufo"
 spec "user.extras.eyeliner"

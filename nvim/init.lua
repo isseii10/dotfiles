@@ -34,6 +34,7 @@ spec "user.lsp-signature"
 spec "user.alpha"
 spec "user.nvim-surround"
 spec "user.flash"
+spec "user.git-conflict"
 -- spec "user.autosession"
 
 

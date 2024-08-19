@@ -28,7 +28,8 @@ function M.config()
     { "<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", desc = "Test File" },
     { "<leader>ts", "<cmd>lua require('neotest').run.stop()<cr>", desc = "Test Stop" },
     { "<leader>ta", "<cmd>lua require('neotest').run.attach()<cr>", desc = "Attach Test" },
-    { "<leader>to", "<cmd>lua require('neotest').output.open()<cr>", desc = "Open Test Output" },
+    { "<leader>to", "<cmd>lua require('neotest').output_panel.toggle()<cr>", desc = "Toggle Test Output" },
+    { "<leader>tc", "<cmd>lua require('neotest').output_panel.close()<cr>", desc = "Clear Test Output" },
   }
 
   ---@diagnostic disable: missing-fields

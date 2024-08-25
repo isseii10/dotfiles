@@ -17,7 +17,7 @@ local function lsp_keymaps(bufnr)
   local keymap = vim.api.nvim_buf_set_keymap
   keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", add_desc(opts, "go to declaration"))
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", add_desc(opts, "go to definition"))
-  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", add_desc(opts, "hover"))
+  keymap(bufnr, "n", "<leader>k", "<cmd>lua vim.lsp.buf.hover()<CR>", add_desc(opts, "hover symbol"))
   keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", add_desc(opts, "go to inplementation"))
   keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", add_desc(opts, "go to references"))
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", add_desc(opts, "open float diagnostic"))
@@ -39,20 +39,56 @@ end
 
 M.toggle_inlay_hints = function()
   local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr }), { bufnr })
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr }, { bufnr })
 end
 function M.config()
   local wk = require "which-key"
   wk.add {
-    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>",                                                                                  desc = "Code Action" },
-    { "<leader>lf", "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>", desc = "Format" },
-    { "<leader>li", "<cmd>LspInfo<cr>",                                                                                                        desc = "Info" },
-    { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>",                                                                                 desc = "Next Diagnostic" },
-    { "<leader>lh", "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>",                                                             desc = "Hints" },
-    { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>",                                                                                 desc = "Prev Diagnostic" },
-    { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>",                                                                                     desc = "CodeLens Action" },
-    { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>",                                                                                desc = "Quickfix" },
-    { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>",                                                                                       desc = "Rename" },
+    {
+      "<leader>la",
+      "<cmd>lua vim.lsp.buf.code_action()<cr>",
+      desc = "Code Action",
+    },
+    {
+      "<leader>lf",
+      "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>",
+      desc = "Format",
+    },
+    {
+      "<leader>li",
+      "<cmd>LspInfo<cr>",
+      desc = "Info",
+    },
+    {
+      "<leader>lj",
+      "<cmd>lua vim.diagnostic.goto_next()<cr>",
+      desc = "Next Diagnostic",
+    },
+    {
+      "<leader>lh",
+      "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>",
+      desc = "Hints",
+    },
+    {
+      "<leader>lk",
+      "<cmd>lua vim.diagnostic.goto_prev()<cr>",
+      desc = "Prev Diagnostic",
+    },
+    {
+      "<leader>ll",
+      "<cmd>lua vim.lsp.codelens.run()<cr>",
+      desc = "CodeLens Action",
+    },
+    {
+      "<leader>lq",
+      "<cmd>lua vim.diagnostic.setloclist()<cr>",
+      desc = "Quickfix",
+    },
+    {
+      "<leader>lr",
+      "<cmd>lua vim.lsp.buf.rename()<cr>",
+      desc = "Rename",
+    },
   }
 
   wk.add {

@@ -111,6 +111,7 @@ function M.config()
     "gopls",
     "bufls",
     "pbls",
+    "terraformls",
   }
 
   local default_diagnostic_config = {

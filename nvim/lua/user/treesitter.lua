@@ -20,6 +20,7 @@ function M.config()
       "typescript",
       "python",
       "proto",
+      "terraform",
     },
     sync_install = false,
     auto_install = false,

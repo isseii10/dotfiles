@@ -42,7 +42,7 @@ local M = {
 function M.config()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
-  require("user.luasnip") -- load user defined snipet
+  require "user.luasnip" -- load user defined snipet
   require("luasnip/loaders/from_vscode").lazy_load()
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
@@ -111,10 +111,10 @@ function M.config()
       format = function(entry, vim_item)
         vim_item.kind = icons.kind[vim_item.kind]
         vim_item.menu = ({
-          nvim_lsp = "",
+          nvim_lsp = "lsp",
           nvim_lua = "",
-          luasnip = "",
-          buffer = "",
+          luasnip = "snip",
+          buffer = "buf",
           path = "",
           emoji = "",
         })[entry.source.name]
@@ -134,8 +134,8 @@ function M.config()
     },
     sources = {
       { name = "copilot" },
-      { name = "nvim_lsp", priority = 45},
-      { name = "luasnip", priority = 50},
+      { name = "nvim_lsp", priority = 45 },
+      { name = "luasnip", priority = 50 },
       { name = "cmp_tabnine" },
       { name = "nvim_lua" },
       { name = "buffer" },

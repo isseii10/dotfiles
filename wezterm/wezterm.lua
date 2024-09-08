@@ -22,7 +22,7 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 -- config.font = wezterm.font("JetBrains Mono", { weight = "Regular", stretch = "Normal", style = "Normal" })
 -- config.font = wezterm.font("Cica", { weight = "Regular", stretch = "Normal", style = "Normal" })
 
--- font なかったら順次下に探しに行く設定
+-- font なかったら順次探しに行く設定
 config.font = wezterm.font_with_fallback({
   "JetBrains Mono",
   "ヒラギノ角ゴシック",

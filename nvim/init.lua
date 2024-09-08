@@ -35,6 +35,7 @@ spec "user.alpha"
 spec "user.mini-surround"
 spec "user.flash"
 spec "user.git-conflict"
+-- spec "user.wezterm"
 
 -- spec "user.extras.copilot"
 spec "user.extras.neoscroll"

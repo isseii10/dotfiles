@@ -33,6 +33,9 @@ function M.config()
       -- Trigger completion at 2 chars.
       min_chars = 2,
     },
+    -- ui = {
+    --   enable = false
+    -- },
   }
 end
 

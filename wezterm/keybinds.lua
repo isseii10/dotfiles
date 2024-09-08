@@ -18,10 +18,87 @@ return {
       action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }),
     },
     -- close tab/pain
-    { key = "w",     mods = "LEADER",         action = act.CloseCurrentTab({ confirm = true }) },
-    -- this doesn't seem to work
-    { key = "w",     mods = "CMD",            action = act.CloseCurrentPane({ confirm = true }) },
+    { key = "w", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
+    { key = "w", mods = "CMD",    action = act.CloseCurrentPane({ confirm = true }) },
 
+    -- workspace
+    {
+      -- Create new workspace
+      mods = "LEADER",
+      key = "S",
+      action = act.PromptInputLine({
+        description = "(wezterm) Create new workspace:",
+        action = wezterm.action_callback(function(window, pane, line)
+          if line then
+            window:perform_action(
+              act.SwitchToWorkspace({
+                name = line,
+              }),
+              pane
+            )
+          end
+        end),
+      }),
+    },
+    {
+      -- Select workspace
+      mods = "LEADER",
+      key = "s",
+      action = wezterm.action_callback(function(win, pane)
+        -- workspace のリストを作成
+        local current = wezterm.mux.get_active_workspace()
+        local workspaces = {}
+        for _, name in ipairs(wezterm.mux.get_workspace_names()) do
+          if current == name then
+            table.insert(workspaces, {
+              id = name,
+              label = string.format("%s <- current", name),
+            })
+          else
+            table.insert(workspaces, {
+              id = name,
+              label = string.format("%s", name),
+            })
+          end
+        end
+        -- 選択メニューを起動
+        win:perform_action(
+          act.InputSelector({
+            action = wezterm.action_callback(function(_, _, id, label)
+              if not id and not label then
+                wezterm.log_info("Workspace selection canceled")       -- 入力が空ならキャンセル
+              else
+                win:perform_action(act.SwitchToWorkspace({ name = id }), pane) -- workspace を移動
+              end
+            end),
+            title = "(wezterm) Select workspace",
+            choices = workspaces,
+            -- fuzzy = true,
+            description = "(wezterm) Select workspace: ['/': fuzzy, 'ESC': cancel]",
+            fuzzy_description = "(wezterm) Select workspace: ['ESC': cancel]", -- requires nightly build
+          }),
+          pane
+        )
+      end),
+    },
+    {
+      -- Rename workspace
+      mods = "LEADER",
+      key = "$",
+      action = act.PromptInputLine({
+        description = string.format(
+          "(wezterm) Rename workspace title <%s> to:",
+          wezterm.mux.get_active_workspace()
+        ),
+        action = wezterm.action_callback(function(win, pane, line)
+          if line then
+            wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
+          end
+        end),
+      }),
+    },
+
+    -- default
     { key = "Tab",   mods = "CTRL",           action = act.ActivateTabRelative(1) },
     { key = "Tab",   mods = "SHIFT|CTRL",     action = act.ActivateTabRelative(-1) },
     { key = "Enter", mods = "ALT",            action = act.ToggleFullScreen },

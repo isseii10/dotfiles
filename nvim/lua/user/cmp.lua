@@ -161,6 +161,24 @@ function M.config()
       ghost_text = false,
     },
   }
+  cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources {
+      { name = "cmdline" },
+      { name = "path" },
+    },
+  })
+  cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources {
+      {
+        name = "buffer",
+        option = {
+          keyword_pattern = [[\k\+]],
+        },
+      },
+    },
+  })
 end
 
 return M

@@ -27,7 +27,7 @@ return {
       mods = "LEADER",
       key = "S",
       action = act.PromptInputLine({
-        description = "(wezterm) Create new workspace:",
+        description = "(wezterm) Create new workspace: ['ESC': cancel]",
         action = wezterm.action_callback(function(window, pane, line)
           if line then
             window:perform_action(

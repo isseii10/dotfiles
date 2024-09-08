@@ -37,7 +37,6 @@ spec "user.flash"
 spec "user.git-conflict"
 -- spec "user.autosession"
 
-
 -- spec "user.extras.copilot" bbbbbb
 spec "user.extras.neoscroll"
 spec "user.extras.ufo"
@@ -50,5 +49,6 @@ spec "user.extras.dressing"
 spec "user.extras.noneckpain"
 spec "user.extras.nvim-spider"
 spec "user.extras.treesj"
+spec "user.extras.obsidian"
 
 require "user.lazy"

@@ -10,6 +10,7 @@ function M.config()
   require("eyeliner").setup {
     highlight_on_key = true,
     dim = true,
+    match = "[0-9a-zA-Z]",
   }
 end
 

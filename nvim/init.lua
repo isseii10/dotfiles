@@ -35,6 +35,7 @@ spec "user.alpha"
 spec "user.mini-surround"
 spec "user.flash"
 spec "user.git-conflict"
+spec "user.ts-autotag"
 -- spec "user.wezterm"
 
 -- spec "user.extras.copilot"

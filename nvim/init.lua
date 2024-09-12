@@ -50,5 +50,6 @@ spec "user.extras.noneckpain"
 spec "user.extras.nvim-spider"
 spec "user.extras.treesj"
 spec "user.extras.obsidian"
+spec "user.extras.smart-splits"
 
 require "user.lazy"

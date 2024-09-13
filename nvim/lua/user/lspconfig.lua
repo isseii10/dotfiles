@@ -92,7 +92,7 @@ function M.config()
   }
 
   wk.add {
-    { "<leader>l",  group = "LSP",                            mode = "v" },
+    { "<leader>l", group = "LSP", mode = "v" },
     { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "v" },
   }
 
@@ -119,9 +119,9 @@ function M.config()
       active = true,
       values = {
         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn",  text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint",  text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
+        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
       },
     },
     virtual_text = false,

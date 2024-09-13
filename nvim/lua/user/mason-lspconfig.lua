@@ -8,6 +8,12 @@ local M = {
 
 
 function M.config()
+  require("mason").setup {
+    ui = {
+      border = "rounded",
+    },
+  }
+
   local servers = {
     "lua_ls",
     "cssls",
@@ -19,11 +25,6 @@ function M.config()
     "gopls",
   }
 
-  require("mason").setup {
-    ui = {
-      border = "rounded",
-    },
-  }
 
   require("mason-lspconfig").setup {
     ensure_installed = servers,

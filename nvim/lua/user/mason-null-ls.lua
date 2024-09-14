@@ -17,7 +17,7 @@ function M.config()
   require("mason-null-ls").setup {
     ensure_installed = {
       -- Opt to list sources here, when available in mason.
-      "gofmt",
+      "gofumt",
       "stylua",
       "prettierd",
       "eslint_d",

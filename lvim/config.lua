@@ -1,7 +1,0 @@
-reload "user.options"
-reload "user.plugins"
-reload "user.keymappings"
-reload "user.telescope"
-reload "user.which-key"
-reload "user.lualine"
-reload "user.nvim-ufo"

@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
-    vim.highlight.on_yank { higroup = "Visual", timeout = 100 }
+    vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
   end,
 })
 
@@ -59,7 +59,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
   callback = function()
     vim.opt_local.wrap = true
-    vim.opt_local.spell = true
+    -- vim.opt_local.spell = true
+    -- vim.opt_local.spelllang = {"en", "cjk"}
   end,
 })
 

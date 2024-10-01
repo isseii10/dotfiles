@@ -20,7 +20,7 @@ function M.config()
       dotfiles = false,
       git_ignored = false,
       custom = {
-        "^\\.git$",
+        -- "^\\.git$",
         "^node_modules",
       },
     },

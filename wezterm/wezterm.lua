@@ -9,8 +9,9 @@ end
 -- config.color_scheme = 'nord'
 -- config.color_scheme = 'Nord (Gogh)'
 -- config.color_scheme = 'Nord (base16)'
--- config.color_scheme = 'OneDark (Gogh)'
-config.color_scheme = "OneHalfDark"
+config.color_scheme = 'OneDark (Gogh)'
+-- config.color_scheme = "OneHalfDark"
+-- config.color_scheme = 'darkmoss (base16)'
 
 -- window
 config.window_background_opacity = 0.95
@@ -18,10 +19,6 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- font
 -- wezterm ls-fonts --list-systemで出力できる
--- config.font = wezterm.font("HackGen35 Console NF", { weight = "Regular", stretch = "Normal", style = "Normal" })
--- config.font = wezterm.font("JetBrains Mono", { weight = "Regular", stretch = "Normal", style = "Normal" })
--- config.font = wezterm.font("Cica", { weight = "Regular", stretch = "Normal", style = "Normal" })
-
 -- font なかったら順次探しに行く設定
 config.font = wezterm.font_with_fallback({
   "JetBrains Mono",

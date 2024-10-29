@@ -13,7 +13,7 @@ end
 config.color_scheme = "OneHalfDark"
 
 -- window
-config.window_background_opacity = 0.96
+config.window_background_opacity = 0.95
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- font

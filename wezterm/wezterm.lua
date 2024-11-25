@@ -26,6 +26,14 @@ config.color_scheme = 'terafox'
 config.window_background_opacity = 0.95
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
+local mux = wezterm.mux
+-- position and size
+wezterm.on('gui-startup', function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {width=158, height=56})
+  window:gui_window():set_position(0,0)
+  window:set_inner_size(800, 1020)
+end)
+
 -- font
 -- wezterm ls-fonts --list-systemで出力できる
 -- font なかったら順次探しに行く設定
@@ -35,6 +43,9 @@ config.font = wezterm.font_with_fallback({
   "Symbols Nerd Font",
   "Apple Color Emoji",
 })
+
+-- コメントアウト外したらリガチャOFFにできる
+-- config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 config.font_size = 13
 

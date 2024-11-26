@@ -26,11 +26,10 @@ config.color_scheme = 'terafox'
 config.window_background_opacity = 0.95
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
-local mux = wezterm.mux
 -- position and size
+local mux = wezterm.mux
 wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {width=158, height=56})
-  window:gui_window():set_position(0,0)
+  local tab, pane, window = mux.spawn_window(cmd or {width=180, height=60})
   window:set_inner_size(800, 1020)
 end)
 

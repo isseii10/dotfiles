@@ -4,7 +4,7 @@ return {
   root_dir = require('lspconfig.util').root_pattern('go.mod', '.git'),
   settings = {
     gopls = {
-      experimentalWorkspaceModule = true,
+      buildFlags = {"-tags=wireinject"},
       analyses = {
         unusedparams = true,
         unreachable = true,

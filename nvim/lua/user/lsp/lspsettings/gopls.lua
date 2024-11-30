@@ -1,5 +1,5 @@
 return {
-  cmd = {'gopls'}, -- gopls のパス
+  cmd = {'gopls'},
   filetypes = {'go', 'gomod'},
   root_dir = require('lspconfig.util').root_pattern('go.mod', '.git'),
   settings = {

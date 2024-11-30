@@ -40,6 +40,35 @@ local function get_attached_clients()
     end
   end
 
+  -- Add linters (from nvim-lint)
+  local lint_s, lint = pcall(require, "lint")
+  if lint_s then
+    for ft_k, ft_v in pairs(lint.linters_by_ft) do
+      if type(ft_v) == "table" then
+        for _, linter in ipairs(ft_v) do
+          if buf_ft == ft_k then
+            table.insert(buf_client_names, linter)
+          end
+        end
+      elseif type(ft_v) == "string" then
+        if buf_ft == ft_k then
+          table.insert(buf_client_names, ft_v)
+        end
+      end
+    end
+  end
+
+  -- Add formatters (from conform.nvim)
+  local conform_s, conform = pcall(require, "conform")
+  if conform_s then
+    local formatters = conform.list_formatters_for_buffer()
+    if formatters and #formatters > 0 then
+      for _, formatter in ipairs(formatters) do
+        table.insert(buf_client_names, formatter)
+      end
+    end
+  end
+
   -- This needs to be a string only table so we can use concat below
   local unique_client_names = {}
   for _, client_name_target in ipairs(buf_client_names) do

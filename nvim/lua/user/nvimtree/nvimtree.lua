@@ -28,27 +28,25 @@ function M.config()
       },
     },
     view = {
-      -- float = {
-      --   enable = false,
-      --   quit_on_focus_loss = true,
-      --   open_win_config = {
-      --     relative = "editor",
-      --     border = "rounded",
-      --     width = 50,
-      --     height = 60,
-      --     row = 5,
-      --     col = 5,
-      --   },
-      -- },
-      width = 40,
-      preserve_window_proportions = true,
+      float = {
+        enable = true,
+        quit_on_focus_loss = true,
+        open_win_config = {
+          relative = "editor",
+          border = "rounded",
+          width = 50,
+        },
+      },
+      -- if float.enable = false
+      width = 50,
     },
     renderer = {
+      root_folder_modifier = ":~",
+      highlight_opened_files = "all", -- 開いているファイルを強調表示
       add_trailing = false,
       group_empty = false,
       highlight_git = false,
-      full_name = false,
-      highlight_opened_files = "none",
+      full_name = true,
       root_folder_label = ":t",
       indent_width = 1,
       indent_markers = {
@@ -96,7 +94,9 @@ function M.config()
     update_focused_file = {
       enable = true,
       debounce_delay = 15,
-      update_root = true,
+      update_root = {
+        enable = false,
+      },
       ignore_list = {},
     },
 
@@ -120,3 +120,4 @@ function M.config()
 end
 
 return M
+

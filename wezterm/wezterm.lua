@@ -6,21 +6,7 @@ if wezterm.config_builder then
 end
 
 -- color scheme
--- config.color_scheme = 'nord'
--- config.color_scheme = 'Nord (Gogh)'
--- config.color_scheme = 'Nord (base16)'
--- config.color_scheme = 'OneDark (Gogh)'
--- config.color_scheme = 'OneDark (base16)'
--- config.color_scheme = "OneHalfDark"
--- config.color_scheme = 'One Half Black (Gogh)'
--- config.color_scheme = 'darkmoss (base16)'
--- config.color_scheme = 'duckbones'
--- config.color_scheme = 'Ef-Deuteranopia-Dark'
--- config.color_scheme = 'zenbones_dark'
--- config.color_scheme = 'X::DotShare (terminal.sexy)'
--- config.color_scheme = 'Tartan (terminal.sexy)'
-config.color_scheme = 'terafox'
-
+config.color_scheme = 'tokyonight'
 
 -- window
 config.window_background_opacity = 0.95

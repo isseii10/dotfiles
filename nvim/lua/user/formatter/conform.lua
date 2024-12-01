@@ -16,7 +16,7 @@ return {
         yaml = { "prettierd" },
         markdown = { "prettierd" },
         graphql = { "prettierd" },
-        lua = { "stylua" },
+        -- lua = { "stylua" },
         python = { "isort", "black" },
         go = { "goimports", "gofmt" },
       },

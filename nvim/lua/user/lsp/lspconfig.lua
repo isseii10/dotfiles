@@ -61,14 +61,14 @@ function M.config()
       desc = "Info",
     },
     {
-      "<leader>lj",
-      "<cmd>lua vim.diagnostic.goto_next()<cr>",
-      desc = "Next Diagnostic",
-    },
-    {
       "<leader>lh",
       "<cmd>lua require('user.lspconfig').toggle_inlay_hints()<cr>",
       desc = "Hints",
+    },
+    {
+      "<leader>lj",
+      "<cmd>lua vim.diagnostic.goto_next()<cr>",
+      desc = "Next Diagnostic",
     },
     {
       "<leader>lk",
@@ -113,6 +113,7 @@ function M.config()
     "buf_ls",
     "pbls",
     "terraformls",
+    "marksman",
   }
 
   local default_diagnostic_config = {

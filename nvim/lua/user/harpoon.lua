@@ -4,7 +4,7 @@ local M = {
   event = "VeryLazy",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true } },
+    { "mike-jl/harpoonEx",            opts = { reload_on_dir_change = true } },
     { "nvim-telescope/telescope.nvim" },
   },
 }
@@ -12,6 +12,7 @@ local M = {
 function M.config()
   local harpoon = require "harpoon"
   local harpoonEx = require "harpoonEx"
+
 
   -- REQUIRED
   harpoon:setup()
@@ -63,6 +64,17 @@ function M.config()
       desc = "next harpoon",
     },
   }
+
+  -- ファイルが保存されたときにHarpoonに追加
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function()
+      -- ファイルが変更されている場合のみ処理
+      if vim.bo.modified then
+        harpoon:list():add()
+      end
+    end,
+  })
 end
 
 return M

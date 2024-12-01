@@ -4,7 +4,7 @@ local M = {
   event = "VeryLazy",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    { "mike-jl/harpoonEx",            opts = { reload_on_dir_change = true } },
+    { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true } },
     { "nvim-telescope/telescope.nvim" },
   },
 }
@@ -53,14 +53,14 @@ function M.config()
       function()
         harpoon:list():prev()
       end,
-      desc = "prev",
+      desc = "prev harpoon",
     },
     {
       "]h",
       function()
         harpoon:list():next()
       end,
-      desc = "next",
+      desc = "next harpoon",
     },
   }
 end

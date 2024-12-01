@@ -1,6 +1,6 @@
 local M = {
   "Wansmer/treesj",
-  -- keys = { "<space>m", "<space>j", "<space>s" },
+  keys = { "<space>m", "<space>j", "<space>s" },
   event = "BufEnter",
   dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
 }

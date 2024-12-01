@@ -48,11 +48,6 @@ function M.config()
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
-  local check_backspace = function()
-    local col = vim.fn.col "." - 1
-    return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-  end
-
   local icons = require "user.icons"
 
   cmp.setup {
@@ -83,8 +78,6 @@ function M.config()
           luasnip.expand()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
-        elseif check_backspace() then
-          fallback()
         else
           fallback()
         end

@@ -1,11 +1,10 @@
 local status_ok, wk = pcall(require, "which-key")
 if status_ok then
   wk.add {
-    { "<leader>c",  group = "Go" },
+    { "<leader>c", group = "Go" },
     { "<leader>ca", "<cmd>GoAddTest<cr>", desc = "Add test" },
     { "<leader>cA", "<cmd>GoAddAllTest<cr>", desc = "Add all tests" },
     { "<leader>ct", "<cmd>GoModTidy<cr>", desc = "go mod tidy" },
-    { "<leader>ce", "<cmd>GoIfErr<cr>", desc = "if err" },
     { "<leader>cf", "<cmd>GoFillStruct<cr>", desc = "Fill struct" },
   }
 end
@@ -16,7 +15,7 @@ local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
-   require('go.format').goimports()
+    require("go.format").goimports()
   end,
   group = format_sync_grp,
 })

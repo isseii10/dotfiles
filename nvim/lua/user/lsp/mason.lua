@@ -35,22 +35,25 @@ return {
         "html",
         "cssls",
         "tailwindcss",
-        "svelte",
-        "graphql",
-        "emmet_ls",
-        "prismals",
         "pyright",
+        "marksman",
+        "sqlls",
       },
     }
 
     mason_tool_installer.setup {
       ensure_installed = {
-        "prettierd", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
+        -- linter
         "pylint",
         "eslint_d",
+        "markdownlint",
+
+        -- formatter
+        "prettierd", -- prettier formatter
+        "stylua",    -- lua formatter
+        "isort",     -- python formatter
+        "black",     -- python formatter
+        "sqlfmt",
       },
     }
   end,

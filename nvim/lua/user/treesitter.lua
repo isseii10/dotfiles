@@ -8,10 +8,11 @@ function M.config()
   require("nvim-treesitter.configs").setup {
     modules = {},
     ensure_installed = {
-      "vimdoc",
+      "lua",
       "luadoc",
       "vim",
-      "lua",
+      "vimdoc",
+      "query",
       "go",
       "markdown",
       "markdown_inline",

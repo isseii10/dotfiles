@@ -52,9 +52,9 @@ function M.config()
     {
       "<leader>ts",
       function()
-        require("neotest").run.stop()
+        require("neotest").summary.toggle()
       end,
-      desc = "Test Stop",
+      desc = "Toggle Test Summary",
     },
     {
       "<leader>ta",
@@ -66,21 +66,15 @@ function M.config()
     {
       "<leader>to",
       function()
-        require("neotest").output_panel.toggle()
+        require("neotest").output.open({ enter = true, auto_close = true, last_run = true })
       end,
-      desc = "Toggle Test Output",
-    },
-    {
-      "<leader>tc",
-      function()
-        require("neotest").output_panel.clear()
-      end,
-      desc = "Clear Test Output",
+      desc = "Test Output",
     },
   }
 
   ---@diagnostic disable: missing-fields
-  require("neotest").setup {
+  neotest = require "neotest"
+  neotest.setup {
     adapters = {
       require "neotest-python" {
         dap = { justMyCode = false },
@@ -108,6 +102,26 @@ function M.config()
         -- Enable/disable animation of icons.
         animated = true,
       },
+    },
+    consumers = {
+
+      always_open_output = function(client)
+        local async = require("neotest.async")
+
+        client.listeners.results = function(adapter_id, results)
+          local file_path = async.fn.expand("%:p")
+          local row = async.fn.getpos(".")[2] - 1
+          local position = client:get_nearest(file_path, row, {})
+          if not position then
+            return
+          end
+          local pos_id = position:data().id
+          if not results[pos_id] then
+            return
+          end
+          neotest.output.open({ position_id = pos_id, adapter = adapter_id })
+        end
+      end,
     },
   }
 end

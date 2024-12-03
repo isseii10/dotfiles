@@ -13,4 +13,3 @@ M.config = function()
   require("go").setup()
 end
 return M
-

@@ -37,7 +37,7 @@ return {
         "tailwindcss",
         "pyright",
         "marksman", -- markdown
-        "sqlls",
+        "sqls",     -- sql
         "buf_ls",   -- protobuf
       },
     }
@@ -45,17 +45,17 @@ return {
     mason_tool_installer.setup {
       ensure_installed = {
         -- linter
-        "pylint",
+        "pylint",       -- python
         "eslint_d",
-        "markdownlint",
-        "protolint", -- protobuf
+        "markdownlint", -- markdown
+        "protolint",    -- protobuf
 
         -- formatter
         "prettierd", -- prettier formatter
         "stylua",    -- lua formatter
         "isort",     -- python formatter
         "black",     -- python formatter
-        "sqlfmt",
+        "sqlfmt",    -- sql
         "buf",       -- protobuf
       },
     }

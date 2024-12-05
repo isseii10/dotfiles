@@ -20,6 +20,7 @@ return {
         python = { "isort", "black" },
         go = { "goimports", "gofmt" },
         proto = { "buf" },
+        sql = { "sqlfmt" },
       },
       format_on_save = {
         lsp_fallback = true,

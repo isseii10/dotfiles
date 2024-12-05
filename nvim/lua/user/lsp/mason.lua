@@ -36,8 +36,9 @@ return {
         "cssls",
         "tailwindcss",
         "pyright",
-        "marksman",
+        "marksman", -- markdown
         "sqlls",
+        "pbls",     -- protobuf
       },
     }
 
@@ -47,6 +48,7 @@ return {
         "pylint",
         "eslint_d",
         "markdownlint",
+        "protolint", -- protobuf
 
         -- formatter
         "prettierd", -- prettier formatter
@@ -54,6 +56,7 @@ return {
         "isort",     -- python formatter
         "black",     -- python formatter
         "sqlfmt",
+        "buf",       -- protobuf
       },
     }
   end,

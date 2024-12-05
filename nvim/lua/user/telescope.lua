@@ -1,9 +1,9 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make",                        lazy = true },
     { "nvim-telescope/telescope-frecency.nvim" },
-    { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true } },
+    { "mike-jl/harpoonEx",                        opts = { reload_on_dir_change = true } },
   },
   event = "VeryLazy",
 }
@@ -40,9 +40,9 @@ function M.config()
     },
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
-    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+    { "<leader>fl", "<cmd>Telescope resume<cr>",    desc = "Last Search" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>",  desc = "Recent File" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>",   desc = "Key Maps" },
   }
   local icons = require "user.icons"
   local actions = require "telescope.actions"
@@ -153,10 +153,10 @@ function M.config()
     },
     extensions = {
       fzf = {
-        fuzzy = true, -- false will only do exact matching
+        fuzzy = true,                   -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        override_file_sorter = true,    -- override the file sorter
+        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
       harpoonEx = {
         theme = "dropdown",

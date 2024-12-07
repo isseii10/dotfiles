@@ -12,7 +12,7 @@ return {
       typescript = { "eslint_d" },
       javascriptreact = { "eslint_d" },
       typescriptreact = { "eslint_d" },
-      markdown = { "markdownlint" },
+      -- markdown = { "markdownlint" },
       python = { "pylint" },
       go = { "golangcilint" },
       proto = { "protolint" },

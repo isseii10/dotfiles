@@ -112,7 +112,7 @@ function M.config()
     "gopls",
     "buf_ls",
     "terraformls",
-    -- "marksman", -- obsidianではタグが#なのでformatしたくない
+    "marksman",
     "sqls",
   }
 

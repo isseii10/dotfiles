@@ -37,4 +37,22 @@ keymap({ "n", "o", "x" }, "<s-k>", "{", opts)
 keymap({ "n", "x" }, "j", "gj", opts)
 keymap({ "n", "x" }, "k", "gk", opts)
 
+keymap({ "o", "x" }, "i<Space>", "iW", opts)
+
+keymap("n", "i", function()
+  if vim.fn.empty(vim.fn.getline(".")) == 1 then
+    return '"_cc'
+  else
+    return "i"
+  end
+end, { expr = true, silent = true, noremap = true })
+
+keymap("n", "A", function()
+  if vim.fn.empty(vim.fn.getline(".")) == 1 then
+    return '"_cc'
+  else
+    return "A"
+  end
+end, { expr = true, silent = true, noremap = true })
+
 vim.api.nvim_set_keymap("t", "<C-;>", "<C-\\><C-n>", opts)

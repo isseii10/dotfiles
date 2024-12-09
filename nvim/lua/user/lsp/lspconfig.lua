@@ -113,7 +113,6 @@ function M.config()
     "buf_ls",
     "terraformls",
     "marksman",
-    "sqls",
   }
 
   local default_diagnostic_config = {

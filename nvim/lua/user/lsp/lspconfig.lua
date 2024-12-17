@@ -110,7 +110,7 @@ function M.config()
     "jsonls",
     "yamlls",
     "gopls",
-    "buf_ls",
+    -- "buf_ls",
     "terraformls",
     "marksman",
   }

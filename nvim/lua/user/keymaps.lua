@@ -40,7 +40,7 @@ keymap({ "n", "x" }, "k", "gk", opts)
 keymap({ "o", "x" }, "i<Space>", "iW", opts)
 
 keymap("n", "i", function()
-  if vim.fn.empty(vim.fn.getline(".")) == 1 then
+  if vim.fn.empty(vim.fn.getline ".") == 1 then
     return '"_cc'
   else
     return "i"
@@ -48,7 +48,7 @@ keymap("n", "i", function()
 end, { expr = true, silent = true, noremap = true })
 
 keymap("n", "A", function()
-  if vim.fn.empty(vim.fn.getline(".")) == 1 then
+  if vim.fn.empty(vim.fn.getline ".") == 1 then
     return '"_cc'
   else
     return "A"

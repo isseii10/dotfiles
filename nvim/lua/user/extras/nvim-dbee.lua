@@ -1,5 +1,6 @@
 local M = {
-  "kndndrj/nvim-dbee",
+  "isseii10/nvim-dbee",
+  branch = "debug",
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
@@ -21,6 +22,8 @@ local M = {
             type = "mysql",
           },
         },
+        s.EnvSource:new "DBEE_CONNECTIONS",
+        s.FileSource:new(vim.fn.stdpath "cache" .. "/dbee/persistence.json"),
       },
     }
   end,

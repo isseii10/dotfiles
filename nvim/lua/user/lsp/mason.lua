@@ -38,6 +38,7 @@ return {
         "pyright",
         "marksman", -- markdown
         "buf_ls", -- protobuf
+        "sqlls",
       },
     }
 

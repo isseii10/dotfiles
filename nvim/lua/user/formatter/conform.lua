@@ -20,6 +20,7 @@ local M = {
         python = { "isort", "black" },
         go = { "goimports", "gofmt" },
         -- proto = { "buf" },
+        sh = { "shfmt" },
       },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable

@@ -37,8 +37,8 @@ return {
         "tailwindcss",
         "pyright",
         "marksman", -- markdown
-        "buf_ls", -- protobuf
         "sqlls",
+        "bashls",
       },
     }
 
@@ -56,7 +56,7 @@ return {
         "stylua", -- lua formatter
         "isort", -- python formatter
         "black", -- python formatter
-        "buf", -- protobuf
+        "shfmt", -- sh
       },
     }
   end,

@@ -15,13 +15,6 @@ local M = {
     local s = require "dbee.sources"
     dbee.setup {
       sources = {
-        s.MemorySource:new {
-          {
-            name = "demo",
-            url = "user:user@tcp(127.0.0.1:3306)/demo",
-            type = "mysql",
-          },
-        },
         s.EnvSource:new "DBEE_CONNECTIONS",
         s.FileSource:new(vim.fn.stdpath "cache" .. "/dbee/persistence.json"),
       },

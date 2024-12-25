@@ -12,9 +12,7 @@ function M.config()
         local ok, dbee = pcall(require, "dbee")
         if ok and dbee then
           dbee.close()
-          vim.cmd "qall!"
         end
-        -- dbeeじゃなかったら通常のquit
         vim.cmd "q!"
       end,
       desc = "Quit",

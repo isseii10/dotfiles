@@ -22,10 +22,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "",
   },
   callback = function()
-    vim.cmd [[
-      nnoremap <silent> <buffer> q :close<CR>
-      set nobuflisted
-    ]]
+    vim.api.nvim_buf_set_keymap(0, "n", "q", ":close<CR>", { noremap = true, silent = true })
+    vim.bo.buflisted = false
   end,
 })
 

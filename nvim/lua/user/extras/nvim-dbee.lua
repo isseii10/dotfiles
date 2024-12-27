@@ -1,6 +1,6 @@
 local M = {
   "isseii10/nvim-dbee",
-  branch = "debug",
+  branch = "fix/mysql_adapter_get_helpers",
   dependencies = {
     "MunifTanjim/nui.nvim",
   },

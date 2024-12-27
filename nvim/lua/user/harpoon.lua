@@ -39,7 +39,6 @@ function M.config()
           -- Optional: modify mappings, default mappings:
           attach_mappings = function(_, map)
             local actions = require("telescope").extensions.harpoonEx.actions
-            map({ "i", "n" }, "<C-d>", actions.delete_mark)
             map({ "n" }, "dd", actions.delete_mark)
             return true
           end,
@@ -49,18 +48,11 @@ function M.config()
       desc = "Open harpoon window",
     },
     {
-      "[h",
+      "<leader>hg",
       function()
-        harpoon:list():prev()
+        harpoonEx.telescope_live_grep(harpoon:list())
       end,
-      desc = "prev harpoon",
-    },
-    {
-      "]h",
-      function()
-        harpoon:list():next()
-      end,
-      desc = "next harpoon",
+      desc = "Live grep harpoon files",
     },
   }
 

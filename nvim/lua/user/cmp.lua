@@ -35,6 +35,7 @@ local M = {
     },
     {
       "hrsh7th/cmp-nvim-lua",
+      event = "InsertEnter",
     },
     {
       "MattiasMTS/cmp-dbee",
@@ -43,6 +44,10 @@ local M = {
       },
       ft = "sql", -- optional but good to have
       opts = {}, -- needed
+    },
+    {
+      "ray-x/cmp-treesitter",
+      event = "InsertEnter",
     },
   },
 }
@@ -113,11 +118,13 @@ function M.config()
         vim_item.kind = icons.kind[vim_item.kind]
         vim_item.menu = ({
           nvim_lsp = "lsp",
-          nvim_lua = "",
+          nvim_lua = "nvim_lua",
           luasnip = "snip",
           buffer = "buf",
-          path = "",
+          path = "path",
           emoji = "",
+          ["cmp-dbee"] = "dbee",
+          treesitter = "ts",
         })[entry.source.name]
 
         if entry.source.name == "emoji" then
@@ -135,8 +142,8 @@ function M.config()
     },
     sources = {
       { name = "copilot" },
-      { name = "nvim_lsp", priority = 45 },
-      { name = "luasnip", priority = 50 },
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
       { name = "cmp_tabnine" },
       { name = "nvim_lua" },
       { name = "buffer" },
@@ -162,12 +169,18 @@ function M.config()
     experimental = {
       ghost_text = false,
     },
+    completion = {
+      completeopt = "menu,menuone,noinsert",
+    },
   }
   cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources {
       { name = "cmdline" },
       { name = "path" },
+    },
+    completion = {
+      completeopt = "menu,menuone,noinsert,noselect",
     },
   })
   cmp.setup.cmdline({ "/", "?" }, {
@@ -179,6 +192,9 @@ function M.config()
           keyword_pattern = [[\k\+]],
         },
       },
+    },
+    completion = {
+      completeopt = "menu,menuone,noinsert,noselect",
     },
   })
 end

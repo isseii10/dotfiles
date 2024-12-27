@@ -36,6 +36,14 @@ local M = {
     {
       "hrsh7th/cmp-nvim-lua",
     },
+    {
+      "MattiasMTS/cmp-dbee",
+      dependencies = {
+        { "kndndrj/nvim-dbee" },
+      },
+      ft = "sql", -- optional but good to have
+      opts = {}, -- needed
+    },
   },
 }
 
@@ -136,6 +144,7 @@ function M.config()
       { name = "calc" },
       { name = "emoji" },
       { name = "treesitter" },
+      { name = "cmp-dbee" },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,

@@ -1,0 +1,69 @@
+setopt no_beep
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt auto_cd
+setopt hist_ignore_dups
+setopt share_history
+setopt inc_append_history
+setopt auto_param_keys
+
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$GOPATH/bin
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+
+alias vi="nvim"
+alias vim="nvim"
+alias nv="nvim"
+alias nvdb='nvim -c "lua require(\"dbee\").open()"'
+
+# starship
+eval "$(starship init zsh)"
+
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# mise
+if type mise &>/dev/null; then
+  eval "$(mise activate zsh)"
+  eval "$(mise activate --shims)"
+fi
+
+# Android Studio
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/emulator:$PATH
+
+# obsidian
+export OBSIDIAN_VAULT_PATH="$HOME/obsidian/engineering"
+
+# plugins
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+  autoload -Uz compinit && compinit
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+fi
+
+# completion
+zstyle ':completion:*:default' menu select=2
+# 補完の表示を強化する
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
+zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
+zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'$DEFAULT
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
+# マッチ種別を別々に表示
+zstyle ':completion:*' group-name ''
+# 名前で色を付けるようにする
+autoload colors
+colors
+# LS_COLORSを設定しておく
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# ファイル補完候補に色を付ける
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+

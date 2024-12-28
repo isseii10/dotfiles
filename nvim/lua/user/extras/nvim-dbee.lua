@@ -10,17 +10,18 @@ local M = {
     --    "curl", "wget", "bitsadmin", "go"
     require("dbee").install()
   end,
-  config = function()
-    local dbee = require "dbee"
-    local s = require "dbee.sources"
-    dbee.setup {
-      sources = {
-        s.EnvSource:new "DBEE_CONNECTIONS",
-        s.FileSource:new(vim.fn.stdpath "cache" .. "/dbee/persistence.json"),
-      },
-    }
-  end,
 }
+
+function M.config()
+  local dbee = require "dbee"
+  local s = require "dbee.sources"
+  dbee.setup {
+    sources = {
+      s.EnvSource:new "DBEE_CONNECTIONS",
+      s.FileSource:new(vim.fn.stdpath "cache" .. "/dbee/persistence.json"),
+    },
+  }
+end
 
 -- dbee起動時はbufferlineを非表示にする
 vim.api.nvim_create_autocmd("FileType", {

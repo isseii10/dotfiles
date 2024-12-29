@@ -67,6 +67,7 @@ function M.config()
       -- ファイルが変更されている場合のみ処理
       if vim.bo.modified then
         harpoon:list():add()
+        vim.cmd ":do User"
       end
     end,
   })

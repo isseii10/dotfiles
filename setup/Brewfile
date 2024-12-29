@@ -1,7 +1,7 @@
 tap "danvergara/tools"
 tap "homebrew/bundle"
 tap "jesseduffield/lazygit"
-brew "asdf"
+brew "bat"
 brew "bottom"
 brew "bzip2"
 brew "eza"

@@ -7,11 +7,6 @@ setopt share_history
 setopt inc_append_history
 setopt auto_param_keys
 
-export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$GOPATH/bin
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
-
 alias vi="nvim"
 alias vim="nvim"
 alias nv="nvim"
@@ -20,24 +15,31 @@ alias ls='eza'
 alias tree='eza --tree'
 alias cat='bat'
 
+# obsidian
+export OBSIDIAN_VAULT_PATH="$HOME/obsidian/engineering"
+# Android Studio
+export ANDROID_HOME=$HOME/Library/Android/sdk
+
+# path
+. "$HOME/.cargo/env"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export GOPATH=$(go env GOPATH)
+
+# fzf default command
+export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/*,.git/*}"'
+
 # starship
 eval "$(starship init zsh)"
 
-export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/*,.git/*}"'
-
 # mise
-
 if type mise &>/dev/null; then
   eval "$(mise activate zsh)" # this sets up interactive sessions
 fi
-
-# Android Studio
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/emulator:$PATH
-
-# obsidian
-export OBSIDIAN_VAULT_PATH="$HOME/obsidian/engineering"
 
 # plugins
 if type brew &>/dev/null; then

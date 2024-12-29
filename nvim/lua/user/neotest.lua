@@ -22,7 +22,7 @@ local M = {
     "lawrence-laz/neotest-zig",
     "rcasia/neotest-bash",
   },
-  event = "VeryLazy",
+  event = "BufRead",
 }
 
 function M.config()
@@ -66,7 +66,7 @@ function M.config()
     {
       "<leader>to",
       function()
-        require("neotest").output.open({ enter = true, auto_close = true, last_run = true })
+        require("neotest").output.open { enter = true, auto_close = true, last_run = true }
       end,
       desc = "Test Output",
     },
@@ -106,10 +106,10 @@ function M.config()
     consumers = {
 
       always_open_output = function(client)
-        local async = require("neotest.async")
+        local async = require "neotest.async"
 
         client.listeners.results = function(adapter_id, results)
-          local file_path = async.fn.expand("%:p")
+          local file_path = async.fn.expand "%:p"
           local row = async.fn.getpos(".")[2] - 1
           local position = client:get_nearest(file_path, row, {})
           if not position then
@@ -119,7 +119,7 @@ function M.config()
           if not results[pos_id] then
             return
           end
-          neotest.output.open({ position_id = pos_id, adapter = adapter_id })
+          neotest.output.open { position_id = pos_id, adapter = adapter_id }
         end
       end,
     },

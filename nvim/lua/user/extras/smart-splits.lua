@@ -1,4 +1,7 @@
-local M = { "mrjones2014/smart-splits.nvim" }
+local M = {
+  "mrjones2014/smart-splits.nvim",
+  event = "VeryLazy",
+}
 
 function M.config()
   require("smart-splits").setup {

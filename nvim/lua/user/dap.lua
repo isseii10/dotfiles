@@ -6,7 +6,7 @@ local M = {
     -- languages
     "leoluz/nvim-dap-go",
   },
-  event = "BufEnter",
+  event = "VeryLazy",
 }
 
 function M.config()

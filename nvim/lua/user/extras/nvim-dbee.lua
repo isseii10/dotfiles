@@ -10,6 +10,8 @@ local M = {
     --    "curl", "wget", "bitsadmin", "go"
     require("dbee").install()
   end,
+  filetypes = { "sql" },
+  event = "VeryLazy",
 }
 
 function M.config()

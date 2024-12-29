@@ -1,6 +1,6 @@
 local M = {
   "lukas-reineke/indent-blankline.nvim",
-  event = "BufEnter",
+  event = "VeryLazy",
   commit = "9637670896b68805430e2f72cf5d16be5b97a22a",
 }
 

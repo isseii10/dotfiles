@@ -1,7 +1,7 @@
 local M = {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
-  event = "BufEnter",
+  event = "VeryLazy",
 }
 
 function M.config()
@@ -13,13 +13,14 @@ function M.config()
     require("todo-comments").jump_prev()
   end, { desc = "Previous todo comment" })
 
-
   require("todo-comments").setup {}
 end
 
 return M
 
--- TODO: a
--- WARN: b
--- FIXME: b
-
+-- TODO:
+-- INFO:
+-- NOTE:
+-- WARN:
+-- FIXME:
+-- BUG:

@@ -1,8 +1,10 @@
 local M = {
   "nvim-tree/nvim-tree.lua",
-  event = "VeryLazy",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
+  },
+  keys = {
+    { "<leader>e" },
   },
 }
 
@@ -120,4 +122,3 @@ function M.config()
 end
 
 return M
-

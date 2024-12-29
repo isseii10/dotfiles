@@ -89,7 +89,7 @@ function M.config()
     state.update_callback()
   end
 
-  vim.api.nvim_create_autocmd({ "BufWinEnter", "BufAdd", "BufLeave" }, {
+  vim.api.nvim_create_autocmd({ "BufWinEnter", "BufAdd", "BufLeave", "User" }, {
     callback = refresh_all_harpoon_tabs,
   })
 

@@ -1,6 +1,6 @@
 local M = {
   "SmiteshP/nvim-navic",
-  event = "BufEnter",
+  event = "VeryLazy",
 }
 
 function M.config()

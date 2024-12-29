@@ -1,7 +1,3 @@
-zmodload zsh/zprof
-if [ $? = 0 ]; then
-  zprof
-fi
 . "$HOME/.cargo/env"
 
 # XDG

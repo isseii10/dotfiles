@@ -1,4 +1,5 @@
 . "$HOME/.cargo/env"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # XDG
 export XDG_CONFIG_HOME=${HOME}/.config

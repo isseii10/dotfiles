@@ -15,8 +15,7 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 -- position and size
 local mux = wezterm.mux
 wezterm.on("gui-startup", function(cmd)
-	local tab, pane, window = mux.spawn_window(cmd or { width = 180, height = 180 })
-	-- window:set_inner_size(800, 1020)
+	local tab, pane, window = mux.spawn_window(cmd or { width = 204, height = 180 })
 end)
 
 -- font

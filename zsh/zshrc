@@ -17,6 +17,7 @@ alias vim="nvim"
 alias nv="nvim"
 alias nvdb='nvim -c "lua require(\"dbee\").open()"'
 alias ls='eza'
+alias tree='eza --tree'
 
 # starship
 eval "$(starship init zsh)"

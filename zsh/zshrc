@@ -23,7 +23,7 @@ alias cat='bat'
 # starship
 eval "$(starship init zsh)"
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/*,.git/*}"'
 
 # mise
 

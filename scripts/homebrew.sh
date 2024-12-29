@@ -17,10 +17,13 @@ else
 fi
 
 # Brewfileからインストール
-if [[ -f "~/dotfiles/scripts/Brewfile" ]]; then
+brewfile_path=${HOME}/dotfiles/scripts/Brewfile
+echo "$brewfile_path"
+
+if [[ -f "$brewfile_path" ]]; then
   echo "Brewfile found. Installing packages..."
 
-  brew bundle --file="$HOME/dotfiles/scripts/Brewfile" --cleanup
+  brew bundle --file="$brewfile_path"
 
   echo "Packages from Brewfile installed."
 else

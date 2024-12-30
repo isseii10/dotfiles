@@ -12,3 +12,6 @@ export HISTSIZE=100000
 # 履歴ファイルに保存される履歴の件数
 export SAVEHIST=100000
 export HISTFILESIZE=100000
+
+# bat
+export BAT_THEME="Nord"

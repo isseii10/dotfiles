@@ -4,6 +4,7 @@ require "user.keymaps"
 require "user.autocmds"
 
 spec "user.colorschemes.onenord"
+-- spec "user.colorschemes.nord"
 spec "user.devicons"
 spec "user.treesitter"
 spec "user.schemastore"

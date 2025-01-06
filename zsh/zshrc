@@ -61,6 +61,8 @@ if type brew &>/dev/null; then
   bindkey '^[[B' history-substring-search-down
 fi
 
+bindkey '^[[1;6K' kill-line # ctrl shift k
+
 # completion
 zstyle ':completion:*:default' menu select=2
 # 補完の表示を強化する

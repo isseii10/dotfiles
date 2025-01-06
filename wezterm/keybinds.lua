@@ -3,6 +3,12 @@ local act = wezterm.action
 
 return {
 	keys = {
+		-- エスケープシーケンス
+		{
+			key = "K", -- ctrl shift kをzshで使えるようにエスケープシーケンスを送信する
+			mods = "CTRL|SHIFT",
+			action = wezterm.action.SendString("\x1b[1;6K"),
+		},
 		-- split panes
 		{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 		{ key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },

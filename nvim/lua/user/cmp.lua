@@ -49,6 +49,15 @@ local M = {
       "ray-x/cmp-treesitter",
       event = "InsertEnter",
     },
+    {
+      "MattiasMTS/cmp-dbee",
+      ft = "sql", -- optional but good to have
+      opts = {
+        completion = {
+          keyword_length = 2,
+        },
+      }, -- needed
+    },
   },
 }
 
@@ -151,7 +160,7 @@ function M.config()
       { name = "calc" },
       { name = "emoji" },
       { name = "treesitter" },
-      { name = "cmp-dbee" },
+      -- { name = "cmp-dbee" }, -- 動かない modelがnil
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,

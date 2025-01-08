@@ -54,5 +54,6 @@ spec "user.extras.treesj"
 spec "user.extras.obsidian"
 spec "user.extras.smart-splits"
 spec "user.extras.nvim-dbee"
+spec "user.extras.registers"
 
 require "user.lazy"

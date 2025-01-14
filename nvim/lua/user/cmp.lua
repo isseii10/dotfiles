@@ -43,20 +43,15 @@ local M = {
         { "kndndrj/nvim-dbee" },
       },
       ft = "sql", -- optional but good to have
-      opts = {}, -- needed
-    },
-    {
-      "ray-x/cmp-treesitter",
-      event = "InsertEnter",
-    },
-    {
-      "MattiasMTS/cmp-dbee",
-      ft = "sql", -- optional but good to have
       opts = {
         completion = {
           keyword_length = 2,
         },
-      }, -- needed
+      },
+    },
+    {
+      "ray-x/cmp-treesitter",
+      event = "InsertEnter",
     },
   },
 }
@@ -144,6 +139,11 @@ function M.config()
         if entry.source.name == "cmp_tabnine" then
           vim_item.kind = icons.misc.Robot
           vim_item.kind_hl_group = "CmpItemKindTabnine"
+        end
+
+        if entry.source.name == "copilot" then
+          vim_item.kind = icons.git.Copilot
+          vim_item.kind_hl_group = "CmpItemKindCopilot"
         end
 
         return vim_item

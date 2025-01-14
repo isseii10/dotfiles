@@ -81,10 +81,7 @@ return {
 			mods = "LEADER",
 			key = "r",
 			action = act.PromptInputLine({
-				description = string.format(
-					"(wezterm) Rename workspace title <%s> to:",
-					wezterm.mux.get_active_workspace()
-				),
+				description = "(wezterm) Rename workspace title: ['ESC': cancel]", -- 動的にdescriptionを変化させられないみたい
 				action = wezterm.action_callback(function(win, pane, line)
 					if line then
 						wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)

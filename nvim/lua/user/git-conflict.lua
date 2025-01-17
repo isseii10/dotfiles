@@ -1,6 +1,7 @@
 local M = {
   "akinsho/git-conflict.nvim",
   version = "*",
+  config = true,
   opts = {
     default_mappings = false, -- disable buffer local mapping created by this plugin
     default_commands = true, -- disable commands created by this plugin

@@ -41,6 +41,7 @@ spec "user.git-conflict"
 spec "user.ts-autotag"
 
 spec "user.extras.copilot"
+spec "user.extras.avante"
 spec "user.extras.neoscroll"
 spec "user.extras.ufo"
 spec "user.extras.eyeliner"

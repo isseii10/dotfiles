@@ -13,6 +13,17 @@ return {
       auto_apply_diff_after_generation = true,
       support_paste_from_clipboard = true,
     },
+    mappings = {
+      diff = {
+        ours = "gco",
+        theirs = "gct",
+        all_theirs = "gca",
+        both = "gcb",
+        cursor = "gcc",
+        next = "]x",
+        prev = "[x",
+      },
+    },
     windows = {
       position = "right",
       width = 30,
@@ -22,6 +33,7 @@ return {
         border = "rounded",
       },
     },
+    hints = { enabled = false },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",

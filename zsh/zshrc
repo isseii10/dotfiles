@@ -29,14 +29,14 @@ export OBSIDIAN_VAULT_PATH="$HOME/obsidian/engineering"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 
 # path
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$ANDROID_HOME/emulator"
-export GOPATH=$(go env GOPATH)
+# export GOPATH=$(go env GOPATH)
 
 # fzf default command
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/*,.git/*}"'

@@ -3,6 +3,7 @@
 # dotfiles dir
 dotfiles_dir=${HOME}/dotfiles
 config_dir=${HOME}/.config
+# なかったら作成
 
 create_symlink() {
   local target="$1" # リンク元
@@ -28,3 +29,5 @@ create_symlink ${dotfiles_dir}/wezterm ${config_dir}/wezterm
 create_symlink ${dotfiles_dir}/nvim ${config_dir}/nvim
 # starship
 create_symlink ${dotfiles_dir}/starship.toml ${config_dir}/starship.toml
+# karabiner
+create_symlink ${dotfiles_dir}/karabiner ${config_dir}/karabiner

@@ -113,6 +113,7 @@ function M.config()
     "terraformls",
     "marksman",
     "sqlls",
+    "prismals",
   }
 
   local default_diagnostic_config = {

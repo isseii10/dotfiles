@@ -42,6 +42,7 @@ function M.config()
       "marksman", -- markdown
       "sqlls",
       "bashls",
+      "prismals",
     },
   }
 

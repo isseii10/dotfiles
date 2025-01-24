@@ -22,6 +22,7 @@ function M.config()
       "proto",
       "terraform",
       "sql",
+      "yaml",
     },
     sync_install = false,
     auto_install = false,

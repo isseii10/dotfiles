@@ -149,17 +149,17 @@ function M.config()
         return vim_item
       end,
     },
-    sources = {
+    sources = { -- この順番で補完候補が表示される
       { name = "copilot" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "cmp_tabnine" },
+      -- { name = "cmp_tabnine" },
       { name = "nvim_lua" },
+      { name = "treesitter" },
       { name = "buffer" },
       { name = "path" },
       { name = "calc" },
       { name = "emoji" },
-      { name = "treesitter" },
       -- { name = "cmp-dbee" }, -- 動かない modelがnil
     },
     confirm_opts = {
@@ -206,6 +206,7 @@ function M.config()
       completeopt = "menu,menuone,noinsert,noselect",
     },
   })
+  print(vim.inspect(require("copilot").config))
 end
 
 return M

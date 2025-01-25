@@ -114,6 +114,7 @@ function M.config()
     "marksman",
     "sqlls",
     "prismals",
+    "tailwindcss",
   }
 
   local default_diagnostic_config = {

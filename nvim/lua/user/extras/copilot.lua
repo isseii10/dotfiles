@@ -10,6 +10,7 @@ local M = {
 function M.config()
   require("copilot").setup {
     panel = {
+      enabled = false,
       keymap = {
         jump_next = "<c-j>",
         jump_prev = "<c-k>",
@@ -19,7 +20,7 @@ function M.config()
       },
     },
     suggestion = {
-      enabled = true,
+      enabled = false,
       auto_trigger = true,
       keymap = {
         accept = "<c-l>",

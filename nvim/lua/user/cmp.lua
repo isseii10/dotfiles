@@ -150,8 +150,8 @@ function M.config()
       end,
     },
     sources = { -- この順番で補完候補が表示される
-      { name = "copilot" },
       { name = "nvim_lsp" },
+      { name = "copilot" },
       { name = "luasnip" },
       -- { name = "cmp_tabnine" },
       { name = "nvim_lua" },

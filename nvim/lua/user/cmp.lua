@@ -153,6 +153,7 @@ function M.config()
       { name = "nvim_lsp" },
       { name = "copilot" },
       { name = "luasnip" },
+      { name = "cmp-dbee" },
       -- { name = "cmp_tabnine" },
       { name = "nvim_lua" },
       { name = "treesitter" },
@@ -160,7 +161,6 @@ function M.config()
       { name = "path" },
       { name = "calc" },
       { name = "emoji" },
-      -- { name = "cmp-dbee" }, -- 動かない modelがnil
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,

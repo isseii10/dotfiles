@@ -37,16 +37,17 @@ export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 
+# mise path (path設定の後にやる)
+if type mise &>/dev/null; then
+  eval "$(mise activate zsh)" # this sets up interactive sessions
+fi
+
 # fzf default command
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/*,.git/*}"'
 
 # starship
 eval "$(starship init zsh)"
 
-# mise
-if type mise &>/dev/null; then
-  eval "$(mise activate zsh)" # this sets up interactive sessions
-fi
 
 # plugins
 if type brew &>/dev/null; then

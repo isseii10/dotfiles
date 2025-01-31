@@ -149,11 +149,11 @@ function M.config()
         return vim_item
       end,
     },
-    sources = { -- この順番で補完候補が表示される
+    sources = { -- この順番で補完候補が表示される?
       { name = "nvim_lsp" },
       { name = "copilot" },
       { name = "luasnip" },
-      { name = "cmp-dbee" },
+      -- { name = "cmp-dbee" },
       -- { name = "cmp_tabnine" },
       { name = "nvim_lua" },
       { name = "treesitter" },

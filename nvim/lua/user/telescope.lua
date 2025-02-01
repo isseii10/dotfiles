@@ -1,9 +1,25 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make",                        lazy = true },
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension "fzf"
+      end,
+    },
     { "nvim-telescope/telescope-frecency.nvim" },
-    { "mike-jl/harpoonEx",                        opts = { reload_on_dir_change = true } },
+    {
+      "danielfalk/smart-open.nvim",
+      branch = "0.2.x",
+      dependencies = {
+        "kkharji/sqlite.lua",
+      },
+      config = function()
+        require("telescope").load_extension "smart_open"
+      end,
+    },
+    { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true } },
   },
   event = "VeryLazy",
 }
@@ -33,16 +49,21 @@ function M.config()
     --   "<cmd>Telescope find_files<cr>",
     --   desc = "Find files",
     -- },
+    -- {
+    --   "<leader>ff",
+    --   "<cmd>Telescope frecency workspace=CWD theme=dropdown prompt_title=Find\\ Files<cr>",
+    --   desc = "Find Files (Frecency)",
+    -- },
     {
       "<leader>ff",
-      "<cmd>Telescope frecency workspace=CWD theme=dropdown prompt_title=Find\\ Files<cr>",
-      desc = "Find Files Frecency",
+      "<cmd>Telescope smart_open cwd_only=true theme=dropdown prompt_title=Find\\ Files<cr>",
+      desc = "Find Files (Smart Open)",
     },
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    { "<leader>fl", "<cmd>Telescope resume<cr>",    desc = "Last Search" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>",  desc = "Recent File" },
-    { "<leader>fk", "<cmd>Telescope keymaps<cr>",   desc = "Key Maps" },
+    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
   }
   local icons = require "user.icons"
   local actions = require "telescope.actions"
@@ -153,10 +174,10 @@ function M.config()
     },
     extensions = {
       fzf = {
-        fuzzy = true,                   -- false will only do exact matching
+        fuzzy = true, -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true,    -- override the file sorter
-        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+        override_file_sorter = true, -- override the file sorter
+        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
       harpoonEx = {
         theme = "dropdown",
@@ -185,6 +206,10 @@ function M.config()
         },
       },
 
+      smart_open = {
+        match_algorithm = "fzf",
+        disable_devicons = false,
+      },
       frecency = {
         auto_validate = false,
         matcher = "fuzzy",

@@ -53,6 +53,14 @@ local M = {
       "ray-x/cmp-treesitter",
       event = "InsertEnter",
     },
+    {
+      "zbirenbaum/copilot-cmp",
+      event = { "InsertEnter", "LspAttach" },
+      fix_pairs = true,
+      config = function()
+        require("copilot_cmp").setup()
+      end,
+    },
   },
 }
 
@@ -67,11 +75,37 @@ function M.config()
 
   local icons = require "user.icons"
 
+  local has_words_before = function()
+    if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+      return false
+    end
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match "^%s*$" == nil
+  end
+
   cmp.setup {
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body) -- For `luasnip` users.
       end,
+    },
+    sorting = {
+      priority_weight = 2,
+      comparators = {
+        require("copilot_cmp.comparators").prioritize,
+        -- Below is the default comparitor list and order for nvim-cmp
+
+        cmp.config.compare.offset,
+        -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.locality,
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      },
     },
     mapping = cmp.mapping.preset.insert {
       ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
@@ -88,9 +122,10 @@ function M.config()
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
       ["<CR>"] = cmp.mapping.confirm { select = true },
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
+
+      ["<Tab>"] = vim.schedule_wrap(function(fallback)
+        if cmp.visible() and has_words_before() then
+          cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
         elseif luasnip.expandable() then
           luasnip.expand()
         elseif luasnip.expand_or_jumpable() then
@@ -98,10 +133,7 @@ function M.config()
         else
           fallback()
         end
-      end, {
-        "i",
-        "s",
-      }),
+      end),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
@@ -154,7 +186,6 @@ function M.config()
       { name = "copilot" },
       { name = "luasnip" },
       -- { name = "cmp-dbee" },
-      -- { name = "cmp_tabnine" },
       { name = "nvim_lua" },
       { name = "treesitter" },
       { name = "buffer" },
@@ -206,7 +237,6 @@ function M.config()
       completeopt = "menu,menuone,noinsert,noselect",
     },
   })
-  print(vim.inspect(require("copilot").config))
 end
 
 return M

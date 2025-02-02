@@ -8,7 +8,7 @@ local M = {
     fix_pairs = true,
     config = function()
       require("copilot_cmp").setup()
-    end
+    end,
   },
 }
 
@@ -35,7 +35,7 @@ function M.config()
       -- },
     },
     filetypes = {
-      markdown = true,
+      markdown = false,
       help = false,
       gitcommit = false,
       gitrebase = false,

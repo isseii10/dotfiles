@@ -39,7 +39,7 @@ function M.config()
       "cssls",
       "tailwindcss",
       "pyright",
-      "marksman", -- markdown
+      "markdown_oxide", -- markdown
       "sqlls",
       "bashls",
       "prismals",
@@ -49,18 +49,18 @@ function M.config()
   mason_tool_installer.setup {
     ensure_installed = {
       -- linter
-      "pylint", -- python
+      "pylint",       -- python
       "eslint_d",
       "markdownlint", -- markdown
-      "protolint", -- protobuf
+      "protolint",    -- protobuf
 
       -- formatter
       "prettierd", -- prettier formatter
-      "prettier", -- prettier formatter
-      "stylua", -- lua formatter
-      "isort", -- python formatter
-      "black", -- python formatter
-      "shfmt", -- sh
+      "prettier",  -- prettier formatter
+      "stylua",    -- lua formatter
+      "isort",     -- python formatter
+      "black",     -- python formatter
+      "shfmt",     -- sh
     },
   }
 end

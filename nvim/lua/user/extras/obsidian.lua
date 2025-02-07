@@ -18,8 +18,8 @@ function M.config()
     -- current markdown file being edited.
     workspaces = {
       {
-        name = "engineering",
-        path = "~/obsidian/engineering",
+        name = "obsidian",
+        path = "~/obsidian/",
       },
     },
     daily_notes = {

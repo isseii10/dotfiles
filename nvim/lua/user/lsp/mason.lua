@@ -62,6 +62,7 @@ function M.config()
       "black",     -- python formatter
       "shfmt",     -- sh
     },
+    run_on_start = true,
   }
 end
 

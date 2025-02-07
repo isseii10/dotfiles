@@ -13,7 +13,7 @@ return {
       javascriptreact = { "eslint_d" },
       typescriptreact = { "eslint_d" },
       -- markdown = { "markdownlint" },
-      python = { "pylint" },
+      python = { "pylint" }, -- pylintはmasonじゃなくてmiseで入れたpythonのpipで入れる
       go = { "golangcilint" },
       proto = { "protolint" },
     }
@@ -26,8 +26,5 @@ return {
         lint.try_lint()
       end,
     })
-    -- Set pylint to work in mise env
-    require("lint").linters.pylint.cmd = "python"
-    require("lint").linters.pylint.args = { "-m", "pylint", "-f", "json" }
   end,
 }

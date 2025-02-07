@@ -8,7 +8,6 @@ local M = {
         require("telescope").load_extension "fzf"
       end,
     },
-    { "nvim-telescope/telescope-frecency.nvim" },
     {
       "danielfalk/smart-open.nvim",
       branch = "0.2.x",
@@ -49,11 +48,6 @@ function M.config()
     --   "<cmd>Telescope find_files<cr>",
     --   desc = "Find files",
     -- },
-    -- {
-    --   "<leader>ff",
-    --   "<cmd>Telescope frecency workspace=CWD theme=dropdown prompt_title=Find\\ Files<cr>",
-    --   desc = "Find Files (Frecency)",
-    -- },
     {
       "<leader>ff",
       "<cmd>Telescope smart_open cwd_only=true theme=dropdown prompt_title=Find\\ Files<cr>",
@@ -64,6 +58,24 @@ function M.config()
     { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+    {
+      "<space>fj",
+      function()
+        local jumplist = vim.fn.getjumplist()
+        require("telescope.builtin").jumplist {
+          on_complete = {
+            function(self)
+              -- select current
+              local n = #jumplist[1]
+              if n ~= jumplist[2] then
+                self:move_selection(jumplist[2] - #jumplist[1] + 1)
+              end
+            end,
+          },
+        }
+      end,
+      desc = "Jumplists",
+    },
   }
   local icons = require "user.icons"
   local actions = require "telescope.actions"
@@ -117,6 +129,10 @@ function M.config()
       },
 
       grep_string = {
+        theme = "dropdown",
+      },
+
+      jumplist = {
         theme = "dropdown",
       },
 

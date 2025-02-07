@@ -1,4 +1,4 @@
-return {
+local M = {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
@@ -76,3 +76,5 @@ return {
     },
   },
 }
+
+return M

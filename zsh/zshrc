@@ -22,7 +22,8 @@ alias nvdb='nvim -c "lua require(\"dbee\").open()"'
 alias ls='eza'
 alias tree='eza --tree'
 alias cat='bat'
-alias dotfiles='cd $HOME/dotfiles'
+alias dot='cd $HOME/dotfiles'
+alias config='cd $HOME/.config'
 
 # obsidian
 export OBSIDIAN_VAULT_PATH="$HOME/obsidian/engineering"

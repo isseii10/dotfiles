@@ -33,9 +33,15 @@ function M.config()
       -- Trigger completion at 2 chars.
       min_chars = 2,
     },
-    -- ui = {
-    --   enable = false
-    -- },
+    ui = {
+      checkboxes = {
+        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+        ["x"] = { char = "", hl_group = "ObsidianDone" },
+        -- [">"] = { char = "", hl_group = "ObsidianRightArrow" },
+        -- ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+        -- ["!"] = { char = "", hl_group = "ObsidianImportant" },
+      },
+    },
   }
 end
 

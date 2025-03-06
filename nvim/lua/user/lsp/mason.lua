@@ -40,7 +40,6 @@ function M.config()
       "tailwindcss",
       "pyright",
       "markdown_oxide", -- markdown
-      "sqls",
       "bashls",
       "prismals",
     },

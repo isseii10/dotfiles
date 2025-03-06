@@ -112,7 +112,6 @@ function M.config()
     "gopls",
     "terraformls",
     "markdown_oxide",
-    "sqls",
     "prismals",
     "tailwindcss",
   }

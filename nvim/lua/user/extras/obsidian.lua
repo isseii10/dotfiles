@@ -43,6 +43,43 @@ function M.config()
       },
     },
   }
+
+  require("which-key").add {
+    {
+      "<leader>o",
+      group = "Obsidian",
+    },
+    {
+      "<leader>oo",
+      "<cmd>ObsidianOpen<cr>",
+      desc = "open obsidian",
+    },
+    {
+      "<leader>on",
+      "<cmd>ObsidianNew<cr>",
+      desc = "new note",
+    },
+    {
+      "<leader>ot",
+      "<cmd>ObsidianTags<cr>",
+      desc = "tags",
+    },
+    {
+      "<leader>ob",
+      "<cmd>ObsidianBacklinks<CR>",
+      desc = "backlinks",
+    },
+    {
+      "<leader>od",
+      "<cmd>ObsidianToday<cr>",
+      desc = "today's daily notes",
+    },
+    {
+      "<leader>op",
+      "<cmd>ObsidianPastImg<cr>",
+      desc = "past image from clipboard",
+    },
+  }
 end
 
 return M

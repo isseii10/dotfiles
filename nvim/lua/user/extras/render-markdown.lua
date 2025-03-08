@@ -10,6 +10,11 @@ local M = {
     bullet = {
       right_pad = 1,
     },
+    pipe_table = {
+      head = "RenderMarkdownTableHead",
+      row = "RenderMarkdownTableRow",
+      filler = "RenderMarkdownTableRow",
+    },
   },
 }
 

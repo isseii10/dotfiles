@@ -30,7 +30,11 @@ function M.display_dir_name()
   end
 
   -- project を含む相対パスを取得
-  relative_path = root_path .. "/" .. relative_path
+  if relative_path == "N/A" then
+    relative_path = root_path
+  else
+    relative_path = root_path .. "/" .. relative_path
+  end
   -- テキストの長さを制限
   local max_length = 50 -- 仮想テキストの最大長さ
   if #relative_path > max_length then

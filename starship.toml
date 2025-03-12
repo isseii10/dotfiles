@@ -42,7 +42,7 @@ $cmd_duration\
 $status\
 """
 
-palette = 'gruvbox_dark'
+palette = 'onenord'
 
 [palettes.default]
 
@@ -118,6 +118,31 @@ color_duration = '#282828'
 color_vimcmd_ok = '#689d6a'
 color_vimcmd_replace = '#b16286'
 color_vimcmd_visual = '#d79921'
+
+[palettes.onenord]
+
+color_ok = '#81A1C1'
+color_danger = '#BF616A'
+color_caution = '#EBCB8B'
+
+color_os = '#88C0D0'
+color_username = '#88C0D0'
+color_directory = '#EBCB8B'
+color_git = '#A3BE8C'
+color_git_added = '#A3BE8C'
+color_git_deleted = '#BF616A'
+color_env = '#5E81AC'
+color_kubernetes = '#B48EAD'
+color_docker = '#5E81AC'
+color_shell = '#D8DEE9'
+color_container = '#BF616A'
+color_other = '#D8DEE9'
+color_time = '#ECEFF4'
+color_duration = '#ECEFF4'
+
+color_vimcmd_ok = '#A3BE8C'
+color_vimcmd_replace = '#B48EAD'
+color_vimcmd_visual = '#EBCB8B'
 
 [os]
 disabled = false

@@ -127,7 +127,7 @@ color_caution = '#EBCB8B'
 
 color_os = '#88C0D0'
 color_username = '#88C0D0'
-color_directory = '#EBCB8B'
+color_directory = '#E0AF68'
 color_git = '#A3BE8C'
 color_git_added = '#A3BE8C'
 color_git_deleted = '#BF616A'
@@ -143,6 +143,31 @@ color_duration = '#ECEFF4'
 color_vimcmd_ok = '#A3BE8C'
 color_vimcmd_replace = '#B48EAD'
 color_vimcmd_visual = '#EBCB8B'
+
+[palettes.tokyonight]
+
+color_ok = '#7AA2F7'         # 青系のOK
+color_danger = '#F7768E'     # 赤系の警告色
+color_caution = '#E0AF68'    # 黄色系の注意色
+
+color_os = '#7DCFFF'         # 明るい青
+color_username = '#7DCFFF'
+color_directory = '#E0AF68'   # 黄色
+color_git = '#9ECE6A'         # 緑
+color_git_added = '#9ECE6A'
+color_git_deleted = '#F7768E'
+color_env = '#BB9AF7'         # 紫
+color_kubernetes = '#BB9AF7'
+color_docker = '#7AA2F7'
+color_shell = '#C0CAF5'       # 明るめのグレー
+color_container = '#F7768E'
+color_other = '#C0CAF5'
+color_time = '#A9B1D6'        # 白っぽい
+color_duration = '#A9B1D6'
+
+color_vimcmd_ok = '#9ECE6A'
+color_vimcmd_replace = '#BB9AF7'
+color_vimcmd_visual = '#E0AF68'
 
 [os]
 disabled = false

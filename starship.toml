@@ -169,6 +169,31 @@ color_vimcmd_ok = '#9ECE6A'
 color_vimcmd_replace = '#BB9AF7'
 color_vimcmd_visual = '#E0AF68'
 
+[palettes.catppuccin_mocha]
+
+color_ok = '#A6E3A1'
+color_danger = '#F38BA8'
+color_caution = '#F9E2AF'
+
+color_os = '#89B4FA'
+color_username = '#89B4FA'
+color_directory = '#F9E2AF'
+color_git = '#A6E3A1'
+color_git_added = '#A6E3A1'
+color_git_deleted = '#F38BA8'
+color_env = '#CBA6F7'
+color_kubernetes = '#F5C2E7'
+color_docker = '#89B4FA'
+color_shell = '#CDD6F4'
+color_container = '#F38BA8'
+color_other = '#CDD6F4'
+color_time = '#BAC2DE'
+color_duration = '#BAC2DE'
+
+color_vimcmd_ok = '#A6E3A1'
+color_vimcmd_replace = '#F5C2E7'
+color_vimcmd_visual = '#F9E2AF'
+
 [os]
 disabled = false
 style = "fg:color_os"

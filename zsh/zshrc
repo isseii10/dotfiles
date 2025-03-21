@@ -49,6 +49,8 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/
 # starship
 eval "$(starship init zsh)"
 
+# github token(ghのpathが通ったあと)
+export GITHUB_TOKEN=$(gh auth token)
 
 # plugins
 if type brew &>/dev/null; then

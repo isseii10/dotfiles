@@ -29,6 +29,8 @@ alias config='cd $HOME/.config'
 export OBSIDIAN_VAULT_PATH="$HOME/obsidian/engineering"
 # Android Studio
 export ANDROID_HOME=$HOME/Library/Android/sdk
+# manual pager
+export MANPAGER="nvim +Man!"
 
 # path
 # . "$HOME/.cargo/env"

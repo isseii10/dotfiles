@@ -9,7 +9,7 @@ end
 config.color_scheme = "tokyonight"
 
 -- window
-config.window_background_opacity = 0.88
+config.window_background_opacity = 0.9
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- position and size

@@ -58,5 +58,6 @@ spec "user.extras.nvim-dbee"
 spec "user.extras.registers"
 spec "user.extras.render-markdown"
 spec "user.extras.quicker"
+spec "user.extras.remote-nvim"
 
 require "user.lazy"

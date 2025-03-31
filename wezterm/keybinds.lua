@@ -44,15 +44,23 @@ return {
 				local current = wezterm.mux.get_active_workspace()
 				local workspaces = {}
 				for _, name in ipairs(wezterm.mux.get_workspace_names()) do
+					local label = ""
 					if current == name then
-						table.insert(workspaces, {
+						label = string.format("%s <- current", name)
+					else
+						label = string.format("%s", name)
+					end
+
+					if name == "default" then
+						-- default workspaceは先頭に表示
+						table.insert(workspaces, 1, {
 							id = name,
-							label = string.format("%s <- current", name),
+							label = label,
 						})
 					else
 						table.insert(workspaces, {
 							id = name,
-							label = string.format("%s", name),
+							label = label,
 						})
 					end
 				end

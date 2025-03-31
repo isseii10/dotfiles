@@ -23,7 +23,8 @@ end)
 -- font なかったら順次探しに行く設定
 config.font = wezterm.font_with_fallback({
 	"JetBrains Mono",
-	"ヒラギノ角ゴシック",
+	"Hiragino Sans",
+	-- "ヒラギノ角ゴシック",
 	"Symbols Nerd Font",
 	"Apple Color Emoji",
 })

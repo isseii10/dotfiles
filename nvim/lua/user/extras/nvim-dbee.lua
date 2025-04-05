@@ -21,9 +21,13 @@ function M.config()
       s.EnvSource:new "DBEE_CONNECTIONS",
       s.FileSource:new(vim.fn.stdpath "cache" .. "/dbee/persistence.json"),
     },
+    result = {
+      page_size = 500,
+      focus_result = false,
+    },
     window_layout = require("dbee.layouts").Default:new {
       drawer_width = 40, -- default 40
-      result_height = 40, -- default 20
+      result_height = 30, -- default 20
       call_log_height = 20, -- default 20
     },
   }

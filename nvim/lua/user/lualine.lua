@@ -23,23 +23,6 @@ local function get_attached_clients()
   end
 
   -- Generally, you should use either null-ls or nvim-lint + formatter.nvim, not both.
-
-  -- Add sources (from null-ls)
-  -- null-ls registers each source as a separate attached client, so we need to filter for unique names down below.
-  local null_ls_s, null_ls = pcall(require, "null-ls")
-  if null_ls_s then
-    local sources = null_ls.get_sources()
-    for _, source in ipairs(sources) do
-      if source._validated then
-        for ft_name, ft_active in pairs(source.filetypes) do
-          if ft_name == buf_ft and ft_active then
-            table.insert(buf_client_names, source.name)
-          end
-        end
-      end
-    end
-  end
-
   -- Add linters (from nvim-lint)
   local lint_s, lint = pcall(require, "lint")
   if lint_s then
@@ -89,6 +72,34 @@ local function get_attached_clients()
   return language_servers
 end
 
+-- copilot-lualine
+local copilot_lualine = {
+  "copilot",
+  -- Default values
+  symbols = {
+    status = {
+      icons = {
+        enabled = " ",
+        sleep = " ", -- auto-trigger disabled
+        disabled = " ",
+        warning = " ",
+        unknown = " ",
+      },
+      hl = {
+        enabled = "#50FA7B",
+        sleep = "#AEB7D0",
+        disabled = "#6272A4",
+        warning = "#FFB86C",
+        unknown = "#FF5555",
+      },
+    },
+    spinners = "dots", -- has some premade spinners
+    spinner_color = "#6272A4",
+  },
+  show_colors = false,
+  show_loading = true,
+}
+
 function M.config()
   require("lualine").setup {
     options = {
@@ -116,7 +127,11 @@ function M.config()
           path = 1,
         },
       },
-      lualine_x = { "copilot", get_attached_clients, "filetype" },
+      lualine_x = {
+        copilot_lualine,
+        get_attached_clients,
+        "filetype",
+      },
       lualine_y = { "progress" },
       lualine_z = {},
     },

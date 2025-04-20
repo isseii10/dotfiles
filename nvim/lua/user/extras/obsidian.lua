@@ -76,7 +76,7 @@ function M.config()
     },
     {
       "<leader>op",
-      "<cmd>ObsidianPastImg<cr>",
+      "<cmd>ObsidianPasteImg<cr>",
       desc = "past image from clipboard",
     },
   }

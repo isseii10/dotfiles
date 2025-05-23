@@ -19,6 +19,7 @@ local M = {
         go = { "goimports", "gofmt" },
         -- proto = { "buf" },
         sh = { "shfmt" },
+        yaml = { "ymlfmt" },
       },
       formatters = {
         prettier = {

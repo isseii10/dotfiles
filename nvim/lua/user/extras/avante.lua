@@ -15,11 +15,11 @@ local M = {
     },
     mappings = {
       diff = {
-        ours = "<leader>gco",
-        theirs = "<leader>gct",
-        all_theirs = "<leader>gca",
-        both = "<leader>gcb",
-        cursor = "<leader>gcc",
+        ours = "gco",
+        theirs = "gct",
+        all_theirs = "gca",
+        both = "gcb",
+        cursor = "gcc",
         next = "]x",
         prev = "[x",
       },

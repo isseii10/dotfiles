@@ -8,6 +8,7 @@ local M = {
   },
 }
 
+-- lsp-configでlsp関連の設定を行う
 local opts = { noremap = true, silent = true }
 local function add_desc(opts, desc)
   opts.desc = desc

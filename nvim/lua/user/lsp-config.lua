@@ -52,7 +52,7 @@ local default_diagnostic_config = {
 }
 vim.diagnostic.config(default_diagnostic_config)
 for _, sign in ipairs(default_diagnostic_config.signs.values) do
-  vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name, numhl = "" })
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 end
 
 return M

@@ -11,11 +11,11 @@ local M = {
 -- lsp-configでlsp関連の設定を行う
 
 -- lspキーマップ
-local opts = { noremap = true, silent = true }
 local function add_desc(opts, desc)
   opts.desc = desc
   return opts
 end
+local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 keymap("n", "gD", vim.lsp.buf.declaration, add_desc(opts, "go to declaration"))
 keymap("n", "gd", vim.lsp.buf.definition, add_desc(opts, "go to definition"))
@@ -35,12 +35,6 @@ local default_diagnostic_config = {
       [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
       [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
     },
-    linehl = {
-      [vim.diagnostic.severity.ERROR] = "DiagnosticUnderlineError",
-      [vim.diagnostic.severity.WARN] = "DiagnosticUnderlineWarn",
-      [vim.diagnostic.severity.INFO] = "DiagnosticUnderlineInfo",
-      [vim.diagnostic.severity.HINT] = "DIagnosticUnderlineHint",
-    },
     numhl = {
       [vim.diagnostic.severity.ERROR] = "DiagnosticError",
       [vim.diagnostic.severity.WARN] = "DiagnosticWarn",
@@ -50,7 +44,11 @@ local default_diagnostic_config = {
   },
   virtual_text = false,
   update_in_insert = false,
-  underline = false,
+  underline = true,
+  virtual_lines = {
+    severity = {},
+    format = nil,
+  },
   severity_sort = true,
   float = {
     focusable = true,

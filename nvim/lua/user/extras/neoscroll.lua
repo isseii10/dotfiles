@@ -3,7 +3,6 @@ local M = {
   event = { "BufReadPre", "BufNewFile" },
 }
 
-
 local function pre_hook()
   require("user.nvimtree.user-functions").clear_dir_name()
 end
@@ -14,7 +13,7 @@ local function post_hook()
 end
 
 function M.config()
-  neoscroll = require "neoscroll"
+  local neoscroll = require "neoscroll"
   neoscroll.setup {
     -- All these keys will be mapped to their corresponding default scrolling animation
     mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-e>", "<C-y>", "zt", "zz", "zb" },

@@ -31,8 +31,8 @@ keymap("x", "p", [["_dP]])
 -- more good
 keymap({ "n", "o", "x" }, "<s-h>", "^", opts)
 keymap({ "n", "o", "x" }, "<s-l>", "g_", opts)
-keymap({ "n", "o", "x" }, "<s-j>", "5j", opts)
-keymap({ "n", "o", "x" }, "<s-k>", "5k", opts)
+keymap({ "n", "o", "x" }, "<s-j>", "10j", opts)
+keymap({ "n", "o", "x" }, "<s-k>", "10k", opts)
 
 -- tailwind bearable to work with
 keymap({ "n", "x" }, "j", "gj", opts)

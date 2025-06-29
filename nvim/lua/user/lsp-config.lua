@@ -9,37 +9,48 @@ local M = {
 }
 
 -- lsp-configでlsp関連の設定を行う
+
+-- lspキーマップ
 local opts = { noremap = true, silent = true }
 local function add_desc(opts, desc)
   opts.desc = desc
   return opts
 end
 local keymap = vim.keymap.set
-keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", add_desc(opts, "go to declaration"))
-keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", add_desc(opts, "go to definition"))
-keymap("n", "<leader>k", "<cmd>lua vim.lsp.buf.hover()<CR>", add_desc(opts, "hover symbol"))
-keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", add_desc(opts, "go to inplementation"))
-keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", add_desc(opts, "go to references"))
+keymap("n", "gD", vim.lsp.buf.declaration, add_desc(opts, "go to declaration"))
+keymap("n", "gd", vim.lsp.buf.definition, add_desc(opts, "go to definition"))
+keymap("n", "<leader>k", vim.lsp.buf.hover, add_desc(opts, "hover symbol"))
+keymap("n", "gi", vim.lsp.buf.implementation, add_desc(opts, "go to inplementation"))
+keymap("n", "gr", vim.lsp.buf.references, add_desc(opts, "go to references"))
 keymap("n", "gl", vim.diagnostic.open_float, add_desc(opts, "open float diagnostic"))
 keymap("n", "lr", vim.lsp.buf.rename, add_desc(opts, "rename symbol"))
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
+-- diagnosticの設定
 local icons = require "user.icons"
-
 local default_diagnostic_config = {
   signs = {
-    active = true,
-    values = {
-      { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-      { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-      { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-      { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+      [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
+      [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
+      [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+    },
+    linehl = {
+      [vim.diagnostic.severity.ERROR] = "DiagnosticUnderlineError",
+      [vim.diagnostic.severity.WARN] = "DiagnosticUnderlineWarn",
+      [vim.diagnostic.severity.INFO] = "DiagnosticUnderlineInfo",
+      [vim.diagnostic.severity.HINT] = "DIagnosticUnderlineHint",
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "DiagnosticError",
+      [vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+      [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+      [vim.diagnostic.severity.HINT] = "DiagnosticHint",
     },
   },
   virtual_text = false,
   update_in_insert = false,
-  underline = true,
+  underline = false,
   severity_sort = true,
   float = {
     focusable = true,
@@ -51,8 +62,5 @@ local default_diagnostic_config = {
   },
 }
 vim.diagnostic.config(default_diagnostic_config)
-for _, sign in ipairs(default_diagnostic_config.signs.values) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-end
 
 return M

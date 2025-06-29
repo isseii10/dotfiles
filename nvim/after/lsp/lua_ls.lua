@@ -1,7 +1,5 @@
 -- https://luals.github.io/wiki/settings/
 return {
-  cmd = { "lua-language-server" },
-  filetypes = { "lua" },
   settings = {
     Lua = {
       format = {

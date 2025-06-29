@@ -1,16 +1,11 @@
 local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    {
-      "folke/neodev.nvim",
-    },
-  },
 }
 
--- lsp-configでlsp関連の設定を行う
+-- NOTE: lsp関連の設定をここで行う
 
--- lspキーマップ
+-- lspキーマップの設定
 local function add_desc(opts, desc)
   opts.desc = desc
   return opts

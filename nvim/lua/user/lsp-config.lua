@@ -41,7 +41,10 @@ local default_diagnostic_config = {
   update_in_insert = false,
   underline = true,
   virtual_lines = {
-    severity = {},
+    severity = {
+      min = vim.diagnostic.severity.HINT,
+      max = vim.diagnostic.severity.ERROR,
+    },
     format = nil,
   },
   severity_sort = true,

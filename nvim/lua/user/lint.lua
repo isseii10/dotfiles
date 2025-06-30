@@ -16,7 +16,7 @@ return {
       python = { "pylint" }, -- pylintはmasonじゃなくてmiseで入れたpythonのpipで入れる
       go = { "golangcilint" },
       proto = { "protolint" },
-      yaml = { "yamllint" },
+      -- yaml = { "yamllint" },
     }
 
     lint.linters.golangcilint = {

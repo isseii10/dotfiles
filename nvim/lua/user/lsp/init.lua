@@ -62,7 +62,7 @@ for file, ftype in vim.fs.dir(dirname) do
     -- 拡張子を除いてlsp名を作る
     local lsp_name = file:sub(1, -5) -- fname without '.lua'
     -- 読み込む
-    local ok, result = pcall(require, "lsp." .. servers)
+    local ok, result = pcall(require, "lsp." .. lsp_name)
     if ok then
       vim.lsp.config(lsp_name, result)
       table.insert(servers, lsp_name)

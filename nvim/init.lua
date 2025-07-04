@@ -2,6 +2,7 @@ require "user.launch"
 require "user.options"
 require "user.keymaps"
 require "user.autocmds"
+spec "user.schemastore"
 require "user.lsp"
 
 spec "user.colorschemes.onenord"

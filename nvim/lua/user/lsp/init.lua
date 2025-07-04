@@ -52,7 +52,7 @@ local default_diagnostic_config = {
 vim.diagnostic.config(default_diagnostic_config)
 
 -- afterディレクトリのlsp設定を読み込む
-local dirname = vim.fn.stdpath "config" .. "after/lsp"
+local dirname = vim.fn.stdpath "config" .. "/after/lsp"
 
 local servers = {}
 
@@ -62,7 +62,8 @@ for file, ftype in vim.fs.dir(dirname) do
     -- 拡張子を除いてlsp名を作る
     local lsp_name = file:sub(1, -5) -- fname without '.lua'
     -- 読み込む
-    local ok, result = pcall(require, "lsp." .. lsp_name)
+    local ok, result = pcall(dofile, dirname .. "/" .. file)
+    -- local ok, result = pcall(require, "lsp." .. lsp_name)
     if ok then
       vim.lsp.config(lsp_name, result)
       table.insert(servers, lsp_name)

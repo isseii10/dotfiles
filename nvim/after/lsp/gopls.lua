@@ -6,7 +6,7 @@ return {
         unusedparams = true,
         unreachable = true,
       },
-      staticcheck = true,
+      staticcheck = false,
       gofumpt = true,
     },
   },

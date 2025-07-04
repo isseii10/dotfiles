@@ -1,6 +1,6 @@
 -- NOTE: lsp関連の設定をここで行う
 
--- lspキーマップの設定
+-- -- lspキーマップの設定
 local function add_desc(opts, desc)
   opts.desc = desc
   return opts
@@ -35,10 +35,7 @@ local default_diagnostic_config = {
   virtual_text = false,
   update_in_insert = false,
   underline = true,
-  virtual_lines = {
-    severity = {},
-    format = nil,
-  },
+  virtual_lines = false,
   severity_sort = true,
   float = {
     focusable = true,
@@ -52,6 +49,7 @@ local default_diagnostic_config = {
 vim.diagnostic.config(default_diagnostic_config)
 
 -- afterディレクトリのlsp設定を読み込む
+-- nvim-lspconfigのデフォルトのlsp設定をカスタムしたい場合はafterディレクトリに設定ファイルを置く
 local dirname = vim.fn.stdpath "config" .. "/after/lsp"
 
 local servers = {}
@@ -63,7 +61,6 @@ for file, ftype in vim.fs.dir(dirname) do
     local lsp_name = file:sub(1, -5) -- fname without '.lua'
     -- 読み込む
     local ok, result = pcall(dofile, dirname .. "/" .. file)
-    -- local ok, result = pcall(require, "lsp." .. lsp_name)
     if ok then
       vim.lsp.config(lsp_name, result)
       table.insert(servers, lsp_name)

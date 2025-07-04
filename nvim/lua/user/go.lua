@@ -10,6 +10,10 @@ local M = {
 }
 
 M.config = function()
-  require("go").setup()
+  require("go").setup {
+    diagnostic = false,
+    lsp_cfg = false, -- false: do nothing
+    lsp_on_attach = nil, -- nil: do nothing
+  }
 end
 return M

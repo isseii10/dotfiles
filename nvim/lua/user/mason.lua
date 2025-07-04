@@ -4,16 +4,12 @@ local M = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
-  event = "VeryLazy",
+  event = "VimEnter", -- VimEnterより遅いとmason_tool_installerのensure_installedが機能しない
 }
 
 function M.config()
-  -- import mason
   local mason = require "mason"
-
-  -- import mason-lspconfig
   local mason_lspconfig = require "mason-lspconfig"
-
   local mason_tool_installer = require "mason-tool-installer"
 
   -- enable mason and configure icons
@@ -28,13 +24,13 @@ function M.config()
     },
   }
 
+  -- language servers
   mason_lspconfig.setup {
-    -- list of servers for mason to install
     ensure_installed = {
       "lua_ls",
       "gopls",
-      "yamlls",
       "ts_ls",
+      "yamlls",
       "html",
       "cssls",
       "tailwindcss",
@@ -43,23 +39,35 @@ function M.config()
       "bashls",
       "prismals",
     },
+    automatic_enable = true,
   }
 
+  -- linters and formatters and etc.
   mason_tool_installer.setup {
     ensure_installed = {
-      -- linter
-      "pylint", -- python
-      "eslint_d",
-      "markdownlint", -- markdown
-      "protolint", -- protobuf
-
-      -- formatter
-      "prettierd", -- prettier formatter
-      "prettier", -- prettier formatter
+      -- lua
       "stylua", -- lua formatter
+
+      -- go
+      "golangci-lint", -- linter
+      "goimports", -- formatter
+      "gofumpt", -- formatter
+      "gomodifytags", -- go tags
+      "delve", -- debugger
+
+      -- typescript
+      "eslint_d",
+      "prettierd", -- formatter
+      "prettier", -- formatter
+
+      -- python
+      "pylint", -- linter
       "isort", -- python formatter
       "black", -- python formatter
-      "shfmt", -- sh
+
+      "shfmt",
+      "markdownlint", -- markdown
+      "protolint", -- protobuf
     },
     run_on_start = true,
   }

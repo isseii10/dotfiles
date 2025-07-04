@@ -22,8 +22,8 @@ spec "user.go"
 spec "user.harpoon"
 spec "user.hlchunk"
 spec "user.illuminate"
--- spec "user.indent-blankline"
--- spec "user.indent-blankline-latest"
+-- spec "user.indent-blankline" -- hlchunkに慣れたら消す
+-- spec "user.indent-blankline-latest" -- hlchunkに慣れたら消す
 spec "user.lint"
 spec "user.lsp-signature"
 spec "user.lsp-config"

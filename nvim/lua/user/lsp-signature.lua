@@ -4,6 +4,7 @@ local M = {
 }
 
 M.opts = {
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
   floating_window = false,
   toggle_key = "<M-x>", -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
   toggle_key_flip_floatwin_setting = true, -- true: toggle floating_windows: true|false setting after toggle key pressed

@@ -38,6 +38,7 @@ function M.config()
       "markdown_oxide", -- markdown
       "bashls",
       "prismals",
+      "rust_analyzer",
     },
     automatic_enable = true,
   }
@@ -54,6 +55,9 @@ function M.config()
       "gofumpt", -- formatter
       "gomodifytags", -- go tags
       "delve", -- debugger
+
+      -- rust
+      "rustfmt",
 
       -- typescript
       "eslint_d",

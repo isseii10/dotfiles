@@ -20,6 +20,7 @@ local M = {
         -- proto = { "buf" },
         sh = { "shfmt" },
         yaml = { "ymlfmt" },
+        rust = { "rustfmt" },
       },
       -- formatters = {
       --   prettier = {

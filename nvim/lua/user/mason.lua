@@ -39,6 +39,7 @@ function M.config()
       "bashls",
       "prismals",
       "rust_analyzer",
+      "buf_ls",
     },
     automatic_enable = true,
   }

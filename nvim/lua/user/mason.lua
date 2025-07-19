@@ -58,7 +58,7 @@ function M.config()
       "delve", -- debugger
 
       -- rust
-      "rustfmt",
+      -- "rustfmt", -- rustupでインストールするので不要
 
       -- typescript
       "eslint_d",

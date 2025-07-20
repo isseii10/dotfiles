@@ -47,6 +47,17 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
+-- BufLeaveで保存する
+vim.api.nvim_create_autocmd("BufLeave", {
+  pattern = "*",
+  callback = function()
+    -- 条件: 書き込み可能でファイルタイプが無効でないもの
+    if vim.bo.modified and vim.bo.buftype == "" and vim.bo.filetype ~= "" then
+      vim.cmd "silent! write"
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank { higroup = "Search", timeout = 200 }

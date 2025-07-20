@@ -10,7 +10,7 @@ local M = {
     require("dbee").install()
   end,
   filetypes = { "sql" },
-  event = "VeryLazy",
+  cmd = "Dbee",
 }
 
 function M.config()
@@ -23,7 +23,7 @@ function M.config()
     },
     result = {
       page_size = 500,
-      focus_result = false,
+      focus_result = true,
     },
     window_layout = require("dbee.layouts").Default:new {
       drawer_width = 40, -- default 40

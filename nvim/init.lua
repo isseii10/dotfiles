@@ -22,8 +22,6 @@ spec "user.go"
 spec "user.harpoon"
 spec "user.hlchunk"
 spec "user.illuminate"
--- spec "user.indent-blankline" -- hlchunkに慣れたら消す
--- spec "user.indent-blankline-latest" -- hlchunkに慣れたら消す
 spec "user.lint"
 spec "user.lsp-signature"
 spec "user.lsp-config"
@@ -44,7 +42,7 @@ spec "user.ts-autotag"
 spec "user.whichkey"
 
 spec "user.extras.avante"
--- spec "user.extras.bqf"
+spec "user.extras.bqf"
 spec "user.extras.colorizer"
 spec "user.extras.copilot"
 spec "user.extras.dressing"

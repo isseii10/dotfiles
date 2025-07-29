@@ -25,6 +25,7 @@ function M.config()
     },
     daily_notes = {
       folder = "daily_notes",
+      default_tags = {},
     },
 
     -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.

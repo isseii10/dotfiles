@@ -8,7 +8,7 @@ spec "user.colorschemes.onenord"
 
 spec "user.alpha"
 spec "user.autopairs"
-spec "user.barbar"
+-- spec "user.barbar"
 spec "user.breadcrumbs"
 spec "user.cmp"
 spec "user.comment"

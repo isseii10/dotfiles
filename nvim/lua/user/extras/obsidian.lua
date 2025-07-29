@@ -33,8 +33,8 @@ function M.config()
       -- Trigger completion at 2 chars.
       min_chars = 2,
     },
-    ui = {
-      checkboxes = {
+    checkbox = {
+      order = {
         [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
         ["x"] = { char = "", hl_group = "ObsidianDone" },
         -- [">"] = { char = "", hl_group = "ObsidianRightArrow" },
@@ -51,32 +51,32 @@ function M.config()
     },
     {
       "<leader>oo",
-      "<cmd>ObsidianOpen<cr>",
+      "<cmd>Obsidian open<cr>",
       desc = "open obsidian",
     },
     {
       "<leader>on",
-      "<cmd>ObsidianNew<cr>",
+      "<cmd>Obsidian new<cr>",
       desc = "new note",
     },
     {
       "<leader>ot",
-      "<cmd>ObsidianTags<cr>",
+      "<cmd>Obsidian tags<cr>",
       desc = "tags",
     },
     {
       "<leader>ob",
-      "<cmd>ObsidianBacklinks<CR>",
+      "<cmd>Obsidian backlinks<CR>",
       desc = "backlinks",
     },
     {
       "<leader>od",
-      "<cmd>ObsidianToday<cr>",
+      "<cmd>Obsidian today<cr>",
       desc = "today's daily notes",
     },
     {
       "<leader>op",
-      "<cmd>ObsidianPasteImg<cr>",
+      "<cmd>Obsidian paste_img<cr>",
       desc = "past image from clipboard",
     },
   }

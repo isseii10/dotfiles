@@ -5,7 +5,7 @@ local M = {
     "nvim-tree/nvim-web-devicons",
     "ThePrimeagen/harpoon",
   },
-  event = "VeryLazy",
+  event = "BufReadPre",
 }
 
 function M.config()

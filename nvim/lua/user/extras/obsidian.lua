@@ -3,6 +3,9 @@ local M = {
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
+  cmd = {
+    "Obsidian",
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
   },

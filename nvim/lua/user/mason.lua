@@ -40,6 +40,7 @@ function M.config()
       "prismals",
       "rust_analyzer",
       "buf_ls",
+      "tombi", -- toml
     },
     automatic_enable = true,
   }

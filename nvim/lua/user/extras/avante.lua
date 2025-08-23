@@ -1,8 +1,27 @@
 local M = {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  lazy = false,
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  keys = {
+    {
+      "+",
+      function()
+        local tree_ext = require "avante.extensions.nvim_tree"
+        tree_ext.add_file()
+      end,
+      desc = "Select file in NvimTree",
+      ft = "NvimTree",
+    },
+    {
+      "-",
+      function()
+        local tree_ext = require "avante.extensions.nvim_tree"
+        tree_ext.remove_file()
+      end,
+      desc = "Deselect file in NvimTree",
+      ft = "NvimTree",
+    },
+  },
   opts = {
     provider = "copilot",
     auto_suggestions_provider = "copilot",

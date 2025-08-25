@@ -43,6 +43,7 @@ spec "user.whichkey"
 
 spec "user.extras.avante"
 spec "user.extras.bqf"
+spec "user.extras.claude-code"
 spec "user.extras.colorizer"
 spec "user.extras.copilot"
 spec "user.extras.dressing"

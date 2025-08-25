@@ -73,7 +73,6 @@ function M.config()
 
       "shfmt",
       "markdownlint", -- markdown
-      "protolint", -- protobuf
     },
     run_on_start = true,
   }

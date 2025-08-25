@@ -15,8 +15,6 @@ return {
       -- markdown = { "markdownlint" },
       python = { "pylint" }, -- pylintはmasonじゃなくてmiseで入れたpythonのpipで入れる
       go = { "golangcilint" },
-      proto = { "protolint" },
-      -- yaml = { "yamllint" },
     }
 
     lint.linters.golangcilint = {

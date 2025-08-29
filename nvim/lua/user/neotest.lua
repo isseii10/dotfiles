@@ -85,23 +85,23 @@ function M.config()
       require "neotest-vim-test" {
         ignore_file_types = { "python", "vim", "lua", "javascript", "typescript" },
       },
-      discovery = {
-        -- Drastically improve performance in ginormous projects by
-        -- only AST-parsing the currently opened buffer.
-        enabled = true,
-        -- Number of workers to parse files concurrently.
-        -- A value of 0 automatically assigns number based on CPU.
-        -- Set to 1 if experiencing lag.
-        concurrent = 0,
-      },
-      running = {
-        -- Run tests concurrently when an adapter provides multiple commands to run.
-        concurrent = true,
-      },
-      summary = {
-        -- Enable/disable animation of icons.
-        animated = true,
-      },
+    },
+    discovery = {
+      -- Drastically improve performance in ginormous projects by
+      -- only AST-parsing the currently opened buffer.
+      enabled = true,
+      -- Number of workers to parse files concurrently.
+      -- A value of 0 automatically assigns number based on CPU.
+      -- Set to 1 if experiencing lag.
+      concurrent = 0,
+    },
+    running = {
+      -- Run tests concurrently when an adapter provides multiple commands to run.
+      concurrent = true,
+    },
+    summary = {
+      -- Enable/disable animation of icons.
+      animated = true,
     },
     floating = {
       border = "rounded",

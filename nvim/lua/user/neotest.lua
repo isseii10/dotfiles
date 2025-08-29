@@ -104,7 +104,6 @@ function M.config()
       },
     },
     consumers = {
-
       always_open_output = function(client)
         local async = require "neotest.async"
 

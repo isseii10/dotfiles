@@ -107,6 +107,7 @@ function M.config()
       border = "rounded",
     },
     quickfix = {
+      -- 時々bqfとコンフリクトしてうまく動かないので無効化
       enabled = false,
       open = false,
     },

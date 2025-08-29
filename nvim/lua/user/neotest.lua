@@ -103,6 +103,13 @@ function M.config()
         animated = true,
       },
     },
+    floating = {
+      border = "rounded",
+    },
+    quickfix = {
+      enabled = false,
+      open = false,
+    },
     consumers = {
       always_open_output = function(client)
         local async = require "neotest.async"

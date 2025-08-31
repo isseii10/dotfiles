@@ -249,7 +249,7 @@ return {
         },
         submit_win = {
           approve_review = { lhs = "<C-a>", desc = "approve review", mode = { "n", "i" } },
-          comment_review = { lhs = "<C-M>", desc = "comment review", mode = { "n", "i" } },
+          comment_review = { lhs = "<C-n>", desc = "comment review", mode = { "n", "i" } },
           request_changes = { lhs = "<C-r>", desc = "request changes review", mode = { "n", "i" } },
           close_review_tab = { lhs = "<C-c>", desc = "close review tab", mode = { "n", "i" } },
         },
@@ -295,4 +295,3 @@ return {
     }
   end,
 }
--- comment

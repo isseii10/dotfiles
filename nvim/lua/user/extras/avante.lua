@@ -1,8 +1,10 @@
 local M = {
   "yetone/avante.nvim",
-  event = "VeryLazy",
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   keys = {
+    "<leader>aa",
+    "<leader>ae",
+    "<leader>at",
     {
       "+",
       function()

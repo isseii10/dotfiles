@@ -5,6 +5,7 @@ return {
     "nvim-telescope/telescope.nvim",
     "nvim-tree/nvim-web-devicons",
   },
+  cmd = { "Octo" },
   config = function()
     require("octo").setup {
       use_local_fs = false, -- use local files on right side of reviews

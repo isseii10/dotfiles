@@ -66,17 +66,6 @@ local function split_nav(resize_or_move, key)
 		mods = resize_or_move == "resize" and "META" or "CTRL",
 		action = wezterm.action_callback(function(win, pane)
 			if is_vim(pane) then
-				if resize_or_move == "move" then
-					-- NOTE: Neovimのターミナルモードのpaneでも移動できるようにするため、
-					-- ノーマルモードに戻す処理を挟む
-					-- <C-;>を使用する理由:
-					-- keymaps.luaで "<C-;>" → "<C-\><C-n>" にマッピング済み
-					-- ノーマルモードで<C-;>は未使用のため安全
-					-- <C-\>を直接送ると toggleterm が起動してしまう
-					win:perform_action({
-						SendKey = { key = ";", mods = "CTRL" },
-					}, pane)
-				end
 				-- pass the keys through to vim/nvim
 				win:perform_action({
 					SendKey = { key = key, mods = resize_or_move == "resize" and "META" or "CTRL" },

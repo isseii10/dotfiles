@@ -20,7 +20,18 @@ local M = {
     },
     { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true } },
   },
-  event = "VeryLazy",
+  keys = {
+    "<leader>bb",
+    "<leader>fb",
+    "<leader>fc",
+    "<leader>ff",
+    "<leader>fg",
+    "<leader>fh",
+    "<leader>fl",
+    "<leader>fr",
+    "<leader>fk",
+    "<space>fj",
+  },
 }
 
 function M.config()

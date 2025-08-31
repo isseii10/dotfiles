@@ -1,6 +1,6 @@
 local M = {
   "folke/flash.nvim",
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
   ---@type Flash.Config
   -- stylua: ignore
   keys = {

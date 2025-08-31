@@ -73,7 +73,7 @@ function M.config()
   }
 
   ---@diagnostic disable: missing-fields
-  neotest = require "neotest"
+  local neotest = require "neotest"
   neotest.setup {
     adapters = {
       require "neotest-python" {

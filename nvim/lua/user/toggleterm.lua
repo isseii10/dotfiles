@@ -39,12 +39,12 @@ function M.config()
   local Terminal = require("toggleterm.terminal").Terminal
   local lazygit = Terminal:new { cmd = "lazygit", direction = "float", hidden = true, close_on_exit = true }
 
-  function _lazygit_toggle()
+  function Lazygit_toggle()
     lazygit:toggle()
   end
   local wk = require "which-key"
   wk.add {
-    { "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", desc = "lazygit" },
+    { "<leader>gg", "<cmd>lua Lazygit_toggle()<CR>", desc = "lazygit" },
   }
 
   local exec_toggle = function(opts)

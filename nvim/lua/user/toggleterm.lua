@@ -1,15 +1,16 @@
 local M = {
   "akinsho/toggleterm.nvim",
-  event = "VeryLazy",
+  keys = {
+    "<leader>gg",
+    "<C-\\>",
+  },
 }
 
 function M.config()
-
-
   local execs = {
     { nil, "<M-1>", "Horizontal Terminal", "horizontal", 0.3 },
-    { nil, "<M-2>", "Vertical Terminal",   "vertical",   0.4 },
-    { nil, "<M-3>", "Float Terminal",      "float",      nil },
+    { nil, "<M-2>", "Vertical Terminal", "vertical", 0.4 },
+    { nil, "<M-3>", "Float Terminal", "float", nil },
   }
 
   local function get_buf_size()
@@ -37,7 +38,7 @@ function M.config()
 
   local Terminal = require("toggleterm.terminal").Terminal
   local lazygit = Terminal:new { cmd = "lazygit", direction = "float", hidden = true, close_on_exit = true }
-  
+
   function _lazygit_toggle()
     lazygit:toggle()
   end
@@ -86,13 +87,13 @@ function M.config()
     hide_numbers = true, -- hide the number column in toggleterm buffers
     shade_filetypes = {},
     shade_terminals = true,
-    shading_factor = 2,     -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+    shading_factor = 2, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
     start_in_insert = true,
     insert_mappings = true, -- whether or not the open mapping applies in insert mode
     persist_size = false,
     direction = "float",
     close_on_exit = true, -- close the terminal window when the process exits
-    shell = nil,          -- change the default shell
+    shell = nil, -- change the default shell
     float_opts = {
       border = "rounded",
       winblend = 0,
@@ -108,28 +109,15 @@ function M.config()
       end,
     },
   }
-  vim.cmd [[
-  augroup terminal_setup | au!
-  autocmd TermOpen * nnoremap <buffer><LeftRelease> <LeftRelease>i
-  autocmd TermEnter * startinsert!
-  augroup end
-  ]]
 
-  vim.api.nvim_create_autocmd({ "TermEnter" }, {
-    pattern = { "*" },
-    callback = function()
-      vim.cmd "startinsert"
-      _G.set_terminal_keymaps()
-    end,
-  })
-
-  local opts = { noremap = true, silent = true }
-  function _G.set_terminal_keymaps()
-    vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<m-k>", [[<C-\><C-n><C-W>k]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
-  end
+  -- クリックしたら挿入モードに入る
+  -- TODO: しばらくコメントアウトしておいて、困らなかったら消す
+  -- vim.api.nvim_create_autocmd("TermOpen", {
+  --   pattern = "*",
+  --   callback = function()
+  --     vim.api.nvim_buf_set_keymap(0, "n", "<LeftRelease>", "<LeftRelease>i", { noremap = true, silent = true })
+  --   end,
+  -- })
 end
 
 return M

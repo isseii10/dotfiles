@@ -30,6 +30,7 @@ function M.config()
       "lua_ls",
       "gopls",
       "ts_ls",
+      "jsonls",
       "yamlls",
       "html",
       "cssls",

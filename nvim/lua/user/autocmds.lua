@@ -137,3 +137,24 @@ vim.api.nvim_create_autocmd("WinScrolled", {
     require("user.nvimtree.user-functions").display_dir_name()
   end,
 })
+
+-- クリックしたら挿入モードに入る
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, "n", "<LeftRelease>", "<LeftRelease>i", { noremap = true, silent = true })
+  end,
+})
+
+-- OctoのバッファではLSPを無効にする(LSPはfile://じゃないとエラーになるため)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    local name = vim.api.nvim_buf_get_name(bufnr)
+    if name:match "^octo://" then
+      vim.schedule(function()
+        vim.lsp.buf_detach_client(bufnr, args.data.client_id)
+      end)
+    end
+  end,
+})

@@ -2,7 +2,6 @@ require "user.launch"
 require "user.options"
 require "user.keymaps"
 require "user.autocmds"
-require "user.lsp"
 
 spec "user.colorschemes.onenord"
 
@@ -65,3 +64,5 @@ spec "user.extras.treesj"
 spec "user.extras.ufo"
 
 require "user.lazy"
+
+require "user.lsp"

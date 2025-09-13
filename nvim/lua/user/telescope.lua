@@ -90,6 +90,28 @@ function M.config()
   }
   local icons = require "user.icons"
   local actions = require "telescope.actions"
+  local keymap = {
+    i = {
+      ["<C-n>"] = actions.cycle_history_next,
+      ["<C-p>"] = actions.cycle_history_prev,
+
+      ["<C-j>"] = actions.move_selection_next,
+      ["<C-k>"] = actions.move_selection_previous,
+
+      ["<C-s>"] = actions.select_horizontal,
+      ["<C-v>"] = actions.select_vertical,
+    },
+    n = {
+      ["<esc>"] = actions.close,
+      ["q"] = actions.close,
+
+      ["j"] = actions.move_selection_next,
+      ["k"] = actions.move_selection_previous,
+
+      ["\\"] = actions.select_vertical,
+      ["-"] = actions.select_horizontal,
+    },
+  }
   require("telescope").setup {
     defaults = {
       prompt_prefix = icons.ui.Telescope .. " ",
@@ -111,28 +133,7 @@ function M.config()
         "--glob=!.git/",
       },
 
-      mappings = {
-        i = {
-          ["<C-n>"] = actions.cycle_history_next,
-          ["<C-p>"] = actions.cycle_history_prev,
-
-          ["<C-j>"] = actions.move_selection_next,
-          ["<C-k>"] = actions.move_selection_previous,
-
-          ["<C-s>"] = actions.select_horizontal,
-          ["<C-v>"] = actions.select_vertical,
-        },
-        n = {
-          ["<esc>"] = actions.close,
-          ["q"] = actions.close,
-
-          ["j"] = actions.move_selection_next,
-          ["k"] = actions.move_selection_previous,
-
-          ["\\"] = actions.select_vertical,
-          ["-"] = actions.select_horizontal,
-        },
-      },
+      mappings = keymap,
     },
     pickers = {
       live_grep = {
@@ -209,38 +210,11 @@ function M.config()
       harpoonEx = {
         theme = "dropdown",
         initial_mode = "normal",
-        mappings = {
-          i = {
-            ["<C-n>"] = actions.cycle_history_next,
-            ["<C-p>"] = actions.cycle_history_prev,
-
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
-
-            ["<C-s>"] = actions.select_horizontal,
-            ["<C-v>"] = actions.select_vertical,
-          },
-          n = {
-            ["<esc>"] = actions.close,
-            ["q"] = actions.close,
-
-            ["j"] = actions.move_selection_next,
-            ["k"] = actions.move_selection_previous,
-
-            ["\\"] = actions.select_vertical,
-            ["-"] = actions.select_horizontal,
-          },
-        },
+        mappings = keymap,
       },
-
       smart_open = {
         match_algorithm = "fzf",
         disable_devicons = false,
-      },
-      frecency = {
-        auto_validate = false,
-        matcher = "fuzzy",
-        path_display = { "filename_first" },
       },
     },
   }

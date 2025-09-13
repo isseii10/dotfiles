@@ -26,6 +26,7 @@ keymap("n", "g#", "g#zz", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- don't overwrite yank when pasting in visual mode
 keymap("x", "p", [["_dP]])
 
 -- more good

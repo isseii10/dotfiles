@@ -48,11 +48,13 @@ function M.config()
       desc = "Open harpoon window",
     },
     {
-      "<leader>hg",
+      "<leader>hx",
       function()
-        harpoonEx.telescope_live_grep(harpoon:list())
+        harpoon:list():clear()
+        -- for barbar rendering
+        vim.cmd ":do User"
       end,
-      desc = "Live grep harpoon files",
+      desc = "Delete all bookmarks",
     },
   }
 

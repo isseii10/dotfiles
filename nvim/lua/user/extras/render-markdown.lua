@@ -5,7 +5,7 @@ local M = {
   ---@type render.md.UserConfig
   opts = {
     bullet = {
-      -- right_pad = 1,
+      right_pad = 1,
     },
     pipe_table = {
       head = "RenderMarkdownTableHead",

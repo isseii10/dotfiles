@@ -59,8 +59,10 @@ function M.config()
 
       local out = {
         id = note.id,
+        title = note.title,
         aliases = note.aliases,
         tags = note.tags,
+        publish = false,
       }
 
       -- `note.metadata` contains any manually added fields in the frontmatter.

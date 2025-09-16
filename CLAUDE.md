@@ -66,3 +66,22 @@ The Neovim config uses a plugin specification system (`LAZY_PLUGIN_SPEC`) and lo
 - All shell scripts include safety checks for existing symlinks and files
 - Node.js version 20 is specified via mise configuration
 - Go development is heavily supported with dedicated Neovim plugins and LSP setup
+
+## Testing and Validation
+
+```bash
+# Test Neovim config with specific APPNAME
+NVIM_APPNAME=isseii10/dotfiles/nvim nvim
+
+# Verify symlinks are correctly created
+ls -la ~/.config/nvim ~/.config/wezterm ~/.config/karabiner
+```
+
+## Language Server Support
+
+This configuration includes LSP setup for:
+- **Go**: gopls with go.nvim plugin for enhanced Go development
+- **Lua**: lua_ls for Neovim configuration development
+- **Web Technologies**: TypeScript, HTML, CSS, TailwindCSS
+- **Infrastructure**: Terraform, YAML, JSON
+- **Other**: Python (pyright), Bash, Markdown

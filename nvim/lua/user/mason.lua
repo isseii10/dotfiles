@@ -65,7 +65,6 @@ function M.config()
       -- typescript
       "eslint_d",
       "prettierd", -- formatter
-      "prettier", -- formatter
 
       -- python
       "pylint", -- linter

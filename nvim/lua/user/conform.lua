@@ -6,14 +6,14 @@ local M = {
 
     conform.setup {
       formatters_by_ft = {
-        javascript = { "prettierd", "prettier" },
-        typescript = { "prettierd", "prettier" },
-        javascriptreact = { "prettierd", "prettier" },
-        typescriptreact = { "prettierd", "prettier" },
-        css = { "prettierd", "prettier" },
-        html = { "prettierd", "prettier" },
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        css = { "prettierd" },
+        html = { "prettierd" },
         json = { "jq" },
-        graphql = { "prettierd", "prettier" },
+        graphql = { "prettierd" },
         lua = { "stylua" },
         python = { "isort", "black" },
         go = { "goimports", "gofmt" },

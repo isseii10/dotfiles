@@ -5,6 +5,7 @@ require "user.autocmds"
 
 spec "user.colorschemes.onenord"
 
+spec "user.luasnip"
 spec "user.alpha"
 spec "user.autopairs"
 spec "user.barbar"

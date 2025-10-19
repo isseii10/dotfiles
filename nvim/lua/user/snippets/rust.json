@@ -1,0 +1,22 @@
+{
+  "CombFactorial": {
+    "prefix": "CombFactorial",
+    "body": [
+      "/// 階乗とその逆元を前計算して nCr, nPr, H を求める構造体",
+      "pub struct CombFactorial {",
+      "    fac: Vec<Mint>,",
+      "    fac_inv: Vec<Mint>,",
+      "}"
+    ]
+  },
+  "CombPascal": {
+    "prefix": "CombPascal",
+    "body": [
+      "/// パスカルの三角形で nCr を求める構造体",
+      "/// mが合成数の場合(ConbFactorialが使えない場合)に使用する",
+      "pub struct CombPascal {",
+      "    pascal: Vec<Vec<Mint>>,",
+      "}"
+    ]
+  }
+}

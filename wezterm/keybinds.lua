@@ -1,6 +1,37 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+-- Git repository auto workspace helper function
+local function get_git_repo_name(cwd)
+	if not cwd then
+		return nil
+	end
+
+	local path = cwd.file_path or cwd
+	if not path then
+		return nil
+	end
+
+	-- Convert file:// URL to local path
+	path = path:gsub("^file://", "")
+
+	local handle = io.popen(string.format("cd '%s' && git rev-parse --show-toplevel 2>/dev/null", path))
+	if not handle then
+		return nil
+	end
+
+	local result = handle:read("*a")
+	handle:close()
+
+	if result and result ~= "" then
+		local repo_path = result:gsub("\n$", "")
+		local repo_name = repo_path:match("([^/]+)$")
+		return repo_name
+	end
+
+	return nil
+end
+
 return {
 	keys = {
 		-- エスケープシーケンス
@@ -141,6 +172,46 @@ return {
 		-- 	mods = "SHIFT|CTRL",
 		-- 	action = act.CharSelect({ copy_on_select = true, copy_to = "ClipboardAndPrimarySelection" }),
 		-- },
+		{
+			-- Create workspace from current git repository
+			mods = "LEADER",
+			key = "g",
+			action = wezterm.action_callback(function(win, pane)
+				local cwd = pane:get_current_working_dir()
+				local repo_name = get_git_repo_name(cwd)
+
+				if repo_name then
+					-- Check if workspace already exists
+					local workspace_names = wezterm.mux.get_workspace_names()
+					local workspace_exists = false
+
+					for _, name in ipairs(workspace_names) do
+						if name == repo_name then
+							workspace_exists = true
+							break
+						end
+					end
+
+					if workspace_exists then
+						-- Switch to existing workspace
+						win:perform_action(act.SwitchToWorkspace({ name = repo_name }), pane)
+					else
+						-- Create new workspace
+						win:perform_action(
+							act.SwitchToWorkspace({
+								name = repo_name,
+								spawn = { cwd = cwd.file_path or cwd },
+							}),
+							pane
+						)
+					end
+				else
+					-- Not in a git repository
+					win:perform_action(act.ActivateCommandPalette, pane)
+					wezterm.log_info("Not in a git repository")
+				end
+			end),
+		},
 	},
 
 	key_tables = {

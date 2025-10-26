@@ -34,14 +34,12 @@ function M.config()
     [[                                             ]],
   }
   dashboard.section.buttons.val = {
-    dashboard.button("f", icons.ui.FindFile .. "  Find files", "<cmd>Telescope find_files<CR>"),
-    dashboard.button("r", icons.ui.History .. " Recently opened files", "<cmd>Telescope oldfiles<CR>"),
     dashboard.button(
-      "p",
-      icons.ui.Project .. " Recent projects",
-      ":lua require('telescope').extensions.projects.projects()<CR>"
+      "f",
+      icons.ui.FindFile .. "  Find files",
+      "<cmd>Telescope smart_open cwd_only=true theme=dropdown prompt_title=Find\\ Files<cr>"
     ),
-
+    dashboard.button("r", icons.ui.History .. " Recently opened files", "<cmd>Telescope oldfiles<CR>"),
     dashboard.button("q", "󰅚  Quit NVIM", ":qa<CR>"),
   }
   local handle = io.popen "fortune"

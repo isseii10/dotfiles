@@ -77,7 +77,7 @@ return {
 				for _, name in ipairs(wezterm.mux.get_workspace_names()) do
 					local label = ""
 					if current == name then
-						label = string.format("%-30s <- current", name)
+						label = string.format("%-30s \x1b[32m<- current\x1b[0m", name)
 					else
 						label = string.format("%s", name)
 					end

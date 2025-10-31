@@ -2,4 +2,3 @@ ZDOTDIR="${HOME}/.config/zsh"
 
 source "$ZDOTDIR/.zshenv"
 
-. "$HOME/.local/share/../bin/env"

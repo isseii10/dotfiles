@@ -39,7 +39,7 @@ function M.config()
       "markdown_oxide", -- markdown
       "bashls",
       "prismals",
-      -- "rust_analyzer", -- rustupでインストールするので不要
+      "rust_analyzer",
       "buf_ls",
       "tombi", -- toml
     },

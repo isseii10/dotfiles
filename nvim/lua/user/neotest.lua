@@ -83,7 +83,7 @@ function M.config()
       require "neotest-zig",
       require "neotest-golang",
       require "neotest-vim-test" {
-        ignore_file_types = { "python", "vim", "lua", "javascript", "typescript" },
+        ignore_file_types = { "go", "python", "vim", "lua", "javascript", "typescript" },
       },
     },
     discovery = {

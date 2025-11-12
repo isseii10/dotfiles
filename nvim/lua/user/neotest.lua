@@ -5,9 +5,6 @@ local M = {
     "nvim-neotest/nvim-nio",
     "nvim-lua/plenary.nvim",
     "antoinemadec/FixCursorHold.nvim",
-    -- general tests
-    "vim-test/vim-test",
-    "nvim-neotest/neotest-vim-test",
     -- language specific tests
     {
       "fredrikaverpil/neotest-golang",
@@ -15,7 +12,7 @@ local M = {
         "leoluz/nvim-dap-go",
       },
     },
-    "marilari88/neotest-vitest",
+    "marilari88/neotest-vitest", -- js/ts
     "nvim-neotest/neotest-python",
     "nvim-neotest/neotest-plenary",
     "rouge8/neotest-rust",
@@ -81,19 +78,25 @@ function M.config()
       },
       require "neotest-vitest",
       require "neotest-zig",
-      require "neotest-golang",
-      require "neotest-vim-test" {
-        ignore_file_types = { "go", "python", "vim", "lua", "javascript", "typescript" },
+      require "neotest-golang" {
+        go_test_args = {
+          "-v",
+          "-race",
+          "-count=1",
+          "-timeout=60s",
+        },
+        dap_go_enabled = true,
       },
     },
     discovery = {
       -- Drastically improve performance in ginormous projects by
       -- only AST-parsing the currently opened buffer.
-      enabled = true,
+      -- Set to false if tests are not being discovered
+      enabled = false,
       -- Number of workers to parse files concurrently.
       -- A value of 0 automatically assigns number based on CPU.
       -- Set to 1 if experiencing lag.
-      concurrent = 0,
+      concurrent = 1,
     },
     running = {
       -- Run tests concurrently when an adapter provides multiple commands to run.

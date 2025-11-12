@@ -18,7 +18,7 @@ spec "user.flash"
 spec "user.conform"
 spec "user.gitsigns"
 spec "user.git-conflict"
-spec "user.go"
+-- spec "user.go" -- treesitter main移行でエラーになるので対応まち
 spec "user.harpoon"
 spec "user.hlchunk"
 spec "user.illuminate"

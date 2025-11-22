@@ -28,6 +28,7 @@ function M.config()
     "sql",
     "yaml",
     "rust",
+    "make",
   }
   require("nvim-treesitter").install(parsers)
 
@@ -49,6 +50,7 @@ function M.config()
       "sql",
       "yaml",
       "rust",
+      "make",
     },
     callback = function()
       -- syntax highlighting, provided by Neovim

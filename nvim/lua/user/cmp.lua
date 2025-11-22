@@ -92,7 +92,7 @@ function M.config()
     sorting = {
       priority_weight = 2,
       comparators = {
-        require("copilot_cmp.comparators").prioritize,
+        -- require("copilot_cmp.comparators").prioritize,
         -- Below is the default comparitor list and order for nvim-cmp
 
         cmp.config.compare.offset,
@@ -181,17 +181,17 @@ function M.config()
         return vim_item
       end,
     },
-    sources = { -- この順番で補完候補が表示される?
-      { name = "nvim_lsp" },
-      { name = "copilot" },
-      { name = "luasnip" },
+    sources = {
+      { name = "nvim_lsp", group_index = 1 },
+      { name = "luasnip", group_index = 1 },
+      { name = "nvim_lua", group_index = 1 },
+      { name = "treesitter", group_index = 2 },
+      { name = "buffer", group_index = 2 },
+      { name = "path", group_index = 2 },
+      { name = "copilot", group_index = 2 },
+      { name = "calc", group_index = 3 },
+      { name = "emoji", group_index = 3 },
       -- { name = "cmp-dbee" },
-      { name = "nvim_lua" },
-      { name = "treesitter" },
-      { name = "buffer" },
-      { name = "path" },
-      { name = "calc" },
-      { name = "emoji" },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,

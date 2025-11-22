@@ -27,6 +27,7 @@ function M.config()
     "terraform",
     "sql",
     "yaml",
+    "rust",
   }
   require("nvim-treesitter").install(parsers)
 
@@ -47,6 +48,7 @@ function M.config()
       "terraform",
       "sql",
       "yaml",
+      "rust",
     },
     callback = function()
       -- syntax highlighting, provided by Neovim

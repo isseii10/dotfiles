@@ -15,3 +15,5 @@ export HISTFILESIZE=100000
 
 # bat
 export BAT_THEME="Nord"
+
+export EDITOR="nvim"

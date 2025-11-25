@@ -55,7 +55,7 @@ eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
 # zoxide: smarter cd
-eval "$(zoxide init bash)"
+eval "$(zoxide init zsh --cmd cd)"
 
 # github token(ghのpathが通ったあと)
 export GITHUB_TOKEN=$(gh auth token)

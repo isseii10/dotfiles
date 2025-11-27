@@ -29,6 +29,8 @@ function M.config()
     "yaml",
     "rust",
     "make",
+    "hcl",
+    "toml",
   }
   require("nvim-treesitter").install(parsers)
 
@@ -47,10 +49,12 @@ function M.config()
       "python",
       "proto",
       "terraform",
+      "hcl",
       "sql",
       "yaml",
       "rust",
       "make",
+      "toml",
     },
     callback = function()
       -- syntax highlighting, provided by Neovim

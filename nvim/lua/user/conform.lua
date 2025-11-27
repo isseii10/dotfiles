@@ -21,6 +21,7 @@ local M = {
         sh = { "shfmt" },
         yaml = { "ymlfmt" },
         rust = { "rustfmt" },
+        hcl = { "hclfmt" },
       },
       -- formatters = {
       --   prettier = {

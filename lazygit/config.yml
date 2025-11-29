@@ -1,2 +1,9 @@
 gui:
   nerdFontsVersion: "3"
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --features=arctic-fox
+      # pager: delta --dark --paging=never --features=corvas
+      # pager: delta --dark --paging=never --features=collared-torogon
+      # pager: delta --dark --paging=never --features=calochortus-lyallii

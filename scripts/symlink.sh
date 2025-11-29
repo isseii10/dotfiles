@@ -33,3 +33,5 @@ create_symlink ${dotfiles_dir}/starship.toml ${config_dir}/starship.toml
 create_symlink ${dotfiles_dir}/karabiner ${config_dir}/karabiner
 # lazygit
 create_symlink ${dotfiles_dir}/lazygit ${config_dir}/lazygit
+# delta (better git diff)
+create_symlink ${dotfiles_dir}/delta ${config_dir}/delta

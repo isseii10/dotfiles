@@ -10,6 +10,12 @@ local M = {
 function M.config()
   local icons = require "user.icons"
   require("fyler").setup {
+    hooks = {
+      on_highlight = function(highlight_groups, palette)
+        highlight_groups.FylerFSDirectoryName = { fg = palette.blue }
+        -- Rest of them can change similarly
+      end,
+    },
     integrations = {
       icon = "nvim_web_devicons",
     },
@@ -65,7 +71,7 @@ function M.config()
           enabled = false,
         },
         win = {
-          border = vim.o.winborder == "" and "single" or vim.o.winborder,
+          border = "rounded",
           buf_opts = {
             filetype = "fyler",
             syntax = "fyler",

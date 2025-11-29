@@ -4,6 +4,64 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Exchange single and double quote",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "quote",
+                                    "modifiers": { "optional": ["caps_lock"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "quote",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "quote",
+                                    "modifiers": {
+                                        "mandatory": ["shift"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "quote" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Exchange semicolon and colon",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": { "optional": ["caps_lock"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "semicolon",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": {
+                                        "mandatory": ["shift"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "semicolon" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな） (rev 3)",
                         "manipulators": [
                             {
@@ -41,43 +99,14 @@
                         ]
                     },
                     {
-                        "description": "Exchange semicolon and colon",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "semicolon",
-                                    "modifiers": { "optional": ["caps_lock"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "semicolon",
-                                        "modifiers": ["left_shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "semicolon",
-                                    "modifiers": {
-                                        "mandatory": ["shift"],
-                                        "optional": ["caps_lock"]
-                                    }
-                                },
-                                "to": [{ "key_code": "semicolon" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change Command + h/j/k/l to Arrows",
+                        "description": "Change command + h/j/k/l to Arrows",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
                                         "mandatory": ["command"],
-                                        "optional": ["any"]
+                                        "optional": ["caps_lock"]
                                     }
                                 },
                                 "to": [{ "key_code": "left_arrow" }],
@@ -88,7 +117,7 @@
                                     "key_code": "j",
                                     "modifiers": {
                                         "mandatory": ["command"],
-                                        "optional": ["any"]
+                                        "optional": ["caps_lock"]
                                     }
                                 },
                                 "to": [{ "key_code": "down_arrow" }],
@@ -99,7 +128,7 @@
                                     "key_code": "k",
                                     "modifiers": {
                                         "mandatory": ["command"],
-                                        "optional": ["any"]
+                                        "optional": ["caps_lock"]
                                     }
                                 },
                                 "to": [{ "key_code": "up_arrow" }],
@@ -110,7 +139,7 @@
                                     "key_code": "l",
                                     "modifiers": {
                                         "mandatory": ["command"],
-                                        "optional": ["any"]
+                                        "optional": ["caps_lock"]
                                     }
                                 },
                                 "to": [{ "key_code": "right_arrow" }],
@@ -122,27 +151,6 @@
             },
             "devices": [
                 {
-                    "disable_built_in_keyboard_if_exists": true,
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 591,
-                        "vendor_id": 1452
-                    },
-                    "ignore": false,
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "left_shift" }]
-                        },
-                        {
-                            "from": { "pointing_button": "button3" },
-                            "to": [{ "apple_vendor_keyboard_key_code": "mission_control" }]
-                        }
-                    ]
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": true,
                     "identifiers": {
                         "is_keyboard": true,
                         "product_id": 591,
@@ -156,7 +164,6 @@
                     ]
                 },
                 {
-                    "disable_built_in_keyboard_if_exists": true,
                     "identifiers": {
                         "is_pointing_device": true,
                         "product_id": 45089,
@@ -171,7 +178,6 @@
                     ]
                 },
                 {
-                    "disable_built_in_keyboard_if_exists": true,
                     "identifiers": {
                         "is_pointing_device": true,
                         "product_id": 50479,
@@ -188,15 +194,17 @@
                 {
                     "identifiers": {
                         "is_keyboard": true,
-                        "product_id": 2464,
-                        "vendor_id": 13364
+                        "is_pointing_device": true,
+                        "product_id": 75,
+                        "vendor_id": 65534
                     },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "left_control" }]
-                        }
-                    ]
+                    "ignore": false
+                }
+            ],
+            "fn_function_keys": [
+                {
+                    "from": { "key_code": "f5" },
+                    "to": [{ "key_code": "f5" }]
                 }
             ],
             "name": "Default profile",

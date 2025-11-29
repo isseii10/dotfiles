@@ -23,7 +23,7 @@ end)
 -- wezterm ls-fonts --list-systemで出力できる
 -- font なかったら順次探しに行く設定
 config.font = wezterm.font_with_fallback({
-	"JetBrains Mono",
+	"JetBrainsMono Nerd Font",
 	"Hiragino Sans",
 	-- "ヒラギノ角ゴシック",
 	"Symbols Nerd Font",

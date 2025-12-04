@@ -73,6 +73,7 @@ function M.config()
 
       "shfmt",
       "markdownlint", -- markdown
+      "yamlfmt", --yaml
     },
     run_on_start = true,
   }

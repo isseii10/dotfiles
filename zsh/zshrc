@@ -33,9 +33,10 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export MANPAGER="nvim +Man!"
 
 # path
-# . "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH" # make
 export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$ANDROID_HOME/emulator"

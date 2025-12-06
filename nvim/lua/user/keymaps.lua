@@ -58,8 +58,8 @@ keymap("n", "A", function()
 end, { expr = true, silent = true, noremap = true })
 
 -- Terminal mode keymaps
-vim.api.nvim_set_keymap("t", "<C-;>", "<C-\\><C-n>", opts)
-vim.api.nvim_set_keymap("t", "<c-h>", "<C-\\><C-n><C-W>h", opts)
+vim.api.nvim_set_keymap("t", "<C-;>", "<C-\\><C-n>", opts) -- escape
+vim.api.nvim_set_keymap("t", "<c-h>", "<C-\\><C-n><C-W>h", opts) -- win move
 vim.api.nvim_set_keymap("t", "<c-j>", "<C-\\><C-n><C-W>j", opts)
 vim.api.nvim_set_keymap("t", "<c-k>", "<C-\\><C-n><C-W>k", opts)
 vim.api.nvim_set_keymap("t", "<c-l>", "<C-\\><C-n><C-W>l", opts)

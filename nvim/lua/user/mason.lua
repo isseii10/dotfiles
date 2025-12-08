@@ -39,7 +39,7 @@ function M.config()
       "markdown_oxide", -- markdown
       "bashls",
       "prismals",
-      "rust_analyzer",
+      -- "rust_analyzer", -- rustupで管理する
       "buf_ls",
       "tombi", -- toml
     },

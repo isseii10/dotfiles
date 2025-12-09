@@ -1,3 +1,10 @@
+local workspaces = {
+  {
+    name = "obsidian",
+    path = "~/obsidian/",
+  },
+}
+
 local M = {
   "obsidian-nvim/obsidian.nvim",
   -- version = "*", -- recommended, use latest release instead of latest commit
@@ -14,6 +21,10 @@ local M = {
 }
 
 function M.config()
+  vim.g.obsidian_workspace_roots = vim.tbl_map(function(workspace)
+    return vim.fs.normalize(vim.fn.expand(workspace.path))
+  end, workspaces)
+
   require("obsidian").setup {
     legacy_commands = false,
     -- A list of workspace names, paths, and configuration overrides.
@@ -22,12 +33,7 @@ function M.config()
     -- When obsidian.nvim is loaded by your plugin manager, it will automatically set
     -- the workspace to the first workspace in the list whose `path` is a parent of the
     -- current markdown file being edited.
-    workspaces = {
-      {
-        name = "obsidian",
-        path = "~/obsidian/",
-      },
-    },
+    workspaces = workspaces,
     daily_notes = {
       folder = "daily_notes",
       default_tags = {},
@@ -51,30 +57,32 @@ function M.config()
     },
     -- Optional, alternatively you can customize the frontmatter data.
     ---@return table
-    note_frontmatter_func = function(note)
-      -- Add the title of the note as an alias.
-      if note.title then
-        note:add_alias(note.title)
-      end
-
-      local out = {
-        id = note.id,
-        title = note.title,
-        aliases = note.aliases,
-        tags = note.tags,
-        publish = false,
-      }
-
-      -- `note.metadata` contains any manually added fields in the frontmatter.
-      -- So here we just make sure those fields are kept in the frontmatter.
-      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-        for k, v in pairs(note.metadata) do
-          out[k] = v
+    frontmatter = {
+      func = function(note)
+        -- Add the title of the note as an alias.
+        if note.title then
+          note:add_alias(note.title)
         end
-      end
 
-      return out
-    end,
+        local out = {
+          id = note.id,
+          title = note.title,
+          aliases = note.aliases,
+          tags = note.tags,
+          publish = false,
+        }
+
+        -- `note.metadata` contains any manually added fields in the frontmatter.
+        -- So here we just make sure those fields are kept in the frontmatter.
+        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+          for k, v in pairs(note.metadata) do
+            out[k] = v
+          end
+        end
+
+        return out
+      end,
+    },
   }
 
   require("which-key").add {

@@ -1,11 +1,42 @@
 -- NOTE: このファイルでLSPのセットアップを一元管理する
 
+local function obsidian_workspace_roots()
+  local roots = vim.g.obsidian_workspace_roots
+  if type(roots) == "table" and not vim.tbl_isempty(roots) then
+    return roots
+  end
+  return { vim.fs.normalize(vim.fn.expand "~/obsidian") }
+end
+
+local function is_obsidian_file(path)
+  if not path or path == "" then
+    return false
+  end
+  local normalized_path = vim.fs.normalize(path)
+  for _, root in ipairs(obsidian_workspace_roots()) do
+    if type(root) == "string" and root ~= "" then
+      local normalized_root = vim.fs.normalize(root)
+      if normalized_path == normalized_root or vim.startswith(normalized_path, normalized_root .. "/") then
+        return true
+      end
+    end
+  end
+  return false
+end
+
 -- lspキーマップの設定
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local bufnr = ev.buf
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if not client then
+      return
+    end
+
+    if client.name == "markdown_oxide" and is_obsidian_file(vim.api.nvim_buf_get_name(bufnr)) then
+      vim.schedule(function()
+        vim.lsp.stop_client(client.id)
+      end)
       return
     end
     -- All the keymaps

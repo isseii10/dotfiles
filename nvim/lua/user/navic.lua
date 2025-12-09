@@ -10,6 +10,10 @@ function M.config()
     highlight = true,
     lsp = {
       auto_attach = true,
+      preference = {
+        ["obsidian-ls"] = 10, -- obsidian-lsはObsidianVault配下でのみattachされる。その状況下では優先する
+        ["markdown_oxide"] = 1,
+      },
     },
     click = true,
     separator = " " .. icons.ui.ChevronRight .. " ",

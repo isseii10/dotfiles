@@ -42,7 +42,7 @@ spec "user.trouble"
 spec "user.ts-autotag"
 spec "user.whichkey"
 
-spec "user.extras.avante"
+-- spec "user.extras.avante"
 spec "user.extras.bqf"
 spec "user.extras.claudecode"
 spec "user.extras.colorizer"

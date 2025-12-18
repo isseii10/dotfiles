@@ -27,7 +27,7 @@ function M.config()
     "sql",
     "yaml",
     "rust",
-    -- "make", -- Makefile開くとnvimが落ちる
+    "make",
     "hcl",
     "toml",
   }
@@ -52,7 +52,7 @@ function M.config()
       "sql",
       "yaml",
       "rust",
-      -- "make", -- Makefile開くとnvimが落ちる
+      "make",
       "toml",
     },
     callback = function()

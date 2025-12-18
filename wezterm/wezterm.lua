@@ -25,7 +25,6 @@ end)
 config.font = wezterm.font_with_fallback({
 	"JetBrainsMono Nerd Font",
 	"Hiragino Sans",
-	-- "ヒラギノ角ゴシック",
 	"Symbols Nerd Font",
 	"Apple Color Emoji",
 })

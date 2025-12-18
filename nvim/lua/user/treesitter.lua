@@ -17,7 +17,6 @@ function M.config()
     "gomod",
     "gosum",
     "markdown",
-    "markdown_inline",
     "bash",
     "javascript",
     "typescript",
@@ -28,7 +27,7 @@ function M.config()
     "sql",
     "yaml",
     "rust",
-    -- "make",
+    -- "make", -- Makefile開くとnvimが落ちる
     "hcl",
     "toml",
   }

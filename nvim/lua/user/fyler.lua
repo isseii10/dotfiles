@@ -3,13 +3,16 @@ local M = {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   branch = "stable",
   lazy = false,
-  keys = {
-    { "<leader>e", "<Cmd>Fyler<Cr>", desc = "Open Fyler View" },
-  },
 }
 function M.config()
+  local fyler = require "fyler"
   local icons = require "user.icons"
-  require("fyler").setup {
+
+  vim.keymap.set("n", "<leader>e", function()
+    fyler.toggle()
+  end, { noremap = true, silent = true, desc = "Toggle Fyler" })
+
+  fyler.setup {
     hooks = {
       on_highlight = function(highlight_groups, palette)
         highlight_groups.FylerFSDirectoryName = { fg = palette.blue }

@@ -12,7 +12,7 @@ return {
     -- プロジェクト固有スニペット(vscode形式)
     local function load_project_snippets()
       local project_snippets = vim.fn.getcwd() .. "/snippets"
-      print(project_snippets)
+      -- print(project_snippets)
       if vim.fn.isdirectory(project_snippets) == 1 then
         require("luasnip.loaders.from_vscode").lazy_load {
           paths = { project_snippets },

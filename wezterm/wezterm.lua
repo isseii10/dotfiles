@@ -7,10 +7,11 @@ if wezterm.config_builder then
 end
 
 -- color scheme
-config.color_scheme = "tokyonight"
+-- config.color_scheme = "tokyonight"
+config.color_scheme = "tomorrow"
 
 -- window
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.90
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 -- position and size

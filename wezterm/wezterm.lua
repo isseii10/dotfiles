@@ -8,7 +8,10 @@ end
 
 -- color scheme
 -- config.color_scheme = "tokyonight"
-config.color_scheme = "tomorrow"
+
+config.colors = {
+	background = "#000000",
+}
 
 -- window
 config.window_background_opacity = 0.90

@@ -11,6 +11,8 @@ end
 
 config.colors = {
 	background = "#000000",
+	foreground = "#c8d0e0",
+	-- compose_cursor = "#ff5f5f",
 }
 
 -- window

@@ -30,6 +30,13 @@ function M.config()
       result_height = 30, -- default 20
       call_log_height = 20, -- default 20
     },
+    editor = {
+      mappings = {
+        -- Ctrl+Enter でクエリ実行（DataGrip/TablePlus風）
+        { key = "<C-CR>", mode = "n", action = "run_under_cursor" },
+        { key = "<C-CR>", mode = "v", action = "run_selection" },
+      },
+    },
   }
 end
 

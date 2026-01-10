@@ -3,15 +3,6 @@ local M = {
   event = { "BufReadPre", "BufNewFile" },
 }
 
-local function pre_hook()
-  require("user.nvimtree.user-functions").clear_dir_name()
-end
-
-local function post_hook()
-  -- スクロール完了後にnvim-treeの処理
-  require("user.nvimtree.user-functions").display_dir_name()
-end
-
 function M.config()
   local neoscroll = require "neoscroll"
   neoscroll.setup {
@@ -22,8 +13,8 @@ function M.config()
     respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
     cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
     easing_function = nil, -- Default easing function
-    pre_hook = pre_hook, -- Function to run before the scrolling animation starts
-    post_hook = post_hook, -- Function to run after the scrolling animation ends
+    pre_hook = nil, -- Function to run before the scrolling animation starts
+    post_hook = nil, -- Function to run after the scrolling animation ends
     performance_mode = false, -- Disable "Performance Mode" on all buffers.
   }
 

@@ -130,14 +130,6 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   end,
 })
 
--- nvim-treeでルートディレクトリをバーチャルテキストで表示する
-vim.api.nvim_create_autocmd("WinScrolled", {
-  pattern = "*",
-  callback = function()
-    require("user.nvimtree.user-functions").display_dir_name()
-  end,
-})
-
 -- クリックしたら挿入モードに入る
 vim.api.nvim_create_autocmd("TermOpen", {
   pattern = "*",

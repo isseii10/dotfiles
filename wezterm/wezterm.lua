@@ -15,7 +15,10 @@ require("colors").apply_to_config(config)
 require("keybinds").apply_to_config(config)
 require("window").apply_to_config(config)
 require("font").apply_to_config(config)
-require("smart-split").apply_to_config(config)
 require("tab").apply_to_config(config)
+
+-- plugins
+require("smart-split").apply_to_config(config)
+require("workspace-picker").apply_to_config(config)
 
 return config

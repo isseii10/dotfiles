@@ -13,6 +13,15 @@ function M.apply_to_config(config)
 	-- tab title
 	config.hide_tab_bar_if_only_one_tab = false
 	config.use_fancy_tab_bar = true
+	-- タブバーの透過
+	config.window_frame = {
+		inactive_titlebar_bg = "none",
+		active_titlebar_bg = "none",
+	}
+	config.show_new_tab_button_in_tab_bar = false
+	config.window_background_gradient = {
+		colors = { "#000000" },
+	}
 
 	wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 		local has_unseen_output = false

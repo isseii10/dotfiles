@@ -8,6 +8,7 @@ end
 
 config.leader = { key = "m", mods = "CTRL", timeout_milliseconds = 2000 }
 config.disable_default_key_bindings = true
+config.use_ime = true
 
 -- apply modular configurations
 require("colors").apply_to_config(config)

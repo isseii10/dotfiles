@@ -8,7 +8,7 @@ function M.apply_to_config(config)
 	-- window
 	config.window_background_opacity = 0.90
 	---@diagnostic disable-next-line: assign-type-mismatch
-	config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+	config.window_decorations = "RESIZE"
 
 	-- position and size
 	local mux = wezterm.mux

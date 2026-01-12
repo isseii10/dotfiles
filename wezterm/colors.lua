@@ -4,6 +4,7 @@ local M = {}
 -- ビルトインのカラースキームは使わない
 -- local color_scheme = nil
 
+---@type Palette
 local colors = {
 	-- The default text color
 	foreground = "#c8d0e0",
@@ -80,11 +81,11 @@ local colors = {
 	quick_select_match_bg = { AnsiColor = "Navy" },
 	quick_select_match_fg = { Color = "#ffffff" },
 
-	input_selector_label_bg = { AnsiColor = "Black" }, -- (*Since: Nightly Builds Only*)
-	input_selector_label_fg = { Color = "#ffffff" }, -- (*Since: Nightly Builds Only*)
-
-	launcher_label_bg = { AnsiColor = "Black" }, -- (*Since: Nightly Builds Only*)
-	launcher_label_fg = { Color = "#ffffff" }, -- (*Since: Nightly Builds Only*)
+	-- input_selector_label_bg = { AnsiColor = "Black" }, -- (*Since: Nightly Builds Only*)
+	-- input_selector_label_fg = { Color = "#ffffff" }, -- (*Since: Nightly Builds Only*)
+	--
+	-- launcher_label_bg = { AnsiColor = "Black" }, -- (*Since: Nightly Builds Only*)
+	-- launcher_label_fg = { Color = "#ffffff" }, -- (*Since: Nightly Builds Only*)
 }
 
 ---@param config Config

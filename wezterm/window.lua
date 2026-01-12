@@ -3,10 +3,11 @@ local wezterm = require("wezterm") ---@type Wezterm
 ---@class WindowModule
 local M = {}
 
----@param config table
+---@param config Config
 function M.apply_to_config(config)
 	-- window
 	config.window_background_opacity = 0.90
+	---@diagnostic disable-next-line: assign-type-mismatch
 	config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 	-- position and size
@@ -17,8 +18,8 @@ function M.apply_to_config(config)
 
 	-- pane
 	config.inactive_pane_hsb = {
-		saturation = 0.9,
-		brightness = 0.6,
+		saturation = 1,
+		brightness = 1,
 	}
 end
 

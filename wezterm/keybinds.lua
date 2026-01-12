@@ -127,7 +127,7 @@ local key_tables = {
 	},
 }
 
----@param config table
+---@param config Config
 function M.apply_to_config(config)
 	config.keys = keys
 	config.key_tables = key_tables

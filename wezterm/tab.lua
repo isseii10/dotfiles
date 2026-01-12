@@ -10,7 +10,7 @@ local function get_current_working_dir(tab)
 	return current_dir == HOME_DIR and "." or string.gsub(current_dir.file_path, "(.*[/\\])(.*)", "%2")
 end
 
----@param config table
+---@param config Config
 function M.apply_to_config(config)
 	-- tab title
 	config.hide_tab_bar_if_only_one_tab = false

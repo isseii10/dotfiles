@@ -10,5 +10,8 @@
   ],
   "completion.callSnippet": "Replace",
   "workspace.checkThirdParty": false,
+  "workspace.library": [
+    "/Users/isseiterada/.local/share/nvim/lazy/wezterm-types/lua/wezterm/types"
+  ],
   "telemetry.enable": false
 }

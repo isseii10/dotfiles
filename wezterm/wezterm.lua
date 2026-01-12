@@ -18,7 +18,7 @@ require("font").apply_to_config(config)
 require("tab").apply_to_config(config)
 
 -- plugins
-wezterm.plugin.update_all()
+-- wezterm.plugin.update_all() -- plugin更新したい時
 require("smart-split").apply_to_config(config)
 require("workspace-picker").apply_to_config(config)
 

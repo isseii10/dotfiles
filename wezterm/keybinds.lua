@@ -49,7 +49,7 @@ local keys = {
 	{ key = "f", mods = "SUPER", action = act.Search("CurrentSelectionOrEmptyString") },
 	{ key = "n", mods = "SUPER", action = act.SpawnWindow },
 	{ key = "p", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
-	{ key = "r", mods = "SUPER", action = act.ReloadConfiguration },
+	{ key = "R", mods = "SHIFT|SUPER", action = act.ReloadConfiguration },
 	{ key = "phys:Space", mods = "SHIFT|CTRL", action = act.QuickSelect },
 	-- {
 	-- 	key = "U",
@@ -61,7 +61,6 @@ local keys = {
 	-- 	mods = "SHIFT|CTRL",
 	-- 	action = act.CharSelect({ copy_on_select = true, copy_to = "ClipboardAndPrimarySelection" }),
 	-- },
-
 }
 
 local key_tables = {

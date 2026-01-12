@@ -1,7 +1,9 @@
-local wezterm = require("wezterm")
+local wezterm = require("wezterm") ---@type Wezterm
 
+---@class WindowModule
 local M = {}
 
+---@param config table
 function M.apply_to_config(config)
 	-- window
 	config.window_background_opacity = 0.90

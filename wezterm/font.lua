@@ -1,7 +1,9 @@
-local wezterm = require("wezterm")
+local wezterm = require("wezterm") ---@type Wezterm
 
+---@class FontModule
 local M = {}
 
+---@param config table
 function M.apply_to_config(config)
 	-- font
 	-- wezterm ls-fonts --list-systemで出力できる

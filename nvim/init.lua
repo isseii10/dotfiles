@@ -3,6 +3,7 @@ require "user.keymaps"
 require "user.autocmds"
 
 local register = require("user.plugin_registry").register
+
 register "user.colorschemes.onenord"
 
 register "user.luasnip"
@@ -47,7 +48,7 @@ register "user.extras.dressing"
 register "user.extras.eyeliner"
 register "user.extras.gitlinker"
 register "user.extras.hlargs"
--- register "user.extras.lazydev"
+register "user.extras.lazydev"
 register "user.extras.neoscroll"
 register "user.extras.noice"
 register "user.extras.nvim-dbee"

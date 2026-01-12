@@ -1,6 +1,7 @@
-local wezterm = require("wezterm")
+local wezterm = require("wezterm") ---@type Wezterm
 local act = wezterm.action
 
+---@class KeybindsModule
 local M = {}
 
 local keys = {
@@ -126,6 +127,7 @@ local key_tables = {
 	},
 }
 
+---@param config table
 function M.apply_to_config(config)
 	config.keys = keys
 	config.key_tables = key_tables

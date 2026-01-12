@@ -1,14 +1,10 @@
----@class ColorsModule
-local M = {}
+local config = {}
 
--- ビルトインのカラースキームは使わない
--- local color_scheme = nil
-
-local colors = {
+config.colors = {
 	-- The default text color
-	foreground = "#c8d0e0",
+	foreground = "silver",
 	-- The default background color
-	background = "#000000",
+	background = "black",
 
 	-- Overrides the cell background color when the current cell is occupied by the
 	-- cursor and the cursor style is set to Block
@@ -87,9 +83,4 @@ local colors = {
 	launcher_label_fg = { Color = "#ffffff" }, -- (*Since: Nightly Builds Only*)
 }
 
----@param config Config
-function M.apply_to_config(config)
-	config.colors = colors
-end
-
-return M
+return config

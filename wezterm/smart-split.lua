@@ -1,7 +1,9 @@
-local wezterm = require("wezterm")
+local wezterm = require("wezterm") ---@type Wezterm
 
+---@class SmartSplitModule
 local M = {}
 
+---@param config table
 function M.apply_to_config(config)
 	local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 	smart_splits.apply_to_config(config, {

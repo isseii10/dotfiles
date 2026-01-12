@@ -1,7 +1,9 @@
-local wezterm = require("wezterm")
+local wezterm = require("wezterm") ---@type Wezterm
 
+---@class WorkspacePickerModule
 local M = {}
 
+---@param config Config
 function M.apply_to_config(config)
 	local workspace_picker = wezterm.plugin.require("https://github.com/isseii10/workspace-picker.wezterm")
 	workspace_picker.setup({

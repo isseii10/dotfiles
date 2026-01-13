@@ -104,3 +104,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey "^O" edit-command-line
+
+# 仕事用に必要なら.zshrc.work作成
+[ -f "$XDG_CONFIG_HOME/zsh/.zshrc.work" ] && source "$XDG_CONFIG_HOME/zsh/.zshrc.work"

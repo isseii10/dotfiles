@@ -6,6 +6,7 @@ local M = {
   event = "VeryLazy",
 }
 
+
 local function get_attached_clients()
   local buf_clients = vim.lsp.get_clients { bufnr = 0 }
   if #buf_clients == 0 then
@@ -13,6 +14,7 @@ local function get_attached_clients()
   end
 
   local buf_ft = vim.bo.filetype
+
   local buf_client_names = {}
 
   -- add client
@@ -100,6 +102,14 @@ local copilot_lualine = {
   show_loading = true,
 }
 
+local function rec()
+  local r = vim.fn.reg_recording()
+  if r ~= "" then
+    return "REC @" .. r
+  end
+  return ""
+end
+
 function M.config()
   require("lualine").setup {
     options = {
@@ -108,7 +118,7 @@ function M.config()
       ignore_focus = { "NvimTree" },
     },
     sections = {
-      lualine_a = { "mode" },
+      lualine_a = { "mode", rec },
       lualine_b = {
         "branch",
         "diff",

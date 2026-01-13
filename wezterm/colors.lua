@@ -7,7 +7,10 @@ local M = {}
 -- local color_scheme = "Cobalt 2 (Gogh)"
 -- local color_scheme = "Dracula (Gogh)"
 -- local color_scheme = "Dracula+"
-local color_scheme = "Eighties (base16)"
+-- local color_scheme = "Eighties (base16)"
+-- local color_scheme = "Nord (Gogh)"
+-- local color_scheme = "Obsidian (Gogh)"
+local color_scheme = "Orangish (terminal.sexy)"
 
 ---@type Palette
 local colors = {
@@ -97,6 +100,8 @@ local colors = {
 function M.apply_to_config(config)
 	if color_scheme then
 		config.color_scheme = color_scheme
+		-- foregroundだけneovimと合わせる(気になるので)
+		config.colors = { foreground = "#c8d0e0" }
 	else
 		config.colors = colors
 	end

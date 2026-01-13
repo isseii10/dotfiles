@@ -14,10 +14,10 @@ local keys = {
 	-- split panes
 	{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	-- close tab/pain
-	{ key = "q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
+	-- close pain/tab/application
 	{ key = "q", mods = "SUPER", action = act.CloseCurrentPane({ confirm = true }) },
-	{ key = "Q", mods = "LEADER", action = act.QuitApplication },
+	-- { key = "q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
+	{ key = "q", mods = "LEADER", action = act.QuitApplication },
 
 	-- manage font size
 	{ key = "+", mods = "SUPER", action = act.IncreaseFontSize },

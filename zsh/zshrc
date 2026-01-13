@@ -60,6 +60,9 @@ eval "$(direnv hook zsh)"
 # zoxide: smarter cd
 eval "$(zoxide init zsh --cmd cd)"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # github token(ghのpathが通ったあと)
 export GITHUB_TOKEN=$(gh auth token)
 

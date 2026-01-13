@@ -1,8 +1,13 @@
 ---@class ColorsModule
 local M = {}
 
--- ビルトインのカラースキームは使わない
+-- color_scheme優先
 -- local color_scheme = nil
+-- local color_scheme = "Chester"
+-- local color_scheme = "Cobalt 2 (Gogh)"
+-- local color_scheme = "Dracula (Gogh)"
+-- local color_scheme = "Dracula+"
+local color_scheme = "Eighties (base16)"
 
 ---@type Palette
 local colors = {
@@ -90,7 +95,11 @@ local colors = {
 
 ---@param config Config
 function M.apply_to_config(config)
-	config.colors = colors
+	if color_scheme then
+		config.color_scheme = color_scheme
+	else
+		config.colors = colors
+	end
 end
 
 return M

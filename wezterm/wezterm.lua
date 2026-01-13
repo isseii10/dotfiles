@@ -35,4 +35,11 @@ local workspace_picker = require("workspace-picker")
 smart_split.apply_to_config(config)
 workspace_picker.apply_to_config(config)
 
+-- テーマ試したい時
+-- cmd shift n: 次
+-- cmd shift p: 前
+-- cmd shift d: 設定してるテーマに戻る
+-- cmd shift r: ランダム
+-- wezterm.plugin.require("https://github.com/koh-sh/wezterm-theme-rotator").apply_to_config(config)
+
 return config

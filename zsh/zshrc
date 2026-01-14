@@ -27,29 +27,15 @@ alias cat='bat'
 alias dot='cd $HOME/dotfiles'
 alias config='cd $HOME/.config'
 
-# obsidian
-export OBSIDIAN_VAULT_PATH="$HOME/obsidian/engineering"
-# Android Studio
-export ANDROID_HOME=$HOME/Library/Android/sdk
-# manual pager
-export MANPAGER="nvim +Man!"
-
-# path
-. "$HOME/.cargo/env"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH" # make
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export PATH="$PATH:$ANDROID_HOME/emulator"
-
-# mise path (path設定の後にやる)
+# mise (インタラクティブシェル用)
 if type mise &>/dev/null; then
-  eval "$(mise activate zsh)" # this sets up interactive sessions
+  eval "$(mise activate zsh)"
 fi
 
-# fzf default command
-export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/*,.git/*}"'
+# github token
+if type gh &>/dev/null; then
+  export GITHUB_TOKEN=$(gh auth token)
+fi
 
 # starship
 eval "$(starship init zsh)"
@@ -59,12 +45,6 @@ eval "$(direnv hook zsh)"
 
 # zoxide: smarter cd
 eval "$(zoxide init zsh --cmd cd)"
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# github token(ghのpathが通ったあと)
-export GITHUB_TOKEN=$(gh auth token)
 
 # plugins
 if type brew &>/dev/null; then
@@ -96,8 +76,6 @@ zstyle ':completion:*' group-name ''
 # 名前で色を付けるようにする
 autoload colors
 colors
-# LS_COLORSを設定しておく
-export LS_COLORS="$(vivid generate solarized-dark)"
 # ファイル補完候補に色を付ける
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 

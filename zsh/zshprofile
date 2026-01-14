@@ -1,4 +1,0 @@
-# mise
-if type mise &>/dev/null; then
-  eval "$(mise activate --shims)" # this sets up non-interactive sessions
-fi

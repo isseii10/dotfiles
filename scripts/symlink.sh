@@ -3,7 +3,9 @@
 # dotfiles dir
 dotfiles_dir=${HOME}/dotfiles
 config_dir=${HOME}/.config
-# なかったら作成
+
+# 必要なディレクトリを作成
+mkdir -p ${config_dir}/zsh
 
 create_symlink() {
   local target="$1" # リンク元

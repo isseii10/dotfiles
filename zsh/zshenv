@@ -22,3 +22,36 @@ export BAT_THEME="Nord"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# obsidian
+export OBSIDIAN_VAULT_PATH="$HOME/obsidian/engineering"
+
+# Android Studio
+export ANDROID_HOME=$HOME/Library/Android/sdk
+
+# manual pager
+export MANPAGER="nvim +Man!"
+
+# fzf default command
+export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/*,.git/*}"'
+
+# PATH設定
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+
+# cargo
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# mise (非インタラクティブセッション用)
+if type mise &>/dev/null; then
+  eval "$(mise activate --shims)"
+fi
+
+# LS_COLORS (vivid がインストールされている場合)
+if type vivid &>/dev/null; then
+  export LS_COLORS="$(vivid generate solarized-dark)"
+fi
+

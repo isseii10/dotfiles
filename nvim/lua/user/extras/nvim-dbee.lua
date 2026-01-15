@@ -1,5 +1,7 @@
 local M = {
-  "kndndrj/nvim-dbee",
+  -- "kndndrj/nvim-dbee",
+  "isseii10/nvim-dbee",
+  branch = "fix/popup-menu-improvements",
   dependencies = {
     "MunifTanjim/nui.nvim",
   },

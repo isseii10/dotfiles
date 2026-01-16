@@ -6,7 +6,6 @@ local M = {
   event = "VeryLazy",
 }
 
-
 local function get_attached_clients()
   local buf_clients = vim.lsp.get_clients { bufnr = 0 }
   if #buf_clients == 0 then
@@ -105,7 +104,7 @@ local copilot_lualine = {
 local function rec()
   local r = vim.fn.reg_recording()
   if r ~= "" then
-    return "REC @" .. r
+    return "(REC @" .. r .. ")"
   end
   return ""
 end

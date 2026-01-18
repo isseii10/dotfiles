@@ -21,7 +21,7 @@ register "user.conform"
 register "user.gitsigns"
 register "user.git-conflict"
 -- register "user.go" -- treesitter main移行でエラーになるので対応まち
-register "user.harpoon"
+-- register "user.harpoon"
 register "user.hlchunk"
 register "user.illuminate"
 register "user.lint"

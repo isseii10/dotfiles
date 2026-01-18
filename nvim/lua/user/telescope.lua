@@ -18,7 +18,7 @@ local M = {
         require("telescope").load_extension "smart_open"
       end,
     },
-    { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true } },
+    -- { "mike-jl/harpoonEx", opts = { reload_on_dir_change = true } },
   },
   keys = {
     "<leader>bb",
@@ -207,11 +207,11 @@ function M.config()
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
-      harpoonEx = {
-        theme = "dropdown",
-        initial_mode = "normal",
-        mappings = keymap,
-      },
+      -- harpoonEx = {
+      --   theme = "dropdown",
+      --   initial_mode = "normal",
+      --   mappings = keymap,
+      -- },
       smart_open = {
         match_algorithm = "fzf",
         disable_devicons = false,

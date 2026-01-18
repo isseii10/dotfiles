@@ -7,7 +7,7 @@ function M.config()
   require("illuminate").configure {
     filetypes_denylist = {
       "mason",
-      "harpoon",
+      -- "harpoon",
       "DressingInput",
       "NeogitCommitMessage",
       "qf",

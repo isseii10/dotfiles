@@ -99,6 +99,10 @@ function M.config()
     log_level = "info",
   }
 
+  local function is_floating()
+    return vim.api.nvim_win_get_config(0).relative ~= ""
+  end
+
   -- recommended mappings
   -- resizing splits
   -- these keymaps will also accept a range,
@@ -108,10 +112,34 @@ function M.config()
   vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
   vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
   -- moving between splits
-  vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
-  vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
-  vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
-  vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+  vim.keymap.set("n", "<C-h>", function()
+    if is_floating() then
+      vim.cmd "wincmd h"
+    else
+      require("smart-splits").move_cursor_left()
+    end
+  end)
+  vim.keymap.set("n", "<C-j>", function()
+    if is_floating() then
+      vim.cmd "wincmd j"
+    else
+      require("smart-splits").move_cursor_down()
+    end
+  end)
+  vim.keymap.set("n", "<C-k>", function()
+    if is_floating() then
+      vim.cmd "wincmd k"
+    else
+      require("smart-splits").move_cursor_up()
+    end
+  end)
+  vim.keymap.set("n", "<C-l>", function()
+    if is_floating() then
+      vim.cmd "wincmd l"
+    else
+      require("smart-splits").move_cursor_right()
+    end
+  end)
   -- vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
   -- swapping buffers between windows
   vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)

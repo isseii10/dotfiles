@@ -1,9 +1,27 @@
 local M = {
   "A7Lavinraj/fyler.nvim",
+  -- dir = "~/fork/fyler.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   branch = "stable",
   lazy = false,
 }
+
+vim.api.nvim_create_autocmd("BufLeave", {
+  callback = function()
+    if vim.bo.filetype ~= "fyler" then
+      return
+    end
+    vim.schedule(function()
+      -- Don't close if focus moved to another float (e.g., confirmation)
+      local win_config = vim.api.nvim_win_get_config(0)
+      if win_config.relative ~= "" then
+        return
+      end
+      require("fyler").close()
+    end)
+  end,
+})
+
 function M.config()
   local fyler = require "fyler"
   local icons = require "user.icons"
@@ -25,31 +43,27 @@ function M.config()
     views = {
       finder = {
         close_on_select = true,
+        -- close_on_leave = true,
         confirm_simple = false,
         default_explorer = false,
         delete_to_trash = false,
         git_status = {
           enabled = true,
-          symbols = {
-            Untracked = icons.git.FileUntracked,
-            Added = icons.git.FileUnstaged,
-            Modified = icons.git.FileModified,
-            Deleted = icons.git.FileDeleted,
-            Renamed = icons.git.FileRenamed,
-            Copied = "~",
-            Conflict = "!",
-            Ignored = icons.git.FileIgnored,
-          },
+          -- symbols = {
+          --   Untracked = icons.git.FileUntracked,
+          --   Added = icons.git.FileUnstaged,
+          --   Modified = icons.git.FileModified,
+          --   Deleted = icons.git.FileDeleted,
+          --   Renamed = icons.git.FileRenamed,
+          --   Copied = "~",
+          --   Conflict = "!",
+          --   Ignored = icons.git.FileIgnored,
+          -- },
         },
         icon = {
           directory_collapsed = icons.ui.Folder,
           directory_empty = icons.ui.EmptyFolder,
           directory_expanded = icons.ui.FolderOpen,
-        },
-        indentscope = {
-          enabled = true,
-          group = "FylerIndentMarker",
-          marker = "│",
         },
         mappings = {
           ["q"] = "CloseView",

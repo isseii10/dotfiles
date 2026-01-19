@@ -109,15 +109,6 @@ function M.config()
       end,
     },
   }
-
-  -- クリックしたら挿入モードに入る
-  -- TODO: しばらくコメントアウトしておいて、困らなかったら消す
-  -- vim.api.nvim_create_autocmd("TermOpen", {
-  --   pattern = "*",
-  --   callback = function()
-  --     vim.api.nvim_buf_set_keymap(0, "n", "<LeftRelease>", "<LeftRelease>i", { noremap = true, silent = true })
-  --   end,
-  -- })
 end
 
 return M

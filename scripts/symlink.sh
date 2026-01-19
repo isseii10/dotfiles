@@ -37,3 +37,5 @@ create_symlink ${dotfiles_dir}/karabiner ${config_dir}/karabiner
 create_symlink ${dotfiles_dir}/lazygit ${config_dir}/lazygit
 # delta (better git diff)
 create_symlink ${dotfiles_dir}/delta ${config_dir}/delta
+# yazi file brawser
+create_symlink ${dotfiles_dir}/yazi ${config_dir}/yazi

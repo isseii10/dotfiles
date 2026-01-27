@@ -67,7 +67,7 @@ function M.config()
       "prettierd", -- formatter
 
       -- python
-      "pylint", -- linter
+      -- "pylint", -- miseで入れたpythonに合わせる
       "isort", -- python formatter
       "black", -- python formatter
 

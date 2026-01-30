@@ -2,6 +2,7 @@ local M = {
   "A7Lavinraj/fyler.nvim",
   -- dir = "~/fork/fyler.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- dependencies = { "nvim-mini/mini.icons" },
   branch = "stable",
   lazy = false,
 }
@@ -39,6 +40,7 @@ function M.config()
     },
     integrations = {
       icon = "nvim_web_devicons",
+      -- icon = "mini_icons",
     },
     views = {
       finder = {

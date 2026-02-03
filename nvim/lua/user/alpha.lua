@@ -30,8 +30,6 @@ function M.config()
     [[                                             ]],
     [[                                             ]],
     [[                                             ]],
-    [[                                             ]],
-    [[                                             ]],
   }
   dashboard.section.buttons.val = {
     dashboard.button(
@@ -46,6 +44,15 @@ function M.config()
   local fortune = handle:read "*a"
   handle:close()
   dashboard.section.footer.val = fortune
+
+  dashboard.config.layout = {
+    { type = "padding", val = 2 },
+    dashboard.section.header,
+    { type = "padding", val = 2 },
+    dashboard.section.buttons,
+    { type = "padding", val = 1 },
+    dashboard.section.footer,
+  }
 
   dashboard.config.opts.noautocmd = true
 

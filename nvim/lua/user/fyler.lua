@@ -50,18 +50,37 @@ function M.config()
         confirm_simple = false,
         default_explorer = false,
         delete_to_trash = false,
-        git_status = {
-          enabled = true,
-          -- symbols = {
-          --   Untracked = icons.git.FileUntracked,
-          --   Added = icons.git.FileUnstaged,
-          --   Modified = icons.git.FileModified,
-          --   Deleted = icons.git.FileDeleted,
-          --   Renamed = icons.git.FileRenamed,
-          --   Copied = "~",
-          --   Conflict = "!",
-          --   Ignored = icons.git.FileIgnored,
-          -- },
+        columns_order = { "git", "diagnostic", "permission", "size" },
+        -- Define configuration fo each available information column
+        columns = {
+          git = {
+            enabled = true,
+            symbols = {
+              Untracked = icons.git.FileUntracked,
+              Added = icons.git.FileUnstaged,
+              Modified = icons.git.FileModified,
+              Deleted = icons.git.FileDeleted,
+              Renamed = icons.git.FileRenamed,
+              Copied = "~",
+              Conflict = "!",
+              Ignored = icons.git.FileIgnored,
+            },
+          },
+          diagnostic = {
+            enabled = true,
+            symbols = {
+              Error = icons.diagnostics.Error,
+              Warn = icons.diagnostics.Warning,
+              Info = icons.diagnostics.Information,
+              Hint = icons.diagnostics.Hint,
+            },
+          },
+          permission = {
+            enabled = true,
+          },
+          size = {
+            enabled = true,
+          },
         },
         icon = {
           directory_collapsed = icons.ui.Folder,

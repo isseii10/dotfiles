@@ -3,7 +3,8 @@ local M = {
   -- dir = "~/fork/fyler.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   -- dependencies = { "nvim-mini/mini.icons" },
-  branch = "stable",
+  -- https://github.com/A7Lavinraj/fyler.nvim/pull/25 でsymlink対応されたので、stableに入るまでlatest使う
+  -- branch = "stable",
   lazy = false,
 }
 

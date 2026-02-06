@@ -33,17 +33,20 @@ function M.config()
   }
   dashboard.section.buttons.val = {
     dashboard.button(
-      "f",
+      "<SPC>ff",
       icons.ui.FindFile .. "  Find files",
       "<cmd>Telescope smart_open cwd_only=true theme=dropdown prompt_title=Find\\ Files<cr>"
     ),
-    dashboard.button("r", icons.ui.History .. " Recently opened files", "<cmd>Telescope oldfiles<CR>"),
-    dashboard.button("q", "󰅚  Quit NVIM", ":qa<CR>"),
+    dashboard.button("<SPC>fr", icons.ui.History .. " Recently opened files", "<cmd>Telescope oldfiles<CR>"),
+    dashboard.button("<SPC>q", "󰅚  Quit NVIM", ":qa<CR>"),
   }
-  local handle = io.popen "fortune"
-  local fortune = handle:read "*a"
-  handle:close()
-  dashboard.section.footer.val = fortune
+  local lazy_ok, lazy = pcall(require, "lazy")
+  if lazy_ok then
+    local stats = lazy.stats()
+    dashboard.section.footer.val = {
+      string.format("plugins: loaded %d total %d", stats.loaded, stats.count),
+    }
+  end
 
   dashboard.config.layout = {
     { type = "padding", val = 2 },

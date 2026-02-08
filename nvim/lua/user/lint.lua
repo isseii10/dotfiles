@@ -14,6 +14,7 @@ return {
       typescriptreact = { "eslint_d" },
       python = { "pylint" }, -- pylintはmasonじゃなくてmiseで入れたpythonのpipで入れる
       go = { "golangcilint" },
+      -- markdown = { "markdownlint" },
     }
 
     lint.linters.golangcilint = {

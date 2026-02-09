@@ -39,3 +39,5 @@ create_symlink ${dotfiles_dir}/lazygit ${config_dir}/lazygit
 create_symlink ${dotfiles_dir}/delta ${config_dir}/delta
 # yazi file brawser
 create_symlink ${dotfiles_dir}/yazi ${config_dir}/yazi
+# resterm (postman alternative)
+create_symlink ${dotfiles_dir}/resterm ${config_dir}/resterm

@@ -28,6 +28,9 @@ export OBSIDIAN_VAULT_PATH="$HOME/obsidian/engineering"
 # Android Studio
 export ANDROID_HOME=$HOME/Library/Android/sdk
 
+# resterm
+export RESTERM_CONFIG_DIR="$XDG_CONFIG_HOME/resterm"
+
 # manual pager
 export MANPAGER="nvim +Man!"
 

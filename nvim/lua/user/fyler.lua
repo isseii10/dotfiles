@@ -8,21 +8,21 @@ local M = {
   lazy = false,
 }
 
-vim.api.nvim_create_autocmd("BufLeave", {
-  callback = function()
-    if vim.bo.filetype ~= "fyler" then
-      return
-    end
-    vim.schedule(function()
-      -- Don't close if focus moved to another float (e.g., confirmation)
-      local win_config = vim.api.nvim_win_get_config(0)
-      if win_config.relative ~= "" then
-        return
-      end
-      require("fyler").close()
-    end)
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufLeave", {
+--   callback = function()
+--     if vim.bo.filetype ~= "fyler" then
+--       return
+--     end
+--     vim.schedule(function()
+--       -- Don't close if focus moved to another float (e.g., confirmation)
+--       local win_config = vim.api.nvim_win_get_config(0)
+--       if win_config.relative ~= "" then
+--         return
+--       end
+--       require("fyler").close()
+--     end)
+--   end,
+-- })
 
 function M.config()
   local fyler = require "fyler"
@@ -50,7 +50,7 @@ function M.config()
         confirm_simple = false,
         default_explorer = false,
         delete_to_trash = false,
-        columns_order = { "git", "diagnostic", "permission", "size" },
+        columns_order = { "link", "git", "diagnostic", "permission", "size" },
         -- Define configuration fo each available information column
         columns = {
           git = {
@@ -79,6 +79,9 @@ function M.config()
             enabled = true,
           },
           size = {
+            enabled = true,
+          },
+          link = {
             enabled = true,
           },
         },

@@ -7,3 +7,5 @@ git:
       # pager: delta --dark --paging=never --features=corvas
       # pager: delta --dark --paging=never --features=collared-torogon
       # pager: delta --dark --paging=never --features=calochortus-lyallii
+os:
+  editPreset: "nvim-remote"

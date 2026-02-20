@@ -8,4 +8,6 @@ git:
       # pager: delta --dark --paging=never --features=collared-torogon
       # pager: delta --dark --paging=never --features=calochortus-lyallii
 os:
-  editPreset: "nvim-remote"
+  edit: "nvim --server \"$NVIM\" --remote-expr \"luaeval('SwitchFromLazygit()')\" && nvim --server \"$NVIM\" --remote {{filename}}"
+  editAtLine: "nvim --server \"$NVIM\" --remote-expr \"luaeval('SwitchFromLazygit()')\" && nvim --server \"$NVIM\" --remote +{{line}} {{filename}}"
+promptToReturnFromSubprocess: false

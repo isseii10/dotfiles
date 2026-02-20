@@ -42,6 +42,20 @@ function M.config()
   function Lazygit_toggle()
     lazygit:toggle()
   end
+
+  -- lazygitのfloatを非表示にしてメインウィンドウにフォーカスを移す
+  -- lazygit config の os.edit から --remote-expr 経由で呼ばれる
+  function SwitchFromLazygit()
+    lazygit:toggle()
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+      local config = vim.api.nvim_win_get_config(win)
+      if config.relative == "" then
+        vim.api.nvim_set_current_win(win)
+        break
+      end
+    end
+  end
+
   local wk = require "which-key"
   wk.add {
     { "<leader>gg", "<cmd>lua Lazygit_toggle()<CR>", desc = "lazygit" },

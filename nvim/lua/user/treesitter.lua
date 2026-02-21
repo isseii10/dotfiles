@@ -18,6 +18,7 @@ function M.config()
     "gosum",
     "markdown",
     "bash",
+    "zsh",
     "javascript",
     "typescript",
     "tsx",
@@ -30,6 +31,7 @@ function M.config()
     "make",
     "hcl",
     "toml",
+    "gitignore",
   }
   require("nvim-treesitter").install(parsers)
 
@@ -42,6 +44,8 @@ function M.config()
       "gosum",
       "markdown",
       "sh",
+      "zsh",
+      "bash",
       "javascript",
       "typescript",
       "typescriptreact",
@@ -54,6 +58,7 @@ function M.config()
       "rust",
       "make",
       "toml",
+      "gitignore",
     },
     callback = function()
       -- syntax highlighting, provided by Neovim

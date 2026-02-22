@@ -1,6 +1,6 @@
 local M = {
   "kevinhwang91/nvim-bqf",
-  event = "VeryLazy",
+  ft = "qf",
 }
 
 function M.config()

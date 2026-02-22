@@ -11,7 +11,7 @@ local M = {
       current = "DiffText",
     },
   },
-  event = "VeryLazy",
+  event = "BufReadPre",
 }
 
 vim.keymap.set("n", "<leader>gco", "<Plug>(git-conflict-ours)")

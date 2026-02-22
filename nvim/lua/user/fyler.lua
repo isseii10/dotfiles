@@ -5,7 +5,7 @@ local M = {
   -- dependencies = { "nvim-mini/mini.icons" },
   -- https://github.com/A7Lavinraj/fyler.nvim/pull/25 でsymlink対応されたので、stableに入るまでlatest使う
   -- branch = "stable",
-  lazy = false,
+  keys = { "<leader>e" },
 }
 
 -- vim.api.nvim_create_autocmd("BufLeave", {

@@ -5,4 +5,5 @@ return {
       color = "#d57780", -- highlightのDefineの色
     }
   end,
+  event = "BufReadPost",
 }

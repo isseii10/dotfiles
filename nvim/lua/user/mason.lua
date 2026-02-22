@@ -4,7 +4,7 @@ local M = {
     "mason-org/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
-  event = "VimEnter", -- VimEnterより遅いとmason_tool_installerのensure_installedが機能しない
+  event = "VimEnter", -- VimEnterより遅いとmason_tool_installerのensure_installedが機能しない(https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/issues/39)
 }
 
 function M.config()

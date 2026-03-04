@@ -1,0 +1,3 @@
+- Run targeted checks only if configs touched (e.g., `nvim --headless "+Lazy! sync" +qa` or `wezterm start --version` as relevant); no formal tests exist.
+- Confirm symlinked files (e.g., `ls -la ~/.config/nvim`) when changing paths.
+- For package updates, ensure `brew bundle --file=scripts/Brewfile` succeeds.

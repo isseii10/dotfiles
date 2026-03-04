@@ -1,0 +1,3 @@
+- Neovim config is modular: new plugins get their own Lua modules under `nvim/lua/user/` and are registered via `spec "user.<plugin>"` in `nvim/init.lua`.
+- Repo emphasizes minimal, focused edits that respect existing symlink mappings; no blanket rewrites.
+- Follow macOS-oriented paths and keep configs consistent with Lazy.nvim event-based loading; update related docs if new tools/configs are added.

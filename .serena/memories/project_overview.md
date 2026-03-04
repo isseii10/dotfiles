@@ -1,0 +1,4 @@
+- dotfiles repo for macOS dev environment provisioning (Neovim, WezTerm, Zsh, Karabiner, Starship, Raycast).
+- Uses Lazy.nvim-based modular Lua config under `nvim/lua/user/` with `launch.lua` + `init.lua` orchestrating plugins.
+- Scripts (`init.sh`, `scripts/homebrew.sh`, `scripts/symlink.sh`) install Homebrew packages and create symlinks into `~/.config/*`.
+- Other top-level dirs hold respective app configs (wezterm, karabiner, raycast, zsh, etc.).

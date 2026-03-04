@@ -2,4 +2,5 @@ lvim/lazy-lock.json
 nvim/lazy-lock.json
 font_out
 
-.serena
+
+resterm/history.*

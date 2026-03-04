@@ -1,0 +1,5 @@
+- `./init.sh`: bootstrap Homebrew, install Brewfile packages, and create symlinks.
+- `./scripts/homebrew.sh`: standalone Homebrew install + `brew bundle --file=scripts/Brewfile` execution.
+- `./scripts/symlink.sh`: recreate symlinks from repo configs into `~/.config` and dotfiles.
+- `brew bundle --file=scripts/Brewfile`: install/update packages listed in Brewfile.
+- `brew bundle dump --file=scripts/Brewfile --force`: refresh Brewfile after adding packages.

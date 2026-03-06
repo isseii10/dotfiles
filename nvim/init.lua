@@ -42,7 +42,6 @@ register "user.whichkey"
 
 register "user.extras.bqf"
 register "user.extras.colorizer"
-register "user.extras.copilot"
 register "user.extras.dressing"
 register "user.extras.eyeliner"
 register "user.extras.gitlinker"

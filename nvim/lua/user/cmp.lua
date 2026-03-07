@@ -53,14 +53,6 @@ local M = {
       "ray-x/cmp-treesitter",
       event = "InsertEnter",
     },
-    {
-      "zbirenbaum/copilot-cmp",
-      event = { "InsertEnter", "LspAttach" },
-      fix_pairs = true,
-      config = function()
-        require("copilot_cmp").setup()
-      end,
-    },
   },
 }
 
@@ -69,7 +61,6 @@ function M.config()
   local luasnip = require "luasnip"
   -- require "user.luasnip" -- load user defined snipet
   -- require("luasnip/loaders/from_vscode").lazy_load()
-  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
@@ -173,11 +164,6 @@ function M.config()
           vim_item.kind_hl_group = "CmpItemKindTabnine"
         end
 
-        if entry.source.name == "copilot" then
-          vim_item.kind = icons.git.Copilot
-          vim_item.kind_hl_group = "CmpItemKindCopilot"
-        end
-
         return vim_item
       end,
     },
@@ -189,7 +175,6 @@ function M.config()
       { name = "treesitter", group_index = 2 },
       { name = "buffer", group_index = 2 },
       { name = "path", group_index = 2 },
-      { name = "copilot", group_index = 2 },
       { name = "calc", group_index = 3 },
       { name = "emoji", group_index = 3 },
       -- { name = "cmp-dbee" },

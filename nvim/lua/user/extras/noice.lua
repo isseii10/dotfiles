@@ -10,7 +10,6 @@ local M = {
 M.opts = {
   lsp = {
     progress = {
-      -- NOTE: 'progress' replace j-hui/fidget.nvim
       enabled = true,
       -- Lsp Progress is formatted using the builtins for lsp_progress. See config.format.builtin
       -- See the section on formatting for more details on how to customize.
@@ -22,7 +21,6 @@ M.opts = {
       view = "mini",
     },
     signature = {
-      -- NOTE: 'signature' replace ray-x/lsp_signature.nvim
       enabled = true,
       auto_open = {
         enabled = true,

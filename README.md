@@ -25,7 +25,7 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 
 ### ai
 
-+ [yetone/avante.nvim](https://dotfyle.com/plugins/yetone/avante.nvim)
++ [folke/sidekick.nvim](https://dotfyle.com/plugins/folke/sidekick.nvim)
 ### bars-and-lines
 
 + [SmiteshP/nvim-navic](https://dotfyle.com/plugins/SmiteshP/nvim-navic)
@@ -45,7 +45,6 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 + [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
 ### completion
 
-+ [zbirenbaum/copilot.lua](https://dotfyle.com/plugins/zbirenbaum/copilot.lua)
 + [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
 ### cursorline
 
@@ -66,11 +65,10 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 + [Wansmer/treesj](https://dotfyle.com/plugins/Wansmer/treesj)
 + [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
 + [echasnovski/mini.ai](https://dotfyle.com/plugins/echasnovski/mini.ai)
-+ [folke/snacks.nvim](https://dotfyle.com/plugins/folke/snacks.nvim)
 + [windwp/nvim-ts-autotag](https://dotfyle.com/plugins/windwp/nvim-ts-autotag)
 ### file-explorer
 
-+ [nvim-tree/nvim-tree.lua](https://dotfyle.com/plugins/nvim-tree/nvim-tree.lua)
++ [A7Lavinraj/fyler.nvim](https://dotfyle.com/plugins/A7Lavinraj/fyler.nvim)
 ### formatting
 
 + [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)
@@ -78,10 +76,9 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 
 + [danielfalk/smart-open.nvim](https://dotfyle.com/plugins/danielfalk/smart-open.nvim)
 + [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
-+ [echasnovski/mini.pick](https://dotfyle.com/plugins/echasnovski/mini.pick)
-+ [ibhagwan/fzf-lua](https://dotfyle.com/plugins/ibhagwan/fzf-lua)
 ### git
 
++ [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
 + [linrongbin16/gitlinker.nvim](https://dotfyle.com/plugins/linrongbin16/gitlinker.nvim)
 + [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
 + [akinsho/git-conflict.nvim](https://dotfyle.com/plugins/akinsho/git-conflict.nvim)
@@ -93,7 +90,6 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 + [ray-x/go.nvim](https://dotfyle.com/plugins/ray-x/go.nvim)
 ### icon
 
-+ [echasnovski/mini.icons](https://dotfyle.com/plugins/echasnovski/mini.icons)
 + [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
 ### indent
 
@@ -103,19 +99,11 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 + [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
 ### lsp
 
-+ [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
 + [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
-+ [ray-x/lsp_signature.nvim](https://dotfyle.com/plugins/ray-x/lsp_signature.nvim)
 + [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 ### markdown-and-latex
 
 + [MeanderingProgrammer/render-markdown.nvim](https://dotfyle.com/plugins/MeanderingProgrammer/render-markdown.nvim)
-### marks
-
-+ [ThePrimeagen/harpoon](https://dotfyle.com/plugins/ThePrimeagen/harpoon)
-### media
-
-+ [HakonHarnes/img-clip.nvim](https://dotfyle.com/plugins/HakonHarnes/img-clip.nvim)
 ### motion
 
 + [jinh0/eyeliner.nvim](https://dotfyle.com/plugins/jinh0/eyeliner.nvim)
@@ -127,6 +115,7 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 ### nvim-dev
 
 + [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
++ [DrKJeff16/wezterm-types](https://dotfyle.com/plugins/DrKJeff16/wezterm-types)
 + [ray-x/guihua.lua](https://dotfyle.com/plugins/ray-x/guihua.lua)
 + [kkharji/sqlite.lua](https://dotfyle.com/plugins/kkharji/sqlite.lua)
 + [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
@@ -165,13 +154,9 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 + [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
 + [m-demare/hlargs.nvim](https://dotfyle.com/plugins/m-demare/hlargs.nvim)
 + [echasnovski/mini.surround](https://dotfyle.com/plugins/echasnovski/mini.surround)
-### tabline
-
-+ [romgrk/barbar.nvim](https://dotfyle.com/plugins/romgrk/barbar.nvim)
 ### terminal-integration
 
 + [akinsho/toggleterm.nvim](https://dotfyle.com/plugins/akinsho/toggleterm.nvim)
-+ [willothy/wezterm.nvim](https://dotfyle.com/plugins/willothy/wezterm.nvim)
 ### test
 
 + [nvim-neotest/neotest](https://dotfyle.com/plugins/nvim-neotest/neotest)
@@ -180,6 +165,7 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 
 + [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
 + [kevinhwang91/nvim-ufo](https://dotfyle.com/plugins/kevinhwang91/nvim-ufo)
++ [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
 ## Language Servers
 
 + astro

@@ -65,7 +65,7 @@ function M.config()
 
       -- typescript
       "eslint_d",
-      "prettierd", -- formatter
+      "prettier", -- formatter
 
       -- python
       -- "pylint", -- miseで入れたpythonに合わせる

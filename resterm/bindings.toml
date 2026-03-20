@@ -1,0 +1,69 @@
+# Resterm keybindings
+# 設定ファイルのパス: ~/.config/resterm/bindings.toml
+#
+# 書式:
+#   action_id = ["key1", "key2"]
+#   修飾キーは + で連結 (例: ctrl+shift+o)
+#   コードシーケンスはスペース区切り (例: "g s")
+#   send_request のみ単一ステップ必須
+#
+# 未記載の項目はデフォルト値が使われる
+
+[bindings]
+# --- フォーカス移動 ---
+cycle_focus_next = ["tab"]
+cycle_focus_prev = ["shift+tab"]
+focus_requests = ["g r"]
+focus_editor_normal = ["g i"]
+focus_response = ["g p"]
+
+# --- リクエスト送信 ---
+send_request = ["ctrl+enter", "cmd+enter", "alt+enter", "ctrl+j", "ctrl+m"]
+cancel_run = ["ctrl+c"]
+
+# --- ファイル操作 ---
+save_file = ["ctrl+s"]
+open_path_modal = ["ctrl+o"]
+open_new_file_modal = ["ctrl+n"]
+open_temp_document = ["ctrl+t"]
+reload_file_from_disk = ["g shift+r"]
+reload_workspace = ["ctrl+shift+o", "g shift+o"]
+reparse_document = ["ctrl+p", "ctrl+alt+p", "ctrl+shift+t"]
+
+# --- レイアウト ---
+set_main_split_horizontal = ["g s"]
+set_main_split_vertical = ["g v"]
+save_layout = ["g shift+l"]
+sidebar_width_decrease = ["g h"]
+sidebar_width_increase = ["g l"]
+sidebar_height_decrease = ["g j"]
+sidebar_height_increase = ["g k"]
+workflow_height_increase = ["g shift+j"]
+workflow_height_decrease = ["g shift+k"]
+toggle_sidebar_collapse = ["g 1"]
+toggle_editor_collapse = ["g 2"]
+toggle_response_collapse = ["g 3"]
+toggle_zoom = ["g z"]
+clear_zoom = ["g shift+z"]
+
+# --- レスポンスペイン ---
+toggle_response_split_vertical = ["ctrl+v"]
+toggle_response_split_horizontal = ["ctrl+u"]
+toggle_pane_follow_latest = ["ctrl+shift+v"]
+copy_response_tab = ["ctrl+shift+c", "g y"]
+toggle_header_preview = ["g shift+h"]
+start_compare_run = ["g c"]
+select_timeline_tab = ["ctrl+alt+l", "g t"]
+toggle_ws_console = ["g w"]
+
+# --- 環境・グローバル ---
+open_env_selector = ["ctrl+e"]
+show_globals = ["ctrl+g"]
+clear_globals = ["ctrl+shift+g"]
+
+# --- テーマ・UI ---
+open_theme_selector = ["ctrl+alt+t", "g m", "g shift+t"]
+toggle_help = ["?"]
+
+# --- 終了 ---
+quit_app = ["ctrl+q", "ctrl+d"]

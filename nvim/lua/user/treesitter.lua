@@ -32,6 +32,7 @@ function M.config()
     "hcl",
     "toml",
     "gitignore",
+    "nix",
   }
   require("nvim-treesitter").install(parsers)
 
@@ -59,6 +60,7 @@ function M.config()
       "make",
       "toml",
       "gitignore",
+      "nix",
     },
     callback = function()
       -- syntax highlighting, provided by Neovim

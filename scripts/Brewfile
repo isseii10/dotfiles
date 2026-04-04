@@ -11,7 +11,6 @@ tap "sqldef/sqldef"
 tap "steipete/tap"
 
 brew "openssl@3"
-brew "openssl@1.1"
 brew "awscli"
 brew "bash"
 brew "bat"

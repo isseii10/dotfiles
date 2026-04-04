@@ -33,6 +33,8 @@ create_symlink ${dotfiles_dir}/nvim ${config_dir}/nvim
 create_symlink ${dotfiles_dir}/starship.toml ${config_dir}/starship.toml
 # karabiner
 create_symlink ${dotfiles_dir}/karabiner ${config_dir}/karabiner
+# git
+create_symlink ${dotfiles_dir}/git/config ${config_dir}/git/config
 # lazygit
 create_symlink ${dotfiles_dir}/lazygit ${config_dir}/lazygit
 # delta (better git diff)

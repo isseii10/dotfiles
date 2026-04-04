@@ -1,0 +1,22 @@
+[user]
+	name = isseii10
+	email = t1l.g2.o11g@gmail.com
+
+[core]
+	editor = /opt/homebrew/bin/nvim
+  pager = delta --dark --paging=never --features=arctic-fox
+
+[init]
+	defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+
+[merge]
+  conflictStyle = zdiff3
+
+[include]
+    path = ~/.config/delta/themes.gitconfig

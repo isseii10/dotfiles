@@ -4,6 +4,14 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
+vim.filetype.add({
+  pattern = {
+    [".*/git/config"] = "gitconfig",
+    [".*/zsh/zprofile"] = "zsh",
+    [".*zshenv%.home"] = "zsh",
+  },
+})
+
 -- qで閉じられるようにする
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = {

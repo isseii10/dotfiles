@@ -41,6 +41,7 @@ register "user.whichkey"
 
 register "user.extras.bqf"
 register "user.extras.colorizer"
+register "user.extras.colorful-winsep"
 register "user.extras.dressing"
 register "user.extras.eyeliner"
 register "user.extras.gitlinker"

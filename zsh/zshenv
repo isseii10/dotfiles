@@ -45,8 +45,13 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/
 if type mise &>/dev/null; then
   eval "$(mise activate --shims)"
 fi
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+  export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+  export PATH="/home/linuxbrew/.linuxbrew/opt/make/libexec/gnubin:$PATH"
+fi
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"

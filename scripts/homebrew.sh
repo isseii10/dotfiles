@@ -9,6 +9,9 @@ if ! command -v brew &>/dev/null; then
   if [[ "$OSTYPE" == "darwin"* ]]; then
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>~/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.zprofile
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
 
   echo "Homebrew installation complete."

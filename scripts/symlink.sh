@@ -28,8 +28,8 @@ create_symlink() {
 # create_symlink ${dotfiles_dir}/zsh/zshrc ${config_dir}/zsh/.zshrc
 # wezterm (managed by Home Manager)
 # create_symlink ${dotfiles_dir}/wezterm ${config_dir}/wezterm
-# nvim
-create_symlink ${dotfiles_dir}/nvim ${config_dir}/nvim
+# nvim (managed by Home Manager)
+# create_symlink ${dotfiles_dir}/nvim ${config_dir}/nvim
 # starship
 create_symlink ${dotfiles_dir}/starship.toml ${config_dir}/starship.toml
 # karabiner

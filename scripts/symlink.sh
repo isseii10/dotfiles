@@ -38,8 +38,8 @@ create_symlink() {
 # create_symlink ${dotfiles_dir}/git/config ${config_dir}/git/config
 # lazygit (managed by Home Manager)
 # create_symlink ${dotfiles_dir}/lazygit ${config_dir}/lazygit
-# delta (better git diff)
-create_symlink ${dotfiles_dir}/delta ${config_dir}/delta
+# delta (managed by Home Manager)
+# create_symlink ${dotfiles_dir}/delta ${config_dir}/delta
 # yazi file brawser
 create_symlink ${dotfiles_dir}/yazi ${config_dir}/yazi
 # resterm (postman alternative)

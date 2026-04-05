@@ -21,11 +21,11 @@ create_symlink() {
   fi
 }
 
-# zsh
-create_symlink ${dotfiles_dir}/zsh/zprofile ${config_dir}/zsh/.zprofile
-create_symlink ${dotfiles_dir}/zsh/zshenv.home ${HOME}/.zshenv
-create_symlink ${dotfiles_dir}/zsh/zshenv ${config_dir}/zsh/.zshenv
-create_symlink ${dotfiles_dir}/zsh/zshrc ${config_dir}/zsh/.zshrc
+# zsh (managed by Home Manager)
+# create_symlink ${dotfiles_dir}/zsh/zprofile ${config_dir}/zsh/.zprofile
+# create_symlink ${dotfiles_dir}/zsh/zshenv.home ${HOME}/.zshenv
+# create_symlink ${dotfiles_dir}/zsh/zshenv ${config_dir}/zsh/.zshenv
+# create_symlink ${dotfiles_dir}/zsh/zshrc ${config_dir}/zsh/.zshrc
 # wezterm
 create_symlink ${dotfiles_dir}/wezterm ${config_dir}/wezterm
 # nvim
@@ -34,8 +34,8 @@ create_symlink ${dotfiles_dir}/nvim ${config_dir}/nvim
 create_symlink ${dotfiles_dir}/starship.toml ${config_dir}/starship.toml
 # karabiner
 create_symlink ${dotfiles_dir}/karabiner ${config_dir}/karabiner
-# git
-create_symlink ${dotfiles_dir}/git/config ${config_dir}/git/config
+# git (managed by Home Manager)
+# create_symlink ${dotfiles_dir}/git/config ${config_dir}/git/config
 # lazygit
 create_symlink ${dotfiles_dir}/lazygit ${config_dir}/lazygit
 # delta (better git diff)

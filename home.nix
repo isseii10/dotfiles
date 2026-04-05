@@ -1,8 +1,15 @@
-{ config, pkgs, username, homeDirectory, ... }:
+{
+  config,
+  pkgs,
+  username,
+  homeDirectory,
+  ...
+}:
 
 {
   imports = [
     ./git/git.nix
+    ./zsh/zsh.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -28,6 +35,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     git
+    zsh
     nerd-fonts.jetbrains-mono
     nil # nix ls
     nixfmt # nix formatter

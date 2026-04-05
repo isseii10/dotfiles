@@ -36,8 +36,8 @@ create_symlink() {
 # create_symlink ${dotfiles_dir}/karabiner ${config_dir}/karabiner
 # git (managed by Home Manager)
 # create_symlink ${dotfiles_dir}/git/config ${config_dir}/git/config
-# lazygit
-create_symlink ${dotfiles_dir}/lazygit ${config_dir}/lazygit
+# lazygit (managed by Home Manager)
+# create_symlink ${dotfiles_dir}/lazygit ${config_dir}/lazygit
 # delta (better git diff)
 create_symlink ${dotfiles_dir}/delta ${config_dir}/delta
 # yazi file brawser

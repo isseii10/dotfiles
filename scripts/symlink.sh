@@ -22,6 +22,7 @@ create_symlink() {
 }
 
 # zsh
+create_symlink ${dotfiles_dir}/zsh/zprofile ${config_dir}/zsh/.zprofile
 create_symlink ${dotfiles_dir}/zsh/zshenv.home ${HOME}/.zshenv
 create_symlink ${dotfiles_dir}/zsh/zshenv ${config_dir}/zsh/.zshenv
 create_symlink ${dotfiles_dir}/zsh/zshrc ${config_dir}/zsh/.zshrc

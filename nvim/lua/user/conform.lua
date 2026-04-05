@@ -36,6 +36,7 @@ local M = {
         yaml = { "yamlfmt" },
         rust = { "rustfmt" },
         hcl = { "hclfmt" }, -- formattersで定義
+        nix = { "nixfmt" },
       },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable

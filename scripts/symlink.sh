@@ -32,8 +32,8 @@ create_symlink() {
 # create_symlink ${dotfiles_dir}/nvim ${config_dir}/nvim
 # starship (managed by Home Manager)
 # create_symlink ${dotfiles_dir}/starship.toml ${config_dir}/starship.toml
-# karabiner
-create_symlink ${dotfiles_dir}/karabiner ${config_dir}/karabiner
+# karabiner (managed by Home Manager)
+# create_symlink ${dotfiles_dir}/karabiner ${config_dir}/karabiner
 # git (managed by Home Manager)
 # create_symlink ${dotfiles_dir}/git/config ${config_dir}/git/config
 # lazygit

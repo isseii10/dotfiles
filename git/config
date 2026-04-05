@@ -3,7 +3,7 @@
 	email = t1l.g2.o11g@gmail.com
 
 [core]
-	editor = /opt/homebrew/bin/nvim
+	editor = nvim
   pager = delta --dark --paging=never --features=arctic-fox
 
 [init]
@@ -17,6 +17,9 @@
 
 [merge]
   conflictStyle = zdiff3
+
+[credential]
+  helper = osxkeychain
 
 [include]
     path = ~/.config/delta/themes.gitconfig

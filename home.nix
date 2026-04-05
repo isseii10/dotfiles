@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   username,
   homeDirectory,
@@ -35,17 +36,56 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-    nerd-fonts.jetbrains-mono
-    nil # nix ls
-    nixfmt # nix formatter
-  ];
+  home.packages =
+    with pkgs;
+    [
+      # Nix tools
+      nerd-fonts.jetbrains-mono
+      nil
+      nixfmt
+
+      # Shell & terminal utilities
+      bat
+      bottom
+      btop
+      direnv
+      eza
+      fd
+      fzf
+      gdu
+      ripgrep
+      silver-searcher
+      tmux
+      vivid
+      zoxide
+
+      # Development tools
+      gh
+      grpcurl
+      imagemagick
+      mise
+      protobuf
+      uv
+
+      # Kubernetes / Cloud
+      awscli2
+      kubectx
+      kustomize
+
+      # Database
+      lazydocker
+      mysql80
+      postgresql_14
+      redis
+
+      # Cross-platform utilities
+      zbar
+    ]
+    ++ lib.optionals pkgs.stdenv.isDarwin [
+      # macOS-only utilities
+      pngpaste
+      terminal-notifier
+    ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

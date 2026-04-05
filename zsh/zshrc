@@ -47,17 +47,7 @@ eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
 # plugins
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$(brew --prefix)/share/zsh-completions:$FPATH
-  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-  source $(brew --prefix)/share/zsh-autopair/autopair.zsh
-  source $(brew --prefix)/share/fzf-tab/fzf-tab.plugin.zsh
-  autoload -Uz compinit && compinit -d
-  bindkey '^[[A' history-substring-search-up
-  bindkey '^[[B' history-substring-search-down
-fi
+source "$XDG_CONFIG_HOME/zsh/plugins.zsh"
 
 bindkey '^[[1;6K' kill-line # ctrl shift k
 

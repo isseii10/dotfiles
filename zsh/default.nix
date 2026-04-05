@@ -1,6 +1,8 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
+  home.packages = [ pkgs.zsh ];
+
   home.file.".zshenv".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zsh/zshenv.home";
 

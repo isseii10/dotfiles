@@ -26,8 +26,8 @@ create_symlink() {
 # create_symlink ${dotfiles_dir}/zsh/zshenv.home ${HOME}/.zshenv
 # create_symlink ${dotfiles_dir}/zsh/zshenv ${config_dir}/zsh/.zshenv
 # create_symlink ${dotfiles_dir}/zsh/zshrc ${config_dir}/zsh/.zshrc
-# wezterm
-create_symlink ${dotfiles_dir}/wezterm ${config_dir}/wezterm
+# wezterm (managed by Home Manager)
+# create_symlink ${dotfiles_dir}/wezterm ${config_dir}/wezterm
 # nvim
 create_symlink ${dotfiles_dir}/nvim ${config_dir}/nvim
 # starship

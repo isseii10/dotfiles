@@ -8,8 +8,9 @@
 
 {
   imports = [
-    ./git/git.nix
-    ./zsh/zsh.nix
+    ./git
+    ./zsh
+    ./wezterm
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -34,8 +35,6 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    git
-    zsh
     nerd-fonts.jetbrains-mono
     nil # nix ls
     nixfmt # nix formatter

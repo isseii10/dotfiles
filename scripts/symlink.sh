@@ -42,5 +42,5 @@ create_symlink() {
 # create_symlink ${dotfiles_dir}/delta ${config_dir}/delta
 # yazi (managed by Home Manager)
 # create_symlink ${dotfiles_dir}/yazi ${config_dir}/yazi
-# resterm (postman alternative)
-create_symlink ${dotfiles_dir}/resterm ${config_dir}/resterm
+# resterm (managed by Home Manager)
+# create_symlink ${dotfiles_dir}/resterm ${config_dir}/resterm

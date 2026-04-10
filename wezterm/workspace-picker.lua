@@ -14,6 +14,7 @@ function M.apply_to_config(config)
       zoxide = "󰱼 ", -- nf-md-star_circle
       current = "󰄾 current", -- nf-md-chevron_right
     },
+    zoxide_path = os.getenv "HOME" .. "/.nix-profile/bin/zoxide",
   }
 
   workspace_picker.apply_to_config(config)

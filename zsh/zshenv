@@ -41,10 +41,6 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/
 # PATH設定
 # cargo
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-# mise (非インタラクティブセッション用)
-if type mise &>/dev/null; then
-  eval "$(mise activate --shims)"
-fi
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="/opt/homebrew/bin:$PATH"
   export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"

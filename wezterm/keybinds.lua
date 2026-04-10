@@ -51,6 +51,7 @@ local keys = {
   { key = "f", mods = "SUPER", action = act.Search "CurrentSelectionOrEmptyString" },
   { key = "n", mods = "SUPER", action = act.SpawnWindow },
   { key = "p", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
+  { key = "l", mods = "SHIFT|CTRL", action = act.ShowDebugOverlay },
   { key = "R", mods = "SHIFT|SUPER", action = act.ReloadConfiguration },
   { key = "phys:Space", mods = "SHIFT|CTRL", action = act.QuickSelect },
   -- {

@@ -1,1 +1,5 @@
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
+if type mise &>/dev/null; then
+  eval "$(mise activate --shims)"
+fi

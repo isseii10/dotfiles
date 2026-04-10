@@ -10,10 +10,19 @@ function M.apply_to_config(config)
   ---@diagnostic disable-next-line: assign-type-mismatch
   config.window_decorations = "RESIZE"
 
-  -- position and size
-  local mux = wezterm.mux
+  -- center window on startup
   wezterm.on("gui-startup", function(cmd)
-    local tab, pane, window = mux.spawn_window(cmd or { width = 204, height = 180 })
+    local screen = wezterm.gui.screens().active
+    local width = screen.width * 0.75
+    local height = screen.height
+    local tab, pane, window = wezterm.mux.spawn_window {
+      position = {
+        x = (screen.width - width) / 2,
+        y = (screen.height - height) / 2,
+        origin = "ActiveScreen",
+      },
+    }
+    window:gui_window():set_inner_size(width, height)
   end)
 
   -- pane

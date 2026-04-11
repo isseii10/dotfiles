@@ -43,7 +43,7 @@ function M.config()
       -- "rust_analyzer", -- rustupで管理する
       "buf_ls",
       "tombi", -- toml
-      "clangd", -- c/cpp
+      -- "clangd", -- c/cpp -- 自分で入れる
     },
     automatic_enable = true,
   }

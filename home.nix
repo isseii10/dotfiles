@@ -46,6 +46,7 @@
 
       # Build tools
       gnumake
+      tree-sitter
 
       # Shell & terminal utilities
       bat

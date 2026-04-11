@@ -47,6 +47,7 @@
       # Build tools
       gnumake
       tree-sitter
+      unzip
 
       # Shell & terminal utilities
       bat

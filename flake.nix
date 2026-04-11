@@ -21,17 +21,15 @@
       ...
     }:
     let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
       username = builtins.getEnv "USER";
       homeDirectory = builtins.getEnv "HOME";
+      system = builtins.currentSystem;
+      pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-
         modules = [ ./home.nix ];
-
         extraSpecialArgs = { inherit username homeDirectory; };
       };
 

@@ -19,6 +19,10 @@ return {
       cpp = { "cpplint" },
     }
 
+    lint.linters.cpplint = vim.tbl_deep_extend("force", lint.linters.cpplint, {
+      args = { "--filter=-legal/copyright" },
+    })
+
     lint.linters.golangcilint = {
       cmd = "golangci-lint",
       args = { "run", "--out-format", "line-number" },

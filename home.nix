@@ -45,6 +45,7 @@
       nixfmt
 
       # Build tools
+      gcc
       gnumake
       tree-sitter
       unzip

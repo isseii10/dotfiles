@@ -44,6 +44,9 @@
       nil
       nixfmt
 
+      # Build tools
+      gnumake
+
       # Shell & terminal utilities
       bat
       bottom

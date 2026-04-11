@@ -4,22 +4,19 @@
 
 [core]
 	editor = nvim
-  pager = delta --dark --paging=never --features=arctic-fox
+	pager = delta --dark --paging=never --features=arctic-fox
 
 [init]
 	defaultBranch = main
 
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 
 [delta]
-  navigate = true    # use n and N to move between diff sections
+	navigate = true    # use n and N to move between diff sections
 
 [merge]
-  conflictStyle = zdiff3
-
-[credential]
-  helper = osxkeychain
+	conflictStyle = zdiff3
 
 [include]
-    path = ~/.config/delta/themes.gitconfig
+  path = ~/.config/delta/themes.gitconfig

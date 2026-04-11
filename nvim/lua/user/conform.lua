@@ -37,6 +37,8 @@ local M = {
         rust = { "rustfmt" },
         hcl = { "hclfmt" }, -- formattersで定義
         nix = { "nixfmt" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
       },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable

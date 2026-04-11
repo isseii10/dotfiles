@@ -15,6 +15,8 @@ return {
       python = { "pylint" }, -- pylintはmasonじゃなくてmiseで入れたpythonのpipで入れる
       go = { "golangcilint" },
       -- markdown = { "markdownlint" },
+      c = { "cpplint" },
+      cpp = { "cpplint" },
     }
 
     lint.linters.golangcilint = {

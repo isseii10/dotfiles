@@ -43,6 +43,7 @@ function M.config()
       -- "rust_analyzer", -- rustupで管理する
       "buf_ls",
       "tombi", -- toml
+      "clangd", -- c/cpp
     },
     automatic_enable = true,
   }
@@ -74,7 +75,11 @@ function M.config()
 
       "shfmt",
       "markdownlint", -- markdown
-      "yamlfmt", --yaml
+      "yamlfmt", -- yaml
+
+      -- c/cpp
+      "clang-format",
+      "cpplint",
     },
     run_on_start = true,
   }

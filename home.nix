@@ -130,7 +130,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-    LD_LIBRARY_PATH = "$HOME/.nix-profile/lib";
+    SQLITE_LIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3.so";
   };
 
   # Let Home Manager install and manage itself.

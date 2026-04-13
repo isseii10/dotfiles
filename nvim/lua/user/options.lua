@@ -1,9 +1,3 @@
--- sqlite.lua: Nix環境ではNixストアのパスを環境変数経由で指定
-local sqlite_path = os.getenv "SQLITE_LIB_PATH"
-if sqlite_path then
-  vim.g.sqlite_clib_path = sqlite_path
-end
-
 vim.opt.autoindent = true
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard

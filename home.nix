@@ -130,6 +130,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    LD_LIBRARY_PATH = "$HOME/.nix-profile/lib";
   };
 
   # Let Home Manager install and manage itself.

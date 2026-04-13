@@ -4,9 +4,6 @@ local M = {
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install",
-      config = function()
-        require("telescope").load_extension "fzf"
-      end,
     },
     {
       "danielfalk/smart-open.nvim",
@@ -14,9 +11,6 @@ local M = {
       dependencies = {
         "kkharji/sqlite.lua",
       },
-      config = function()
-        require("telescope").load_extension "smart_open"
-      end,
     },
   },
   keys = {
@@ -212,6 +206,9 @@ function M.config()
       },
     },
   }
+
+  require("telescope").load_extension "fzf"
+  require("telescope").load_extension "smart_open"
 end
 
 return M

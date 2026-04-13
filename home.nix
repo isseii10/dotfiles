@@ -51,6 +51,9 @@
       tree-sitter
       unzip
 
+      # Libraries
+      sqlite
+
       # Shell & terminal utilities
       bat
       bottom

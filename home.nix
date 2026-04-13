@@ -45,6 +45,7 @@
       nixfmt
 
       # Build tools
+      cmake
       gcc
       gnumake
       tree-sitter

@@ -21,7 +21,10 @@ function M.config()
       names = false,
       rgb_fn = true,
       hsl_fn = true,
-      tailwind = "both",
+      -- NOTE: nvim-colorizer's tailwind LSP path currently breaks on Neovim 0.12
+      -- because it calls vim.lsp.document_color.enable() with the old signature.
+      -- Keep Tailwind name-based highlighting enabled and disable the LSP path.
+      tailwind = "normal",
     },
     buftypes = {},
   }

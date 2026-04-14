@@ -1,17 +1,13 @@
-.PHONY: switch darwin home init
+.PHONY: darwin linux home
 
-# macOS: darwin + home-manager を両方適用
-switch: darwin home
-
-# nix-darwin の適用
+# macOS: darwin-rebuild + home-manager
 darwin:
 	sudo darwin-rebuild switch --flake ".#default" --impure
-
-# home-manager の適用
-home:
 	home-manager switch --flake . --impure
 
-# 初回セットアップ（nix-darwin 未インストール時）
-init:
-	sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake ".#default" --impure
-	NIX_CONFIG="extra-experimental-features = nix-command flakes" home-manager switch --flake . --impure
+# Linux(not NixOS): home-manager のみ
+linux: home
+
+# home-manager の適用（共通）
+home:
+	home-manager switch --flake . --impure

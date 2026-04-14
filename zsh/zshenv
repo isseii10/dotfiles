@@ -37,10 +37,18 @@ export MANPAGER="nvim +Man!"
 # fzf default command
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!{node_modules/*,.git/*}"'
 
+# LS_COLORS (vivid がインストールされている場合)
+if type vivid &>/dev/null; then
+  export LS_COLORS="$(vivid generate solarized-dark)"
+fi
 
-# PATH設定
+# ============================================================
+# PATH
+# ============================================================
 # cargo
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# homebrew
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="/opt/homebrew/bin:$PATH"
   export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
@@ -49,15 +57,16 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   export PATH="/home/linuxbrew/.linuxbrew/opt/make/libexec/gnubin:$PATH"
 fi
+
+# home-manager や pip 等がインストールするユーザーローカルのバイナリ
 export PATH="$HOME/.local/bin:$PATH"
+
+# WezTerm CLI（wezterm コマンド）
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 fi
+
+# Android SDK ツール
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$ANDROID_HOME/emulator"
-
-# LS_COLORS (vivid がインストールされている場合)
-if type vivid &>/dev/null; then
-  export LS_COLORS="$(vivid generate solarized-dark)"
-fi
 

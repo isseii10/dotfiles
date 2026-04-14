@@ -130,7 +130,10 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-    SQLITE_LIB_PATH = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+    SQLITE_LIB_PATH =
+      if pkgs.stdenv.isDarwin
+      then "${pkgs.sqlite.out}/lib/libsqlite3.dylib"
+      else "${pkgs.sqlite.out}/lib/libsqlite3.so";
   };
 
   # Let Home Manager install and manage itself.

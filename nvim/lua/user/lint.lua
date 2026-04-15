@@ -20,7 +20,10 @@ return {
     }
 
     lint.linters.cpplint = vim.tbl_deep_extend("force", lint.linters.cpplint, {
-      args = { "--filter=-legal/copyright" },
+      args = {
+        "--filter=-legal/copyright",
+        "--linelength=120",
+      },
     })
 
     lint.linters.golangcilint = {

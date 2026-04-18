@@ -84,7 +84,7 @@
 
       # Database
       lazydocker
-      mysql80
+      mysql84
       postgresql_14
       redis
 

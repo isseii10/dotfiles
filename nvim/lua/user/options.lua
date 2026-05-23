@@ -61,9 +61,10 @@ if vim.env.SSH_TTY ~= nil then
       ["+"] = require("vim.ui.clipboard.osc52").copy "+",
       ["*"] = require("vim.ui.clipboard.osc52").copy "*",
     },
+    -- OSC 52 paste is slow due to terminal round-trip; use Cmd+V instead
     paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste "+",
-      ["*"] = require("vim.ui.clipboard.osc52").paste "*",
+      ["+"] = function() return {} end,
+      ["*"] = function() return {} end,
     },
   }
 end

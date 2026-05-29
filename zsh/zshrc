@@ -28,6 +28,7 @@ alias dot='cd $HOME/dotfiles'
 alias config='cd $HOME/.config'
 
 # mise (インタラクティブシェル用)
+# prompt/chpwd hook を使う設定は対話シェルに限定する。
 if type mise &>/dev/null; then
   eval "$(mise activate zsh)"
 fi

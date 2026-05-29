@@ -61,6 +61,14 @@ fi
 # home-manager や pip 等がインストールするユーザーローカルのバイナリ
 export PATH="$HOME/.local/bin:$PATH"
 
+# mise shims
+# 非対話シェルやスクリプトでも `go` などを解決できるよう、zshenv で shim を PATH に入れる。
+# そのため PATH 順は home-manager より前になるが、対話シェルでは zshrc 内の
+# `mise activate zsh` が home-manager 読み込み後に実行され、最終的な優先順を調整する。
+if [ -d "$HOME/.local/share/mise/shims" ]; then
+  export PATH="$HOME/.local/share/mise/shims:$PATH"
+fi
+
 # WezTerm CLI（wezterm コマンド）
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
@@ -69,4 +77,3 @@ fi
 # Android SDK ツール
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$ANDROID_HOME/emulator"
-

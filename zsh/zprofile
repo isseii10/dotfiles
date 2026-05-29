@@ -1,8 +1,5 @@
 # home-manager が生成するセッション変数（home.sessionVariables）を読み込む
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
-
-# home-manager より mise を優先するため、home-manager の後に activate する
-if type mise &>/dev/null; then
-  eval "$(mise activate --shims)"
-fi
+# 対話シェルでは zshrc 側で `mise activate zsh` を実行する。
+# これにより、home-manager が設定した PATH の後で mise の PATH/env を上書きできる。

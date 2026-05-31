@@ -14,10 +14,13 @@ return {
     vim.api.nvim_create_user_command("DiagramRender", function()
       require("diagram").render()
     end, {})
+    vim.api.nvim_create_user_command("DiagramClear", function()
+      require("diagram").clear()
+    end, {})
   end,
   opts = {
     events = {
-      render_buffer = {},
+      render_buffer = {}, -- use DiagramRender
       clear_buffer = { "BufLeave" },
     },
     renderer_options = {

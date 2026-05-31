@@ -73,6 +73,8 @@
       gh
       grpcurl
       imagemagick
+      mermaid-cli
+      plantuml
       mise
       protobuf
       uv
@@ -95,6 +97,9 @@
       # macOS-only utilities
       pngpaste
       terminal-notifier
+    ]
+    ++ lib.optionals pkgs.stdenv.isLinux [
+      chromium
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -130,6 +135,10 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    PUPPETEER_EXECUTABLE_PATH =
+      if pkgs.stdenv.isDarwin
+      then "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      else "${pkgs.chromium}/bin/chromium";
     SQLITE_LIB_PATH =
       if pkgs.stdenv.isDarwin then
         "${pkgs.sqlite.out}/lib/libsqlite3.dylib"

@@ -7,7 +7,7 @@ local workspaces = {
 
 local M = {
   "obsidian-nvim/obsidian.nvim",
-  -- version = "*", -- recommended, use latest release instead of latest commit
+  version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
   cmd = {
@@ -39,13 +39,6 @@ function M.config()
       default_tags = {},
     },
 
-    -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
-    completion = {
-      -- Set to false to disable completion.
-      nvim_cmp = true,
-      -- Trigger completion at 2 chars.
-      min_chars = 2,
-    },
     checkbox = {
       order = {
         " ",

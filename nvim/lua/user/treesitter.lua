@@ -35,6 +35,7 @@ function M.config()
     "nix",
     "c",
     "cpp",
+    "dart",
   }
   require("nvim-treesitter").install(parsers)
 
@@ -65,6 +66,7 @@ function M.config()
       "nix",
       "c",
       "cpp",
+      "dart",
     },
     callback = function()
       -- syntax highlighting, provided by Neovim

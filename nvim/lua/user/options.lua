@@ -63,8 +63,12 @@ if vim.env.SSH_TTY ~= nil then
     },
     -- OSC 52 paste is slow due to terminal round-trip; use Cmd+V instead
     paste = {
-      ["+"] = function() return {} end,
-      ["*"] = function() return {} end,
+      ["+"] = function()
+        return { vim.fn.getreg('"', 1, true), vim.fn.getregtype '"' }
+      end,
+      ["*"] = function()
+        return { vim.fn.getreg('"', 1, true), vim.fn.getregtype '"' }
+      end,
     },
   }
 end

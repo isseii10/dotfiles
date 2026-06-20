@@ -6,7 +6,7 @@ local M = {}
 ---@param config Config
 function M.apply_to_config(config)
   -- window
-  config.window_background_opacity = 0.90
+  config.window_background_opacity = 0.80
   ---@diagnostic disable-next-line: assign-type-mismatch
   config.window_decorations = "RESIZE"
 

@@ -4,3 +4,6 @@ font_out
 
 
 resterm/history.*
+
+__pycache__/
+*.pyc

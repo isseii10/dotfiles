@@ -63,6 +63,7 @@
       fd
       fzf
       gdu
+      mcat
       ripgrep
       silver-searcher
       tmux

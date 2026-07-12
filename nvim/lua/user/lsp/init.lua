@@ -66,7 +66,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- mason管理外のサーバーは明示的にenableする
 -- (mason管理のサーバーはmason-lspconfigのautomatic_enable = trueで自動的にenableされる)
 -- after/lsp/*.luaはvim.lsp.enable()時にNeovimが自動でマージする
-vim.lsp.enable { "nil_ls", "rust_analyzer", "clangd" }
+vim.lsp.enable {
+  "nil_ls", -- nix
+  "rust_analyzer", -- rust
+  "clangd", -- c/c++
+  "dartls", -- dart
+}
 
 -- diagnosticの設定
 local icons = require "user.icons"

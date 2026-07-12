@@ -33,11 +33,6 @@ if type mise &>/dev/null; then
   eval "$(mise activate zsh)"
 fi
 
-# github token
-if type gh &>/dev/null; then
-  export GITHUB_TOKEN=$(gh auth token)
-fi
-
 # starship
 eval "$(starship init zsh)"
 

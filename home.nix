@@ -93,6 +93,9 @@
 
       # Cross-platform utilities
       zbar
+
+      # Networking
+      wireshark
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       # macOS-only utilities

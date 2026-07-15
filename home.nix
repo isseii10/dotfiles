@@ -95,6 +95,7 @@
       zbar
 
       # Networking
+      termshark
       wireshark
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [

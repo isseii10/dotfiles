@@ -65,7 +65,6 @@
       gdu
       mcat
       ripgrep
-      silver-searcher
       tmux
       vivid
       zoxide

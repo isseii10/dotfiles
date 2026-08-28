@@ -20,7 +20,7 @@ return {
         -- Options used when layout is "left"|"bottom"|"top"|"right"
         ---@type vim.api.keyset.win_config
         split = {
-          width = 0.3, -- set to 0 for default split width
+          width = 0.4, -- set to 0 for default split width
           height = 0, -- set to 0 for default split height
         },
         --- CLI Tool Keymaps (default mode is `t`)

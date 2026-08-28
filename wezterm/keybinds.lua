@@ -9,7 +9,7 @@ local keys = {
   {
     key = "K", -- ctrl shift kをzshで使えるようにエスケープシーケンスを送信する
     mods = "CTRL|SHIFT",
-    action = wezterm.action.SendString "\x1b[1;6K",
+    action = act.SendString "\x1b[1;6K",
   },
   -- split panes
   { key = "-", mods = "LEADER", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
@@ -46,6 +46,9 @@ local keys = {
   { key = "v", mods = "SUPER", action = act.PasteFrom "Clipboard" },
   -- copy mode
   { key = "X", mods = "SUPER|SHIFT", action = act.ActivateCopyMode },
+
+  -- window size/position
+  { key = "w", mods = "LEADER", action = act.EmitEvent "center-window" },
 
   { key = "z", mods = "SHIFT|CTRL", action = act.TogglePaneZoomState },
   { key = "f", mods = "SUPER", action = act.Search "CurrentSelectionOrEmptyString" },

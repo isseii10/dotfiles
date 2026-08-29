@@ -1,3 +1,57 @@
+local INSTANCES = 4
+
+-- Resolves the real executable behind `name`, skipping mise shims: a mise
+-- shim dispatches by its own basename, so a symlink pointing at the shim
+-- under a different name (e.g. claude1) fails with "not a valid shim".
+-- Walking $PATH and following each candidate to its final realpath finds
+-- the actual binary mise would have execed.
+local function resolve_real_exe(name)
+  for dir in vim.gsplit(vim.env.PATH or "", ":", { plain = true }) do
+    if dir ~= "" then
+      local candidate = vim.fs.joinpath(dir, name)
+      if vim.fn.executable(candidate) == 1 then
+        local real = vim.uv.fs_realpath(candidate) or candidate
+        if vim.fs.basename(real) ~= "mise" then
+          return real
+        end
+      end
+    end
+  end
+  return vim.fn.exepath(name)
+end
+
+-- Registers <base>1..<base>N as distinct sidekick tools so multiple sessions
+-- of the same CLI can run concurrently for the same cwd. sidekick keys
+-- sessions by `tool.name + cwd`, and its tmux discovery matches running
+-- panes by `is_proc` against the process name — sharing one binary across
+-- entries would make discovery ambiguous. Symlinking a uniquely named binary
+-- per slot (~/.local/bin/claude1, claude2, ...) gives each instance its own
+-- process name, so is_proc pattern matching stays unambiguous.
+-- https://github.com/folke/sidekick.nvim/discussions/208
+local function register_tool_instances(tools, base_name, count)
+  local base = require("sidekick.config").get_tool(base_name).config
+  local base_exe = base.cmd and base.cmd[1]
+  local base_exepath = base_exe and resolve_real_exe(base_exe) or ""
+  if base_exepath == "" then
+    return
+  end
+
+  local bin_dir = vim.fn.expand "~/.local/bin"
+  for i = 1, count do
+    local name = base_name .. i
+    local dest = vim.fs.joinpath(bin_dir, name)
+    if vim.uv.fs_readlink(dest) ~= base_exepath then
+      vim.uv.fs_unlink(dest)
+      vim.uv.fs_symlink(base_exepath, dest)
+    end
+
+    local tool = vim.deepcopy(base)
+    tool.cmd = { name }
+    tool.is_proc = "\\<" .. name .. "\\>"
+    tools[name] = tool
+  end
+end
+
 return {
   "folke/sidekick.nvim",
   opts = {
@@ -55,17 +109,6 @@ return {
     },
   },
   keys = {
-    {
-      "<tab>",
-      function()
-        -- if there is a next edit, jump to it, otherwise apply it if any
-        if not require("sidekick").nes_jump_or_apply() then
-          return "<Tab>" -- fallback to normal tab
-        end
-      end,
-      expr = true,
-      desc = "Goto/Apply Next Edit Suggestion",
-    },
     {
       "<c-.>",
       function()
@@ -128,13 +171,23 @@ return {
       mode = { "n", "x" },
       desc = "Sidekick Select Prompt",
     },
-    -- Example of a keybinding to open Claude directly
-    {
-      "<leader>ac",
-      function()
-        require("sidekick.cli").toggle { name = "claude", focus = true }
-      end,
-      desc = "Sidekick Toggle Claude",
-    },
   },
+  config = function(_, opts)
+    opts.cli = opts.cli or {}
+    opts.cli.tools = opts.cli.tools or {}
+    register_tool_instances(opts.cli.tools, "claude", INSTANCES)
+    register_tool_instances(opts.cli.tools, "codex", INSTANCES)
+    require("sidekick").setup(opts)
+
+    -- sidekick ships defaults for many CLI tools (aider, copilot, gemini, ...)
+    -- and setup() deep-merges rather than replaces, so they'd still show up
+    -- in pickers/discovery even though we never asked for them. Prune down
+    -- to just Claude and Codex (base + numbered instances).
+    local Config = require "sidekick.config"
+    for name in pairs(Config.cli.tools) do
+      if not name:match "^claude%d*$" and not name:match "^codex%d*$" then
+        Config.cli.tools[name] = nil
+      end
+    end
+  end,
 }

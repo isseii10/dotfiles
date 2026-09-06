@@ -1,5 +1,5 @@
 local M = {
-  "A7Lavinraj/fyler.nvim",
+  "FylerOrg/fyler.nvim",
   -- dir = "~/fork/fyler.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   -- dependencies = { "nvim-mini/mini.icons" },

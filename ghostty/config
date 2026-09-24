@@ -8,6 +8,11 @@ font-size = 12
 # theme
 theme = Moonfly
 
+# startup
+# タブ・分割は herdr に任せるので、すべてのウィンドウで herdr を起動する (同じセッションに attach される)
+# Dock から起動すると nix の PATH が通っていないので login shell 経由で起動する
+command = /bin/zsh -lc 'exec herdr'
+
 # window
 background-opacity = 0.90
 macos-titlebar-style = hidden
@@ -24,6 +29,22 @@ macos-option-as-alt = left
 #   ctrl+m s / S / r : workspace picker / 新規 workspace / workspace rename
 #   ctrl+m q       : detach
 keybind = ctrl+m=text:\x1b[24~
+
+# ghostty 自身の分割は使わない (分割は herdr のペインで行う)
+keybind = super+d=unbind
+keybind = super+shift+d=unbind
+keybind = super+[=unbind
+keybind = super+]=unbind
+keybind = super+alt+arrow_up=unbind
+keybind = super+alt+arrow_down=unbind
+keybind = super+alt+arrow_left=unbind
+keybind = super+alt+arrow_right=unbind
+keybind = super+ctrl+arrow_up=unbind
+keybind = super+ctrl+arrow_down=unbind
+keybind = super+ctrl+arrow_left=unbind
+keybind = super+ctrl+arrow_right=unbind
+keybind = super+ctrl+==unbind
+keybind = super+shift+enter=unbind
 
 # ctrl+shift+k を zsh で使えるようにエスケープシーケンスを送信する
 keybind = ctrl+shift+k=text:\x1b[1;6K

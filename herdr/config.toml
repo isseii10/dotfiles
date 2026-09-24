@@ -29,11 +29,20 @@ prefix = "f12"
 # LEADER s: workspace + zoxide picker は下の [[keys.command]] で定義
 settings = "prefix+comma"
 workspace_picker = "prefix+w"
+# navigate mode (prefix+w) 中は j/k で workspace を上下に選ぶ。ペインの上下移動は ctrl+j/k に逃がす
+navigate_workspace_up = ["k", "up"]
+navigate_workspace_down = ["j", "down"]
+navigate_pane_up = "ctrl+k"
+navigate_pane_down = "ctrl+j"
 new_workspace = "prefix+shift+s"
 rename_workspace = ["prefix+r", "prefix+shift+w"]
 close_workspace = "prefix+shift+d"
 previous_workspace = "prefix+shift+p"
 next_workspace = "prefix+shift+n"
+
+# --- agent ---
+next_agent = "prefix+a"
+previous_agent = "prefix+shift+a"
 
 # --- tab ---
 new_tab = "prefix+c"

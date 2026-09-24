@@ -12,6 +12,7 @@
     ./git
     ./zsh
     ./wezterm
+    ./herdr
     ./nvim
     ./starship
     ./karabiner

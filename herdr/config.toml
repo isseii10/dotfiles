@@ -1,0 +1,99 @@
+# herdr configuration
+# 全オプション: herdr --default-config
+# 反映: herdr server reload-config (prefix+shift+r)
+#
+# キー操作の設計 (weztermからの移行):
+#   - prefix は F12。ghostty 側で ctrl+m (wezterm の LEADER) を F12 に変換している
+#   - cmd+t / cmd+1..9 などの cmd 系ショートカットは ghostty が「F12 + キー」を送って herdr を操作する
+#   - ctrl+h/j/k/l は smart-splits.nvim の herdr プラグインで nvim の分割と herdr のペインをシームレスに移動
+#     (初回のみ: herdr plugin link ~/.local/share/nvim/lazy/smart-splits.nvim)
+
+onboarding = false
+
+[theme]
+name = "nord"
+auto_switch = false
+
+[terminal]
+new_cwd = "follow"
+
+[ui]
+# wezterm と同様にタブ名を聞かずに即作成する
+prompt_new_tab_name = false
+copy_on_select = true
+
+[keys]
+prefix = "f12"
+
+# --- workspace (wezterm: workspace-picker.wezterm) ---
+# LEADER s: workspace + zoxide picker は下の [[keys.command]] で定義
+settings = "prefix+comma"
+workspace_picker = "prefix+w"
+new_workspace = "prefix+shift+s"
+rename_workspace = ["prefix+r", "prefix+shift+w"]
+close_workspace = "prefix+shift+d"
+previous_workspace = "prefix+shift+p"
+next_workspace = "prefix+shift+n"
+
+# --- tab ---
+new_tab = "prefix+c"
+previous_tab = "prefix+p"
+next_tab = "prefix+n"
+switch_tab = "prefix+1..9"
+rename_tab = "prefix+shift+t"
+close_tab = "prefix+shift+x"
+
+# --- pane ---
+# wezterm: LEADER - で上下分割, LEADER \ で左右分割
+split_horizontal = "prefix+minus"
+split_vertical = ["prefix+backslash", "prefix+v"]
+close_pane = "prefix+x"
+zoom = "prefix+z"
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+# resize: alt+h/j/k/l は nvim (smart-splits) の分割リサイズに残し、herdr は ctrl+alt+h/j/k/l
+resize_mode = "prefix+m"
+resize_pane_left = "ctrl+alt+h"
+resize_pane_down = "ctrl+alt+j"
+resize_pane_up = "ctrl+alt+k"
+resize_pane_right = "ctrl+alt+l"
+
+# --- session ---
+# wezterm: LEADER q で終了 → herdr では detach (プロセスは生き続ける)
+detach = "prefix+q"
+reload_config = "prefix+shift+r"
+
+# LEADER s: 既存 workspace と zoxide のディレクトリから選んで切り替え/作成
+[[keys.command]]
+key = "prefix+s"
+type = "popup"
+command = "$HOME/.config/herdr/scripts/workspace-picker.sh"
+width = "60%"
+height = "60%"
+
+# smart-splits.nvim: ctrl+h/j/k/l で nvim の分割と herdr のペインを移動
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "smart-splits.nvim.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "smart-splits.nvim.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "smart-splits.nvim.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "smart-splits.nvim.right"
+description = "navigate right (vim/herdr)"

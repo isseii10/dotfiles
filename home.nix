@@ -73,6 +73,7 @@
       # Development tools
       gh
       grpcurl
+      herdr
       imagemagick
       mermaid-cli
       plantuml

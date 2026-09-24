@@ -11,6 +11,20 @@ local keys = {
     mods = "CTRL|SHIFT",
     action = act.SendString "\x1b[1;6K",
   },
+  -- herdr: ctrl+b (herdr のデフォルト prefix) を herdr の prefix (F12) に変換する
+  -- herdr が前面にいないときはそのまま ctrl+b を送る
+  {
+    key = "b",
+    mods = "CTRL",
+    action = wezterm.action_callback(function(window, pane)
+      local proc = pane:get_foreground_process_name() or ""
+      if proc:find "herdr" then
+        window:perform_action(act.SendString "\x1b[24~", pane)
+      else
+        window:perform_action(act.SendKey { key = "b", mods = "CTRL" }, pane)
+      end
+    end),
+  },
   -- split panes
   { key = "-", mods = "LEADER", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
   { key = "\\", mods = "LEADER", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },

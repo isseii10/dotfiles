@@ -1,12 +1,12 @@
 gui:
   nerdFontsVersion: "3"
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never --features=arctic-fox
-      # pager: delta --dark --paging=never --features=corvas
-      # pager: delta --dark --paging=never --features=collared-torogon
-      # pager: delta --dark --paging=never --features=calochortus-lyallii
+      command: delta --dark --paging=never --features=arctic-fox
+      # command: delta --dark --paging=never --features=corvas
+      # command: delta --dark --paging=never --features=collared-torogon
+      # command: delta --dark --paging=never --features=calochortus-lyallii
 os:
   edit: |-
     [ -z "$NVIM" ] && nvim {{filename}} || { nvim --server "$NVIM" --remote-expr "luaeval('SwitchFromLazygit()')" && nvim --server "$NVIM" --remote {{filename}}; }

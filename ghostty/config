@@ -1,0 +1,67 @@
+# ghostty +show-config --default --docs で全オプションを確認できる
+
+# font
+font-family = JetBrainsMono Nerd Font
+font-family = Hiragino Sans
+font-size = 12
+
+# theme
+theme = TokyoNight
+
+# window
+background-opacity = 0.80
+macos-titlebar-style = hidden
+macos-option-as-alt = left
+
+# ═══════════════════════════════════════════════════
+# keybind (wezterm の操作を herdr で再現する)
+# ═══════════════════════════════════════════════════
+# herdr の prefix は F12 (\x1b[24~)。ghostty から「F12 + キー」を送って herdr を操作する。
+# 対応する herdr 側の設定は ~/dotfiles/herdr/config.toml を参照。
+
+# LEADER (wezterm: ctrl+m) → herdr prefix
+#   ctrl+m - / \   : 上下 / 左右分割
+#   ctrl+m s / S / r : workspace picker / 新規 workspace / workspace rename
+#   ctrl+m q       : detach
+keybind = ctrl+m=text:\x1b[24~
+
+# ctrl+shift+k を zsh で使えるようにエスケープシーケンスを送信する
+keybind = ctrl+shift+k=text:\x1b[1;6K
+
+# close pane
+keybind = super+q=text:\x1b[24~x
+
+# tab
+keybind = super+t=text:\x1b[24~c
+keybind = ctrl+tab=text:\x1b[24~n
+keybind = super+shift+]=text:\x1b[24~n
+keybind = ctrl+shift+tab=text:\x1b[24~p
+keybind = super+shift+[=text:\x1b[24~p
+keybind = super+1=text:\x1b[24~1
+keybind = super+2=text:\x1b[24~2
+keybind = super+3=text:\x1b[24~3
+keybind = super+4=text:\x1b[24~4
+keybind = super+5=text:\x1b[24~5
+keybind = super+6=text:\x1b[24~6
+keybind = super+7=text:\x1b[24~7
+keybind = super+8=text:\x1b[24~8
+keybind = super+9=text:\x1b[24~9
+keybind = super+digit_1=text:\x1b[24~1
+keybind = super+digit_2=text:\x1b[24~2
+keybind = super+digit_3=text:\x1b[24~3
+keybind = super+digit_4=text:\x1b[24~4
+keybind = super+digit_5=text:\x1b[24~5
+keybind = super+digit_6=text:\x1b[24~6
+keybind = super+digit_7=text:\x1b[24~7
+keybind = super+digit_8=text:\x1b[24~8
+keybind = super+digit_9=text:\x1b[24~9
+
+# pane zoom
+keybind = ctrl+shift+z=text:\x1b[24~z
+
+# copy mode / search (スクロールバックは herdr が持っているので herdr の copy mode を使う)
+keybind = super+shift+x=text:\x1b[24~[
+keybind = super+f=text:\x1b[24~[/
+
+# reload config (ghostty のみ。herdr は ctrl+m → shift+r)
+keybind = super+shift+r=reload_config

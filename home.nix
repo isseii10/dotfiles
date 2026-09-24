@@ -12,6 +12,7 @@
     ./git
     ./zsh
     ./wezterm
+    ./ghostty
     ./herdr
     ./nvim
     ./starship

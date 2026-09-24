@@ -9,6 +9,7 @@
   homebrew = {
     enable = true;
     casks = [
+      "ghostty"
       "karabiner-elements"
       "wezterm"
     ];

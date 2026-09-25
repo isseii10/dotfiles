@@ -14,11 +14,39 @@ export PATH="$HOME/.nix-profile/bin:/opt/homebrew/bin:$PATH"
 
 ws_json="$("$herdr" workspace list)"
 
+# アイコンの色 (herdr の one-dark テーマに合わせる)
+blue=$'\e[38;2;97;175;239m'   # workspace
+green=$'\e[38;2;152;195;121m' # current
+yellow=$'\e[38;2;229;192;123m' # directory
+gray=$'\e[38;2;92;99;112m'
+reset=$'\e[0m'
+
+# 最初はノーマルモード (入力欄を隠して j/k で移動)、/ で入力欄を出して fuzzy search
+# 入力欄が出ている間は j/k/q なども普通に文字として入力し、esc でノーマルモードに戻る
+normal_key() { # <key> <ノーマルモードでの action>
+  printf -- "--bind=%s:transform:[ \"\$FZF_INPUT_STATE\" = enabled ] && echo 'put(%s)' || echo '%s'" "$1" "$1" "$2"
+}
+normal_mode_binds=(
+  "$(normal_key j down)"
+  "$(normal_key k up)"
+  "$(normal_key g first)"
+  "$(normal_key G last)"
+  "$(normal_key q abort)"
+  "$(normal_key / show-input)"
+  # clear-query は transform の出力に含めると効かないので外に出す (ノーマルモードでは空なので無害)
+  "--bind=esc:clear-query+transform:[ \"\$FZF_INPUT_STATE\" = enabled ] && echo hide-input || echo abort"
+)
+
 selected="$(
   {
-    jq -r '.result.workspaces[] | "ws\t\(.workspace_id)\t󰙅  \(.label)\(if .focused then "  󰄾 current" else "" end)"' <<<"$ws_json"
-    zoxide query -l | awk -v home="$HOME" '{ d = $0; sub("^" home, "~", d); printf "dir\t%s\t󰱼  %s\n", $0, d }'
-  } | fzf --delimiter='\t' --with-nth=3 --no-sort --reverse --prompt='workspace> '
+    jq -r --arg blue "$blue" --arg green "$green" --arg reset "$reset" \
+      '.result.workspaces[] | "ws\t\(.workspace_id)\t\($blue)󰙅\($reset)  \(.label)\(if .focused then "  \($green)󰄾 current\($reset)" else "" end)"' <<<"$ws_json"
+    zoxide query -l | awk -v home="$HOME" -v yellow="$yellow" -v gray="$gray" -v reset="$reset" \
+      '{ d = $0; sub("^" home, "~", d); n = split(d, p, "/"); parent = substr(d, 1, length(d) - length(p[n]));
+         printf "dir\t%s\t%s󰱼%s  %s%s%s%s\n", $0, yellow, reset, gray, parent, reset, p[n] }'
+  } | fzf --ansi --delimiter='\t' --with-nth=3 --no-sort --reverse --prompt='workspace> ' \
+    --no-input --header='j/k: move  enter: select  /: search  q/esc: quit' \
+    "${normal_mode_binds[@]}"
 )" || exit 0
 
 kind="$(cut -f1 <<<"$selected")"

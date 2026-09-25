@@ -102,12 +102,12 @@
       termshark
       wireshark
     ]
-    ++ lib.optionals pkgs.stdenv.isDarwin [
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
       # macOS-only utilities
       pngpaste
       terminal-notifier
     ]
-    ++ lib.optionals pkgs.stdenv.isLinux [
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
       chromium
     ];
 
@@ -145,11 +145,11 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
     PUPPETEER_EXECUTABLE_PATH =
-      if pkgs.stdenv.isDarwin
+      if pkgs.stdenv.hostPlatform.isDarwin
       then "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
       else "${pkgs.chromium}/bin/chromium";
     SQLITE_LIB_PATH =
-      if pkgs.stdenv.isDarwin then
+      if pkgs.stdenv.hostPlatform.isDarwin then
         "${pkgs.sqlite.out}/lib/libsqlite3.dylib"
       else
         "${pkgs.sqlite.out}/lib/libsqlite3.so";

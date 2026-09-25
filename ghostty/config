@@ -1,9 +1,10 @@
 # ghostty +show-config --default --docs で全オプションを確認できる
 
 # font
-font-family = JetBrainsMono Nerd Font
-font-family = Hiragino Sans
-font-size = 12
+# 英数字は JetBrains Mono、日本語は BIZ UDゴシック (Hiragino Sans W3 は線が細いため)
+# 35 = 半角:全角が 3:5。1:2 版は英字が詰まって見えるため
+font-family = UDEV Gothic 35NF
+font-size = 11
 
 # theme
 theme = Moonfly

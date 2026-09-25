@@ -44,6 +44,7 @@
     [
       # Nix tools
       nerd-fonts.jetbrains-mono
+      udev-gothic-nf
       nil
       nixfmt
 

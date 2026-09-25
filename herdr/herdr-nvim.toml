@@ -2,3 +2,7 @@
 
 [sidebar]
 position = "left"
+
+# picker (prefix+o) のキーは設定で変えられない (src/picker.rs にハードコード)。
+# 上下移動は ctrl+p/ctrl+n か ↑/↓。j/k で動かしたいなら、検索欄に入力するモードと
+# 移動するモードの切り替えを足した fork を自作して herdr plugin link で差し替える必要がある。

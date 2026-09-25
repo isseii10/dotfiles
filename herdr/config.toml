@@ -21,6 +21,10 @@ new_cwd = "follow"
 # wezterm と同様にタブ名を聞かずに即作成する
 prompt_new_tab_name = false
 copy_on_select = true
+# サイドバー (spaces / agents) を広めにする。幅は workspace 名に応じて min〜max で自動調整される
+sidebar_width = 34
+sidebar_min_width = 30
+sidebar_max_width = 48
 
 # Claude Code は作業内容をターミナルタイトルにするので、agent 種別の代わりに1行目に表示する
 [ui.sidebar.agents.rows_by_agent]

@@ -6,10 +6,8 @@ local M = {
 }
 
 function M.config()
-  require("herdr-nvim").setup {
-    -- <leader>a は sidekick.nvim が使っているので <leader>H にする
-    prefix = "<leader>H",
-  }
+  -- キーマップはデフォルトの <leader>a (ac / al / as / aS)
+  require("herdr-nvim").setup {}
 end
 
 return M

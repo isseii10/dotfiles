@@ -25,7 +25,7 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 
 ### ai
 
-+ [folke/sidekick.nvim](https://dotfyle.com/plugins/folke/sidekick.nvim)
++ [ChmaraX/herdr-nvim](https://github.com/ChmaraX/herdr-nvim)
 ### bars-and-lines
 
 + [SmiteshP/nvim-navic](https://dotfyle.com/plugins/SmiteshP/nvim-navic)

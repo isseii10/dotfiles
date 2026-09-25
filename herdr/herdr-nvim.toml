@@ -1,0 +1,4 @@
+# herdr-nvim (herdr 側プラグイン) の設定。~/.config/herdr-nvim/config.toml にリンクされる
+
+[sidebar]
+position = "left"

@@ -85,6 +85,11 @@ resize_pane_right = "ctrl+alt+l"
 detach = "prefix+q"
 reload_config = "prefix+shift+r"
 
+# --- misc ---
+# prefix+e / prefix+o は herdr-nvim に譲るので、デフォルトの割り当てを shift 側に移す
+edit_scrollback = "prefix+shift+e"
+open_notification_target = "prefix+shift+o"
+
 # LEADER s: 既存 workspace と zoxide のディレクトリから選んで切り替え/作成
 [[keys.command]]
 key = "prefix+s"
@@ -117,3 +122,17 @@ key = "ctrl+l"
 type = "plugin_action"
 command = "smart-splits.nvim.right"
 description = "navigate right (vim/herdr)"
+
+# herdr-nvim: nvim サイドバーとエージェントが触ったファイルのピッカー
+#   (初回のみ: herdr plugin install ChmaraX/herdr-nvim)
+[[keys.command]]
+key = "prefix+e"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.toggle"
+description = "nvim sidebar"
+
+[[keys.command]]
+key = "prefix+o"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.pick-file"
+description = "open file from agent output"

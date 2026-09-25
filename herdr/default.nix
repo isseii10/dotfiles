@@ -9,4 +9,6 @@ in
     config.lib.file.mkOutOfStoreSymlink "${herdrDir}/config.toml";
   xdg.configFile."herdr/scripts".source =
     config.lib.file.mkOutOfStoreSymlink "${herdrDir}/scripts";
+  xdg.configFile."herdr-nvim/config.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "${herdrDir}/herdr-nvim.toml";
 }

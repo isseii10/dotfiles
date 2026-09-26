@@ -14,6 +14,7 @@
     ./wezterm
     ./ghostty
     ./herdr
+    ./hunk
     ./nvim
     ./starship
     ./karabiner
@@ -77,6 +78,7 @@
       gh
       grpcurl
       herdr
+      hunk
       imagemagick
       mermaid-cli
       plantuml

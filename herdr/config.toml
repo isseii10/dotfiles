@@ -25,6 +25,7 @@ copy_on_select = true
 sidebar_width = 34
 sidebar_min_width = 30
 sidebar_max_width = 48
+status_indicators = "symbols"
 
 # Claude Code は作業内容をターミナルタイトルにするので、agent 種別の代わりに1行目に表示する
 [ui.sidebar.agents.rows_by_agent]
@@ -136,3 +137,6 @@ key = "prefix+o"
 type = "plugin_action"
 command = "chmarax.herdr-nvim.pick-file"
 description = "open file from agent output"
+
+[ui.toast]
+delivery = "system"

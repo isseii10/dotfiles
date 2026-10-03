@@ -21,12 +21,8 @@ local function send_file()
   end
 
   local function deliver(agent)
-    -- エージェントの cwd 配下なら相対パス、それ以外は絶対パス
+    -- 常に絶対パスで送る
     local path = vim.fn.fnamemodify(file, ":p")
-    local cwd = agent.cwd ~= "" and vim.fn.fnamemodify(agent.cwd, ":p") or nil
-    if cwd and vim.startswith(path, cwd) then
-      path = path:sub(#cwd + 1)
-    end
     local ok, derr = require("herdr-nvim.dispatch").send(agent.pane_id, "@" .. path .. " ")
     if not ok then
       vim.notify("herdr-nvim: " .. derr, vim.log.levels.ERROR)

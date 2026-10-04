@@ -56,10 +56,25 @@ local function format_prompt(items)
   return table.concat(lines, "\n")
 end
 
+-- 送信に成功したら送り先のエージェントにフォーカスを移す (as / aS / ai / af すべて dispatch.send を通る)
+-- herdr-nvim の内部モジュールを使っているので、プラグイン更新で壊れる可能性がある
+local function focus_after_send()
+  local dispatch = require "herdr-nvim.dispatch"
+  local send = dispatch.send
+  dispatch.send = function(pane_id, ...)
+    local ok, err = send(pane_id, ...)
+    if ok then
+      vim.system { "herdr", "agent", "focus", pane_id }
+    end
+    return ok, err
+  end
+end
+
 function M.config()
-  -- キーマップはデフォルトの <leader>a (ac / al / as / aS)
+  -- キーマップはデフォルトの <leader>a (ac / al / as / aS / ai)
   require("herdr-nvim").setup {}
   require("herdr-nvim.prompt").format = format_prompt
+  focus_after_send()
   vim.keymap.set("n", "<leader>af", send_file, { desc = "herdr-nvim: send file to agent" })
 end
 

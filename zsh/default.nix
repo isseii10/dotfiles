@@ -30,7 +30,9 @@
       )
 
       # Completion system must be initialized before completion-related plugins.
-      autoload -Uz compinit && compinit -d
+      # /bin/zsh と nix の zsh で fpath が異なるため、dump をバージョン別に分けて互いに無効化し合わないようにする。
+      [[ -d "$XDG_CACHE_HOME/zsh" ]] || mkdir -p "$XDG_CACHE_HOME/zsh"
+      autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
       source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh

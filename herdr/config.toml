@@ -90,6 +90,8 @@ reload_config = "prefix+shift+r"
 # prefix+e / prefix+o は herdr-nvim に譲るので、デフォルトの割り当てを shift 側に移す
 edit_scrollback = "prefix+shift+e"
 open_notification_target = "prefix+shift+o"
+# prefix+g は lazygit に譲るので goto は alt 側に移す
+goto = "prefix+alt+g"
 
 # LEADER s: 既存 workspace と zoxide のディレクトリから選んで切り替え/作成
 [[keys.command]]
@@ -98,6 +100,15 @@ type = "popup"
 command = "$HOME/.config/herdr/scripts/workspace-picker.sh"
 width = "60%"
 height = "60%"
+
+# prefix+g: フォーカス中のペインの cwd で lazygit を popup で開く
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "PATH=\"$HOME/.nix-profile/bin:/opt/homebrew/bin:$PATH\" exec lazygit"
+width = "90%"
+height = "90%"
+description = "lazygit"
 
 # smart-splits.nvim: ctrl+h/j/k/l で nvim の分割と herdr のペインを移動
 [[keys.command]]

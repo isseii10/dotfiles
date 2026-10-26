@@ -1,5 +1,11 @@
 require "user.options"
 require "user.keymaps"
+
+if vim.g.vscode then
+  require "user.vscode"
+  return
+end
+
 require "user.autocmds"
 
 local register = require("user.plugin_registry").register

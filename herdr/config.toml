@@ -5,8 +5,8 @@
 # キー操作の設計 (weztermからの移行):
 #   - prefix は F12。ghostty 側で ctrl+m (wezterm の LEADER) を F12 に変換している
 #   - cmd+t / cmd+1..9 などの cmd 系ショートカットは ghostty が「F12 + キー」を送って herdr を操作する
-#   - ctrl+h/j/k/l は smart-splits.nvim の herdr プラグインで nvim の分割と herdr のペインをシームレスに移動
-#     (初回のみ: herdr plugin link ~/.local/share/nvim/lazy/smart-splits.nvim)
+#   - ctrl+h/j/k/l は smart-splits-backend-herdr の herdr プラグインで nvim の分割と herdr のペインをシームレスに移動
+#     (初回のみ: herdr plugin link ~/.local/share/nvim/lazy/smart-splits-backend-herdr)
 
 onboarding = false
 
@@ -110,29 +110,29 @@ width = "90%"
 height = "90%"
 description = "lazygit"
 
-# smart-splits.nvim: ctrl+h/j/k/l で nvim の分割と herdr のペインを移動
+# smart-splits-backend-herdr: ctrl+h/j/k/l で nvim の分割と herdr のペインを移動
 [[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
-command = "smart-splits.nvim.left"
+command = "smart-splits-backend-herdr.left"
 description = "navigate left (vim/herdr)"
 
 [[keys.command]]
 key = "ctrl+j"
 type = "plugin_action"
-command = "smart-splits.nvim.down"
+command = "smart-splits-backend-herdr.down"
 description = "navigate down (vim/herdr)"
 
 [[keys.command]]
 key = "ctrl+k"
 type = "plugin_action"
-command = "smart-splits.nvim.up"
+command = "smart-splits-backend-herdr.up"
 description = "navigate up (vim/herdr)"
 
 [[keys.command]]
 key = "ctrl+l"
 type = "plugin_action"
-command = "smart-splits.nvim.right"
+command = "smart-splits-backend-herdr.right"
 description = "navigate right (vim/herdr)"
 
 # herdr-nvim: nvim サイドバーとエージェントが触ったファイルのピッカー

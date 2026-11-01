@@ -5,7 +5,8 @@ local M = {}
 
 ---@param config Config
 function M.apply_to_config(config)
-  local smart_splits = wezterm.plugin.require "https://github.com/mrjones2014/smart-splits.nvim"
+  -- smart-splits.nvim v3 moved the WezTerm side into its backend repo.
+  local smart_splits = wezterm.plugin.require "https://github.com/smart-splits-nvim/backend-wezterm"
   smart_splits.apply_to_config(config, {
     direction_keys = {
       move = { "h", "j", "k", "l" },

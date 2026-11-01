@@ -88,6 +88,19 @@ function M.config()
     -- Don't hijack netrw / directory buffers; open explicitly via <leader>e.
     use_as_default_explorer = false,
     follow_current_file = true,
+    -- Ported from the pre-rewrite config. Merged over upstream's defaults,
+    -- so unlisted keys (<C-v>/<C-s>/g./gi/...) keep working. Every select
+    -- closes the finder like the old `close_on_select = true` did.
+    mappings = {
+      n = {
+        ["\\"] = { action = "select", args = { vsplit = true, close = true }, desc = "Open in vertical split" },
+        ["-"] = { action = "select", args = { split = true, close = true }, desc = "Open in horizontal split" },
+        -- Tabs are hidden (showtabline = 0), so opening in one just looks like
+        -- <CR>. Drop upstream's default to avoid stray tabs.
+        ["<C-T>"] = { disabled = true },
+        ["^"] = { action = "visit", args = { parent = true }, desc = "Go to parent directory" },
+      },
+    },
     ui = {
       -- The "dotfiles" switch is enabled by default, hiding dotfiles.
       -- Clearing it shows hidden files from the start (toggle with `g.`).

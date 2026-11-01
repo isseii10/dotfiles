@@ -1,14 +1,11 @@
--- Tracks fyler.nvim's latest commit (no `commit` pin) to try out upstream
--- changes before bumping the pinned version in user.fyler. The repo moved
--- to FylerOrg/fyler.nvim and its config schema was rewritten wholesale
--- (kind/kind_presets/extensions/mappings), so this is not a copy of the
--- pinned config — see https://github.com/FylerOrg/fyler.nvim for the
--- current README/config.lua before touching this again.
--- Disable user.fyler in init.lua while this is active to avoid duplicate
--- <leader>e keymaps from two specs pointing at the same plugin.
+-- fyler.nvim's config schema was rewritten wholesale upstream
+-- (kind/kind_presets/extensions/mappings) — see
+-- https://github.com/FylerOrg/fyler.nvim for the current README/config.lua
+-- before touching this again. Columns/title the rewrite dropped are restored
+-- by the local extensions in user/fyler/extensions/ (kept in a
+-- subdirectory without init.lua so lazy's `import` doesn't load them as specs).
 local M = {
   "FylerOrg/fyler.nvim",
-  name = "fyler-latest.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = { "<leader>e" },
 }
@@ -20,6 +17,11 @@ function M.config()
   vim.keymap.set("n", "<leader>e", function()
     fyler.toggle()
   end, { noremap = true, silent = true, desc = "Toggle Fyler" })
+
+  -- Must run before setup so fyler picks the extensions up.
+  local columns = require "user.fyler.extensions.columns"
+  columns.register()
+  require("user.fyler.extensions.title").register()
 
   fyler.setup {
     -- Always open as a floating window instead of the new default (replace).
@@ -79,6 +81,8 @@ function M.config()
         highlight_groups.FylerGitRenamed = { fg = palette.blue }
         highlight_groups.FylerGitStaged = { link = "DiagnosticOk" }
         highlight_groups.FylerGitUntracked = { link = "Operator" }
+
+        columns.set_highlights(highlight_groups)
       end,
     },
     -- Don't hijack netrw / directory buffers; open explicitly via <leader>e.

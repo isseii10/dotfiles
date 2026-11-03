@@ -1,0 +1,5 @@
+interface:
+  display_name: "Refactoring"
+  short_description: "計画を承認してから1ステップ1コミットでリファクタリングする"
+policy:
+  allow_implicit_invocation: false

@@ -21,6 +21,7 @@
     ./lazygit
     ./delta
     ./superfile
+    ./gh-dash
     ./resterm
     ./terminfo
   ];

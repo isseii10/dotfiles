@@ -76,6 +76,7 @@
 
       # Development tools
       gh
+      gh-dash
       grpcurl
       herdr
       hunk

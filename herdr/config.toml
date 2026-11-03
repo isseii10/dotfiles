@@ -110,6 +110,15 @@ width = "90%"
 height = "90%"
 description = "lazygit"
 
+# prefix+shift+g: フォーカス中のペインの cwd で gh-dash (GitHub の PR / Issue) を popup で開く
+[[keys.command]]
+key = "prefix+shift+g"
+type = "popup"
+command = "PATH=\"$HOME/.nix-profile/bin:/opt/homebrew/bin:$PATH\" exec gh-dash"
+width = "90%"
+height = "90%"
+description = "gh-dash"
+
 # prefix+f: フォーカス中のペインの cwd で superfile を popup で開き、選んだファイルを同じタブのエージェントに `@path ` として送る
 [[keys.command]]
 key = "prefix+f"

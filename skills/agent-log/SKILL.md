@@ -1,6 +1,6 @@
 ---
 name: agent-log
-description: AI agent（Claude Code / Codex）との作業で考えたこと・やったことを、Obsidian vaultのdaily note（~/obsidian/daily_notes/YYYY-MM-DD.md）にまとめて追記する。今の会話だけでなく、会話記録からその日のセッションをすべて集めてまとめることもできる。「/agent-log」「daily noteに書いて」「今日のAI作業をまとめて」「質問したことをまとめて」などで使用する。引数: なし（今のセッション）/ 今日 / YYYY-MM-DD。
+description: AI agent（Claude Code / Codex）との作業を、Obsidianのdaily note（~/obsidian/daily_notes/YYYY-MM-DD.md）に記録する。今のセッションのほか、その日のすべてのセッションを会話記録から集めることもできる。「daily noteに書いて」「今日のAI作業をまとめて」で使う。
 ---
 
 # agent-log
@@ -29,7 +29,7 @@ python3 ~/.claude/skills/agent-log/scripts/collect.py {YYYY-MM-DD} --daily-note 
 
 ## Step 2: まとめる
 
-セッションごとに書く。1つのセッションで複数のテーマを扱っていたら、テーマごとに `###` を分ける。
+Step 1 の出力にあるセッションを、1つ残らずセッションごとに書く。1つのセッションで複数のテーマを扱っていたら、テーマごとに `###` を分ける。
 
 ```markdown
 ---
@@ -51,9 +51,8 @@ python3 ~/.claude/skills/agent-log/scripts/collect.py {YYYY-MM-DD} --daily-note 
 - **学んだこと**: 技術的に分かったこと、ハマって解決した原因。**あとでノートにできそうなものには `#zk` を付ける**（`/note-triage` の候補になる）
 - **残り**: やり残し・未確認・次にやること
 - 該当がない項目は書かない。「コミットして」だけのような小さいセッションは、見出し行と `- **やったこと**:` の1行でよい
-- 返答の本文やコードを長く貼らない。コードは要点になる数行だけ
+- 引用するコードは要点になる数行だけにする
 - トークン・パスワード・APIキー・個人情報は書かない
-- 日本語で書く
 
 ## Step 3: daily noteに追記する
 

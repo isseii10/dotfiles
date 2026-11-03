@@ -110,14 +110,14 @@ width = "90%"
 height = "90%"
 description = "lazygit"
 
-# prefix+f: フォーカス中のペインの cwd で superfile を popup で開く
+# prefix+f: フォーカス中のペインの cwd で superfile を popup で開き、選んだファイルを同じタブのエージェントに `@path ` として送る
 [[keys.command]]
 key = "prefix+f"
 type = "popup"
-command = "PATH=\"$HOME/.nix-profile/bin:$PATH\" exec superfile"
+command = "$HOME/.config/herdr/scripts/spf-to-agent.sh"
 width = "90%"
 height = "90%"
-description = "superfile"
+description = "superfile → agent"
 
 # smart-splits-backend-herdr: ctrl+h/j/k/l で nvim の分割と herdr のペインを移動
 [[keys.command]]

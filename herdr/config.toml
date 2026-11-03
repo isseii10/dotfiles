@@ -110,6 +110,15 @@ width = "90%"
 height = "90%"
 description = "lazygit"
 
+# prefix+f: フォーカス中のペインの cwd で superfile を popup で開く
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+command = "PATH=\"$HOME/.nix-profile/bin:$PATH\" exec superfile"
+width = "90%"
+height = "90%"
+description = "superfile"
+
 # smart-splits-backend-herdr: ctrl+h/j/k/l で nvim の分割と herdr のペインを移動
 [[keys.command]]
 key = "ctrl+h"

@@ -27,6 +27,13 @@ alias cat='bat'
 alias dot='cd $HOME/dotfiles'
 alias config='cd $HOME/.config'
 
+# superfile: 終了時のディレクトリに cd する (config.toml の cd_on_quit = true と対)
+spf() {
+  local lastdir="${XDG_STATE_HOME:-$HOME/.local/state}/superfile/lastdir"
+  command spf "$@"
+  [[ -f "$lastdir" ]] && { . "$lastdir"; rm -f -- "$lastdir"; }
+}
+
 # mise (インタラクティブシェル用)
 # prompt/chpwd hook を使う設定は対話シェルに限定する。
 if type mise &>/dev/null; then

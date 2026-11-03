@@ -21,6 +21,7 @@
     ./lazygit
     ./delta
     ./yazi
+    ./superfile
     ./resterm
     ./terminfo
   ];

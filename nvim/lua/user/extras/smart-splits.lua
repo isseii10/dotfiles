@@ -18,6 +18,39 @@ function M.config()
     mux = { backend = { "smart-splits-backend-herdr", "smart-splits-backend-wezterm" } },
   }
 
+  -- herdr-nvim のサイドバーは、裏で動き続けるデーモン nvim に `--remote-ui` で
+  -- 画面だけつなぐ作り。デーモンの $HERDR_PANE_ID は最初にサイドバーを開いたときの
+  -- ペインのままなので、サイドバーを開き直す (ペイン ID が変わる) と smart-splits が
+  -- 消えたペインを基準に移動しようとして、右の herdr ペインへ抜けられなくなる。
+  -- UI がつながるたびに、今のタブの "nvim sidebar" ペインの ID に差し替える
+  -- (backend は呼ばれるたびに vim.env.HERDR_PANE_ID を読み直す)。
+  if vim.env.HERDR_PLUGIN_ID == "chmarax.herdr-nvim" and vim.env.HERDR_TAB_ID then
+    -- vim.system のコールバックは fast event なので vim.env を読めない。先に読んでおく
+    local tab_id = vim.env.HERDR_TAB_ID
+    local herdr = vim.env.HERDR_BIN_PATH or "herdr"
+    local function refresh_herdr_pane_id()
+      vim.system({ herdr, "pane", "list" }, { text = true }, function(res)
+        if res.code ~= 0 then
+          return
+        end
+        local ok, decoded = pcall(vim.json.decode, res.stdout)
+        if not ok or type(decoded) ~= "table" or not decoded.result then
+          return
+        end
+        for _, pane in ipairs(decoded.result.panes or {}) do
+          if pane.tab_id == tab_id and pane.label == "nvim sidebar" then
+            vim.schedule(function()
+              vim.env.HERDR_PANE_ID = pane.pane_id
+            end)
+            return
+          end
+        end
+      end)
+    end
+    vim.api.nvim_create_autocmd("UIEnter", { callback = refresh_herdr_pane_id })
+    refresh_herdr_pane_id()
+  end
+
   local function is_floating()
     return vim.api.nvim_win_get_config(0).relative ~= ""
   end

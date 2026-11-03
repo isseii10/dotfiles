@@ -5,7 +5,7 @@
 # herdr の popup (prefix+f) から呼ばれる想定
 #   1. superfile を --chooser-file 付きで開く (ファイル上で enter/l/e を押すとパスを書き出して終了)
 #   2. 送り先のエージェントを決める
-#        - 呼び出し元のペインがエージェントならそれ
+#        - 呼び出し元のペイン ($HERDR_ACTIVE_PANE_ID。popup には HERDR_PANE_ID が渡されない) がエージェントならそれ
 #        - なければフォーカス中のエージェント
 #        - なければフォーカス中のペインと同じタブにいるエージェント
 #   3. send-text で入力する (Enter は送らないので、続けて指示を書ける)
@@ -34,7 +34,7 @@ fi
 
 agents="$("$herdr" agent list)"
 
-target="$(jq -r --arg pane "${HERDR_PANE_ID:-}" '
+target="$(jq -r --arg pane "${HERDR_ACTIVE_PANE_ID:-}" '
   .result.agents | (map(select(.pane_id == $pane)) + map(select(.focused)))[0].pane_id // empty
 ' <<<"$agents")"
 

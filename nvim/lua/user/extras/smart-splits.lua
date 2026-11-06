@@ -41,6 +41,14 @@ function M.config()
           if pane.tab_id == tab_id and pane.label == "nvim sidebar" then
             vim.schedule(function()
               vim.env.HERDR_PANE_ID = pane.pane_id
+              -- prefix+o (pick-file) から起動したデーモンは、起動時に HERDR_PANE_ID が
+              -- なく backend の検出に失敗する。smart-splits は検出結果を最初の1回で
+              -- キャッシュするので、herdr を掴めていなければ ID を入れた後でやり直させる
+              local backend = require "smart-splits.backend"
+              if not backend.resolve() then
+                backend.reset()
+                backend.resolve()
+              end
             end)
             return
           end

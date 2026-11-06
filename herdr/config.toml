@@ -6,7 +6,7 @@
 #   - prefix は F12。ghostty 側で ctrl+m (wezterm の LEADER) を F12 に変換している
 #   - cmd+t / cmd+1..9 などの cmd 系ショートカットは ghostty が「F12 + キー」を送って herdr を操作する
 #   - ctrl+h/j/k/l は smart-splits-backend-herdr の herdr プラグインで nvim の分割と herdr のペインをシームレスに移動
-#     (初回のみ: herdr plugin link ~/.local/share/nvim/lazy/smart-splits-backend-herdr)
+#     (初回のみ: scripts/link-herdr-plugins.sh)
 
 onboarding = false
 
@@ -154,7 +154,7 @@ command = "smart-splits-backend-herdr.right"
 description = "navigate right (vim/herdr)"
 
 # herdr-nvim: nvim サイドバーとエージェントが触ったファイルのピッカー
-#   (初回のみ: herdr plugin install ChmaraX/herdr-nvim)
+#   (初回のみ: scripts/link-herdr-plugins.sh)
 [[keys.command]]
 key = "prefix+e"
 type = "plugin_action"

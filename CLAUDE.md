@@ -19,6 +19,7 @@
 
 ## herdr
 
+- config.toml の `plugin_action` が使うプラグインは `scripts/link-herdr-plugins.sh` で登録する。プラグインを足したらスクリプトにも足す。
 - 設定を変えたら `herdr config check` してから `herdr server reload-config`。
 - popup のコマンドには `HERDR_PANE_ID` が渡らない。呼び出し元のペインは `HERDR_ACTIVE_PANE_ID` で取る。PATH も最小なので `$HOME/.nix-profile/bin` を先頭に足す。
 - herdr-nvim のサイドバーは、常駐するデーモン nvim に `--remote-ui` でつないでいるだけ。デーモンの環境変数は最初に起動したときのままなので、`HERDR_PANE_ID` は `nvim/lua/user/extras/smart-splits.lua` で追従させている。デーモンを作り直すときはサイドバーで `:qa` してから開き直す。

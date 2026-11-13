@@ -108,6 +108,7 @@
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
       # macOS-only utilities
+      obsidian
       pngpaste
       terminal-notifier
     ]

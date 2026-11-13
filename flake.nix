@@ -24,7 +24,15 @@
       username = builtins.getEnv "USER";
       homeDirectory = builtins.getEnv "HOME";
       system = builtins.currentSystem;
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        # unfree は明示したものだけ許可する
+        config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (nixpkgs.lib.getName pkg) [
+            "obsidian"
+          ];
+      };
     in
     {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {

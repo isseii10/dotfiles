@@ -5,11 +5,31 @@ local workspaces = {
   },
 }
 
+local workspace_roots = vim.tbl_map(function(workspace)
+  return vim.fs.normalize(vim.fn.expand(workspace.path))
+end, workspaces)
+
+local function in_vault(path)
+  path = vim.fs.normalize(path)
+  for _, root in ipairs(workspace_roots) do
+    if path == root or vim.startswith(path, root .. "/") then
+      return true
+    end
+  end
+  return false
+end
+
+-- vault 配下の markdown を開いたときだけ読み込む
+local events = {}
+for _, root in ipairs(workspace_roots) do
+  table.insert(events, { event = { "BufReadPre", "BufNewFile" }, pattern = root .. "/*.md" })
+end
+
 local M = {
   "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
-  ft = "markdown",
+  event = events,
   cmd = {
     "Obsidian",
   },
@@ -20,10 +40,21 @@ local M = {
   },
 }
 
+function M.init()
+  -- vault をカレントディレクトリにして起動したときも読み込む (ファイル未指定でも <leader>o を使えるように)
+  vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
+    group = vim.api.nvim_create_augroup("user_obsidian_lazy", { clear = true }),
+    callback = function()
+      if in_vault(vim.fn.getcwd()) then
+        require("lazy").load { plugins = { "obsidian.nvim" } }
+        return true
+      end
+    end,
+  })
+end
+
 function M.config()
-  vim.g.obsidian_workspace_roots = vim.tbl_map(function(workspace)
-    return vim.fs.normalize(vim.fn.expand(workspace.path))
-  end, workspaces)
+  vim.g.obsidian_workspace_roots = workspace_roots
 
   require("obsidian").setup {
     legacy_commands = false,

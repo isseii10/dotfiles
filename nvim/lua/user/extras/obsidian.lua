@@ -34,9 +34,14 @@ function M.config()
     -- the workspace to the first workspace in the list whose `path` is a parent of the
     -- current markdown file being edited.
     workspaces = workspaces,
+    -- Obsidianアプリのコアテンプレートと同じフォルダ・ファイルを使う
+    templates = {
+      folder = "templates",
+    },
     daily_notes = {
       folder = "daily_notes",
       default_tags = {},
+      template = "daily.md",
     },
 
     checkbox = {

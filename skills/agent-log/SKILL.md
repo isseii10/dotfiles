@@ -1,6 +1,6 @@
 ---
 name: agent-log
-description: AI agent（Claude Code / Codex）との作業を、Obsidianのdaily note（~/obsidian/daily_notes/YYYY-MM-DD.md）に記録する。今のセッションのほか、その日のすべてのセッションを会話記録から集めることもできる。「daily noteに書いて」「今日のAI作業をまとめて」で使う。
+description: AI agent（Claude Code / Codex）との作業を、Obsidianのdaily note（~/obsidian/calendar/daily/YYYY-MM-DD.md）に記録する。今のセッションのほか、その日のすべてのセッションを会話記録から集めることもできる。「daily noteに書いて」「今日のAI作業をまとめて」で使う。
 ---
 
 # agent-log
@@ -19,7 +19,7 @@ AI agentとの作業を、あとで見返せる形でdaily noteに残す。
 ## Step 1: 材料を集める
 
 ```bash
-python3 ~/.claude/skills/agent-log/scripts/collect.py {YYYY-MM-DD} --daily-note ~/obsidian/daily_notes/{YYYY-MM-DD}.md
+python3 ~/.claude/skills/agent-log/scripts/collect.py {YYYY-MM-DD} --daily-note ~/obsidian/calendar/daily/{YYYY-MM-DD}.md
 ```
 
 - 会話記録（`~/.claude/projects/*/*.jsonl`、`~/.codex/sessions/`）から、その日のセッションごとに依頼・最後の返答・変更したファイル・コミット・`marker` を出力する。ファイルは変更しない
@@ -56,7 +56,7 @@ Step 1 の出力にあるセッションを、1つ残らずセッションごと
 
 ## Step 3: daily noteに追記する
 
-- パス: `~/obsidian/daily_notes/{YYYY-MM-DD}.md`（まとめる日の日付）
+- パス: `~/obsidian/calendar/daily/{YYYY-MM-DD}.md`（まとめる日の日付）
 - ファイルの末尾に追記する。既存の内容は書き換えない
 - ファイルがなければ、既存のdaily noteと同じfrontmatterで作る:
 

@@ -67,10 +67,13 @@ function M.config()
     workspaces = workspaces,
     -- Obsidianアプリのコアテンプレートと同じフォルダ・ファイルを使う
     templates = {
-      folder = "templates",
+      folder = "extras/templates",
+    },
+    attachments = {
+      folder = "extras/attachments",
     },
     daily_notes = {
-      folder = "daily_notes",
+      folder = "calendar/daily",
       default_tags = {},
       template = "daily.md",
     },
@@ -87,7 +90,7 @@ function M.config()
     -- Optional, alternatively you can customize the frontmatter data.
     ---@return table
     frontmatter = {
-      -- literature_notes の出典用項目も含めて並び順を固定する（該当キーがないノートには影響しない）
+      -- literature の出典用項目も含めて並び順を固定する（該当キーがないノートには影響しない）
       sort = { "id", "aliases", "type", "source", "author", "status", "date", "tags" },
       func = function(note)
         -- Add the title of the note as an alias.
@@ -111,8 +114,8 @@ function M.config()
           end
         end
 
-        -- literature_notes だけ出典用の項目を足す（既にある値は上書きしない）
-        if note.path and tostring(note.path):find("/literature_notes/", 1, true) then
+        -- atlas/literature だけ出典用の項目を足す（既にある値は上書きしない）
+        if note.path and tostring(note.path):find("/atlas/literature/", 1, true) then
           for _, k in ipairs { "type", "source", "author", "status" } do
             if out[k] == nil then
               out[k] = vim.NIL -- 空の値として `key:` で出力される

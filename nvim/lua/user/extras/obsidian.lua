@@ -79,12 +79,12 @@ function M.config()
     },
 
     checkbox = {
+      -- 見た目は render-markdown.lua の checkbox.custom で付ける
       order = {
-        " ",
-        "x",
-        -- ">",
-        -- "~",
-        -- "!",
+        " ", -- 未着手
+        "~", -- 進行中
+        "x", -- 完了
+        "-", -- 中止
       },
     },
     -- Optional, alternatively you can customize the frontmatter data.

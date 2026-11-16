@@ -27,7 +27,6 @@ local M = {
     pipe_table = {
       head = "RenderMarkdownTableHead",
       row = "RenderMarkdownTableRow",
-      filler = "RenderMarkdownTableRow",
     },
   },
 }

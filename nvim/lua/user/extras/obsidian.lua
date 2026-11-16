@@ -65,6 +65,8 @@ function M.config()
     -- the workspace to the first workspace in the list whose `path` is a parent of the
     -- current markdown file being edited.
     workspaces = workspaces,
+    -- 表示は render-markdown に任せる
+    ui = { enable = false },
     -- Obsidianアプリのコアテンプレートと同じフォルダ・ファイルを使う
     templates = {
       folder = "extras/templates",

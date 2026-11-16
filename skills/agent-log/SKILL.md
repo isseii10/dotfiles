@@ -19,12 +19,12 @@ AI agentとの作業を、あとで見返せる形でdaily noteに残す。
 ## Step 1: 材料を集める
 
 ```bash
-python3 ~/.claude/skills/agent-log/scripts/collect.py {YYYY-MM-DD} --daily-note ~/obsidian/calendar/daily/{YYYY-MM-DD}.md
+python3 ~/.claude/skills/agent-log/scripts/collect.py {YYYY-MM-DD}
 ```
 
-- 会話記録（`~/.claude/projects/*/*.jsonl`、`~/.codex/sessions/`）から、その日のセッションごとに依頼・最後の返答・変更したファイル・コミット・`marker` を出力する。ファイルは変更しない
-- `--daily-note` を渡すと、既に追記済みのやり取りは除外される（二重追記の防止）
-- **今のセッションだけのモード**: 出力のうち、`cwd` が今の作業ディレクトリで、時刻が最も新しいセッションを使う。内容は出力より自分の会話の記憶を優先し、`marker` だけ出力から取る
+- 会話記録（`~/.claude/projects/*/*.jsonl`、`~/.codex/sessions/`）から、その日のセッションごとに依頼・最後の返答・変更したファイル・コミット・`mark` を出力する。ファイルは変更しない
+- 記録済みのやり取りは、vaultの `extras/agent-log/logged-*.json`（全端末分）を見て除外される。daily noteに目印は書かない
+- **今のセッションだけのモード**: 出力のうち、`cwd` が今の作業ディレクトリで、時刻が最も新しいセッションを使う。内容は出力より自分の会話の記憶を優先し、`mark` だけ出力から取る
 - 対象がなければ、その旨を伝えて終わる
 
 ## Step 2: まとめる
@@ -34,7 +34,6 @@ Step 1 の出力にあるセッションを、1つ残らずセッションごと
 ```markdown
 ---
 **Claude Code / obsidian / 16:42〜17:17**
-<!-- agent-log: {session_id}@{最終時刻} -->
 
 ### Zettelkasten系スキルの見直し
 - **目的**: 公開されているzettelkasten skillと比べて、手元のnote-*スキルを改善したい
@@ -44,7 +43,7 @@ Step 1 の出力にあるセッションを、1つ残らずセッションごと
 - **残り**: 最短経路の3ノートは本文が空
 ```
 
-- 見出し行は `**{agent} / {プロジェクト名} / {開始}〜{終了}**`。その直下に Step 1 の `marker` をそのまま書く（次回の二重追記防止に使う）
+- 見出し行は `**{agent} / {プロジェクト名} / {開始}〜{終了}**`
 - **目的**: ユーザーが何をしたかったか。依頼の文面ではなく意図を書く
 - **考えたこと**: 判断とその理由、比べた選択肢、方針の転換。ここが一番大事
 - **やったこと**: 変更したもの・作ったもの・コミット。ファイルの羅列ではなく、何を変えたかを書く
@@ -73,6 +72,13 @@ title: YYYY-MM-DD
 ```
 
 - Obsidianアプリが起動していなくても書けるよう、ファイルを直接編集する（Obsidian CLI / MCPは使わない）
+- 追記できたら、書いたセッションの `mark` をすべて記録済みにする（次回の二重追記を防ぐ）:
+
+```bash
+python3 ~/.claude/skills/agent-log/scripts/collect.py --mark {mark} [{mark} ...]
+```
+
+**終わり:** 書いたすべてのセッションの `mark` を記録し、同じ日付で Step 1 を流し直すと0件になる。
 
 ## Step 4: 報告
 

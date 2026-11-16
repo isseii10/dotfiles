@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """
 指定日の AI agent（Claude Code / Codex）のセッション記録を集めて、まとめの材料を出力する。
-ファイルは一切変更しない。
+`--mark` のとき以外、ファイルは変更しない。
 
 Usage:
-    python3 collect.py [YYYY-MM-DD] [--daily-note PATH]
+    python3 collect.py [YYYY-MM-DD] [--all]     # 材料を出力する（記録済みのやり取りは除外。--all で含める）
+    python3 collect.py --mark ID@ISO時刻 [...]   # 追記したセッションを記録済みにする
 
---daily-note を渡すと、そのノート内の `<!-- agent-log: {session_id}@{ISO時刻} -->` を読み、
-記録済みの時刻以前のやり取りを除外する（同じセッションを二重に追記しないため）。
+記録済みの {session_id: 最終時刻} は vault の extras/agent-log/logged-{端末名}.json に持つ（daily noteには書かない）。
+gitで同期されるので端末を入れ替えても消えない。書くのは自分の端末のファイルだけ（端末間の競合を避ける）、読むのは全端末分。
+その時刻以前のやり取りは、次回の出力から除外する。
 """
 
 import json
 import re
+import socket
 import sys
 from collections import defaultdict
 from datetime import date, datetime
@@ -24,15 +27,20 @@ CODEX_DIR = HOME / ".codex" / "sessions"
 PROMPT_MAX = 400
 REPLY_MAX = 600
 
+MARK = "--mark" in sys.argv
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
-TARGET = date.fromisoformat(args[0]) if args else date.today()
-DAILY_NOTE = None
-if "--daily-note" in sys.argv:
-    DAILY_NOTE = Path(sys.argv[sys.argv.index("--daily-note") + 1])
+TARGET = date.today() if MARK or not args else date.fromisoformat(args[0])
+STATE_DIR = HOME / "obsidian" / "extras" / "agent-log"
+STATE = STATE_DIR / f"logged-{socket.gethostname().split('.')[0]}.json"
 
 
 def parse_ts(s):
     return datetime.fromisoformat(s.replace("Z", "+00:00")).astimezone()
+
+
+def is_logged(logged, sid, t):
+    """記録済みの時刻は秒単位なので、比べる側も秒に切り捨てる"""
+    return sid in logged and t.replace(microsecond=0) <= logged[sid]
 
 
 def clip(text, n):
@@ -40,16 +48,31 @@ def clip(text, n):
     return text if len(text) <= n else text[:n] + "…"
 
 
+def read_state(path):
+    return {sid: parse_ts(ts) for sid, ts in json.loads(path.read_text(encoding="utf-8")).items()} if path.exists() else {}
+
+
 def load_logged():
-    """daily note に記録済みの {session_id: 最終時刻}"""
-    if not DAILY_NOTE or not DAILY_NOTE.exists():
-        return {}
+    """記録済みの {session_id: 最終時刻}（全端末分）"""
     logged = {}
-    for sid, ts in re.findall(r"<!-- agent-log: (\S+)@(\S+) -->", DAILY_NOTE.read_text(encoding="utf-8")):
+    for path in STATE_DIR.glob("logged-*.json"):
+        for sid, t in read_state(path).items():
+            if sid not in logged or t > logged[sid]:
+                logged[sid] = t
+    return logged
+
+
+def mark(items):
+    """ID@ISO時刻 を記録済みにする。既にある時刻より新しいときだけ更新する"""
+    logged = read_state(STATE)
+    for item in items:
+        sid, ts = item.rsplit("@", 1)
         t = parse_ts(ts)
         if sid not in logged or t > logged[sid]:
             logged[sid] = t
-    return logged
+    STATE.parent.mkdir(parents=True, exist_ok=True)
+    STATE.write_text(json.dumps({k: v.isoformat(timespec="seconds") for k, v in sorted(logged.items())}, indent=1), encoding="utf-8")
+    print(f"記録済みにしました: {len(items)}件（合計 {len(logged)}件）")
 
 
 def text_of(content):
@@ -98,7 +121,7 @@ def collect_claude(logged):
             if d.get("isSidechain") or d.get("isMeta") or "timestamp" not in d or d.get("type") not in ("user", "assistant"):
                 continue
             t = parse_ts(d["timestamp"])
-            if t.date() != TARGET or (sid in logged and t <= logged[sid]):
+            if t.date() != TARGET or is_logged(logged, sid, t):
                 continue
             if s is None:
                 s = sessions.setdefault(sid, new_session("Claude Code", sid, d.get("cwd", "")))
@@ -161,7 +184,7 @@ def collect_codex(logged):
             if s is None or "timestamp" not in d:
                 continue
             t = parse_ts(d["timestamp"])
-            if s["id"] in logged and t <= logged[s["id"]]:
+            if is_logged(logged, s["id"], t):
                 continue
             if d.get("type") == "event_msg" and p.get("type") == "user_message":
                 if not p.get("message", "").strip():
@@ -180,7 +203,9 @@ def project_name(cwd):
 
 
 def main():
-    logged = load_logged()
+    if MARK:
+        return mark(args)
+    logged = {} if "--all" in sys.argv else load_logged()
     sessions = {**collect_claude(logged), **collect_codex(logged)}
     sessions = [s for s in sessions.values() if s["turns"]]
     sessions.sort(key=lambda s: s["start"])
@@ -192,7 +217,7 @@ def main():
     for s in sessions:
         print(f"## {s['agent']} / {project_name(s['cwd'])} / {s['start']:%H:%M}〜{s['end']:%H:%M}")
         print(f"- session: {s['id']}")
-        print(f"- marker: <!-- agent-log: {s['id']}@{s['end'].isoformat(timespec='seconds')} -->")
+        print(f"- mark: {s['id']}@{s['end'].isoformat(timespec='seconds')}")
         print(f"- cwd: {s['cwd']}")
         if s["title"]:
             print(f"- title: {s['title']}")

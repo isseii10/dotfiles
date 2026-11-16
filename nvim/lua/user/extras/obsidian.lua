@@ -131,53 +131,21 @@ function M.config()
     },
   }
 
-  -- チェックボックスを切り替えたら、TODO の下の時刻の行に時刻を足す（タスクの消化時間を後で測るため）
-  --   - [ ] {TODO}
-  --   	- 󰂞 発生 󱓞 着手 󰈼 完了（YYYY-MM-DD HH:MM。時刻の行が無ければ TODO の直下に作る）
-  --   	- [リンク](…)
-  --   [~] で 󱓞、[x] で 󰈼 を付ける（既にあれば付けない）。時刻は自動では消さない（誤操作で記録を失わないため）
+  -- チェックボックスを切り替えたら、行末に時刻を付ける（タスクの消化時間を後で測るため）
+  --   [~] 着手 → 󱓞 YYYY-MM-DD HH:MM / [x] 完了 → 󰈼 YYYY-MM-DD HH:MM（既にあれば付けない）
+  --   時刻は自動では消さない（誤操作で記録を失わないため。やり直すときは手で消す）
   --   発生時刻 󰂞 は slack-todo-import が付ける
-  local marks = { "󰂞", "󱓞", "󰈼" }
-  local function is_time_line(l)
-    for _, m in ipairs(marks) do
-      if l:find(m, 1, true) then
-        return true
-      end
-    end
-    return false
-  end
-
   local actions = require "obsidian.actions"
   local toggle = actions._toggle_checkbox
   actions._toggle_checkbox = function(states, lnum)
     lnum = lnum or vim.api.nvim_win_get_cursor(0)[1]
     toggle(states, lnum)
     local line = vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, false)[1]
-    local indent, state = (line or ""):match "^(%s*)[-*+] %[(.)%]"
+    local state = line and line:match "^%s*[-*+] %[(.)%]"
     local mark = ({ ["~"] = "󱓞", x = "󰈼" })[state]
-    if not mark then
-      return
+    if mark and not line:find(mark, 1, true) then
+      vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, true, { line .. " " .. mark .. " " .. os.date "%Y-%m-%d %H:%M" })
     end
-    local stamp = mark .. " " .. os.date "%Y-%m-%d %H:%M"
-
-    -- TODO の子の行（字下げが深い行）から時刻の行を探す
-    local last = vim.api.nvim_buf_line_count(0)
-    local i = lnum + 1
-    while i <= last do
-      local l = vim.api.nvim_buf_get_lines(0, i - 1, i, false)[1]
-      local ws = l:match "^(%s*)%S"
-      if not ws or #ws <= #indent then
-        break
-      end
-      if is_time_line(l) then
-        if not l:find(mark, 1, true) then
-          vim.api.nvim_buf_set_lines(0, i - 1, i, true, { l .. " " .. stamp })
-        end
-        return
-      end
-      i = i + 1
-    end
-    vim.api.nvim_buf_set_lines(0, lnum, lnum, true, { indent .. "\t- " .. stamp })
   end
 
   require("which-key").add {

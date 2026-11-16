@@ -131,6 +131,32 @@ function M.config()
     },
   }
 
+  -- チェックボックスを切り替えたら、行末に時刻を付ける（タスクの消化時間を後で測るため）
+  --   [~] 着手 → 🛫 YYYY-MM-DD HH:MM / [x] 完了 → ✅ YYYY-MM-DD HH:MM（既にあれば付けない）
+  --   時刻は自動では消さない（誤操作で記録を失わないため。やり直すときは手で消す）
+  --   発生時刻 ➕ は slack-todo-import が付ける
+  local actions = require "obsidian.actions"
+  local toggle = actions._toggle_checkbox
+  actions._toggle_checkbox = function(states, lnum)
+    lnum = lnum or vim.api.nvim_win_get_cursor(0)[1]
+    toggle(states, lnum)
+    local line = vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, false)[1]
+    local state = line and line:match "^%s*[-*+] %[(.)%]"
+    if not state then
+      return
+    end
+    local now = os.date "%Y-%m-%d %H:%M"
+    local new = line
+    if state == "~" and not line:find("🛫", 1, true) then
+      new = line .. " 🛫 " .. now
+    elseif state == "x" and not line:find("✅", 1, true) then
+      new = line .. " ✅ " .. now
+    end
+    if new ~= line then
+      vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, true, { new })
+    end
+  end
+
   require("which-key").add {
     {
       "<leader>o",

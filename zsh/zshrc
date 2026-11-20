@@ -34,23 +34,25 @@ spf() {
   [[ -f "$lastdir" ]] && { . "$lastdir"; rm -f -- "$lastdir"; }
 }
 
-# mise (インタラクティブシェル用)
-# prompt/chpwd hook を使う設定は対話シェルに限定する。
-if type mise &>/dev/null; then
-  eval "$(mise activate zsh)"
-fi
+# plugins: zsh-defer と _zdefer の定義、compinit、fzf-tab は同期。残りのプラグインは遅延キューに積む。
+source "$XDG_CONFIG_HOME/zsh/plugins.zsh"
 
-# starship
+# starship: プロンプトそのものなので遅延しない
 eval "$(starship init zsh)"
 
-# direnv
+# direnv: .envrc のあるディレクトリで開いた直後のコマンドにも環境変数が要るので遅延しない (hook は数 ms)
 eval "$(direnv hook zsh)"
 
-# zoxide: smarter cd
-eval "$(zoxide init zsh --cmd cd)"
+# 以下はプロンプト表示後に zsh-defer で読み込む (積んだ順に実行される)。
+# mise (インタラクティブシェル用)
+# prompt/chpwd hook を使う設定は対話シェルに限定する。
+# 読み込み前でも zshenv で PATH に入れた shim でコマンドは解決できる。
+if type mise &>/dev/null; then
+  _zdefer -c 'eval "$(mise activate zsh)"'
+fi
 
-# plugins
-source "$XDG_CONFIG_HOME/zsh/plugins.zsh"
+# zoxide: smarter cd (読み込み前の cd は builtin の cd)
+_zdefer -c 'eval "$(zoxide init zsh --cmd cd)"'
 
 bindkey '^[[1;6K' kill-line # ctrl shift k
 
@@ -77,5 +79,14 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey "^O" edit-command-line
 
-# 仕事用に必要なら.zshrc.work作成
-[ -f "$XDG_CONFIG_HOME/zsh/.zshrc.work" ] && source "$XDG_CONFIG_HOME/zsh/.zshrc.work"
+# 仕事用に必要なら.zshrc.work作成 (gh auth token や brew shellenv を呼ぶので遅延)
+[ -f "$XDG_CONFIG_HOME/zsh/.zshrc.work" ] && _zdefer source "$XDG_CONFIG_HOME/zsh/.zshrc.work"
+
+# 遅延タスクがすべて終わったら、precmd フック (mise/direnv の環境反映、autosuggestions の開始) と
+# プロンプトの再描画を1回だけ行う。
+# zsh-defer は p 付きのタスクを積むとき $+RPS1 が 0 なら RPS1= にするが、starship が RPROMPT で設定していても
+# $+RPS1 は 0 になり右プロンプトが消えるので、退避して戻す。
+_rprompt=$RPROMPT
+zsh-defer -a +mszp -t 0.01 -c ':'
+RPROMPT=$_rprompt; unset _rprompt
+unfunction _zdefer

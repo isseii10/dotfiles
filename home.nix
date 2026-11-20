@@ -96,7 +96,7 @@
       # Database
       lazydocker
       mysql84
-      postgresql_14
+      postgresql_18
       redis
 
       # Cross-platform utilities

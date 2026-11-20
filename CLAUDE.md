@@ -9,6 +9,7 @@
 - 設定ファイルは `mkOutOfStoreSymlink` で `~/dotfiles/...` を直接指す。中身の編集はその場で反映され、再適用が要るのはパッケージやリンクを増減したときだけ。リポジトリの場所は `~/dotfiles` 固定。
 - ツールが設定ディレクトリに状態を書き込むもの (herdr のソケットやログ、superfile の `theme/`) は、ディレクトリではなくファイル単位でリンクする。
 - リンク先に実ファイルが既にあると switch が止まる。`.bak` に退避してから適用する。
+- 適用は herdr のペインの中ではできない。ペインは launchd 配下の `herdr server` の子なので `launchctl managername` が `Background` になり、home-manager が SSH 越しとみなして App Management のチェックで止まる。`ghostty-bare` (zshrc の alias) で herdr なしの Ghostty を開いて実行する。
 - `git/config` だけは初回にコピーするテンプレート。編集しても `~/.config/git/config` には届かない。
 - GUI アプリは nixpkgs から `home.packages` の macOS 用リストで入れる (ghostty-bin, wezterm, scroll-reverser, obsidian)。home-manager が `~/Applications/Home Manager Apps` に置く。obsidian は unfree なので `flake.nix` の `allowUnfreePredicate` に名前を足している。
 - karabiner-elements だけはドライバとデーモンが要るので `hosts/darwin` の homebrew casks で入れる。

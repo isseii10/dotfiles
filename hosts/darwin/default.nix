@@ -18,10 +18,10 @@
 
   homebrew = {
     enable = true;
+    # karabiner はドライバとデーモンを入れるので brew に任せる
+    # (nix-darwin のモジュールは nixpkgs 更新のたびに入力監視の許可を付け直す必要が出やすい)
     casks = [
-      "ghostty"
       "karabiner-elements"
-      "wezterm"
     ];
   };
 }

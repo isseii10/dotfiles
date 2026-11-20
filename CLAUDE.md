@@ -10,7 +10,8 @@
 - ツールが設定ディレクトリに状態を書き込むもの (herdr のソケットやログ、superfile の `theme/`) は、ディレクトリではなくファイル単位でリンクする。
 - リンク先に実ファイルが既にあると switch が止まる。`.bak` に退避してから適用する。
 - `git/config` だけは初回にコピーするテンプレート。編集しても `~/.config/git/config` には届かない。
-- GUI アプリ (ghostty, karabiner-elements, wezterm) は `hosts/darwin` の homebrew casks で入れる。obsidian は nixpkgs から `home.packages` で入れる (unfree なので `flake.nix` の `allowUnfreePredicate` に名前を足している)。
+- GUI アプリは nixpkgs から `home.packages` の macOS 用リストで入れる (ghostty-bin, wezterm, scroll-reverser, obsidian)。home-manager が `~/Applications/Home Manager Apps` に置く。obsidian は unfree なので `flake.nix` の `allowUnfreePredicate` に名前を足している。
+- karabiner-elements だけはドライバとデーモンが要るので `hosts/darwin` の homebrew casks で入れる。
 
 ## skills
 

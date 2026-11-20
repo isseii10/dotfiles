@@ -108,7 +108,10 @@
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
       # macOS-only utilities
+      ghostty-bin
       obsidian
+      scroll-reverser
+      wezterm
       pngpaste
       terminal-notifier
     ]

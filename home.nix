@@ -110,7 +110,13 @@
       # macOS-only utilities
       ghostty-bin
       obsidian
-      scroll-reverser
+      # 配布 zip に AppleDouble の ._IntroShot.png が混じっていて、署名の検証に通らず
+      # 「壊れているため開けません」になる。展開後に ._* を消す
+      (scroll-reverser.overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          find "$out" -name '._*' -delete
+        '';
+      }))
       wezterm
       pngpaste
       terminal-notifier

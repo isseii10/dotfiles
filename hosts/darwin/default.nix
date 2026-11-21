@@ -18,10 +18,22 @@
 
   homebrew = {
     enable = true;
-    # karabiner はドライバとデーモンを入れるので brew に任せる
-    # (nix-darwin のモジュールは nixpkgs 更新のたびに入力監視の許可を付け直す必要が出やすい)
+    # GUI アプリは brew の cask で入れる (CLI は home.packages)。
+    # nixpkgs のバイナリ配布版 (ghostty-bin など) を home-manager に置かせると、Developer ID 署名の
+    # アプリは App Management で守られ、権限のないシェル (herdr のペインなど) から適用できなくなる。
+    # karabiner はドライバとデーモンを入れるので、もともと brew に任せている
+    # (nix-darwin のモジュールは nixpkgs 更新のたびに入力監視の許可を付け直す必要が出やすい)。
     casks = [
+      "arc"
+      "claude"
+      "codex"
+      "ghostty"
       "karabiner-elements"
+      "obsidian"
+      "qmk-toolbox"
+      "raycast"
+      "scroll-reverser"
+      "wezterm"
     ];
   };
 }

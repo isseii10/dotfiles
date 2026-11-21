@@ -26,8 +26,8 @@ alias tree='eza --tree'
 alias cat='bat'
 alias dot='cd $HOME/dotfiles'
 alias config='cd $HOME/.config'
-# herdr を通さない Ghostty を開く (home-manager の適用は herdr のペインの中だと止まる)
-alias ghostty-bare='open -na "$HOME/Applications/Home Manager Apps/Ghostty.app" --args --command=/bin/zsh'
+# herdr を通さない Ghostty を開く
+alias ghostty-bare='open -na /Applications/Ghostty.app --args --command=/bin/zsh'
 
 # superfile: 終了時のディレクトリに cd する (config.toml の cd_on_quit = true と対)
 spf() {

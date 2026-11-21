@@ -29,9 +29,7 @@
         # unfree は明示したものだけ許可する
         config.allowUnfreePredicate =
           pkg:
-          builtins.elem (nixpkgs.lib.getName pkg) [
-            "obsidian"
-          ];
+          builtins.elem (nixpkgs.lib.getName pkg) [ ];
       };
     in
     {

@@ -24,6 +24,11 @@ local M = {
         },
       },
     },
+    -- 既定の hide はノーマルモードでフェンスの行ごと隠す (conceal_lines)。
+    -- snacks.image は閉じフェンスの行に mermaid の図を付けるので、行が隠れると図も消える
+    code = {
+      border = "thin",
+    },
     pipe_table = {
       head = "RenderMarkdownTableHead",
       row = "RenderMarkdownTableRow",

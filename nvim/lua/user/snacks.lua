@@ -1,5 +1,7 @@
--- markdown の画像と mermaid のコードブロックを、バッファ内に画像として表示する
--- mermaid の変換は mmdc、画像の変換は magick を使う (どちらも home.nix で入れている)
+-- snacks.nvim
+-- - image: markdown の画像と mermaid のコードブロックを、バッファ内に画像として表示する
+--   mermaid の変換は mmdc、画像の変換は magick を使う (どちらも home.nix で入れている)
+-- - terminal / lazygit: float のターミナルと lazygit
 
 -- 埋め込み表示をバッファごとに on / off する。
 -- snacks には埋め込みを後から止める API がないので、vim.b.snacks_image_off が立っている間は
@@ -28,6 +30,27 @@ local function toggle_images()
     vim.b[buf].snacks_image_off = true
     Snacks.image.placement.clean(buf)
     vim.notify("image: off", vim.log.levels.INFO)
+  end
+end
+
+local function toggle_terminal()
+  Snacks.terminal.toggle(nil, { win = { position = "float", border = "rounded" } })
+end
+
+-- lazygit の float を隠してメインウィンドウにフォーカスを移す。lazygit は裏で動かしたままにする
+-- lazygit/config.yml の os.edit から --remote-expr 経由で呼ばれる
+function SwitchFromLazygit()
+  for _, term in ipairs(Snacks.terminal.list()) do
+    local cmd = type(term.cmd) == "table" and term.cmd[1] or term.cmd
+    if cmd == "lazygit" then
+      term:hide()
+    end
+  end
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    if vim.api.nvim_win_get_config(win).relative == "" then
+      vim.api.nvim_set_current_win(win)
+      break
+    end
   end
 end
 
@@ -62,5 +85,7 @@ return {
   end,
   keys = {
     { "<leader>mi", toggle_images, desc = "Toggle inline images" },
+    { "<leader>gg", function() Snacks.lazygit() end, desc = "lazygit" },
+    { "<C-\\>", toggle_terminal, mode = { "n", "i", "t" }, desc = "Toggle terminal" },
   },
 }

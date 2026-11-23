@@ -25,7 +25,7 @@ function M.config()
       "Outline",
       "Jaq",
       "spectre_panel",
-      "toggleterm",
+      "snacks_terminal",
       "DressingSelect",
       "TelescopePrompt",
     },

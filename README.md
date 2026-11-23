@@ -156,7 +156,7 @@ NVIM_APPNAME=isseii10/dotfiles/nvim nvim
 + [echasnovski/mini.surround](https://dotfyle.com/plugins/echasnovski/mini.surround)
 ### terminal-integration
 
-+ [akinsho/toggleterm.nvim](https://dotfyle.com/plugins/akinsho/toggleterm.nvim)
++ [folke/snacks.nvim](https://dotfyle.com/plugins/folke/snacks.nvim)
 ### test
 
 + [nvim-neotest/neotest](https://dotfyle.com/plugins/nvim-neotest/neotest)

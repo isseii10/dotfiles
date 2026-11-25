@@ -132,9 +132,32 @@ function M.config()
   }
 
   -- チェックボックスを切り替えたら、行末に時刻を付ける（タスクの消化時間を後で測るため）
-  --   [~] 着手 → 󱓞 YYYY-MM-DD HH:MM / [x] 完了 → 󰈼 YYYY-MM-DD HH:MM（既にあれば付けない）
+  --   [~] 着手 → 󱓞 YYYY-MM-DD HH:MM / [x] 完了 → 󰈼 YYYY-MM-DD HH:MM
+  --   印の後に時刻（数字）があれば付けない。印だけ残っていれば（時刻を消した）、その印のすぐ後に時刻を補う
   --   時刻は自動では消さない（誤操作で記録を失わないため。やり直すときは手で消す）
+  --   Obsidian 側の自作プラグイン todo-state（isseii10/obsidian-todo-state）と同じ動きにしている
   --   発生時刻 󰂞 は slack-todo-import が付ける
+  local function stamp(line, mark, time)
+    local orphan
+    local init = 1
+    while true do
+      local s, e = line:find(mark, init, true)
+      if not s then
+        break
+      end
+      if line:sub(e + 1):match "^%s*%d" then
+        return line
+      end
+      orphan = orphan or e
+      init = e + 1
+    end
+    if not orphan then
+      return line .. " " .. mark .. " " .. time
+    end
+    local rest = (line:sub(orphan + 1):gsub("^%s+", ""))
+    return line:sub(1, orphan) .. " " .. time .. (rest ~= "" and " " .. rest or "")
+  end
+
   local actions = require "obsidian.actions"
   local toggle = actions._toggle_checkbox
   actions._toggle_checkbox = function(states, lnum)
@@ -143,8 +166,11 @@ function M.config()
     local line = vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, false)[1]
     local state = line and line:match "^%s*[-*+] %[(.)%]"
     local mark = ({ ["~"] = "󱓞", x = "󰈼" })[state]
-    if mark and not line:find(mark, 1, true) then
-      vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, true, { line .. " " .. mark .. " " .. os.date "%Y-%m-%d %H:%M" })
+    if mark then
+      local updated = stamp(line, mark, os.date "%Y-%m-%d %H:%M")
+      if updated ~= line then
+        vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, true, { updated })
+      end
     end
   end
 

@@ -135,7 +135,7 @@ function M.config()
   --   [~] 着手 → 󱓞 YYYY-MM-DD HH:MM / [x] 完了 → 󰈼 YYYY-MM-DD HH:MM
   --   印の後に時刻（数字）があれば付けない。印だけ残っていれば（時刻を消した）、その印のすぐ後に時刻を補う
   --   時刻は自動では消さない（誤操作で記録を失わないため。やり直すときは手で消す）
-  --   Obsidian 側の自作プラグイン todo-state（isseii10/obsidian-todo-state）と同じ動きにしている
+  --   Obsidian 側の自作プラグイン Task Trail（isseii10/obsidian-task-trail）と同じ動きにしている
   --   発生時刻 󰂞 は slack-todo-import が付ける
   local function stamp(line, mark, time)
     local orphan

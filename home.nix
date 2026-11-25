@@ -86,6 +86,7 @@
       plantuml
       mise
       protobuf
+      shellcheck
       uv
 
       # Kubernetes / Cloud

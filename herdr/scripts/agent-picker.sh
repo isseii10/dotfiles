@@ -36,19 +36,38 @@ normal_mode_binds=(
 )
 
 # 1列目: pane_id (focus 用、非表示)
-# 表示: 状態アイコン  workspace  名前 (なければタイトル)
+# 表示: 状態アイコン  タイトル  workspace  セッション名
+# タイトルと workspace は表示幅 (全角は2) で列を揃える。タイトルは title_max を超えたら … で切る
+title_max=50
 selected="$(
   jq -r \
-    --argjson ws "$ws_json" \
+    --argjson ws "$ws_json" --argjson title_max "$title_max" \
     --arg blue "$blue" --arg green "$green" --arg yellow "$yellow" --arg red "$red" \
     --arg gray "$gray" --arg reset "$reset" '
+    def cw: if (. >= 4352 and . <= 4447) or (. >= 11904 and . <= 42191) or (. >= 44032 and . <= 55203)
+              or (. >= 63744 and . <= 64255) or (. >= 65072 and . <= 65103) or (. >= 65280 and . <= 65376)
+              or (. >= 65504 and . <= 65510) or (. >= 127744 and . <= 129791) or (. >= 131072 and . <= 262141)
+            then 2 else 1 end;
+    def width: explode | map(cw) | add // 0;
+    def truncate($n):
+      if width <= $n then .
+      else reduce (explode[]) as $c ({s: [], w: 0};
+             if .w + ($c | cw) <= $n - 1 then .s += [$c] | .w += ($c | cw) else . end)
+           | (.s | implode) + "…" end;
+    def pad($n): . + (" " * ([$n - width, 0] | max));
+
     ($ws.result.workspaces | map({key: .workspace_id, value: .label}) | from_entries) as $labels
-    | .result.agents[]
+    | [.result.agents[]
+       | . + {title: ((.terminal_title_stripped // .agent) | truncate($title_max)),
+              ws: ($labels[.workspace_id] // .workspace_id)}] as $agents
+    | ($agents | map(.title | width) | max) as $tw
+    | ($agents | map(.ws | width) | max) as $ww
+    | $agents[]
     | (if .agent_status == "working" then "\($yellow)◑"
        elif .agent_status == "blocked" then "\($red)"
        elif .agent_status == "done" then "\($green)✔"
        else "\($gray)○" end) as $icon
-    | "\(.pane_id)\t\($icon)\($reset)  \($blue)\($labels[.workspace_id] // .workspace_id)\($reset)  \(.name // .terminal_title_stripped // .agent)\(if .name and .terminal_title_stripped then "  \($gray)\(.terminal_title_stripped)\($reset)" else "" end)\(if .focused then "  \($green)󰄾 current\($reset)" else "" end)"
+    | "\(.pane_id)\t\($icon)\($reset)  \(.title | pad($tw))  \($blue)\(.ws | pad($ww))\($reset)  \($gray)\(.name // "")\($reset)\(if .focused then "  \($green)󰄾 current\($reset)" else "" end)"
   ' <<<"$agents_json" |
     fzf --ansi --delimiter='\t' --with-nth=2 --no-sort --reverse --prompt='agent> ' \
       --no-input --header='j/k: move  enter: focus  /: search  q/esc: quit' \

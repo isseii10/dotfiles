@@ -52,10 +52,6 @@ close_workspace = "prefix+shift+d"
 previous_workspace = "prefix+shift+p"
 next_workspace = "prefix+shift+n"
 
-# --- agent ---
-next_agent = "prefix+a"
-previous_agent = "prefix+shift+a"
-
 # --- tab ---
 new_tab = "prefix+c"
 previous_tab = "prefix+p"
@@ -100,6 +96,14 @@ type = "popup"
 command = "$HOME/.config/herdr/scripts/workspace-picker.sh"
 width = "60%"
 height = "60%"
+
+# prefix+a: 実行中の agent から選んで focus (出力をプレビュー)
+[[keys.command]]
+key = "prefix+a"
+type = "popup"
+command = "$HOME/.config/herdr/scripts/agent-picker.sh"
+width = "80%"
+height = "80%"
 
 # prefix+g: フォーカス中のペインの cwd で lazygit を popup で開く
 [[keys.command]]

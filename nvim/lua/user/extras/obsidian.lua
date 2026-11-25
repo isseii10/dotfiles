@@ -132,11 +132,11 @@ function M.config()
   }
 
   -- チェックボックスを切り替えたら、行末に時刻を付ける（タスクの消化時間を後で測るため）
-  --   [~] 着手 → 󱓞 YYYY-MM-DD HH:MM / [x] 完了 → 󰈼 YYYY-MM-DD HH:MM
+  --   [~] 着手 → 🛫 YYYY-MM-DD HH:MM / [x] 完了 → ✅ YYYY-MM-DD HH:MM
   --   印の後に時刻（数字）があれば付けない。印だけ残っていれば（時刻を消した）、その印のすぐ後に時刻を補う
   --   時刻は自動では消さない（誤操作で記録を失わないため。やり直すときは手で消す）
   --   Obsidian 側の自作プラグイン Task Trail（isseii10/obsidian-task-trail）と同じ動きにしている
-  --   発生時刻 󰂞 は slack-todo-import が付ける
+  --   発生時刻 ➕ は slack-todo-import が付ける
   local function stamp(line, mark, time)
     local orphan
     local init = 1
@@ -165,7 +165,7 @@ function M.config()
     toggle(states, lnum)
     local line = vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, false)[1]
     local state = line and line:match "^%s*[-*+] %[(.)%]"
-    local mark = ({ ["~"] = "󱓞", x = "󰈼" })[state]
+    local mark = ({ ["~"] = "🛫", x = "✅" })[state]
     if mark then
       local updated = stamp(line, mark, os.date "%Y-%m-%d %H:%M")
       if updated ~= line then

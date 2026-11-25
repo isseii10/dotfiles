@@ -40,3 +40,11 @@ else
   herdr plugin install ChmaraX/herdr-nvim
   echo "[herdr] installed: chmarax.herdr-nvim"
 fi
+
+# prefix+s / prefix+a: workspace と agent の picker (自作。開発中は herdr plugin link ~/dev/herdr-pickers)
+if is_installed "isseii10.herdr-pickers"; then
+  echo "[herdr] already installed: isseii10.herdr-pickers"
+else
+  herdr plugin install isseii10/herdr-pickers
+  echo "[herdr] installed: isseii10.herdr-pickers"
+fi

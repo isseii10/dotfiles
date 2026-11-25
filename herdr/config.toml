@@ -89,21 +89,21 @@ open_notification_target = "prefix+shift+o"
 # prefix+g は lazygit に譲るので goto は alt 側に移す
 goto = "prefix+alt+g"
 
+# herdr-pickers (isseii10/herdr-pickers): fzf の picker を popup で開く
+#   (初回のみ: scripts/link-herdr-plugins.sh。設定は $(herdr plugin config-dir isseii10.herdr-pickers)/config.env)
 # LEADER s: 既存 workspace と zoxide のディレクトリから選んで切り替え/作成
 [[keys.command]]
 key = "prefix+s"
-type = "popup"
-command = "$HOME/.config/herdr/scripts/workspace-picker.sh"
-width = "60%"
-height = "60%"
+type = "plugin_action"
+command = "isseii10.herdr-pickers.workspace"
+description = "workspace picker"
 
 # prefix+a: 実行中の agent から選んで focus (出力をプレビュー)
 [[keys.command]]
 key = "prefix+a"
-type = "popup"
-command = "$HOME/.config/herdr/scripts/agent-picker.sh"
-width = "80%"
-height = "80%"
+type = "plugin_action"
+command = "isseii10.herdr-pickers.agent"
+description = "agent picker"
 
 # prefix+g: フォーカス中のペインの cwd で lazygit を popup で開く
 [[keys.command]]

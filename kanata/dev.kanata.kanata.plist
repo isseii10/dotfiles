@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  kanata を root の LaunchDaemon として動かす。
+  公式サンプル (https://github.com/jtroo/kanata/blob/main/cfg_samples/kanata.plist) を元にしている。
+  herdr のペインなどから sudo で起動すると、macOS は起動元のアプリで権限を確かめるため、
+  kanata 自身にアクセシビリティを許可しても通らない。launchd から起動すれば kanata 自身の許可が使われる。
+
+  入れる:
+    sudo cp ~/dotfiles/kanata/dev.kanata.kanata.plist /Library/LaunchDaemons/
+    sudo chown root:wheel /Library/LaunchDaemons/dev.kanata.kanata.plist
+    sudo launchctl bootstrap system /Library/LaunchDaemons/dev.kanata.kanata.plist
+  設定を変えたあと:
+    sudo launchctl kickstart -k system/dev.kanata.kanata
+  止める・外す:
+    sudo launchctl bootout system/dev.kanata.kanata
+    sudo rm /Library/LaunchDaemons/dev.kanata.kanata.plist
+  ログ: /var/log/kanata.log
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>dev.kanata.kanata</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/kanata</string>
+        <string>-c</string>
+        <string>/Users/isseiterada/dotfiles/kanata/kanata.kbd</string>
+        <!-- エラー時に Enter 待ちで止まらず終了し、KeepAlive で起動し直させる -->
+        <string>--no-wait</string>
+    </array>
+
+    <key>UserName</key>
+    <string>root</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/var/log/kanata.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/var/log/kanata.log</string>
+</dict>
+</plist>

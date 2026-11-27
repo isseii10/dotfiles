@@ -1,0 +1,74 @@
+;; Neo Ergo 用の kanata 設定。
+;; 本体キーボードとマウスは、今のところ Karabiner-Elements が担当する
+;; (karabiner.json で Neo Ergo を ignore にする)。
+;; 左 Space の tap/hold は VIA の LT を使わず、ここで判定する (VIA では KC_SPC にする)。
+;; 右 Space の LT(2,KC_SPC) は VIA のまま。
+;;
+;; 緊急停止: 左 Control + Space + Esc を同時押し。
+
+(defcfg
+  ;; Karabiner の仮想キーボードを掴むと出力が戻ってきてループするので、Neo Ergo だけに絞る
+  macos-dev-names-include ("Neo Ergo")
+  ;; defsrc にないキーもそのまま通し、unmod が修飾キーの状態を追えるようにする
+  process-unmapped-keys yes
+  ;; レイヤーが切り替わるたびに /var/log/kanata.log へ書くのをやめる (⌘ を押すたびに書かれて肥大する)
+  log-layer-changes no
+)
+
+(defsrc
+  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  q    w    e    r    t    y    u    i    o    p    [
+  caps g    h    j    k    l    ;    '
+  spc  lmet rmet
+)
+
+(defalias
+  ;; ' ↔ " (Shift の有無で入れ替える)
+  qt (fork S-' (unshift ') (lsft rsft))
+  ;; ; ↔ :
+  sc (fork S-; (unshift ;) (lsft rsft))
+
+  ;; 左 Space: タップで space、押している間は sym レイヤー (VIA のレイヤー1 と同じ中身)。
+  ;; hold-on-press に挙げたキーを押した瞬間に hold と判定するので、
+  ;; space↓ u↓ space↑ のように速く重ねて打っても * になる。
+  ;; require-prior-idle: space の直前 120ms 以内に別のキーを打っていたら、すぐ tap にする。
+  ;; 文章中の「単語 → space → 次の単語」の重ね打ちで記号に化けるのを防ぐ。
+  ;; 記号を打ち損じるなら値を下げ、文章で記号に化けるなら上げる。
+  ;; 1つ目の 0 は tap-repress-timeout。space を連打した直後の押しっぱなしをリピートにしない。
+  spc (tap-hold-keys 0 200 spc (layer-while-held sym)
+        (hold-on-press 1 2 3 4 5 6 7 8 9 0 - = bspc q w e r t y u i o p [ g ')
+        (require-prior-idle 120))
+
+  ;; ⌘ 単体で英数・かな。押している間は ⌘ になり、hjkl が矢印になる。
+  lm (tap-hold-press 0 200 eisu (multi lmet (layer-while-held nav)))
+  rm (tap-hold-press 0 200 kana (multi rmet (layer-while-held nav)))
+
+  ;; ⌘+hjkl → 矢印。⌘ だけ外して送る
+  left  (unmod (lmet rmet) left)
+  down  (unmod (lmet rmet) down)
+  up    (unmod (lmet rmet) up)
+  right (unmod (lmet rmet) right)
+)
+
+(deflayer base
+  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  q    w    e    r    t    y    u    i    o    p    [
+  lctl g    h    j    k    l    @sc  @qt
+  @spc @lm  @rm
+)
+
+;; 左 Space を押している間 (VIA のレイヤー1)
+(deflayer sym
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  f20
+  S-1  S-2  S-3  S-4  S-5  S-7  S-8  S-9  S-0  S--  S-=
+  _    S-6  _    _    _    _    _    grv
+  _    _    _
+)
+
+;; ⌘ を押している間
+(deflayer nav
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _
+  _    _    @left @down @up @right _   _
+  _    _    _
+)

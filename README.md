@@ -44,7 +44,9 @@ cd ~/dotfiles
 | `git` / `delta` / `lazygit` / `gh-dash` / `hunk` | Git まわり |
 | `superfile` | ファイルマネージャ |
 | `resterm` | HTTP クライアント |
-| `karabiner` | キーボードのリマップ |
+| `kanata` | Neo Ergo のリマップ (tap/hold、space レイヤー、英数・かな)。LaunchDaemon の plist も置く |
+| `via` | Neo Ergo の VIA のキーマップ (キーの配置だけ。押し方で変わるものは kanata) |
+| `karabiner` | 本体キーボードとマウスのリマップ |
 | `raycast` | Raycast の設定のエクスポート |
 | `skills` | Claude Code / Codex の自作 skill |
 | `scripts` | Nix の外でリンクするためのスクリプト |
@@ -53,3 +55,5 @@ cd ~/dotfiles
 
 - `skills/` の skill は `scripts/link-skills.sh` で `~/.claude/skills` と `~/.codex/skills` にリンクする。skill を足したら実行する。
 - herdr の `plugin_action` が使うプラグインは `scripts/link-herdr-plugins.sh` で登録する。
+- kanata は v1.13.0 のプレリリース版のバイナリを `/usr/local/bin/kanata` に置き、`kanata/dev.kanata.kanata.plist` を `/Library/LaunchDaemons/` にコピーして起動する (手順は plist の先頭)。nixpkgs と Homebrew の 1.12.0 は Karabiner 16 のドライバー v8 に対応していない。
+- `via/neo_ergo.layout.json` は VIA の「Load Saved Layout」で書き込む。

@@ -25,6 +25,14 @@
 - popup のコマンドには `HERDR_PANE_ID` が渡らない。呼び出し元のペインは `HERDR_ACTIVE_PANE_ID` で取る。PATH も最小なので `$HOME/.nix-profile/bin` を先頭に足す。
 - herdr-nvim のサイドバーは、常駐するデーモン nvim に `--remote-ui` でつないでいるだけ。デーモンの環境変数は最初に起動したときのままなので、`HERDR_PANE_ID` は `nvim/lua/user/extras/smart-splits.lua` で追従させている。デーモンを作り直すときはサイドバーで `:qa` してから開き直す。
 
+## キーリマップ (Neo Ergo)
+
+- VIA (`via/neo_ergo.layout.json`) はキーの配置だけ (1キー1キーコード、LT・MT は使わない) と、キーボード本体の機能 (Bluetooth・RGB の Fn レイヤー)。tap/hold・レイヤー・英数かななど押し方で変わるものは kanata (`kanata/kanata.kbd`)。本体キーボードとマウスは Karabiner のままで、karabiner.json で Neo Ergo を `ignore` にしている。
+- kanata は Karabiner のドライバーを借りるので、ドライバーの版に合う kanata が要る (Karabiner 16 のドライバー v8 には v1.13.0 以降)。
+- kanata は LaunchDaemon (`dev.kanata.kanata`) で動かす。herdr のペインから sudo で起動すると、macOS が herdr の権限で判定するのでアクセシビリティが通らない。
+- バイナリを置き換えたら、アクセシビリティの kanata を削除して追加し直す (仮の署名なので中身で許可を覚えている)。
+- 設定を変えたら `kanata --check -c ~/dotfiles/kanata/kanata.kbd` してから `sudo launchctl kickstart -k system/dev.kanata.kanata`。ログは `/var/log/kanata.log`。
+
 ## Neovim
 
 - プラグインは `nvim/lua/user/` (補助的なものは `extras/`) に lazy.nvim の spec を1ファイルずつ書き、`nvim/init.lua` で `register "user.<name>"` / `register "user.extras.<name>"` する。

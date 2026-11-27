@@ -1,6 +1,8 @@
 { ... }:
 
 {
+  imports = [ ../../kanata/darwin.nix ];
+
   system.stateVersion = 6;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

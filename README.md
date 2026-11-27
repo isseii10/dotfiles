@@ -44,7 +44,7 @@ cd ~/dotfiles
 | `git` / `delta` / `lazygit` / `gh-dash` / `hunk` | Git まわり |
 | `superfile` | ファイルマネージャ |
 | `resterm` | HTTP クライアント |
-| `kanata` | Neo Ergo のリマップ (tap/hold、space レイヤー、英数・かな)。LaunchDaemon の plist も置く |
+| `kanata` | Neo Ergo のリマップ (tap/hold、記号レイヤー、英数・かな)。LaunchDaemon は `kanata/darwin.nix` で nix-darwin が作る |
 | `via` | Neo Ergo の VIA のキーマップ (キーの配置だけ。押し方で変わるものは kanata) |
 | `karabiner` | 本体キーボードとマウスのリマップ |
 | `raycast` | Raycast の設定のエクスポート |
@@ -55,5 +55,5 @@ cd ~/dotfiles
 
 - `skills/` の skill は `scripts/link-skills.sh` で `~/.claude/skills` と `~/.codex/skills` にリンクする。skill を足したら実行する。
 - herdr の `plugin_action` が使うプラグインは `scripts/link-herdr-plugins.sh` で登録する。
-- kanata は v1.13.0 のプレリリース版のバイナリを `/usr/local/bin/kanata` に置き、`kanata/dev.kanata.kanata.plist` を `/Library/LaunchDaemons/` にコピーして起動する (手順は plist の先頭)。nixpkgs と Homebrew の 1.12.0 は Karabiner 16 のドライバー v8 に対応していない。
+- kanata のバイナリは v1.13.0 のプレリリース版を [リリースページ](https://github.com/jtroo/kanata/releases) から落として `/usr/local/bin/kanata` に置く。nixpkgs と Homebrew の 1.12.0 は Karabiner 16 のドライバー v8 に対応していない。置いたら `sudo /usr/local/bin/kanata --macos-request-permissions` を実行し、システム設定の「入力監視」と「アクセシビリティ」で kanata をオンにする (一覧になければ「＋」で追加)。LaunchDaemon は `make darwin` で入る。
 - `via/neo_ergo.layout.json` は VIA の「Load Saved Layout」で書き込む。

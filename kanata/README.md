@@ -12,11 +12,14 @@
 
 VIA を配置だけにしておくと、kanata のない環境でも Mac 向けの並びのまま打てる。押し方の判定は kanata に一本化しているので、VIA の LT・MT の代わりに kanata の tap-hold を使う。
 
-左 space は普通の space (Neovim の leader と文章用)。記号レイヤーは右 space (VIA で `KC_F24`)。leader と記号は同じ「space↓ キー↓ space↑」の重ね打ちになり、kanata には区別できないので、親指を分けた。
+space は左右どちらも、タップで space・ホールドで記号レイヤー。判定のしかたが違う。
+
+- 左 space (と本体キーボードの space): **時間だけ**で判定する (`tap-hold`、140ms)。Neovim の leader (`<leader>e` など) は押し方の癖で「space↓ キー↓ space↑」の同時押しに近くなり、記号の重ね打ちと押す順番が同じになる。ほかのキーとの重なり方で判定すると leader が記号に化けるので、space を押していた長さだけで分ける。100〜130ms では leader が記号に化け、150ms 以上では記号が出にくかった
+- 右 space (VIA で `KC_F24`): 記号レイヤーのキーは押した瞬間に hold (`hold-on-press`)、それ以外は PermissiveHold。速く重ねて打っても記号になる。leader には使わない前提
 
 ## キーボードを増やすとき
 
-kanata は1つのプロセスが1つの設定ファイルを読む。`kanata.kbd` は Neo Ergo と本体キーボードを `macos-dev-names-include` で掴んでいる。右 space の F24 は Neo Ergo にしかないので、本体キーボードでは記号レイヤー以外が同じに動く。本体キーボードの上の段 (明るさ・音量など) だけは `definputdevices` で押されたキーボードを見分けて振り替えている (kanata 経由だと macOS が素の F キーとして受け取るため)。
+kanata は1つのプロセスが1つの設定ファイルを読む。`kanata.kbd` は Neo Ergo と本体キーボードを `macos-dev-names-include` で掴んでいる。右 space の F24 は Neo Ergo にしかないので、本体キーボードの記号レイヤーは space (左 space と同じ時間だけの判定) で使う。本体キーボードの上の段 (明るさ・音量など) だけは `definputdevices` で押されたキーボードを見分けて振り替えている (kanata 経由だと macOS が素の F キーとして受け取るため)。
 
 - **同じ配列で使うキーボード**: `kanata.kbd` の `macos-dev-names-include` に名前を足す (名前は `sudo /opt/kanata/bin/kanata --list`)。
 - **配列が違うキーボード**: キーボードごとの設定ファイル (`kanata/<キーボード>.kbd`、`via/<キーボード>/` と同じ名前) と LaunchDaemon (`kanata/darwin.nix`) を1つずつ足す。そのときに `kanata.kbd` も `kanata/neo_ergo.kbd` に改名し、LaunchDaemon の名前も揃える。

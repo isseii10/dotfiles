@@ -45,3 +45,5 @@ sudo launchctl kickstart -k system/dev.kanata.kanata
 ```
 
 ログは `/var/log/kanata.log`。
+
+kanata が動いているのにリマップが効かないときは、ログに `keyboard grabbed` が出ているかを見る。`macos-continue-if-no-devs-found` で、`macos-dev-names-include` に合うキーボードが見つかるまでエラーを出さずに待つので、名前が合っていないと待ち続けるだけになる。名前は `sudo /opt/kanata/bin/kanata --list` で確かめる。

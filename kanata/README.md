@@ -14,6 +14,13 @@ VIA を配置だけにしておくと、kanata のない環境でも Mac 向け�
 
 左 space は普通の space (Neovim の leader と文章用)。記号レイヤーは右 space (VIA で `KC_F24`)。leader と記号は同じ「space↓ キー↓ space↑」の重ね打ちになり、kanata には区別できないので、親指を分けた。
 
+## キーボードを増やすとき
+
+kanata は1つのプロセスが1つの設定ファイルを読む。`kanata.kbd` は Neo Ergo 専用の作り (右 space の F24 など) で、`macos-dev-names-include` で Neo Ergo だけを掴んでいる。
+
+- **同じ配列で使うキーボード**: `kanata.kbd` の `macos-dev-names-include` に名前を足す (名前は `sudo /opt/kanata/bin/kanata --list`)。
+- **配列が違うキーボード**: キーボードごとの設定ファイル (`kanata/<キーボード>.kbd`、`via/<キーボード>/` と同じ名前) と LaunchDaemon (`kanata/darwin.nix`) を1つずつ足す。そのときに `kanata.kbd` も `kanata/neo_ergo.kbd` に改名し、LaunchDaemon の名前も揃える。
+
 ## 入れ方 (macOS)
 
 1. Karabiner-Elements を入れる (`make darwin` の cask)。kanata は Karabiner のドライバーを借りるので、ドライバーの版に合う kanata を使う。Karabiner 16 のドライバー v8 には kanata v1.13.0 以降が要る。nixpkgs と Homebrew は 1.12.0 なので、[リリースページ](https://github.com/jtroo/kanata/releases) のバイナリを使う。

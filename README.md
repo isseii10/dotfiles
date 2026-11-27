@@ -44,9 +44,9 @@ cd ~/dotfiles
 | `git` / `delta` / `lazygit` / `gh-dash` / `hunk` | Git まわり |
 | `superfile` | ファイルマネージャ |
 | `resterm` | HTTP クライアント |
-| [`kanata`](kanata/README.md) | Neo Ergo のリマップ。VIA・Karabiner との分担と入れ方はリンク先 |
+| [`kanata`](kanata/README.md) | キーボードのリマップ (Neo Ergo と MacBook 本体)。VIA・Karabiner との分担と入れ方はリンク先 |
 | `via` | キーボードごとの VIA のキーマップ |
-| `karabiner` | 本体キーボードとマウスのリマップ |
+| `karabiner` | kanata が使うドライバーのために入れている Karabiner-Elements の設定 (リマップはしていない) |
 | `raycast` | Raycast の設定のエクスポート |
 | `skills` | Claude Code / Codex の自作 skill |
 | `scripts` | Nix の外でリンクするためのスクリプト |

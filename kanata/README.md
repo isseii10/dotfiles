@@ -7,8 +7,8 @@
 | どこで | 何を | ファイル |
 |---|---|---|
 | VIA (キーボード本体) | **配置**: 1キーに1キーコード。Mac 向けの修飾キーの並び、Caps の位置、右 space を `KC_F24` にするなど。Bluetooth・RGB の Fn レイヤーもここ | `via/<キーボード>/layout.json` |
-| kanata | **押し方**で変わるもの: tap/hold、記号レイヤー、`'`↔`"`・`;`↔`:`、⌘ 単体で英数・かな、⌘+hjkl、Caps→Control | `kanata/kanata.kbd` |
-| Karabiner | MacBook 本体のキーボードとマウス | `karabiner/karabiner.json` (Neo Ergo は `ignore`) |
+| kanata | **押し方**で変わるもの: tap/hold、記号レイヤー、`'`↔`"`・`;`↔`:`、⌘ 単体で英数・かな、⌘+hjkl、Caps→Control。Neo Ergo と MacBook 本体のキーボードの両方 | `kanata/kanata.kbd` |
+| Karabiner-Elements | リマップはしない。kanata が使うドライバー (VirtualHIDDevice) を入れて更新するために残している。キーボードを kanata と取り合わないよう、どちらも `ignore` | `karabiner/karabiner.json` |
 
 VIA を配置だけにしておくと、kanata のない環境でも Mac 向けの並びのまま打てる。押し方の判定は kanata に一本化しているので、VIA の LT・MT の代わりに kanata の tap-hold を使う。
 
@@ -16,7 +16,7 @@ VIA を配置だけにしておくと、kanata のない環境でも Mac 向け�
 
 ## キーボードを増やすとき
 
-kanata は1つのプロセスが1つの設定ファイルを読む。`kanata.kbd` は Neo Ergo 専用の作り (右 space の F24 など) で、`macos-dev-names-include` で Neo Ergo だけを掴んでいる。
+kanata は1つのプロセスが1つの設定ファイルを読む。`kanata.kbd` は Neo Ergo と本体キーボードを `macos-dev-names-include` で掴んでいる。右 space の F24 は Neo Ergo にしかないので、本体キーボードでは記号レイヤー以外が同じに動く。本体キーボードの上の段 (明るさ・音量など) だけは `definputdevices` で押されたキーボードを見分けて振り替えている (kanata 経由だと macOS が素の F キーとして受け取るため)。
 
 - **同じ配列で使うキーボード**: `kanata.kbd` の `macos-dev-names-include` に名前を足す (名前は `sudo /opt/kanata/bin/kanata --list`)。
 - **配列が違うキーボード**: キーボードごとの設定ファイル (`kanata/<キーボード>.kbd`、`via/<キーボード>/` と同じ名前) と LaunchDaemon (`kanata/darwin.nix`) を1つずつ足す。そのときに `kanata.kbd` も `kanata/neo_ergo.kbd` に改名し、LaunchDaemon の名前も揃える。

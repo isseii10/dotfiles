@@ -1,10 +1,11 @@
-;; Neo Ergo 用の kanata 設定。VIA・Karabiner との分担 (右 space が F24 なのはなぜか、など) は kanata/README.md。
+;; Neo Ergo と MacBook 本体のキーボード用の kanata 設定。VIA・Karabiner との分担 (右 space が F24 なのはなぜか、など) は kanata/README.md。
 ;;
 ;; 緊急停止: 左 Control + Space + Esc を同時押し。
 
 (defcfg
-  ;; Karabiner の仮想キーボードを掴むと出力が戻ってきてループするので、Neo Ergo だけに絞る
-  macos-dev-names-include ("Neo Ergo")
+  ;; Karabiner の仮想キーボードを掴むと出力が戻ってきてループするので、名前で絞る。
+  ;; 本体キーボードは右 space (F24) がないので、記号レイヤー以外は Neo Ergo と同じに動く
+  macos-dev-names-include ("Neo Ergo" "Apple Internal Keyboard / Trackpad")
   ;; Neo Ergo がつながっていなくても終了せず、つながったら掴む (起動し直しを繰り返さない)
   macos-continue-if-no-devs-found yes
   ;; defsrc にないキーもそのまま通し、unmod が修飾キーの状態を追えるようにする
@@ -13,11 +14,20 @@
   log-layer-changes no
 )
 
+;; 本体キーボードの上の段を、Mac の初期状態と同じく明るさ・音量などにする。
+;; Karabiner が肩代わりしていた処理で、kanata 経由だと macOS は素の F キーとして受け取るため。
+;; Neo Ergo の F キーはそのまま F キーにしたいので、押されたキーボードで分ける。
+(defvar id-internal 1)
+(definputdevices
+  $id-internal ((name "Apple Internal Keyboard"))
+)
+
 (defsrc
   1    2    3    4    5    6    7    8    9    0    -    =    bspc
   q    w    e    r    t    y    u    i    o    p    [
   caps g    h    j    k    l    ;    '
   f24  lmet rmet
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  fn
 )
 
 (defalias
@@ -38,6 +48,23 @@
   lm (tap-hold-press 0 200 eisu (multi lmet (layer-while-held nav)))
   rm (tap-hold-press 0 200 kana (multi rmet (layer-while-held nav)))
 
+  ;; 本体キーボードの上の段。Apple シリコンの MacBook の刻印どおり。
+  ;; fn を押している間は fnkeys レイヤーで素の F キーになる
+  f1  (switch ((device-history $id-internal 1)) brdn break () f1 break)
+  f2  (switch ((device-history $id-internal 1)) brup break () f2 break)
+  f3  (switch ((device-history $id-internal 1)) mctl break () f3 break)
+  f4  (switch ((device-history $id-internal 1)) sls  break () f4 break)
+  f5  (switch ((device-history $id-internal 1)) dtn  break () f5 break)
+  f6  (switch ((device-history $id-internal 1)) dnd  break () f6 break)
+  f7  (switch ((device-history $id-internal 1)) prev break () f7 break)
+  f8  (switch ((device-history $id-internal 1)) pp   break () f8 break)
+  f9  (switch ((device-history $id-internal 1)) next break () f9 break)
+  f10 (switch ((device-history $id-internal 1)) mute break () f10 break)
+  f11 (switch ((device-history $id-internal 1)) vold break () f11 break)
+  f12 (switch ((device-history $id-internal 1)) volu break () f12 break)
+  ;; fn そのものも送る (地球儀キーとしての入力切り替えなどのため)
+  fn  (multi fn (layer-while-held fnkeys))
+
   ;; ⌘+hjkl → 矢印。⌘ だけ外して送る
   left  (unmod (lmet rmet) left)
   down  (unmod (lmet rmet) down)
@@ -50,6 +77,7 @@
   q    w    e    r    t    y    u    i    o    p    [
   lctl g    h    j    k    l    @sc  @qt
   @rsp @lm  @rm
+  @f1  @f2  @f3  @f4  @f5  @f6  @f7  @f8  @f9  @f10 @f11 @f12 @fn
 )
 
 ;; 右 Space を押している間
@@ -58,6 +86,7 @@
   S-1  S-2  S-3  S-4  S-5  S-7  S-8  S-9  S-0  S--  S-=
   _    S-6  _    _    _    _    _    grv
   _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
 )
 
 ;; ⌘ を押している間
@@ -66,4 +95,14 @@
   _    _    _    _    _    _    _    _    _    _    _
   _    _    @left @down @up @right _   _
   _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+)
+
+;; fn を押している間 (本体キーボードの上の段を素の F キーにする)
+(deflayer fnkeys
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _
+  _    _    _
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
 )

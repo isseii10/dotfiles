@@ -28,6 +28,7 @@
 ## キーリマップ (Neo Ergo)
 
 - VIA (`via/neo_ergo.layout.json`) はキーの配置だけ (1キー1キーコード、LT・MT は使わない) と、キーボード本体の機能 (Bluetooth・RGB の Fn レイヤー)。tap/hold・レイヤー・英数かななど押し方で変わるものは kanata (`kanata/kanata.kbd`)。本体キーボードとマウスは Karabiner のままで、karabiner.json で Neo Ergo を `ignore` にしている。
+- 左 space は普通の space (Neovim の leader と文章用)。記号レイヤーは右 space で、VIA で `KC_F24` を送らせて kanata でタップ=space・ホールド=記号にしている。同じ space で記号と leader を打つと、押す順番が同じで kanata が見分けられないため。
 - kanata は Karabiner のドライバーを借りるので、ドライバーの版に合う kanata が要る (Karabiner 16 のドライバー v8 には v1.13.0 以降)。
 - kanata は LaunchDaemon (`dev.kanata.kanata`) で動かす。herdr のペインから sudo で起動すると、macOS が herdr の権限で判定するのでアクセシビリティが通らない。
 - バイナリを置き換えたら、アクセシビリティの kanata を削除して追加し直す (仮の署名なので中身で許可を覚えている)。

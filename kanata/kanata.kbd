@@ -1,8 +1,9 @@
 ;; Neo Ergo 用の kanata 設定。
 ;; 本体キーボードとマウスは、今のところ Karabiner-Elements が担当する
 ;; (karabiner.json で Neo Ergo を ignore にする)。
-;; 左 Space の tap/hold は VIA の LT を使わず、ここで判定する (VIA では KC_SPC にする)。
-;; 右 Space の LT(2,KC_SPC) は VIA のまま。
+;; 左 Space は普通の space (Neovim の leader や文章用) で、kanata は触らない。
+;; 右 Space は VIA で KC_F24 を送らせ、ここで「タップで space、押している間は記号レイヤー」にする。
+;; (同じ左 space で記号と leader を打つと、押す順番が同じで見分けられないため、左右で分けた)
 ;;
 ;; 緊急停止: 左 Control + Space + Esc を同時押し。
 
@@ -19,7 +20,7 @@
   1    2    3    4    5    6    7    8    9    0    -    =    bspc
   q    w    e    r    t    y    u    i    o    p    [
   caps g    h    j    k    l    ;    '
-  spc  lmet rmet
+  f24  lmet rmet
 )
 
 (defalias
@@ -28,16 +29,13 @@
   ;; ; ↔ :
   sc (fork S-; (unshift ;) (lsft rsft))
 
-  ;; 左 Space: タップで space、押している間は sym レイヤー (VIA のレイヤー1 と同じ中身)。
-  ;; hold-on-press に挙げたキーを押した瞬間に hold と判定するので、
+  ;; 右 Space (F24): タップで space、押している間は sym レイヤー。
+  ;; hold-on-press に挙げたキー (sym レイヤーで使うキー) を押した瞬間に hold と判定するので、
   ;; space↓ u↓ space↑ のように速く重ねて打っても * になる。
-  ;; require-prior-idle: space の直前 120ms 以内に別のキーを打っていたら、すぐ tap にする。
-  ;; 文章中の「単語 → space → 次の単語」の重ね打ちで記号に化けるのを防ぐ。
-  ;; 記号を打ち損じるなら値を下げ、文章で記号に化けるなら上げる。
-  ;; 1つ目の 0 は tap-repress-timeout。space を連打した直後の押しっぱなしをリピートにしない。
-  spc (tap-hold-keys 0 200 spc (layer-while-held sym)
-        (hold-on-press 1 2 3 4 5 6 7 8 9 0 - = bspc q w e r t y u i o p [ g ')
-        (require-prior-idle 120))
+  ;; それ以外のキーは、押して放したときだけ hold (PermissiveHold)。
+  ;; 1つ目の 0 は tap-repress-timeout。連打した直後の押しっぱなしをリピートにしない。
+  rsp (tap-hold-keys 0 200 spc (layer-while-held sym)
+        (hold-on-press 1 2 3 4 5 6 7 8 9 0 - = bspc q w e r t y u i o p [ g '))
 
   ;; ⌘ 単体で英数・かな。押している間は ⌘ になり、hjkl が矢印になる。
   lm (tap-hold-press 0 200 eisu (multi lmet (layer-while-held nav)))
@@ -54,10 +52,10 @@
   1    2    3    4    5    6    7    8    9    0    -    =    bspc
   q    w    e    r    t    y    u    i    o    p    [
   lctl g    h    j    k    l    @sc  @qt
-  @spc @lm  @rm
+  @rsp @lm  @rm
 )
 
-;; 左 Space を押している間 (VIA のレイヤー1)
+;; 右 Space を押している間
 (deflayer sym
   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  f20
   S-1  S-2  S-3  S-4  S-5  S-7  S-8  S-9  S-0  S--  S-=

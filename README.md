@@ -44,8 +44,8 @@ cd ~/dotfiles
 | `git` / `delta` / `lazygit` / `gh-dash` / `hunk` | Git まわり |
 | `superfile` | ファイルマネージャ |
 | `resterm` | HTTP クライアント |
-| `kanata` | Neo Ergo のリマップ (tap/hold、記号レイヤー、英数・かな)。LaunchDaemon は `kanata/darwin.nix` で nix-darwin が作る |
-| `via` | キーボードごとの VIA のキーマップ (キーの配置だけ。押し方で変わるものは kanata) |
+| [`kanata`](kanata/README.md) | Neo Ergo のリマップ。VIA・Karabiner との分担と入れ方はリンク先 |
+| `via` | キーボードごとの VIA のキーマップ |
 | `karabiner` | 本体キーボードとマウスのリマップ |
 | `raycast` | Raycast の設定のエクスポート |
 | `skills` | Claude Code / Codex の自作 skill |
@@ -55,5 +55,4 @@ cd ~/dotfiles
 
 - `skills/` の skill は `scripts/link-skills.sh` で `~/.claude/skills` と `~/.codex/skills` にリンクする。skill を足したら実行する。
 - herdr の `plugin_action` が使うプラグインは `scripts/link-herdr-plugins.sh` で登録する。
-- kanata のバイナリは v1.13.0 のプレリリース版を [リリースページ](https://github.com/jtroo/kanata/releases) から落として `/opt/kanata/bin/kanata` に置く (フォルダごと root:wheel にする。root で動くので、ユーザーが書き込める場所に置くと差し替えで root を取られる。zip に入っている `cmd_allowed` 版は使わない)。nixpkgs と Homebrew の 1.12.0 は Karabiner 16 のドライバー v8 に対応していない。置いたら `sudo /opt/kanata/bin/kanata --macos-request-permissions` を実行し、システム設定の「入力監視」と「アクセシビリティ」で kanata をオンにする (一覧になければ「＋」で追加)。LaunchDaemon は `make darwin` で入る。
-- VIA のキーマップは `via/<キーボード>/layout.json` に置き、「Configure」の「Load Saved Layout」で書き込む。VIA がキーボードを認識しないときは、メーカーが配っている定義ファイル (JSON) を「Design」タブで読み込む (Neo Ergo は https://qwertykeys.com/pages/fw の tri-mode 用)。
+- kanata のバイナリと VIA のキーマップは手で入れる。手順は [`kanata/README.md`](kanata/README.md)。

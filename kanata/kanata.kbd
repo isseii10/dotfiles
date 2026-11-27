@@ -1,9 +1,4 @@
-;; Neo Ergo 用の kanata 設定。
-;; 本体キーボードとマウスは、今のところ Karabiner-Elements が担当する
-;; (karabiner.json で Neo Ergo を ignore にする)。
-;; 左 Space は普通の space (Neovim の leader や文章用) で、kanata は触らない。
-;; 右 Space は VIA で KC_F24 を送らせ、ここで「タップで space、押している間は記号レイヤー」にする。
-;; (同じ左 space で記号と leader を打つと、押す順番が同じで見分けられないため、左右で分けた)
+;; Neo Ergo 用の kanata 設定。VIA・Karabiner との分担 (右 space が F24 なのはなぜか、など) は kanata/README.md。
 ;;
 ;; 緊急停止: 左 Control + Space + Esc を同時押し。
 

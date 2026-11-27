@@ -5,6 +5,8 @@
 (defcfg
   ;; Karabiner の仮想キーボードを掴むと出力が戻ってきてループするので、Neo Ergo だけに絞る
   macos-dev-names-include ("Neo Ergo")
+  ;; Neo Ergo がつながっていなくても終了せず、つながったら掴む (起動し直しを繰り返さない)
+  macos-continue-if-no-devs-found yes
   ;; defsrc にないキーもそのまま通し、unmod が修飾キーの状態を追えるようにする
   process-unmapped-keys yes
   ;; レイヤーが切り替わるたびに /var/log/kanata.log へ書くのをやめる (⌘ を押すたびに書かれて肥大する)

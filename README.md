@@ -55,5 +55,5 @@ cd ~/dotfiles
 
 - `skills/` の skill は `scripts/link-skills.sh` で `~/.claude/skills` と `~/.codex/skills` にリンクする。skill を足したら実行する。
 - herdr の `plugin_action` が使うプラグインは `scripts/link-herdr-plugins.sh` で登録する。
-- kanata のバイナリは v1.13.0 のプレリリース版を [リリースページ](https://github.com/jtroo/kanata/releases) から落として `/usr/local/bin/kanata` に置く。nixpkgs と Homebrew の 1.12.0 は Karabiner 16 のドライバー v8 に対応していない。置いたら `sudo /usr/local/bin/kanata --macos-request-permissions` を実行し、システム設定の「入力監視」と「アクセシビリティ」で kanata をオンにする (一覧になければ「＋」で追加)。LaunchDaemon は `make darwin` で入る。
+- kanata のバイナリは v1.13.0 のプレリリース版を [リリースページ](https://github.com/jtroo/kanata/releases) から落として `/opt/kanata/bin/kanata` に置く (フォルダごと root:wheel にする。root で動くので、ユーザーが書き込める場所に置くと差し替えで root を取られる。zip に入っている `cmd_allowed` 版は使わない)。nixpkgs と Homebrew の 1.12.0 は Karabiner 16 のドライバー v8 に対応していない。置いたら `sudo /opt/kanata/bin/kanata --macos-request-permissions` を実行し、システム設定の「入力監視」と「アクセシビリティ」で kanata をオンにする (一覧になければ「＋」で追加)。LaunchDaemon は `make darwin` で入る。
 - `via/neo_ergo.layout.json` は VIA の「Load Saved Layout」で書き込む。

@@ -7,14 +7,15 @@
 # kanata 自身にアクセシビリティを許可しても通らない。launchd から起動すれば kanata 自身の許可が使われる。
 #
 # バイナリは nixpkgs の kanata (1.12.0) が Karabiner 16 のドライバー v8 に対応していないので、
-# v1.13.0 のプレリリース版を手で /usr/local/bin/kanata に置いている。
+# v1.13.0 のプレリリース版を手で /opt/kanata/bin/kanata に置いている。
+# root で動くので、バイナリもフォルダも root:wheel にする (ユーザーが書き込める場所だと、差し替えで root を取られる)。
 # 設定を変えたあと: sudo launchctl kickstart -k system/dev.kanata.kanata
 # ログ: /var/log/kanata.log
 {
   launchd.daemons.kanata.serviceConfig = {
     Label = "dev.kanata.kanata";
     ProgramArguments = [
-      "/usr/local/bin/kanata"
+      "/opt/kanata/bin/kanata"
       "-c"
       "/Users/${config.system.primaryUser}/dotfiles/kanata/kanata.kbd"
       # エラー時に Enter 待ちで止まらず終了し、KeepAlive で起動し直させる

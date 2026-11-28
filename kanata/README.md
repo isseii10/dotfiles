@@ -12,6 +12,8 @@
 
 VIA を配置だけにしておくと、kanata のない環境でも Mac 向けの並びのまま打てる。押し方の判定は kanata に一本化しているので、VIA の LT・MT の代わりに kanata の tap-hold を使う。
 
+kanata に移したきっかけは、Neo Ergo の VIA の LT (space で記号レイヤー) で記号が出にくかったこと。ファームウェアの判定は QMK の初期設定のままで、**時間だけ**で決まり、閾値は `TAPPING_TERM` 200ms と思われる (非公式に公開されているソース [qmk_westberry](https://github.com/alexandru0-dev/qmk_westberry) の `keyboards/neo/ergo_trimode` に指定がなく、QMK の初期値が使われる。公式のソースは非公開なので製品と同じかは未確認)。space を 200ms より前に放すと、間に押したキーごと space と文字になる。VIA ではこの閾値を変えられない。
+
 space は左右どちらも、タップで space・ホールドで記号レイヤー。判定のしかたが違う。
 
 - 左 space (と本体キーボードの space): **時間だけ**で判定する (`tap-hold`、140ms)。Neovim の leader (`<leader>e` など) は押し方の癖で「space↓ キー↓ space↑」の同時押しに近くなり、記号の重ね打ちと押す順番が同じになる。ほかのキーとの重なり方で判定すると leader が記号に化けるので、space を押していた長さだけで分ける。100〜130ms では leader が記号に化け、150ms 以上では記号が出にくかった

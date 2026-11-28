@@ -57,6 +57,6 @@ kanata は root で動き、キー入力をすべて読める。そのため次�
 sudo launchctl kickstart -k system/dev.kanata.kanata
 ```
 
-ログは `/var/log/kanata.log`。
+ログは `/var/log/kanata.log`。1MB を超えると newsyslog が `kanata.log.0` 〜 `.2` に回す (`kanata/darwin.nix`)。kanata は起動し直すまで回したあとの `.0` に書き続けるので、回した直後は `ls -lt /var/log/kanata.log*` でいちばん新しいものを見る。
 
 kanata が動いているのにリマップが効かないときは、ログに `keyboard grabbed` が出ているかを見る。`macos-continue-if-no-devs-found` で、`macos-dev-names-include` に合うキーボードが見つかるまでエラーを出さずに待つので、名前が合っていないと待ち続けるだけになる。名前は `sudo /opt/kanata/bin/kanata --list` で確かめる。

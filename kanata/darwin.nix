@@ -38,6 +38,14 @@ in
     StandardErrorPath = "/var/log/kanata.log";
   };
 
+  # /var/log/kanata.log が上限なく育たないよう、1MB を超えたら回して3世代残す。
+  # N: シグナルを送らない (kanata はログを開き直せないので、シグナルを送ると止まる)。
+  # 圧縮しない: kanata は起動し直すまで回したあとの .0 に書き続けるので、圧縮すると以降の記録が消える。
+  environment.etc."newsyslog.d/kanata.conf".text = ''
+    # logfilename        [owner:group] mode count size(KB) when flags
+    /var/log/kanata.log  root:wheel    644  3     1024     *    N
+  '';
+
   launchd.daemons.kanata-rescan.serviceConfig = {
     Label = "dev.kanata.rescan";
     ProgramArguments = [ "${rescan}" ];

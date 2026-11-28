@@ -22,6 +22,7 @@ space は左右どちらも、タップで space・ホールドで記号レイ�
 kanata は1つのプロセスが1つの設定ファイルを読む。`kanata.kbd` は Neo Ergo と本体キーボードを `macos-dev-names-include` で掴んでいる。右 space の F24 は Neo Ergo にしかないので、本体キーボードの記号レイヤーは space (左 space と同じ時間だけの判定) で使う。本体キーボードの上の段 (明るさ・音量など) だけは `definputdevices` で押されたキーボードを見分けて振り替えている (kanata 経由だと macOS が素の F キーとして受け取るため)。
 
 - **同じ配列で使うキーボード**: `kanata.kbd` の `macos-dev-names-include` に名前を足す (名前は `sudo /opt/kanata/bin/kanata --list`)。
+  kanata は起動時につながっていたキーボードしか登録しない (登録したものは抜き差ししても掴み直す)。後からつなぐキーボードは、`kanata/darwin.nix` の見張り役 (`dev.kanata.rescan`、10秒おき) がつながった瞬間に kanata を起動し直して掴ませる。見張る名前は今 Neo Ergo だけなので、足したキーボードも後からつなぐならスクリプトに足す。
 - **配列が違うキーボード**: キーボードごとの設定ファイル (`kanata/<キーボード>.kbd`、`via/<キーボード>/` と同じ名前) と LaunchDaemon (`kanata/darwin.nix`) を1つずつ足す。そのときに `kanata.kbd` も `kanata/neo_ergo.kbd` に改名し、LaunchDaemon の名前も揃える。
 
 ## 入れ方 (macOS)
@@ -33,7 +34,7 @@ kanata は1つのプロセスが1つの設定ファイルを読む。`kanata.kbd
    sudo install -o root -g wheel -m 755 kanata_macos_arm64 /opt/kanata/bin/kanata
    ```
 3. `sudo /opt/kanata/bin/kanata --macos-request-permissions` を実行し、システム設定の「入力監視」と「アクセシビリティ」で kanata をオンにする (一覧になければ「＋」で `/opt/kanata/bin/kanata` を追加)。
-4. `make darwin` で LaunchDaemon (`dev.kanata.kanata`、`kanata/darwin.nix`) が入る。`/var/log/kanata.log` に `keyboard grabbed` が出れば動いている。
+4. `make darwin` で LaunchDaemon (`dev.kanata.kanata` と見張り役の `dev.kanata.rescan`、`kanata/darwin.nix`) が入る。`/var/log/kanata.log` に `keyboard grabbed` が出れば動いている。
 
 VIA がキーボードを認識しないときは、メーカーの定義ファイル (JSON) を VIA の「Design」タブで読み込んでから、「Configure」の「Load Saved Layout」で `layout.json` を書き込む (Neo Ergo は https://qwertykeys.com/pages/fw の tri-mode 用)。
 

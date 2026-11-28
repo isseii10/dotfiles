@@ -1,4 +1,7 @@
 {
+    "global": {
+        "check_for_updates": false
+    },
     "profiles": [
         {
             "devices": [

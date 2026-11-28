@@ -10,8 +10,6 @@ let
     { id = "chmarax.herdr-nvim"; install = "ChmaraX/herdr-nvim"; }
     # prefix+s / prefix+a: workspace と agent の picker (自作。開発中は herdr plugin link ~/dev/herdr-pickers)
     { id = "isseii10.herdr-vipicker"; install = "isseii10/herdr-vipicker"; }
-    # タブとペインの名前を git branch や agent の話題から自動で付ける。起動時に走るのでキー割り当てはない
-    { id = "herdr.auto-title"; install = "kryptamine/herdr-auto-title --ref stable"; restart = "herdr.auto-title.restart"; }
   ];
 
   # lazy.nvim が clone したものをリンクするプラグイン。nvim を一度起動するまではディレクトリがない
@@ -24,6 +22,7 @@ let
   removedPlugins = [
     "smart-splits.nvim" # smart-splits.nvim v3 で smart-splits-backend-herdr に分かれた
     "isseii10.herdr-pickers" # herdr-vipicker に名前が変わった
+    "herdr.auto-title" # 使わなくなった
   ];
 
   installCmd = p: ''

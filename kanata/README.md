@@ -8,7 +8,7 @@
 |---|---|---|
 | VIA (キーボード本体) | **配置**: 1キーに1キーコード。Mac 向けの修飾キーの並び、Caps の位置、右 space を `KC_F24` にするなど。Bluetooth・RGB の Fn レイヤーもここ | `via/<キーボード>/layout.json` |
 | kanata | **押し方**で変わるもの: tap/hold、記号レイヤー、`'`↔`"`・`;`↔`:`、⌘ 単体で英数・かな、⌘+hjkl、Caps→Control。Neo Ergo と MacBook 本体のキーボードの両方 | `kanata/kanata.kbd` |
-| Karabiner-Elements | リマップはしない。kanata が使うドライバー (VirtualHIDDevice) を入れて更新するために残している。キーボードを kanata と取り合わないよう、どちらも `ignore`。ignore の条件は Karabiner が見ている ID (`device_identifiers`) に合わせる。ID は Karabiner-EventViewer の「Devices」で見る (`/Library/Application Support/org.pqrs/tmp/karabiner_grabber_devices.json` にもある Mac があるが、ないこともある)。本体キーボードは機種によって違い、vendor/product の ID がなく `{"is_keyboard": true}` だけの Mac と、ID を持つ Mac (`1452`/`641`) の両方を入れている。Neo Ergo は口が2つ (`{is_keyboard, is_pointing_device}` と `{is_keyboard}`) あるので両方入れている。別の Mac では一致しているか確かめる。合っていないと Karabiner が先に掴み、kanata にキーが届かない | `karabiner/karabiner.json` |
+| Karabiner-Elements | リマップはしない。kanata が使うドライバー (VirtualHIDDevice) を入れて更新するために残している。キーボードを kanata と取り合わないよう、どちらも `ignore`。ignore の条件は Karabiner が見ている ID (`device_identifiers`) に合わせる。ID は Karabiner-EventViewer の「Devices」で見る (`/Library/Application Support/org.pqrs/tmp/karabiner_grabber_devices.json` にもある Mac があるが、ないこともある)。本体キーボードは機種によって違い、vendor/product の ID がなく `{"is_keyboard": true}` だけの Mac と、ID を持つ Mac (`1452`/`641`) の両方を入れている。Neo Ergo は口が2つ (`{is_keyboard, is_pointing_device}` と `{is_keyboard}`) あるので両方入れている。 ELECOM のマウスのレシーバー (`1390`/`4351`) のキーボードの口 (ボタンに割り当てたキー操作が通る) も、Karabiner に何も掴ませないため入れている。別の Mac では一致しているか確かめる。合っていないと Karabiner が先に掴み、kanata にキーが届かない | `karabiner/karabiner.json` |
 
 VIA を配置だけにしておくと、kanata のない環境でも Mac 向けの並びのまま打てる。押し方の判定は kanata に一本化しているので、VIA の LT・MT の代わりに kanata の tap-hold を使う。
 

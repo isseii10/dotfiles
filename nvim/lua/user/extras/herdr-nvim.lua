@@ -28,7 +28,7 @@ local function send_file()
       vim.notify("herdr-nvim: " .. derr, vim.log.levels.ERROR)
       return
     end
-    vim.notify("herdr-nvim: sent @" .. path .. " to " .. agent.title)
+    vim.notify("herdr-nvim: sent @" .. path .. " to " .. (agent.title_stripped or agent.title))
   end
 
   local agent = agents.resolve(list)
@@ -70,11 +70,67 @@ local function focus_after_send()
   end
 end
 
+-- 送り先を選ぶポップアップの表示を herdr のサイドバーに揃える
+-- 元の表示は "claude · working · dotfiles" (種別・状態・cwd 末尾) で、同じ repo の claude が並ぶと区別がつかない。
+-- サイドバーと同じ作業タイトル (terminal_title_stripped) とタブ番号を出し、並びもタブ順にする
+-- (元はアイコン付きのタイトル順で、状態が変わるたびに並びが入れ替わる)。
+-- herdr-nvim の内部モジュールを使っているので、プラグイン更新で壊れる可能性がある
+local function sidebar_like_picker()
+  local agents = require "herdr-nvim.agents"
+  local list = agents.list
+
+  local function herdr_json(args)
+    local r = vim.system(vim.list_extend({ vim.env.HERDR_BIN_PATH or "herdr" }, args), { text = true }):wait()
+    if r.code ~= 0 then
+      return nil
+    end
+    local ok, decoded = pcall(vim.json.decode, r.stdout)
+    return ok and type(decoded) == "table" and decoded.result or nil
+  end
+
+  agents.list = function(...)
+    local out, err = list(...)
+    if not out or require("herdr-nvim.exec").is_app() then
+      return out, err
+    end
+    local raw, tabs = {}, {}
+    for _, a in ipairs((herdr_json { "agent", "list" } or {}).agents or {}) do
+      raw[a.pane_id] = a
+    end
+    for _, t in ipairs((herdr_json { "tab", "list" } or {}).tabs or {}) do
+      tabs[t.tab_id] = t
+    end
+    for _, a in ipairs(out) do
+      local r, t = raw[a.pane_id] or {}, tabs[a.tab_id] or {}
+      a.title_stripped = r.terminal_title_stripped or r.name or a.kind
+      a.tab_label = t.label
+      a.tab_number = t.number or math.huge
+    end
+    table.sort(out, function(x, y)
+      if x.tab_number ~= y.tab_number then
+        return x.tab_number < y.tab_number
+      end
+      return x.pane_id < y.pane_id
+    end)
+    return out
+  end
+
+  local display = agents.display
+  agents.display = function(agent)
+    if not agent.title_stripped then
+      return display(agent)
+    end
+    local here = agent.tab_id == vim.env.HERDR_TAB_ID and " (this tab)" or ""
+    return string.format("%s · %s · tab %s%s", agent.title_stripped, agent.status, agent.tab_label or "?", here)
+  end
+end
+
 function M.config()
   -- キーマップはデフォルトの <leader>a (ac / al / as / aS / ai)
   require("herdr-nvim").setup {}
   require("herdr-nvim.prompt").format = format_prompt
   focus_after_send()
+  sidebar_like_picker()
   vim.keymap.set("n", "<leader>af", send_file, { desc = "herdr-nvim: send file to agent" })
 end
 

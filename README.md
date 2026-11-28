@@ -54,5 +54,5 @@ cd ~/dotfiles
 ## Nix の外で入れるもの
 
 - `skills/` の skill は `scripts/link-skills.sh` で `~/.claude/skills` と `~/.codex/skills` にリンクする。skill を足したら実行する。
-- herdr の `plugin_action` が使うプラグインは `scripts/link-herdr-plugins.sh` で登録する。
+- herdr のプラグインは `herdr/default.nix` の `plugins` に書く。home-manager switch のたびに、まだ登録されていないものが入る。
 - kanata のバイナリと VIA のキーマップは手で入れる。手順は [`kanata/README.md`](kanata/README.md)。

@@ -6,7 +6,7 @@
 #   - prefix は F12。ghostty 側で ctrl+m (wezterm の LEADER) を F12 に変換している
 #   - cmd+t / cmd+1..9 などの cmd 系ショートカットは ghostty が「F12 + キー」を送って herdr を操作する
 #   - ctrl+h/j/k/l は smart-splits-backend-herdr の herdr プラグインで nvim の分割と herdr のペインをシームレスに移動
-#     (初回のみ: scripts/link-herdr-plugins.sh)
+#     (herdr/default.nix の plugins に書くと home-manager switch で登録される)
 
 onboarding = false
 
@@ -31,7 +31,7 @@ status_indicators = "symbols"
 [ui.sidebar.agents.rows_by_agent]
 claude = [
   ["state_icon", { token = "terminal_title_stripped", fg = "#e6e6e6", bold = true, dim = false }],
-  ["machine", "workspace", "tab"],
+  ["machine", "workspace"],
 ]
 
 [keys]
@@ -89,20 +89,20 @@ open_notification_target = "prefix+shift+o"
 # prefix+g は lazygit に譲るので goto は alt 側に移す
 goto = "prefix+alt+g"
 
-# herdr-pickers (isseii10/herdr-pickers): fzf の picker を popup で開く
-#   (初回のみ: scripts/link-herdr-plugins.sh。設定は $(herdr plugin config-dir isseii10.herdr-pickers)/config.env)
+# herdr-vipicker (isseii10/herdr-vipicker): fzf の picker を popup で開く
+#   (herdr/default.nix の plugins に書くと home-manager switch で登録される。設定は $(herdr plugin config-dir isseii10.herdr-vipicker)/config.env)
 # LEADER s: 既存 workspace と zoxide のディレクトリから選んで切り替え/作成
 [[keys.command]]
 key = "prefix+s"
 type = "plugin_action"
-command = "isseii10.herdr-pickers.workspace"
+command = "isseii10.herdr-vipicker.workspace"
 description = "workspace picker"
 
 # prefix+a: 実行中の agent から選んで focus (出力をプレビュー)
 [[keys.command]]
 key = "prefix+a"
 type = "plugin_action"
-command = "isseii10.herdr-pickers.agent"
+command = "isseii10.herdr-vipicker.agent"
 description = "agent picker"
 
 # prefix+g: フォーカス中のペインの cwd で lazygit を popup で開く
@@ -158,7 +158,7 @@ command = "smart-splits-backend-herdr.right"
 description = "navigate right (vim/herdr)"
 
 # herdr-nvim: nvim サイドバーとエージェントが触ったファイルのピッカー
-#   (初回のみ: scripts/link-herdr-plugins.sh)
+#   (herdr/default.nix の plugins に書くと home-manager switch で登録される)
 [[keys.command]]
 key = "prefix+e"
 type = "plugin_action"

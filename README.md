@@ -46,7 +46,7 @@ cd ~/dotfiles
 | `resterm` | HTTP クライアント |
 | [`kanata`](kanata/README.md) | キーボードのリマップ (Neo Ergo と MacBook 本体)。VIA・Karabiner との分担と入れ方はリンク先 |
 | `via` | キーボードごとの VIA のキーマップ |
-| `karabiner` | kanata が使うドライバーのために入れている Karabiner-Elements の設定 (リマップはしていない) |
+| [`karabiner`](karabiner/README.md) | kanata が使うドライバーのために入れている Karabiner-Elements の設定 (リマップはしていない)。掴ませないキーボードと上げ方はリンク先 |
 | `raycast` | Raycast の設定のエクスポート |
 | `skills` | Claude Code / Codex の自作 skill |
 | `scripts` | Nix の外でリンクするためのスクリプト |

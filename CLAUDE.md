@@ -27,7 +27,7 @@
 
 ## キーリマップ
 
-- kanata・VIA・Karabiner を触るときは、先に `kanata/README.md` を読む (分担、入れ方、権限とセキュリティ)。
+- kanata・VIA・Karabiner を触るときは、先に `kanata/README.md` を読む (分担、入れ方、権限とセキュリティ)。Karabiner の `ignore` と上げ方は `karabiner/README.md`。
 
 ## Neovim
 

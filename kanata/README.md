@@ -8,7 +8,7 @@
 |---|---|---|
 | VIA (キーボード本体) | **配置**: 1キーに1キーコード。Mac 向けの修飾キーの並び、Caps の位置、右 space を `KC_F24` にするなど。Bluetooth・RGB の Fn レイヤーもここ | `via/<キーボード>/layout.json` |
 | kanata | **押し方**で変わるもの: tap/hold、記号レイヤー、`'`↔`"`・`;`↔`:`、⌘ 単体で英数・かな、⌘+hjkl、Caps→Control。Neo Ergo と MacBook 本体のキーボードの両方 | `kanata/kanata.kbd` |
-| Karabiner-Elements | リマップはしない。kanata が使うドライバー (VirtualHIDDevice) を入れて更新するために残している。キーボードを kanata と取り合わないよう、どちらも `ignore`。ignore の条件は Karabiner が見ている ID (`device_identifiers`) に合わせる。ID は Karabiner-EventViewer の「Devices」で見る (`/Library/Application Support/org.pqrs/tmp/karabiner_grabber_devices.json` にもある Mac があるが、ないこともある)。本体キーボードは機種によって違い、vendor/product の ID がなく `{"is_keyboard": true}` だけの Mac と、ID を持つ Mac (`1452`/`641`) の両方を入れている。Neo Ergo は口が2つ (`{is_keyboard, is_pointing_device}` と `{is_keyboard}`) あるので両方入れている。 ELECOM のマウスのレシーバー (`1390`/`4351`) のキーボードの口 (ボタンに割り当てたキー操作が通る) も、Karabiner に何も掴ませないため入れている。別の Mac では一致しているか確かめる。合っていないと Karabiner が先に掴み、kanata にキーが届かない | `karabiner/karabiner.json` |
+| Karabiner-Elements | リマップはしない。kanata が使うドライバー (VirtualHIDDevice) を入れて更新するためだけに残している。キーボードは kanata と取り合わないようすべて `ignore`。詳しくは [`karabiner/README.md`](../karabiner/README.md) | `karabiner/karabiner.json` |
 
 VIA を配置だけにしておくと、kanata のない環境でも Mac 向けの並びのまま打てる。押し方の判定は kanata に一本化しているので、VIA の LT・MT の代わりに kanata の tap-hold を使う。
 
@@ -29,7 +29,7 @@ kanata は1つのプロセスが1つの設定ファイルを読む。`kanata.kbd
 
 ## 入れ方 (macOS)
 
-1. Karabiner-Elements を入れる (`make darwin` の cask)。kanata は Karabiner のドライバーを借りるので、ドライバーの版に合う kanata を使う。Karabiner 16・17 のドライバー v8 には kanata v1.13.0 以降が要る。nixpkgs と Homebrew は 1.12.0 なので、[リリースページ](https://github.com/jtroo/kanata/releases) のバイナリを使う。
+1. Karabiner-Elements を入れる (`make darwin` の cask。上げ方は [`karabiner/README.md`](../karabiner/README.md))。kanata は Karabiner のドライバーを借りるので、ドライバーの版に合う kanata を使う。Karabiner 16・17 のドライバー v8 には kanata v1.13.0 以降が要る。nixpkgs と Homebrew は 1.12.0 なので、[リリースページ](https://github.com/jtroo/kanata/releases) のバイナリを使う。
 2. zip のチェックサムを確かめ、`kanata_macos_arm64` を root だけが書き込める場所に置く。
    ```
    sudo mkdir -p /opt/kanata/bin
@@ -39,19 +39,6 @@ kanata は1つのプロセスが1つの設定ファイルを読む。`kanata.kbd
 4. `make darwin` で LaunchDaemon (`dev.kanata.kanata` と見張り役の `dev.kanata.rescan`、`kanata/darwin.nix`) が入る。`/var/log/kanata.log` に `keyboard grabbed` が出れば動いている。
 
 VIA がキーボードを認識しないときは、メーカーの定義ファイル (JSON) を VIA の「Design」タブで読み込んでから、「Configure」の「Load Saved Layout」で `layout.json` を書き込む (Neo Ergo は https://qwertykeys.com/pages/fw の tri-mode 用)。
-
-## Karabiner を上げるとき
-
-Karabiner-Elements は Homebrew だけで上げる。
-
-```
-brew upgrade --cask karabiner-elements
-```
-
-- アプリ自身の更新は `karabiner.json` の `global.check_for_updates: false` で止めている。アプリが自分で上がると Homebrew の記録 (`/opt/homebrew/Caskroom/karabiner-elements/<版>`) が古いまま残り、次の `brew upgrade` が記録の版を消す手順を実行して、新しいドライバーのファイル (`/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice`) まで消す。記録がずれていたら、`rm -rf /opt/homebrew/Caskroom/karabiner-elements` で記録だけ消してから `brew install --cask karabiner-elements` で入れ直す。
-- この cask は `auto_updates` なので、名前を指定しない `brew upgrade` では上がらない。
-- 上げる前に、新しい版のドライバーが kanata と同じ形式で話すか確かめる (Karabiner-Elements のリポジトリの `vendor/Karabiner-DriverKit-VirtualHIDDevice` が指す `version.json` の `client_protocol_version`。kanata v1.13 は 7)。
-- 上げるとドライバーが入れ替わり、kanata は一度キーボードを手放して掴み直す。そのとき Karabiner と取り合って Neo Ergo を掴み損ねることがあるので、上げたら Neo Ergo で試し、効かなければ `sudo launchctl kickstart -k system/dev.kanata.kanata`。
 
 ## 権限とセキュリティ
 
